@@ -311,7 +311,9 @@ resources/views/mail/markdown/checkout-accessory.blade.php
 resources/views/mail/markdown/checkout-consumable.blade.php
 resources/views/mail/markdown/checkin-license.blade.php
 resources/views/mail/markdown/checkin-asset.blade.php
+resources/views/mail/markdown/checkin-component.blade.php
 resources/views/mail/markdown/checkin-accessory.blade.php
+resources/views/mail/markdown/checkout-component.blade.php
 resources/views/mail/markdown/checkout-license.blade.php
 resources/views/departments/index.blade.php
 resources/views/departments/edit.blade.php
@@ -6438,6 +6440,7 @@ tests/Feature/Companies/Ui/CompanyIndexTest.php
 tests/Feature/Companies/Api/CreateCompaniesTest.php
 tests/Feature/Companies/Api/UpdateCompaniesTest.php
 tests/Feature/Companies/Api/DeleteCompaniesTest.php
+tests/Feature/Companies/Api/IndexCompaniesTest.php
 tests/Feature/PredefinedKits/Ui/CreatePredefinedKitTest.php
 tests/Feature/PredefinedKits/Ui/IndexPredefinedKitsTest.php
 tests/Feature/PredefinedKits/Ui/UpdatePredefinedKitTest.php
@@ -6695,6 +6698,7 @@ tests/Support/CanSkipTests.php
 tests/Support/ProvidesDataForFullMultipleCompanySupportTesting.php
 tests/Support/InteractsWithAuthentication.php
 tests/Support/AssertsAgainstSlackNotifications.php
+tests/Support/AssertHasActionLogs.php
 tests/Support/CustomTestMacros.php
 .nvmrc
 sample_csvs/licenses-sample.csv
@@ -7006,6 +7010,7 @@ database/migrations/2014_08_17_083523_make_location_id_nullable.php
 database/migrations/2014_11_01_214955_add_eol_display_to_settings.php
 database/migrations/2022_12_20_171851_fix_nullable_migration_for_settings.php
 database/migrations/2016_12_27_212631_make_asset_assigned_to_polymorphic.php
+database/migrations/2025_07_16_142036_clean_checkout_acceptances.php
 database/migrations/2016_12_07_173720_increase_size_of_state_in_suppliers.php
 database/migrations/2013_11_17_055126_create_settings_table.php
 database/migrations/2020_10_23_161736_fix_zero_values_for_locations.php
@@ -7239,8 +7244,10 @@ app/Notifications/AuditNotification.php
 app/Notifications/ExpectedCheckinAdminNotification.php
 app/Notifications/CheckinLicenseSeatNotification.php
 app/Notifications/CheckinAccessoryNotification.php
+app/Notifications/CheckoutComponentNotification.php
 app/Notifications/ExpiringLicenseNotification.php
 app/Notifications/AcceptanceAssetDeclinedNotification.php
+app/Notifications/CheckinComponentNotification.php
 app/Notifications/CheckoutAccessoryNotification.php
 app/Notifications/InventoryAlert.php
 app/Notifications/FirstAdminNotification.php
@@ -7253,6 +7260,7 @@ app/Notifications/RequestAssetCancelation.php
 app/Notifications/ExpectedCheckinNotification.php
 app/Notifications/AcceptanceAssetAcceptedNotification.php
 app/Notifications/CheckinAssetNotification.php
+app/Notifications/AcceptanceAssetAcceptedToUserNotification.php
 app/Notifications/SendUpcomingAuditNotification.php
 app/Notifications/CurrentInventory.php
 app/Console/Kernel.php
@@ -7276,6 +7284,7 @@ app/Console/Commands/Purge.php
 app/Console/Commands/SendCurrentInventoryToUsers.php
 app/Console/Commands/ImportLocations.php
 app/Console/Commands/ReEncodeCustomFieldNames.php
+app/Console/Commands/CleanIncorrectCheckoutAcceptances.php
 app/Console/Commands/PaveIt.php
 app/Console/Commands/SendExpectedCheckinAlerts.php
 app/Console/Commands/SendInventoryAlerts.php
@@ -7301,6 +7310,7 @@ app/Console/Commands/LdapSync.php
 app/Mail/CheckoutLicenseMail.php
 app/Mail/ExpiringAssetsMail.php
 app/Mail/CheckinAssetMail.php
+app/Mail/CheckinComponentMail.php
 app/Mail/SendUpcomingAuditMail.php
 app/Mail/CheckoutAccessoryMail.php
 app/Mail/CheckoutAssetMail.php
@@ -7308,6 +7318,7 @@ app/Mail/UnacceptedAssetReminderMail.php
 app/Mail/CheckinAccessoryMail.php
 app/Mail/CheckoutConsumableMail.php
 app/Mail/CheckinLicenseMail.php
+app/Mail/CheckoutComponentMail.php
 app/Mail/ExpiringLicenseMail.php
 app/Mail/CheckoutAcceptanceResponseMail.php
 app/Helpers/StorageHelper.php

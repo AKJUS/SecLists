@@ -127,6 +127,7 @@ public/assets/images/icons/knowledge-base.svg
 public/assets/images/icons/web.svg
 public/assets/images/icons/eye.svg
 public/assets/images/icons/file-pdf.svg
+public/assets/images/icons/task-state-ai.svg
 public/assets/images/icons/reopening.svg
 public/assets/images/icons/important.svg
 public/assets/images/icons/email-button.svg
@@ -140,6 +141,7 @@ public/assets/images/icons/rss.svg
 public/assets/images/icons/trash.svg
 public/assets/images/icons/two-factor.svg
 public/assets/images/icons/task-state.svg
+public/assets/images/icons/ai-agent.svg
 public/assets/images/icons/in-process.svg
 public/assets/images/icons/total-tickets.svg
 public/assets/images/icons/danger.svg
@@ -319,6 +321,7 @@ public/assets/tests/qunit/form_email.js
 public/assets/tests/qunit/image_service.js
 public/assets/tests/qunit/form_code_editor.js
 public/assets/tests/qunit/view_helpers.js
+public/assets/tests/qunit/form_object_attribute_options_context.js
 public/assets/tests/qunit/browser.js
 public/assets/tests/qunit/form_skip_rendering.js
 public/assets/tests/qunit/model.js
@@ -549,6 +552,7 @@ config/routes/overview.rb
 config/routes/proxy.rb
 config/routes/setting.rb
 config/routes/knowledge_base.rb
+config/routes/ai_agent.rb
 config/routes/channel_microsoft_graph.rb
 config/routes/google.rb
 config/routes/integration_idoit.rb
@@ -609,6 +613,7 @@ spec/jobs/upload_cache_cleanup_job_spec.rb
 spec/jobs/user_device_log_job_spec.rb
 spec/jobs/communicate_twitter_job_spec.rb
 spec/jobs/taskbar_cleanup_job_spec.rb
+spec/jobs/trigger_ai_agent_job_spec.rb
 spec/jobs/avatar_create_job_spec.rb
 spec/jobs/ticket_user_ticket_counter_job_spec.rb
 spec/jobs/ticket_article_communicate_email_job_spec.rb
@@ -800,6 +805,7 @@ spec/factories/failed_emails.rb
 spec/factories/trigger.rb
 spec/factories/checklist_template.rb
 spec/factories/overview.rb
+spec/factories/ai/agents.rb
 spec/factories/ai/stored_results.rb
 spec/factories/history.rb
 spec/factories/permission.rb
@@ -843,6 +849,7 @@ spec/requests/knowledge_base/loading_initial_data_spec.rb
 spec/requests/knowledge_base/search_with_details_spec.rb
 spec/requests/external_credentials_spec.rb
 spec/requests/settings_spec.rb
+spec/requests/ai_agent_spec.rb
 spec/requests/import_freshdesk_spec.rb
 spec/requests/external_data_source_controller_spec.rb
 spec/requests/robots_txt_spec.rb
@@ -995,6 +1002,13 @@ spec/services/service/user/calendar_subscription/ticket_preferences_with_urls_sp
 spec/services/service/user/change_password_spec.rb
 spec/services/service/external_data_source/preview_spec.rb
 spec/services/service/external_data_source/search_spec.rb
+spec/services/service/ai/agent/run/context_spec.rb
+spec/services/service/ai/agent/run/context/instruction_spec.rb
+spec/services/service/ai/agent/run/context/entity/object_attributes/relation_spec.rb
+spec/services/service/ai/agent/run/context/entity/object_attributes/options_spec.rb
+spec/services/service/ai/agent/run/context/entity_spec.rb
+spec/services/service/ai/agent/run/context/instruction/object_attributes/relation_spec.rb
+spec/services/service/ai/agent/run_spec.rb
 spec/services/service/ai/vectordb/item/upsert_spec.rb
 spec/services/service/ai/vectordb/item/destroy_spec.rb
 spec/services/service/ai/vectordb/item/create_spec.rb
@@ -1360,6 +1374,7 @@ spec/models/form_updater/updater/user/edit_spec.rb
 spec/models/form_updater/updater/user/invite_spec.rb
 spec/models/form_updater/updater/user/create_spec.rb
 spec/models/job/localization_spec.rb
+spec/models/organization/search_spec.rb
 spec/models/organization/perform_changes_spec.rb
 spec/models/core_workflow_spec.rb
 spec/models/translation_spec.rb
@@ -1404,6 +1419,7 @@ spec/models/concerns/has_groups_permissions_examples.rb
 spec/models/concerns/can_csv_import_organization_examples.rb
 spec/models/concerns/has_search_index_backend_examples.rb
 spec/models/concerns/has_timeplan_examples.rb
+spec/models/concerns/touches_perform_references_examples.rb
 spec/models/concerns/can_be_imported_examples.rb
 spec/models/concerns/has_tags_examples.rb
 spec/models/concerns/has_group_relation_definition_examples.rb
@@ -1445,7 +1461,9 @@ spec/models/data_privacy_task_spec.rb
 spec/models/locale_spec.rb
 spec/models/recent_view_spec.rb
 spec/models/checklist_spec.rb
+spec/models/ai/agent/type_spec.rb
 spec/models/ai/stored_results_spec.rb
+spec/models/ai/agent_spec.rb
 spec/models/job_spec.rb
 spec/models/overview_spec.rb
 spec/models/authorization/provider_spec.rb
@@ -1484,6 +1502,7 @@ spec/models/core_workflow/custom/admin_sla_spec.rb
 spec/models/core_workflow/custom/ticket_time_accounting_check_spec.rb
 spec/models/core_workflow/custom/ticket_duplicate_detection_spec.rb
 spec/models/core_workflow/custom/pending_time_spec.rb
+spec/models/core_workflow/custom/admin_group_summary_generation_spec.rb
 spec/models/core_workflow/action_spec.rb
 spec/models/core_workflow/conditions_spec.rb
 spec/models/core_workflow/attributes_spec.rb
@@ -1858,6 +1877,7 @@ spec/system/ticket/zoom/history_spec.rb
 spec/system/ticket/zoom/autosave_spec.rb
 spec/system/ticket/zoom/email_reply_body_spec.rb
 spec/system/ticket/zoom/time_accounting_spec.rb
+spec/system/ticket/zoom/shortcut_spec.rb
 spec/system/ticket/zoom/auto_assignment_spec.rb
 spec/system/ticket/zoom/add_article_hint_spec.rb
 spec/system/ticket/zoom/link_spec.rb
@@ -1919,6 +1939,7 @@ spec/system/manage/users_spec.rb
 spec/system/manage/overviews_expert_conditions_spec.rb
 spec/system/manage/time_accounting_spec.rb
 spec/system/manage/trigger_spec.rb
+spec/system/manage/ai_agents_spec.rb
 spec/system/manage/sla_spec.rb
 spec/system/manage/public_links_spec.rb
 spec/system/manage/webhooks_spec.rb
@@ -2444,6 +2465,7 @@ spec/lib/ai/provider/zammad_ai_spec.rb
 spec/lib/ai/provider/azure_spec.rb
 spec/lib/ai/provider/anthropic_spec.rb
 spec/lib/ai/vectordb_spec.rb
+spec/lib/ai/service/ai_agent_spec.rb
 spec/lib/ai/service/text_spelling_and_grammar_spec.rb
 spec/lib/ai/provider_spec.rb
 spec/lib/report_examples.rb
@@ -2574,6 +2596,7 @@ spec/db/migrate/change_token_expiration_handling_spec.rb
 spec/db/migrate/cleanup_obsolete_translations_spec.rb
 spec/db/migrate/issue_4848_fix_overview_bulk_screen_spec.rb
 spec/db/migrate/issue_5286_add_setting_option_for_postmaster_follow_up_search_in_spec.rb
+spec/db/migrate/ticket_summary_generation_spec.rb
 spec/db/migrate/issue_1219_zhtw_locale_typo_spec.rb
 spec/db/migrate/add_object_attribute_relation_fields_belongs_to_value_spec.rb
 spec/db/migrate/geo_location_backend_osm_spec.rb
@@ -2731,6 +2754,7 @@ app/jobs/taskbar_update_trigger_subscriptions_job.rb
 app/jobs/session_timeout_job.rb
 app/jobs/reset_notifications_preferences_job.rb
 app/jobs/taskbar_cleanup_job.rb
+app/jobs/trigger_ai_agent_job.rb
 app/jobs/data_privacy_task_job.rb
 app/jobs/communicate_twitter_job.rb
 app/jobs/ticket_user_ticket_counter_job.rb
@@ -2814,8 +2838,10 @@ app/assets/javascripts/app/models/ticket_state_type.coffee
 app/assets/javascripts/app/models/ticket_article_type.coffee
 app/assets/javascripts/app/models/_application_model.coffee
 app/assets/javascripts/app/models/ticket.coffee
+app/assets/javascripts/app/models/ai_agent.coffee
 app/assets/javascripts/app/models/public_link.coffee
 app/assets/javascripts/app/models/webhook.coffee
+app/assets/javascripts/app/models/ai_agent_type.coffee
 app/assets/javascripts/app/models/mention.coffee
 app/assets/javascripts/app/models/ssl_certificate.coffee
 app/assets/javascripts/app/models/organization.coffee
@@ -3227,6 +3253,7 @@ app/assets/javascripts/app/controllers/_ui_element/switch.coffee
 app/assets/javascripts/app/controllers/_ui_element/select.coffee
 app/assets/javascripts/app/controllers/_ui_element/_application_action.coffee
 app/assets/javascripts/app/controllers/_ui_element/user_autocompletion_search.coffee
+app/assets/javascripts/app/controllers/_ui_element/object_attribute_options_context.coffee
 app/assets/javascripts/app/controllers/_ui_element/select_search.coffee
 app/assets/javascripts/app/controllers/_ui_element/radio_graphic.coffee
 app/assets/javascripts/app/controllers/_ui_element/ticket_duplicate_detection.coffee
@@ -3316,8 +3343,11 @@ app/assets/javascripts/app/controllers/agent_ticket_merge.coffee
 app/assets/javascripts/app/controllers/logout.coffee
 app/assets/javascripts/app/controllers/taskbar_widget.coffee
 app/assets/javascripts/app/controllers/core_workflow.coffee
+app/assets/javascripts/app/controllers/_ai/form_handler_ai_agent_type_help.coffee
 app/assets/javascripts/app/controllers/_ai/_feature_base.coffee
+app/assets/javascripts/app/controllers/_ai/ai_agent.coffee
 app/assets/javascripts/app/controllers/_ai/ticket_summary.coffee
+app/assets/javascripts/app/controllers/_ai/form_handler_ai_agent_unused_warning.coffee
 app/assets/javascripts/app/controllers/_ai/providers.coffee
 app/assets/javascripts/app/controllers/organization_profile.coffee
 app/assets/javascripts/app/controllers/cti.coffee
@@ -3688,11 +3718,13 @@ app/assets/javascripts/app/views/popover/user_organization_headline.jst.eco
 app/assets/javascripts/app/views/popover/kb_generic.jst.eco
 app/assets/javascripts/app/views/popover/escalation.jst.eco
 app/assets/javascripts/app/views/popover/user_ticket_list.jst.eco
+app/assets/javascripts/app/views/popover/reference_list_title.jst.eco
 app/assets/javascripts/app/views/popover/title_generic.jst.eco
 app/assets/javascripts/app/views/popover/single_object_generic.jst.eco
 app/assets/javascripts/app/views/popover/ticket_references.jst.eco
 app/assets/javascripts/app/views/popover/organization.jst.eco
 app/assets/javascripts/app/views/popover/ticket.jst.eco
+app/assets/javascripts/app/views/popover/reference_list.jst.eco
 app/assets/javascripts/app/views/popover/user.jst.eco
 app/assets/javascripts/app/views/after_auth/two_factor_configuration.jst.eco
 app/assets/javascripts/app/views/after_auth/two_factor_configuration/method_buttons.jst.eco
@@ -3731,6 +3763,8 @@ app/assets/javascripts/app/views/generic/ticket_perform_action/webhook.jst.eco
 app/assets/javascripts/app/views/generic/ticket_perform_action/row.jst.eco
 app/assets/javascripts/app/views/generic/ticket_perform_action/notification.jst.eco
 app/assets/javascripts/app/views/generic/ticket_perform_action/article.jst.eco
+app/assets/javascripts/app/views/generic/ticket_perform_action/ai_agent.jst.eco
+app/assets/javascripts/app/views/generic/ticket_perform_action/ai_agent_not_available.jst.eco
 app/assets/javascripts/app/views/generic/ticket_perform_action/webhook_not_available.jst.eco
 app/assets/javascripts/app/views/generic/application_selector_row.jst.eco
 app/assets/javascripts/app/views/generic/login_preview.jst.eco
@@ -3808,6 +3842,8 @@ app/assets/javascripts/app/views/generic/checkbox.jst.eco
 app/assets/javascripts/app/views/generic/application_selector_empty.jst.eco
 app/assets/javascripts/app/views/generic/modal_loader.jst.eco
 app/assets/javascripts/app/views/generic/attribute.jst.eco
+app/assets/javascripts/app/views/generic/object_attribute_options_context.jst.eco
+app/assets/javascripts/app/views/generic/reference_list.jst.eco
 app/assets/javascripts/app/views/generic/postmaster_set_row.jst.eco
 app/assets/javascripts/app/views/generic/iconset_picker.jst.eco
 app/assets/javascripts/app/views/generic/calender_preview.jst.eco
@@ -3919,6 +3955,7 @@ app/assets/javascripts/app/lib/app_post/z_searchable_ajax_select.coffee
 app/assets/javascripts/app/lib/app_post/popover_provider/escalation_popover_provider.coffee
 app/assets/javascripts/app/lib/app_post/popover_provider/kb_popover_provider.coffee
 app/assets/javascripts/app/lib/app_post/popover_provider/_popover_provider.coffee
+app/assets/javascripts/app/lib/app_post/popover_provider/reference_list_popover_provider.coffee
 app/assets/javascripts/app/lib/app_post/popover_provider/ticket_popover_provider.coffee
 app/assets/javascripts/app/lib/app_post/popover_provider/user_ticket_popover_provider.coffee
 app/assets/javascripts/app/lib/app_post/popover_provider/ticket_references_popover_provider.coffee
@@ -4176,6 +4213,18 @@ app/services/service/user/deprecated/signup.rb
 app/services/service/external_data_source/preview.rb
 app/services/service/external_data_source/search.rb
 app/services/service/search.rb
+app/services/service/ai/agent/run/context/entity/object_attributes/relation.rb
+app/services/service/ai/agent/run/context/entity/object_attributes/default.rb
+app/services/service/ai/agent/run/context/entity/object_attributes/options.rb
+app/services/service/ai/agent/run/context/entity/object_attributes.rb
+app/services/service/ai/agent/run/context/instruction.rb
+app/services/service/ai/agent/run/context/instruction/object_attributes/relation.rb
+app/services/service/ai/agent/run/context/instruction/object_attributes/options.rb
+app/services/service/ai/agent/run/context/instruction/object_attributes.rb
+app/services/service/ai/agent/run/context/entity.rb
+app/services/service/ai/agent/run/context.rb
+app/services/service/ai/agent/run/perform/agent.rb
+app/services/service/ai/agent/run.rb
 app/services/service/ai/vectordb/similarity_search.rb
 app/services/service/ai/vectordb/rebuild.rb
 app/services/service/ai/vectordb/reload.rb
@@ -4477,6 +4526,7 @@ app/graphql/gql/types/enum/form_updater_id_type.rb
 app/graphql/gql/types/enum/system_import_source_type.rb
 app/graphql/gql/types/enum/user_error_exception_type.rb
 app/graphql/gql/types/enum/ticket_article_sender_name_type.rb
+app/graphql/gql/types/enum/ticket_summary_generation.rb
 app/graphql/gql/types/enum/permission_access_type.rb
 app/graphql/gql/types/enum/ai_text_tool_service_type.rb
 app/graphql/gql/types/enum/authentication_provider_type.rb
@@ -4624,6 +4674,7 @@ app/graphql/gql/types/organization_type.rb
 app/graphql/gql/types/signature_type.rb
 app/graphql/gql/types/addresses_field_type.rb
 app/graphql/gql/types/base_object.rb
+app/graphql/gql/types/ai/agent_type.rb
 app/graphql/gql/types/search_result_type.rb
 app/graphql/gql/types/uri_string_type.rb
 app/graphql/gql/types/search_result/item_type.rb
@@ -4676,6 +4727,7 @@ app/models/ticket/perform_changes/action.rb
 app/models/ticket/perform_changes/action/article_note.rb
 app/models/ticket/perform_changes/action/notification_webhook.rb
 app/models/ticket/perform_changes/action/notification_sms.rb
+app/models/ticket/perform_changes/action/ai_agent.rb
 app/models/ticket/perform_changes/action/notification_email.rb
 app/models/ticket/touches_associations.rb
 app/models/ticket/number/date.rb
@@ -4950,6 +5002,7 @@ app/models/ticket.rb
 app/models/translation.rb
 app/models/online_notification.rb
 app/models/link.rb
+app/models/ai.rb
 app/models/mention/assets.rb
 app/models/http_log.rb
 app/models/locale.rb
@@ -4958,7 +5011,6 @@ app/models/webhook/pre_defined/mattermost.rb
 app/models/webhook/pre_defined/rocket_chat.rb
 app/models/webhook/pre_defined/microsoft_teams.rb
 app/models/webhook/pre_defined/slack.rb
-app/models/webhook/ensure_no_related_objects.rb
 app/models/pgp_key.rb
 app/models/concerns/has_agent_allowed_params.rb
 app/models/concerns/has_transaction_dispatcher.rb
@@ -4983,7 +5035,9 @@ app/models/concerns/can_selector/advanced_sorting/translated_relation_sort.rb
 app/models/concerns/can_selector/advanced_sorting/base_select_field_sort.rb
 app/models/concerns/can_selector/advanced_sorting.rb
 app/models/concerns/has_optional_groups.rb
+app/models/concerns/ensures_no_related_objects.rb
 app/models/concerns/can_seed.rb
+app/models/concerns/touches_perform_references.rb
 app/models/concerns/has_groups.rb
 app/models/concerns/checks_kb_client_visibility.rb
 app/models/concerns/has_group_relation_definition.rb
@@ -5054,6 +5108,11 @@ app/models/trigger.rb
 app/models/checklist_template.rb
 app/models/overview.rb
 app/models/ai/stored_result.rb
+app/models/ai/agent/type/ticket_group_dispatcher.rb
+app/models/ai/agent/type/custom_ai_agent.rb
+app/models/ai/agent/assets.rb
+app/models/ai/agent/type.rb
+app/models/ai/agent.rb
 app/models/history.rb
 app/models/permission.rb
 app/models/authorization/provider/facebook.rb
@@ -5152,6 +5211,7 @@ app/models/core_workflow/custom/admin_show_group_list_for_agents.rb
 app/models/core_workflow/custom/ticket_duplicate_detection.rb
 app/models/core_workflow/custom/admin_sla.rb
 app/models/core_workflow/custom/ticket_time_accounting_check.rb
+app/models/core_workflow/custom/admin_group_summary_generation.rb
 app/models/core_workflow/custom/admin_core_workflow.rb
 app/models/core_workflow/custom/pending_time.rb
 app/models/core_workflow/result.rb
@@ -5278,6 +5338,7 @@ app/controllers/settings/ticket_agent_default_notifications_controller.rb
 app/controllers/form_controller.rb
 app/controllers/translations_controller.rb
 app/controllers/import_zendesk_controller.rb
+app/controllers/ai_agents_controller.rb
 app/controllers/proxy_controller.rb
 app/controllers/taskbar_controller.rb
 app/controllers/import_freshdesk_controller.rb
@@ -5795,6 +5856,7 @@ app/views/mailer/admin_password_auth/zh-cn.html.erb
 app/views/mailer/admin_password_auth/tr.html.erb
 app/views/mailer/admin_password_auth/pt.html.erb
 app/views/mailer/admin_password_auth/sk.html.erb
+app/views/mailer/admin_password_auth/is.html.erb
 app/views/mailer/admin_password_auth/uk.html.erb
 app/views/mailer/admin_password_auth/cs.html.erb
 app/views/mailer/admin_password_auth/nb.html.erb
@@ -5943,6 +6005,7 @@ app/views/mailer/ticket_update_received_merge/tr.html.erb
 app/views/mailer/ticket_update_received_merge/zh-tw.html.erb
 app/views/mailer/ticket_update_received_merge/pt.html.erb
 app/views/mailer/ticket_update_received_merge/sk.html.erb
+app/views/mailer/ticket_update_received_merge/is.html.erb
 app/views/mailer/ticket_update_received_merge/uk.html.erb
 app/views/mailer/ticket_update_received_merge/cs.html.erb
 app/views/mailer/ticket_update_received_merge/nb.html.erb
@@ -6152,6 +6215,7 @@ app/policies/controllers/integration/idoit_controller_policy.rb
 app/policies/controllers/jobs_controller_policy.rb
 app/policies/controllers/time_accounting/types_controller_policy.rb
 app/policies/controllers/overviews_controller_policy.rb
+app/policies/controllers/ai_agents_controller_policy.rb
 app/policies/controllers/user/two_factors_controller_policy.rb
 app/policies/controllers/user/admin_two_factors_controller_policy.rb
 app/policies/controllers/user/overview_sortings_controller_policy.rb
@@ -6964,6 +7028,7 @@ app/frontend/apps/desktop/initializer/assets/key.svg
 app/frontend/apps/desktop/initializer/assets/x-circle.svg
 app/frontend/apps/desktop/initializer/assets/smart-assist-elaborate.svg
 app/frontend/apps/desktop/initializer/assets/no-notifications.svg
+app/frontend/apps/desktop/initializer/assets/ai-agent.svg
 app/frontend/apps/desktop/initializer/assets/type-underline.svg
 app/frontend/apps/desktop/initializer/assets/all-tickets.svg
 app/frontend/apps/desktop/initializer/assets/remove-formatting.svg
@@ -7070,6 +7135,7 @@ app/frontend/apps/desktop/initializer/assets/buildings.svg
 app/frontend/apps/desktop/initializer/assets/radio-yes.svg
 app/frontend/apps/desktop/initializer/assets/clock-history.svg
 app/frontend/apps/desktop/initializer/assets/upload.svg
+app/frontend/apps/desktop/initializer/assets/check-circle-no-ai.svg
 app/frontend/apps/desktop/initializer/assets/chevron-down.svg
 app/frontend/apps/desktop/initializer/assets/color.svg
 app/frontend/apps/desktop/initializer/assets/filter.svg
@@ -7381,6 +7447,8 @@ app/frontend/apps/desktop/components/CommonInputCopyToClipboard/CommonInputCopyT
 app/frontend/apps/desktop/components/CommonInputCopyToClipboard/__tests__/CommonInputCopyToClipboard.spec.ts
 app/frontend/apps/desktop/components/CommonContentPanel/CommonContentPanel.vue
 app/frontend/apps/desktop/components/CommonContentPanel/__tests__/CommonContentPanel.spec.ts
+app/frontend/apps/desktop/components/AiAgent/AiAgentPopoverWithTrigger.vue
+app/frontend/apps/desktop/components/AiAgent/__tests__/AiAgentPopoverWithTrigger.spec.ts
 app/frontend/apps/desktop/components/CommonObjectAttribute/CommonObjectAttribute.vue
 app/frontend/apps/desktop/components/CommonObjectAttribute/CommonObjectAttributeContainer.vue
 app/frontend/apps/desktop/components/Organization/OrganizationListTable.vue
@@ -7845,6 +7913,7 @@ app/frontend/apps/mobile/initializer/assets/key.svg
 app/frontend/apps/mobile/initializer/assets/smart-assist-elaborate.svg
 app/frontend/apps/mobile/initializer/assets/video.svg
 app/frontend/apps/mobile/initializer/assets/new-organization.svg
+app/frontend/apps/mobile/initializer/assets/ai-agent.svg
 app/frontend/apps/mobile/initializer/assets/text-style-strikethrough.svg
 app/frontend/apps/mobile/initializer/assets/all-tickets.svg
 app/frontend/apps/mobile/initializer/assets/remove-formatting.svg
@@ -7940,6 +8009,7 @@ app/frontend/apps/mobile/initializer/assets/text-style-h2.svg
 app/frontend/apps/mobile/initializer/assets/forward.svg
 app/frontend/apps/mobile/initializer/assets/radio-yes.svg
 app/frontend/apps/mobile/initializer/assets/close.svg
+app/frontend/apps/mobile/initializer/assets/check-circle-no-ai.svg
 app/frontend/apps/mobile/initializer/assets/chevron-down.svg
 app/frontend/apps/mobile/initializer/assets/show.svg
 app/frontend/apps/mobile/initializer/assets/warning-triangle.svg
@@ -8065,6 +8135,8 @@ app/frontend/apps/mobile/components/CommonBackButton/__tests__/CommonBackButton.
 app/frontend/apps/mobile/components/CommonDialogObjectForm/CommonDialogObjectForm.vue
 app/frontend/apps/mobile/components/CommonDialogObjectForm/useDialogObjectForm.ts
 app/frontend/apps/mobile/components/CommonDialogObjectForm/__tests__/CommonDialogObjectForm.spec.ts
+app/frontend/apps/mobile/components/AiAgent/AiAgentAvatar.vue
+app/frontend/apps/mobile/components/AiAgent/__tests__/AiAgentPopoverWithTrigger.spec.ts
 app/frontend/apps/mobile/components/Organization/types.ts
 app/frontend/apps/mobile/components/Organization/OrganizationItem.vue
 app/frontend/apps/mobile/components/Organization/OrganizationMembersList.vue
@@ -10751,17 +10823,20 @@ lib/ai/service/ticket_summarize.rb
 lib/ai/service/text_expand.rb
 lib/ai/service/email_remove_quote.rb
 lib/ai/service/prompts/system/text_simplify.txt.erb
+lib/ai/service/prompts/system/ai_agent.txt.erb
 lib/ai/service/prompts/system/text_spelling_and_grammar.txt.erb
 lib/ai/service/prompts/system/text_improve_writing.txt.erb
 lib/ai/service/prompts/system/ticket_summarize.txt.erb
 lib/ai/service/prompts/system/email_remove_quote.txt.erb
 lib/ai/service/prompts/system/text_expand.txt.erb
 lib/ai/service/prompts/user/text_simplify.txt.erb
+lib/ai/service/prompts/user/ai_agent.txt.erb
 lib/ai/service/prompts/user/text_spelling_and_grammar.txt.erb
 lib/ai/service/prompts/user/text_improve_writing.txt.erb
 lib/ai/service/prompts/user/ticket_summarize.txt.erb
 lib/ai/service/prompts/user/email_remove_quote.txt.erb
 lib/ai/service/prompts/user/text_expand.txt.erb
+lib/ai/service/ai_agent.rb
 lib/ai/provider.rb
 lib/bulk_import_info.rb
 lib/db_helper.rb
@@ -10939,6 +11014,7 @@ db/migrate/20170203000001_remove_last_login_from_history_722.rb
 db/migrate/20221031105719_create_knowledge_base_feed.rb
 db/migrate/20221010142630_issue_2401_convert_user_login_email_to_unicode.rb
 db/migrate/20180518000001_issue2029_sipgate_integration_enable.rb
+db/migrate/20250717044821_add_ai_agent_type.rb
 db/migrate/20200522125253_issue_2943_add_setting_enforce_special_character.rb
 db/migrate/20230224134546_duplicate_setting_titles.rb
 db/migrate/20210414000000_init_session_timeout.rb
@@ -11071,6 +11147,7 @@ db/migrate/20221220095750_issue_4434_github_rename.rb
 db/migrate/20201210075534_maintenance_missing_kb_unique_indexes.rb
 db/migrate/20210812000001_jira_config.rb
 db/migrate/20191107050249_issue_2460_fix_corrupted_twitter_ids.rb
+db/migrate/20250714101518_update_ai_permissions.rb
 db/migrate/20221206124535_issue_4412_setting_saml_logout_url.rb
 db/migrate/20190918114553_issue_2867_footer_header_public_link.rb
 db/migrate/20210728103633_move_auth_backends_to_database.rb
@@ -11140,6 +11217,7 @@ db/migrate/20180521141004_ticket_last_contact_behavior.rb
 db/migrate/20200724130426_issue3128_add_sso.rb
 db/migrate/20170525000001_reply_to_sender_feature.rb
 db/migrate/20170529132120_ldap_multi_group_mapping.rb
+db/migrate/20250717122734_ticket_summary_generation.rb
 db/migrate/20180128000001_chat_add_ip_country.rb
 db/migrate/20220216131241_issue3964_inbound_fix_options.rb
 db/migrate/20220119102815_issue3924_confirmation_dialog.rb
@@ -11199,7 +11277,9 @@ db/migrate/20190724000001_rename_reserved_words.rb
 db/migrate/20180226085743_issue_1660_fix_tree_select_configurations.rb
 db/migrate/20230505114614_drop_api_suffix_from_third_party_login_gitlab_site_parameter.rb
 db/migrate/20170619000001_tree_select.rb
+db/migrate/20250717082859_ticket_add_ai_agents_working.rb
 db/migrate/20220829100535_create_public_links.rb
+db/migrate/20250630120846_create_ai_agents.rb
 db/migrate/20200413160113_issue_2990_delete_timeframe.rb
 db/migrate/20190314084909_object_manager_attribute_date_remove_future_past.rb
 db/migrate/20231011055535_saml_sign_encrypt.rb
