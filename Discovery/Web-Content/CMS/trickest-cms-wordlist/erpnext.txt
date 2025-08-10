@@ -403,6 +403,8 @@ erpnext/patches/v14_0/create_accounting_dimensions_in_reconciliation_tool.py
 erpnext/patches/v14_0/discount_accounting_separation.py
 erpnext/patches/v4_2/update_requested_and_ordered_qty.py
 erpnext/patches/v4_2/repost_reserved_qty.py
+erpnext/patches/v16_0/__init__.py
+erpnext/patches/v16_0/update_serial_no_reference_name.py
 erpnext/patches/v13_0/show_india_localisation_deprecation_warning.py
 erpnext/patches/v13_0/update_recipient_email_digest.py
 erpnext/patches/v13_0/item_reposting_for_incorrect_sl_and_gl.py
@@ -527,6 +529,7 @@ erpnext/patches/v15_0/update_pegged_currencies.py
 erpnext/patches/v15_0/rename_manufacturing_settings_field.py
 erpnext/patches/v15_0/update_asset_value_for_manual_depr_entries.py
 erpnext/patches/v15_0/update_journal_entry_type.py
+erpnext/patches/v15_0/add_company_payment_gateway_account.py
 erpnext/patches/v15_0/remove_sales_partner_from_consolidated_sales_invoice.py
 erpnext/patches/v15_0/remove_agriculture_roles.py
 erpnext/patches/v15_0/create_accounting_dimensions_in_payment_request.py
@@ -563,6 +566,7 @@ erpnext/patches/v15_0/refactor_closing_stock_balance.py
 erpnext/patches/v15_0/migrate_to_utm_analytics.py
 erpnext/patches/v15_0/rename_pos_closing_entry_fields.py
 erpnext/patches/v15_0/update_cc_in_process_statement_of_accounts.py
+erpnext/patches/v15_0/update_payment_ledger_entries_against_advance_doctypes.py
 erpnext/patches/v15_0/migrate_old_item_wise_tax_detail_data_format.py
 erpnext/patches/v15_0/set_status_cancelled_on_cancelled_pos_opening_entry_and_pos_closing_entry.py
 erpnext/patches/v15_0/recalculate_amount_difference_field.py
@@ -1705,6 +1709,7 @@ erpnext/stock/report/stock_projected_qty/stock_projected_qty.js
 erpnext/stock/report/stock_projected_qty/__init__.py
 erpnext/stock/report/stock_projected_qty/stock_projected_qty.json
 erpnext/stock/report/stock_projected_qty/stock_projected_qty.py
+erpnext/stock/report/serial_/_batch_traceability_report/__init__.py
 erpnext/stock/report/supplier_wise_sales_analytics/supplier_wise_sales_analytics.json
 erpnext/stock/report/supplier_wise_sales_analytics/supplier_wise_sales_analytics.js
 erpnext/stock/report/supplier_wise_sales_analytics/__init__.py
@@ -1717,6 +1722,10 @@ erpnext/stock/report/purchase_receipt_trends/__init__.py
 erpnext/stock/report/purchase_receipt_trends/purchase_receipt_trends.py
 erpnext/stock/report/purchase_receipt_trends/purchase_receipt_trends.json
 erpnext/stock/report/purchase_receipt_trends/purchase_receipt_trends.js
+erpnext/stock/report/landed_cost_report/__init__.py
+erpnext/stock/report/landed_cost_report/landed_cost_report.py
+erpnext/stock/report/landed_cost_report/landed_cost_report.js
+erpnext/stock/report/landed_cost_report/landed_cost_report.json
 erpnext/stock/report/bom_search/bom_search.py
 erpnext/stock/report/bom_search/__init__.py
 erpnext/stock/report/bom_search/bom_search.js
@@ -1795,6 +1804,10 @@ erpnext/stock/report/delayed_order_report/delayed_order_report.json
 erpnext/stock/report/delayed_order_report/__init__.py
 erpnext/stock/report/delayed_order_report/delayed_order_report.py
 erpnext/stock/report/delayed_order_report/delayed_order_report.js
+erpnext/stock/report/serial_no_and_batch_traceability/__init__.py
+erpnext/stock/report/serial_no_and_batch_traceability/serial_no_and_batch_traceability.json
+erpnext/stock/report/serial_no_and_batch_traceability/serial_no_and_batch_traceability.js
+erpnext/stock/report/serial_no_and_batch_traceability/serial_no_and_batch_traceability.py
 erpnext/stock/report/serial_no_ledger/serial_no_ledger.js
 erpnext/stock/report/serial_no_ledger/__init__.py
 erpnext/stock/report/serial_no_ledger/serial_no_ledger.py
@@ -1909,6 +1922,9 @@ erpnext/stock/doctype/shipment_parcel/__init__.py
 erpnext/stock/doctype/shipment_parcel/shipment_parcel.py
 erpnext/stock/doctype/shipment_parcel/shipment_parcel.json
 erpnext/stock/doctype/__init__.py
+erpnext/stock/doctype/landed_cost_vendor_invoice/__init__.py
+erpnext/stock/doctype/landed_cost_vendor_invoice/landed_cost_vendor_invoice.py
+erpnext/stock/doctype/landed_cost_vendor_invoice/landed_cost_vendor_invoice.json
 erpnext/stock/doctype/warehouse/warehouse_tree.js
 erpnext/stock/doctype/warehouse/README.md
 erpnext/stock/doctype/warehouse/__init__.py

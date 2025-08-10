@@ -1950,28 +1950,6 @@ dev/examples/mail/dolibarr_mail_attachementHTML.txt
 examples/mail/dolibarr_mail_attachementHTML.txt
 mail/dolibarr_mail_attachementHTML.txt
 dolibarr_mail_attachementHTML.txt
-dev/setup/bruno/collection.bru
-setup/bruno/collection.bru
-bruno/collection.bru
-collection.bru
-dev/setup/bruno/README.md
-setup/bruno/README.md
-bruno/README.md
-README.md
-dev/setup/bruno/bruno.json
-setup/bruno/bruno.json
-bruno/bruno.json
-bruno.json
-dev/setup/bruno/environments/ Test local.bru
-setup/bruno/environments/ Test local.bru
-bruno/environments/ Test local.bru
-environments/ Test local.bru
- Test local.bru
-dev/setup/bruno/status/Get status -Dolibarr version- --.bru
-setup/bruno/status/Get status -Dolibarr version- --.bru
-bruno/status/Get status -Dolibarr version- --.bru
-status/Get status -Dolibarr version- --.bru
-Get status -Dolibarr version- --.bru
 dev/setup/git/hooks/pre-commit.legacy
 setup/git/hooks/pre-commit.legacy
 git/hooks/pre-commit.legacy
@@ -2775,6 +2753,11 @@ install/mysql/data/llx_accounting_account_lu.sql
 mysql/data/llx_accounting_account_lu.sql
 data/llx_accounting_account_lu.sql
 llx_accounting_account_lu.sql
+htdocs/install/mysql/data/llx_accounting_account_ch_de.sql
+install/mysql/data/llx_accounting_account_ch_de.sql
+mysql/data/llx_accounting_account_ch_de.sql
+data/llx_accounting_account_ch_de.sql
+llx_accounting_account_ch_de.sql
 htdocs/install/mysql/data/llx_accounting_account_mx.sql
 install/mysql/data/llx_accounting_account_mx.sql
 mysql/data/llx_accounting_account_mx.sql
@@ -7549,6 +7532,9 @@ customer.php
 htdocs/commande/document.php
 commande/document.php
 document.php
+htdocs/commande/messaging.php
+commande/messaging.php
+messaging.php
 htdocs/commande/class/commande.class.php
 commande/class/commande.class.php
 class/commande.class.php
@@ -9147,6 +9133,9 @@ linkedobjectblock.tpl.php
 htdocs/expedition/contact.php
 expedition/contact.php
 contact.php
+htdocs/expedition/agenda.php
+expedition/agenda.php
+agenda.php
 htdocs/expedition/js/lib_dispatch.js.php
 expedition/js/lib_dispatch.js.php
 js/lib_dispatch.js.php
@@ -9160,6 +9149,9 @@ shipment.php
 htdocs/expedition/document.php
 expedition/document.php
 document.php
+htdocs/expedition/messaging.php
+expedition/messaging.php
+messaging.php
 htdocs/expedition/dispatch.php
 expedition/dispatch.php
 dispatch.php
@@ -10566,6 +10558,9 @@ syslog.php
 htdocs/admin/expensereport_ik.php
 admin/expensereport_ik.php
 expensereport_ik.php
+htdocs/admin/bank_payments_extrafields.php
+admin/bank_payments_extrafields.php
+bank_payments_extrafields.php
 htdocs/admin/website.php
 admin/website.php
 website.php
@@ -16780,6 +16775,10 @@ htdocs/langs/es_PY/intracommreport.lang
 langs/es_PY/intracommreport.lang
 es_PY/intracommreport.lang
 intracommreport.lang
+htdocs/langs/en_IE/other.lang
+langs/en_IE/other.lang
+en_IE/other.lang
+other.lang
 htdocs/langs/en_IE/accountancy.lang
 langs/en_IE/accountancy.lang
 en_IE/accountancy.lang
@@ -19620,6 +19619,10 @@ htdocs/langs/ar_EG/margins.lang
 langs/ar_EG/margins.lang
 ar_EG/margins.lang
 margins.lang
+htdocs/langs/ar_EG/install.lang
+langs/ar_EG/install.lang
+ar_EG/install.lang
+install.lang
 htdocs/langs/ar_EG/propal.lang
 langs/ar_EG/propal.lang
 ar_EG/propal.lang
@@ -32216,6 +32219,10 @@ htdocs/langs/ar_IQ/ticket.lang
 langs/ar_IQ/ticket.lang
 ar_IQ/ticket.lang
 ticket.lang
+htdocs/langs/ar_IQ/bills.lang
+langs/ar_IQ/bills.lang
+ar_IQ/bills.lang
+bills.lang
 htdocs/langs/ar_IQ/main.lang
 langs/ar_IQ/main.lang
 ar_IQ/main.lang
@@ -33216,6 +33223,10 @@ htdocs/langs/pt_MZ/margins.lang
 langs/pt_MZ/margins.lang
 pt_MZ/margins.lang
 margins.lang
+htdocs/langs/pt_MZ/install.lang
+langs/pt_MZ/install.lang
+pt_MZ/install.lang
+install.lang
 htdocs/langs/pt_MZ/propal.lang
 langs/pt_MZ/propal.lang
 pt_MZ/propal.lang
@@ -39868,6 +39879,10 @@ htdocs/comm/propal/document.php
 comm/propal/document.php
 propal/document.php
 document.php
+htdocs/comm/propal/messaging.php
+comm/propal/messaging.php
+propal/messaging.php
+messaging.php
 htdocs/comm/propal/class/propal.class.php
 comm/propal/class/propal.class.php
 propal/class/propal.class.php
@@ -43020,6 +43035,10 @@ htdocs/core/class/commondict.class.php
 core/class/commondict.class.php
 class/commondict.class.php
 commondict.class.php
+htdocs/core/class/commontrigger.class.php
+core/class/commontrigger.class.php
+class/commontrigger.class.php
+commontrigger.class.php
 htdocs/core/class/reddithandler.class.php
 core/class/reddithandler.class.php
 class/reddithandler.class.php
@@ -68734,6 +68753,9 @@ migrate_picture_path.php
 scripts/product/regenerate_thumbs.php
 product/regenerate_thumbs.php
 regenerate_thumbs.php
+scripts/admin/admintool.php
+admin/admintool.php
+admintool.php
 scripts/contracts/email_expire_services_to_representatives.php
 contracts/email_expire_services_to_representatives.php
 email_expire_services_to_representatives.php

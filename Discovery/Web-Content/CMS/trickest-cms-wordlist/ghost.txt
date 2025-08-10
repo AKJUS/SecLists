@@ -1846,6 +1846,7 @@ ghost/core/core/server/services/stats/ReferrersStatsService.js
 ghost/core/core/server/services/stats/StatsService.js
 ghost/core/core/server/services/stats/MrrStatsService.js
 ghost/core/core/server/services/stats/SubscriptionStatsService.js
+ghost/core/core/server/services/stats/utils/date-utils.js
 ghost/core/core/server/services/stats/utils/tinybird.js
 ghost/core/core/server/services/stats/index.js
 ghost/core/core/server/services/stats/PostsStatsService.js
@@ -3997,6 +3998,8 @@ ghost/core/test/unit/shared/labs.test.js
 ghost/core/test/unit/shared/sentry.test.js
 ghost/core/test/unit/api/cache-invalidation.test.js
 ghost/core/test/unit/api/endpoints/previews.test.js
+ghost/core/test/unit/api/endpoints/db.test.js
+ghost/core/test/unit/api/endpoints/members.test.js
 ghost/core/test/unit/api/canary/session.test.js
 ghost/core/test/unit/api/canary/utils/serializers/output/default.test.js
 ghost/core/test/unit/api/canary/utils/serializers/output/previews.test.js
@@ -5229,6 +5232,7 @@ apps/admin-x-activitypub/src/api/activitypub.test.ts
 apps/admin-x-activitypub/src/hooks/use-active-route.ts
 apps/admin-x-activitypub/src/hooks/use-keyboard-shortcuts.tsx
 apps/admin-x-activitypub/src/hooks/use-activity-pub-queries.ts
+apps/admin-x-activitypub/src/hooks/use-activity-pub-queries.test.ts
 apps/admin-x-activitypub/src/hooks/use-reply-chain-data.ts
 apps/admin-x-activitypub/src/components/global/EmptyViewIndicator.tsx
 apps/admin-x-activitypub/src/components/global/Separator.tsx
@@ -5635,6 +5639,8 @@ e2e/helpers/utils/.keep
 e2e/README.md
 e2e/compose.e2e.yml
 e2e/playwright.config.mjs
+e2e/adr/README.md
+e2e/adr/0001-aaa-test-structure.md
 e2e/package.json
 e2e/tests/public/homepage.test.ts
 e2e/tests/admin/.keep
@@ -5643,5 +5649,4 @@ e2e/tsconfig.json
 e2e/.eslintrc.js
 .vscode/launch.json
 .vscode/settings.json
-PRIVACY.md
 .editorconfig

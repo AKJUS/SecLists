@@ -3603,6 +3603,7 @@ src/Core/ConstraintValidator/AddressDniRequiredValidator.php
 src/Core/ConstraintValidator/Factory/CustomerNameValidatorFactory.php
 src/Core/ConstraintValidator/NoTagsValidator.php
 src/Core/ConstraintValidator/Constraints/CleanHtml.php
+src/Core/ConstraintValidator/Constraints/DiscountProductSegment.php
 src/Core/ConstraintValidator/Constraints/Reduction.php
 src/Core/ConstraintValidator/Constraints/ExistingCustomerEmail.php
 src/Core/ConstraintValidator/Constraints/CartRule.php
@@ -3622,6 +3623,7 @@ src/Core/ConstraintValidator/Constraints/CustomerName.php
 src/Core/ConstraintValidator/Constraints/NotBlankWhenRequired.php
 src/Core/ConstraintValidator/UniqueStateIsoCodeValidator.php
 src/Core/ConstraintValidator/AddressStateRequiredValidator.php
+src/Core/ConstraintValidator/DiscountProductSegmentValidator.php
 src/Core/ConstraintValidator/PositiveOrZeroValidator.php
 src/Core/ConstraintValidator/UniqueDiscountCodeValidator.php
 src/Core/ConstraintValidator/IsUrlRewriteValidator.php
@@ -3788,6 +3790,7 @@ src/PrestaShopBundle/Component/CsvResponse.php
 src/PrestaShopBundle/ApiPlatform/Serializer/CQRSApiSerializer.php
 src/PrestaShopBundle/ApiPlatform/Serializer/DecimalNumberTypeExtractor.php
 src/PrestaShopBundle/ApiPlatform/Provider/QueryProvider.php
+src/PrestaShopBundle/ApiPlatform/Provider/EmptyBodyDeserializerProvider.php
 src/PrestaShopBundle/ApiPlatform/Provider/QueryListProvider.php
 src/PrestaShopBundle/ApiPlatform/Resources/ApiClient.php
 src/PrestaShopBundle/ApiPlatform/Resources/README.md
@@ -4402,6 +4405,7 @@ src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/preview.html.twig
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/change_orders_status_modal.html.twig
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/payments_alert.html.twig
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/msg_list_item.html.twig
+src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/merge_shipment_form.html.twig
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/product.html.twig
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/print_order_statistics.html.twig
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/print_title.html.twig
@@ -4410,6 +4414,7 @@ src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/messages
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/add_product_row.html.twig
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/Modal/update_product_modal.html.twig
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/Modal/view_all_messages_modal.html.twig
+src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/Modal/merge_shipment_modal.html.twig
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/Modal/update_shipping_modal.html.twig
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/Modal/add_order_discount_modal.html.twig
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/Modal/view_product_pack_modal.html.twig
@@ -5256,6 +5261,7 @@ src/PrestaShopBundle/Form/Admin/Sell/Order/Delivery/SlipOptionsFormDataProvider.
 src/PrestaShopBundle/Form/Admin/Sell/Order/Delivery/SlipPdfType.php
 src/PrestaShopBundle/Form/Admin/Sell/Order/Delivery/SlipPdfFormDataProvider.php
 src/PrestaShopBundle/Form/Admin/Sell/Order/Delivery/SlipOptionsType.php
+src/PrestaShopBundle/Form/Admin/Sell/Order/Shipment/MergeShipmentType.php
 src/PrestaShopBundle/Form/Admin/Sell/Order/InternalNoteType.php
 src/PrestaShopBundle/Form/Admin/Sell/CartRule/ActionsType.php
 src/PrestaShopBundle/Form/Admin/Sell/CartRule/MinimumAmountType.php
@@ -7785,6 +7791,7 @@ admin-dev/themes/new-theme/scss/pages/partials/_theme_logo_configuration.scss
 admin-dev/themes/new-theme/scss/pages/partials/_order-navigation.scss
 admin-dev/themes/new-theme/scss/pages/_improve.scss
 admin-dev/themes/new-theme/scss/pages/_order_states.scss
+admin-dev/themes/new-theme/scss/pages/orders/_orders_shipment.scss
 admin-dev/themes/new-theme/scss/pages/orders/_orders_view.scss
 admin-dev/themes/new-theme/scss/pages/orders/orders.scss
 admin-dev/themes/new-theme/scss/pages/orders/_orders_main.scss
@@ -7800,6 +7807,7 @@ admin-dev/themes/new-theme/scss/pages/product/_multi_shop_list.scss
 admin-dev/themes/new-theme/scss/pages/product/products_catalog.scss
 admin-dev/themes/new-theme/scss/pages/product/product_page.scss
 admin-dev/themes/new-theme/scss/pages/_invoices.scss
+admin-dev/themes/new-theme/scss/pages/_themes_import.scss
 admin-dev/themes/new-theme/scss/pages/stock/stock_page.scss
 admin-dev/themes/new-theme/scss/pages/_customer.scss
 admin-dev/themes/new-theme/scss/pages/_modules.scss
@@ -7856,6 +7864,7 @@ admin-dev/themes/new-theme/scss/components/_entity_search.scss
 admin-dev/themes/new-theme/scss/components/_grid.scss
 admin-dev/themes/new-theme/scss/components/_button.scss
 admin-dev/themes/new-theme/scss/components/_delta_quantity.scss
+admin-dev/themes/new-theme/scss/components/_skeleton.scss
 admin-dev/themes/new-theme/scss/components/_category_tree.scss
 admin-dev/themes/new-theme/scss/components/_timeline.scss
 admin-dev/themes/new-theme/scss/components/_multistore-dropdown.scss
@@ -7964,6 +7973,7 @@ admin-dev/themes/new-theme/js/pages/order/preview-products-toggler.ts
 admin-dev/themes/new-theme/js/pages/order/message/order-view-page-messages-handler.ts
 admin-dev/themes/new-theme/js/pages/order/create.ts
 admin-dev/themes/new-theme/js/pages/order/OrderViewPageMap.ts
+admin-dev/themes/new-theme/js/pages/order/merge-shipment-manager.ts
 admin-dev/themes/new-theme/js/pages/order/order-shipping-manager.ts
 admin-dev/themes/new-theme/js/pages/state/index.ts
 admin-dev/themes/new-theme/js/pages/language/index.ts
@@ -10364,6 +10374,7 @@ tests/Integration/Behaviour/Features/Scenario/Discount/FO/discount_with_code.fea
 tests/Integration/Behaviour/Features/Scenario/Discount/FO/discount_with_brand_trigger.feature
 tests/Integration/Behaviour/Features/Scenario/Discount/FO/full_user_experience_test_with_discount_product_level.feature
 tests/Integration/Behaviour/Features/Scenario/Discount/FO/full_user_experience_test_with_two_discounts.feature
+tests/Integration/Behaviour/Features/Scenario/Discount/FO/discount_with_category_trigger.feature
 tests/Integration/Behaviour/Features/Scenario/Discount/FO/discount_with_restricted_combinations.feature
 tests/Integration/Behaviour/Features/Scenario/Discount/FO/discount_with_condition_minimum_quantity.feature
 tests/Integration/Behaviour/Features/Scenario/Discount/FO/full_user_experience_test_with_discount_free_shipping.feature
@@ -10380,6 +10391,7 @@ tests/Integration/Behaviour/Features/Scenario/Discount/BO/add_discount_with_bran
 tests/Integration/Behaviour/Features/Scenario/Discount/BO/update_discount_conditions.feature
 tests/Integration/Behaviour/Features/Scenario/Discount/BO/update_cart_level_discount.feature
 tests/Integration/Behaviour/Features/Scenario/Discount/BO/add_discount_with_code.feature
+tests/Integration/Behaviour/Features/Scenario/Discount/BO/add_discount_with_category_trigger.feature
 tests/Integration/Behaviour/Features/Scenario/Discount/BO/update_free_gift_discount.feature
 tests/Integration/Behaviour/Features/Scenario/Discount/BO/delete_discount.feature
 tests/Integration/Behaviour/Features/Scenario/Discount/BO/add_free_gift_discount.feature
@@ -11264,12 +11276,16 @@ tests/UI/campaigns/functional/BO/03_catalog/05_brandsAndSuppliers/suppliers/02_f
 tests/UI/campaigns/functional/BO/03_catalog/05_brandsAndSuppliers/suppliers/04_paginationSortAndBulkActions.ts
 tests/UI/campaigns/functional/BO/03_catalog/05_brandsAndSuppliers/suppliers/01_CRUDSupplier.ts
 tests/UI/campaigns/functional/BO/03_catalog/07_discounts/01_cartRules/02_sortAndPaginationCartRule.ts
+tests/UI/campaigns/functional/BO/03_catalog/07_discounts/01_cartRules/01_CRUDCartRule/03_actions/09_applyDiscountToSelectedProduct.ts
 tests/UI/campaigns/functional/BO/03_catalog/07_discounts/01_cartRules/01_CRUDCartRule/03_actions/03_applyDiscountPercent.ts
 tests/UI/campaigns/functional/BO/03_catalog/07_discounts/01_cartRules/01_CRUDCartRule/03_actions/04_applyDiscountAmount.ts
+tests/UI/campaigns/functional/BO/03_catalog/07_discounts/01_cartRules/01_CRUDCartRule/03_actions/11_sendFreeGift.ts
 tests/UI/campaigns/functional/BO/03_catalog/07_discounts/01_cartRules/01_CRUDCartRule/03_actions/02_freeShipping.ts
 tests/UI/campaigns/functional/BO/03_catalog/07_discounts/01_cartRules/01_CRUDCartRule/03_actions/01_applyToSpecificProduct.ts
+tests/UI/campaigns/functional/BO/03_catalog/07_discounts/01_cartRules/01_CRUDCartRule/03_actions/08_applyDiscountToCheapestProduct.ts
 tests/UI/campaigns/functional/BO/03_catalog/07_discounts/01_cartRules/01_CRUDCartRule/03_actions/05_applyDiscountNone.ts
 tests/UI/campaigns/functional/BO/03_catalog/07_discounts/01_cartRules/01_CRUDCartRule/03_actions/07_applyDiscountToSpecificProduct.ts
+tests/UI/campaigns/functional/BO/03_catalog/07_discounts/01_cartRules/01_CRUDCartRule/03_actions/10_excludeDiscountedProducts.ts
 tests/UI/campaigns/functional/BO/03_catalog/07_discounts/01_cartRules/01_CRUDCartRule/03_actions/06_applyDiscountToOrderWithoutShipping.ts
 tests/UI/campaigns/functional/BO/03_catalog/07_discounts/01_cartRules/01_CRUDCartRule/01_information/02_enableDisablePartialUse.ts
 tests/UI/campaigns/functional/BO/03_catalog/07_discounts/01_cartRules/01_CRUDCartRule/01_information/01_withAndWithoutCode.ts
@@ -12058,6 +12074,7 @@ tests/Unit/Classes/ValidateCoreTest.php
 tests/Unit/Classes/ImageManagerTest.php
 tests/Unit/Classes/form/AbstractFormTest.php
 tests/Unit/Classes/form/FormFieldTest.php
+tests/Unit/Classes/DispatcherTest.php
 tests/Unit/Classes/ModuleGraphTest.php
 tests/Unit/Classes/RequestSqlTest.php
 tests/Unit/Adapter/Meta/UrlSchemaDataConfigurationTest.php
@@ -12118,6 +12135,7 @@ tests/Unit/Adapter/Security/CommandHandler/BulkDeleteEmployeesSessionHandlerTest
 tests/Unit/Adapter/Security/CommandHandler/DeleteCustomerSessionHandlerTest.php
 tests/Unit/Adapter/Security/CommandHandler/BulkDeleteCustomersSessionHandlerTest.php
 tests/Unit/Adapter/Customer/CustomerConfigurationTest.php
+tests/Unit/Adapter/Routes/RouteValidatorTest.php
 tests/Unit/Adapter/Webservice/WebserviceConfigurationTest.php
 tests/Unit/phpunit.xml
 tests/index.php

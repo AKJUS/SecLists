@@ -431,11 +431,6 @@ dev/examples/mail/dolibarr_mail_withimageHTML.txt
 dev/examples/mail/source_email_ticket_2_a_answer_from_ticket.txt
 dev/examples/mail/dolibarr_mail_simpleHTML.txt
 dev/examples/mail/dolibarr_mail_attachementHTML.txt
-dev/setup/bruno/collection.bru
-dev/setup/bruno/README.md
-dev/setup/bruno/bruno.json
-dev/setup/bruno/environments/ Test local.bru
-dev/setup/bruno/status/Get status -Dolibarr version- --.bru
 dev/setup/git/hooks/pre-commit.legacy
 dev/setup/git/hooks/pre-commit
 dev/setup/fail2ban/filter.d/web-accesslog-limit404.conf
@@ -622,6 +617,7 @@ htdocs/install/mysql/data/llx_accounting_account_gr.sql
 htdocs/install/mysql/data/llx_c_ticket_resolution-ticket.sql
 htdocs/install/mysql/data/llx_accounting_account_dk.sql
 htdocs/install/mysql/data/llx_accounting_account_lu.sql
+htdocs/install/mysql/data/llx_accounting_account_ch_de.sql
 htdocs/install/mysql/data/llx_accounting_account_mx.sql
 htdocs/install/mysql/data/llx_accounting_account_co.sql
 htdocs/install/mysql/data/llx_c_actioncomm.sql
@@ -1572,6 +1568,7 @@ htdocs/commande/agenda.php
 htdocs/commande/card.php
 htdocs/commande/customer.php
 htdocs/commande/document.php
+htdocs/commande/messaging.php
 htdocs/commande/class/commande.class.php
 htdocs/commande/class/orderline.class.php
 htdocs/commande/class/api_orders.class.php
@@ -1984,10 +1981,12 @@ htdocs/expedition/stats/index.php
 htdocs/expedition/stats/month.php
 htdocs/expedition/tpl/linkedobjectblock.tpl.php
 htdocs/expedition/contact.php
+htdocs/expedition/agenda.php
 htdocs/expedition/js/lib_dispatch.js.php
 htdocs/expedition/card.php
 htdocs/expedition/shipment.php
 htdocs/expedition/document.php
+htdocs/expedition/messaging.php
 htdocs/expedition/dispatch.php
 htdocs/expedition/class/expeditionstats.class.php
 htdocs/expedition/class/api_shipments.class.php
@@ -2345,6 +2344,7 @@ htdocs/admin/webhook.php
 htdocs/admin/supplierinvoicedet_extrafields.php
 htdocs/admin/syslog.php
 htdocs/admin/expensereport_ik.php
+htdocs/admin/bank_payments_extrafields.php
 htdocs/admin/website.php
 htdocs/admin/receptiondet_batch_extrafields.php
 htdocs/admin/bankline_extrafields.php
@@ -3747,6 +3747,7 @@ htdocs/langs/es_PY/main.lang
 htdocs/langs/es_PY/salaries.lang
 htdocs/langs/es_PY/exports.lang
 htdocs/langs/es_PY/intracommreport.lang
+htdocs/langs/en_IE/other.lang
 htdocs/langs/en_IE/accountancy.lang
 htdocs/langs/en_IE/admin.lang
 htdocs/langs/en_IE/products.lang
@@ -4457,6 +4458,7 @@ htdocs/langs/ar_EG/datapolicy.lang
 htdocs/langs/ar_EG/compta.lang
 htdocs/langs/ar_EG/holiday.lang
 htdocs/langs/ar_EG/margins.lang
+htdocs/langs/ar_EG/install.lang
 htdocs/langs/ar_EG/propal.lang
 htdocs/langs/ar_EG/admin.lang
 htdocs/langs/ar_EG/deliveries.lang
@@ -7606,6 +7608,7 @@ htdocs/langs/ar_JO/opensurvey.lang
 htdocs/langs/ar_IQ/accountancy.lang
 htdocs/langs/ar_IQ/admin.lang
 htdocs/langs/ar_IQ/ticket.lang
+htdocs/langs/ar_IQ/bills.lang
 htdocs/langs/ar_IQ/main.lang
 htdocs/langs/uk_UA/oauth.lang
 htdocs/langs/uk_UA/mailmanspip.lang
@@ -7856,6 +7859,7 @@ htdocs/langs/pt_MZ/members.lang
 htdocs/langs/pt_MZ/compta.lang
 htdocs/langs/pt_MZ/holiday.lang
 htdocs/langs/pt_MZ/margins.lang
+htdocs/langs/pt_MZ/install.lang
 htdocs/langs/pt_MZ/propal.lang
 htdocs/langs/pt_MZ/admin.lang
 htdocs/langs/pt_MZ/deliveries.lang
@@ -9518,6 +9522,7 @@ htdocs/comm/propal/contact.php
 htdocs/comm/propal/agenda.php
 htdocs/comm/propal/card.php
 htdocs/comm/propal/document.php
+htdocs/comm/propal/messaging.php
 htdocs/comm/propal/class/propal.class.php
 htdocs/comm/propal/class/propaleligne.class.php
 htdocs/comm/propal/class/propalestats.class.php
@@ -10246,6 +10251,7 @@ htdocs/core/class/html.formfile.class.php
 htdocs/core/class/commoninvoice.class.php
 htdocs/core/class/html.formother.class.php
 htdocs/core/class/commondict.class.php
+htdocs/core/class/commontrigger.class.php
 htdocs/core/class/reddithandler.class.php
 htdocs/core/class/validate.class.php
 htdocs/core/class/ctypent.class.php
@@ -14082,6 +14088,7 @@ scripts/invoices/email_unpaid_invoices_to_representatives.php
 scripts/invoices/rebuild_merge_pdf.php
 scripts/product/migrate_picture_path.php
 scripts/product/regenerate_thumbs.php
+scripts/admin/admintool.php
 scripts/contracts/email_expire_services_to_representatives.php
 scripts/contracts/email_expire_services_to_customers.php
 scripts/members/sync_members_types_dolibarr2ldap.php

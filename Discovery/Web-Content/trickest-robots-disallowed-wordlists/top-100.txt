@@ -1635,7 +1635,10 @@ hp/video
 hpc/*/supported-applications.aspx?
 hpm
 hpmob
-http://gmpg.org/robots.txt
+http://amazon.co.uk/robots.txt
+http://amazon.com/robots.txt
+http://bing.com/robots.txt
+http://tinyurl.com/robots.txt
 hub?category=
 hz/contact-us/ajax/initiate-trusted-contact
 hz/help/contact/*/message/$
@@ -2348,6 +2351,7 @@ rus/licensing/Unilateral.aspx/*
 rw/WashingtonPost/Content/Epaper
 rweb
 s
+s/v1/doc/HumbuSZq4Cz8r12yDSagIdh_NxHYmKpay8X54ZO2sua7_f_yyQk
 s2
 s2/oz
 s2/photos
@@ -2384,6 +2388,7 @@ search/about
 search/advanced
 search/default.aspx?*
 search/howsearchworks
+search/live?
 search/realtime
 search/user?q=
 search/users
@@ -3110,6 +3115,7 @@ vsi/*.pdf$
 w
 w/api.php?action=mobileview&
 w/load.php?
+w/rest.php/site/v1/sitemap
 wall*?own=1
 wall*?reply=
 wall*?search=1
@@ -3437,7 +3443,7 @@ wiki/Wikipedia_Diskussion:Checkuser
 wiki/Wikipedia_Diskussion:Spam-Blacklist-Log
 wiki/Wikipedia_talk%3AAbuse_reports
 wiki/Wikipedia_talk%3AAbuse_response
-wiki/Wikipedia_talk%3AAdministrator_electionshttp://goo.gl/robots.txt
+wiki/Wikipedia_talk%3AAdministrator_electionshttp://accounts.google.com/robots.txt
 wiki/Wikipedia_talk%3AAdministrator_recall
 wiki/Wikipedia_talk%3AAdministrator_review
 wiki/Wikipedia_talk%3AAdministrators%27_noticeboard
