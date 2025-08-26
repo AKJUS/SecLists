@@ -5076,7 +5076,6 @@ core/modules/help/help_topics/core.content_structure.html.twig
 core/modules/help/help_topics/core.ui_components.html.twig
 core/modules/help/help_topics/core.menus.html.twig
 core/modules/help/help_topics/core.web_services.html.twig
-core/modules/help/help_topics/core.tracking_content.html.twig
 core/modules/help/help_topics/core.translations.html.twig
 core/modules/help/help_topics/help.overview.html.twig
 core/modules/help/help_topics/core.settings_tray.html.twig
@@ -5530,7 +5529,6 @@ core/modules/history/js/mark-as-read.js
 core/modules/history/js/history.js
 core/modules/history/history.info.yml
 core/modules/history/history.module
-core/modules/history/help_topics/history.tracking_user_content.html.twig
 core/modules/history/tests/themes/history_test_theme/history_test_theme.info.yml
 core/modules/history/tests/themes/history_test_theme/templates/mark.html.twig
 core/modules/history/tests/src/Kernel/Views/HistoryTimestampTest.php
@@ -7285,6 +7283,7 @@ core/modules/system/tests/themes/test_theme/templates/theme-test-suggestions--th
 core/modules/system/tests/themes/test_theme/templates/theme-test-suggestion-provided--foo.html.twig
 core/modules/system/tests/themes/test_theme/templates/theme-test-general-suggestions--theme-override.html.twig
 core/modules/system/tests/themes/test_theme/templates/theme-test-specific-suggestions--variant.html.twig
+core/modules/system/tests/themes/test_theme/templates/node--test-page-variable.html.twig
 core/modules/system/tests/themes/test_theme/templates/theme-test-suggestions--module-override.html.twig
 core/modules/system/tests/themes/test_theme/templates/theme-test-registered-by-module.html.twig
 core/modules/system/tests/themes/test_theme_twig_registry_loader_subtheme/test_theme_twig_registry_loader_subtheme.info.yml
@@ -7419,7 +7418,6 @@ core/modules/system/tests/src/Functional/Batch/BatchNotFoundTest.php
 core/modules/system/tests/src/Functional/Batch/ProcessingTest.php
 core/modules/system/tests/src/Functional/Batch/PageTest.php
 core/modules/system/tests/src/Functional/Module/DeprecatedTemplateTest.php
-core/modules/system/tests/src/Functional/Module/GenericTest.php
 core/modules/system/tests/src/Functional/Module/PrepareUninstallTest.php
 core/modules/system/tests/src/Functional/Module/HookRequirementsTest.php
 core/modules/system/tests/src/Functional/Module/ClassLoaderTest.php
@@ -7963,7 +7961,6 @@ core/modules/system/tests/modules/twig_extension_test/templates/twig_extension_t
 core/modules/system/tests/modules/twig_extension_test/templates/twig_extension_test.filter.html.twig
 core/modules/system/tests/modules/entity_test_extra/src/Hook/EntityTestExtraHooks.php
 core/modules/system/tests/modules/entity_test_extra/entity_test_extra.info.yml
-core/modules/system/tests/modules/element_info_test/src/Render/Element/Details.php
 core/modules/system/tests/modules/element_info_test/src/Hook/ElementInfoTestHooks.php
 core/modules/system/tests/modules/element_info_test/src/Element/DeprecatedExtendsRenderElement.php
 core/modules/system/tests/modules/element_info_test/src/Element/Deprecated.php
@@ -9529,6 +9526,7 @@ core/modules/node/src/NodeGrantDatabaseStorageInterface.php
 core/modules/node/src/NodeTypeInterface.php
 core/modules/node/src/NodeInterface.php
 core/modules/node/src/Routing/RouteSubscriber.php
+core/modules/node/src/NodeBulkUpdate.php
 core/modules/node/src/NodeStorage.php
 core/modules/node/src/ParamConverter/NodePreviewConverter.php
 core/modules/node/src/NodeTypeListBuilder.php
@@ -9725,6 +9723,7 @@ core/modules/node/tests/src/Functional/MultiStepNodeFormBasicOptionsTest.php
 core/modules/node/tests/src/Functional/NodeRevisionsAllTest.php
 core/modules/node/tests/src/Functional/NodeAccessCacheabilityWithNodeGrantsTest.php
 core/modules/node/tests/src/Functional/NodeQueryAlterTest.php
+core/modules/node/tests/src/Functional/NodePageVariableDeprecationTest.php
 core/modules/node/tests/src/Functional/NodeTitleXSSTest.php
 core/modules/node/tests/src/Functional/Update/ChangePromotedDefaultTest.php
 core/modules/node/tests/src/Functional/NodeAccessLanguageFallbackTest.php
@@ -9846,6 +9845,7 @@ core/modules/comment/src/CommentStatisticsInterface.php
 core/modules/comment/src/Entity/Comment.php
 core/modules/comment/src/Entity/CommentType.php
 core/modules/comment/src/CommentLazyBuilders.php
+core/modules/comment/src/CommentPreviewMode.php
 core/modules/comment/src/Tests/CommentTestTrait.php
 core/modules/comment/src/CommentViewBuilder.php
 core/modules/comment/src/CommentLinkBuilder.php
@@ -13243,7 +13243,6 @@ core/modules/layout_builder/tests/src/Unit/LayoutBuilderRoutesTest.php
 core/modules/layout_builder/tests/src/Unit/BlockComponentRenderArrayTest.php
 core/modules/layout_builder/tests/src/Unit/LayoutSectionStorageParamConverterTest.php
 core/modules/layout_builder/tests/src/Unit/InlineBlockUsageTest.php
-core/modules/layout_builder/tests/src/Unit/Plugin/ConfigAction/Deriver/AddComponentDeriverTest.php
 core/modules/layout_builder/tests/src/Unit/OverridesSectionStorageTest.php
 core/modules/layout_builder/tests/src/Unit/LayoutTempstoreRouteEnhancerTest.php
 core/modules/layout_builder/tests/src/Unit/SectionRenderTest.php
@@ -15174,7 +15173,6 @@ core/tests/Drupal/Tests/Core/Render/Element/PasswordTest.php
 core/tests/Drupal/Tests/Core/Render/Element/RenderElementTest.php
 core/tests/Drupal/Tests/Core/Render/Element/PasswordConfirmTest.php
 core/tests/Drupal/Tests/Core/Render/Element/TextareaTest.php
-core/tests/Drupal/Tests/Core/Render/Element/ModernRenderElementTest.php
 core/tests/Drupal/Tests/Core/Render/Element/TableSelectTest.php
 core/tests/Drupal/Tests/Core/Render/Element/HtmlTagTest.php
 core/tests/Drupal/Tests/Core/Render/Element/TokenTest.php
@@ -17339,7 +17337,6 @@ core/lib/Drupal/Core/Render/HtmlResponse.php
 core/lib/Drupal/Core/Render/BareHtmlPageRenderer.php
 core/lib/Drupal/Core/Render/Element/Search.php
 core/lib/Drupal/Core/Render/Element/RenderElementBase.php
-core/lib/Drupal/Core/Render/Element/Widget.php
 core/lib/Drupal/Core/Render/Element/Form.php
 core/lib/Drupal/Core/Render/Element/HtmlTag.php
 core/lib/Drupal/Core/Render/Element/ImageButton.php
@@ -17350,7 +17347,6 @@ core/lib/Drupal/Core/Render/Element/VerticalTabs.php
 core/lib/Drupal/Core/Render/Element/MachineName.php
 core/lib/Drupal/Core/Render/Element/Fieldset.php
 core/lib/Drupal/Core/Render/Element/FormElement.php
-core/lib/Drupal/Core/Render/Element/Generic.php
 core/lib/Drupal/Core/Render/Element/Link.php
 core/lib/Drupal/Core/Render/Element/RenderElement.php
 core/lib/Drupal/Core/Render/Element/Checkbox.php
@@ -17386,7 +17382,6 @@ core/lib/Drupal/Core/Render/Element/FormElementInterface.php
 core/lib/Drupal/Core/Render/Element/Tableselect.php
 core/lib/Drupal/Core/Render/Element/ComponentElement.php
 core/lib/Drupal/Core/Render/Element/RenderCallbackInterface.php
-core/lib/Drupal/Core/Render/Element/TitleDisplay.php
 core/lib/Drupal/Core/Render/Element/Checkboxes.php
 core/lib/Drupal/Core/Render/Element/Button.php
 core/lib/Drupal/Core/Render/Element/Password.php

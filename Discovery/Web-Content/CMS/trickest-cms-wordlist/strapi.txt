@@ -577,6 +577,7 @@ packages/cli/cloud/src/services/index.ts
 packages/cli/cloud/src/services/token.ts
 packages/cli/cloud/src/services/notification.ts
 packages/cli/cloud/src/services/strapi-info-save.ts
+packages/cli/cloud/src/services/context.ts
 packages/cli/cloud/src/services/logger.ts
 packages/cli/cloud/src/index.ts
 packages/cli/cloud/src/bin.ts
@@ -1392,7 +1393,6 @@ packages/core/upload/admin/src/pages/App/ConfigureTheView/components/Settings.ts
 packages/core/upload/admin/src/pages/App/ConfigureTheView/components/tests/Settings.test.tsx
 packages/core/upload/admin/src/pages/App/ConfigureTheView/components/tests/__snapshots__/Settings.test.tsx.snap
 packages/core/upload/admin/src/pages/App/MediaLibrary/MediaLibrary.tsx
-packages/core/upload/admin/src/pages/App/MediaLibrary/tests/MediaLibrary.test.tsx
 packages/core/upload/admin/src/pages/App/MediaLibrary/components/BulkMoveButton.tsx
 packages/core/upload/admin/src/pages/App/MediaLibrary/components/EmptyOrNoPermissions.tsx
 packages/core/upload/admin/src/pages/App/MediaLibrary/components/BulkDeleteButton.tsx
@@ -1883,8 +1883,11 @@ packages/core/content-manager/admin/src/preview/services/preview.ts
 packages/core/content-manager/admin/src/preview/index.ts
 packages/core/content-manager/admin/src/preview/pages/Preview.tsx
 packages/core/content-manager/admin/src/preview/routes.tsx
+packages/core/content-manager/admin/src/preview/utils/getSendMessage.ts
 packages/core/content-manager/admin/src/preview/utils/previewScript.ts
 packages/core/content-manager/admin/src/preview/utils/constants.ts
+packages/core/content-manager/admin/src/preview/hooks/usePreviewInputManager.ts
+packages/core/content-manager/admin/src/preview/components/InputPopover.tsx
 packages/core/content-manager/admin/src/preview/components/PreviewHeader.tsx
 packages/core/content-manager/admin/src/preview/components/PreviewSidePanel.tsx
 packages/core/content-manager/admin/src/layout.tsx
@@ -2033,6 +2036,7 @@ packages/core/content-manager/admin/src/pages/EditView/components/tests/Document
 packages/core/content-manager/admin/src/pages/EditView/components/tests/Header.test.tsx
 packages/core/content-manager/admin/src/pages/EditView/components/tests/DocumentStatus.test.tsx
 packages/core/content-manager/admin/src/pages/EditView/components/FormLayout.tsx
+packages/core/content-manager/admin/src/pages/EditView/components/Blocker.tsx
 packages/core/content-manager/admin/src/modules/app.ts
 packages/core/content-manager/admin/src/modules/hooks.ts
 packages/core/content-manager/admin/src/modules/reducers.ts
@@ -3001,9 +3005,15 @@ packages/core/admin/admin/src/components/ContentBox.tsx
 packages/core/admin/admin/src/components/Widgets.tsx
 packages/core/admin/admin/src/components/NoJavascript.tsx
 packages/core/admin/admin/src/components/Context.tsx
-packages/core/admin/admin/src/components/GuidedTour/Step.tsx
+packages/core/admin/admin/src/components/GuidedTour/Steps/Step.tsx
+packages/core/admin/admin/src/components/GuidedTour/Steps/ContentTypeBuilderSteps.tsx
+packages/core/admin/admin/src/components/GuidedTour/Steps/ApiTokensSteps.tsx
+packages/core/admin/admin/src/components/GuidedTour/Steps/ContentManagerSteps.tsx
 packages/core/admin/admin/src/components/GuidedTour/Overview.tsx
+packages/core/admin/admin/src/components/GuidedTour/utils/migrations.ts
+packages/core/admin/admin/src/components/GuidedTour/utils/constants.ts
 packages/core/admin/admin/src/components/GuidedTour/tests/reducer.test.ts
+packages/core/admin/admin/src/components/GuidedTour/tests/migrations.test.ts
 packages/core/admin/admin/src/components/GuidedTour/Tours.tsx
 packages/core/admin/admin/src/components/GuidedTour/Context.tsx
 packages/core/admin/admin/src/components/Layouts/ActionLayout.tsx
@@ -3294,6 +3304,7 @@ packages/core/utils/src/sanitize/visitors/remove-disallowed-fields.ts
 packages/core/utils/src/install-id.ts
 packages/core/utils/src/relations.ts
 packages/core/utils/src/convert-query-params.ts
+packages/core/utils/src/content-api-router.ts
 packages/core/utils/src/async.ts
 packages/core/utils/src/types.ts
 packages/core/utils/src/index.ts
@@ -4288,6 +4299,7 @@ tests/cli/tests/strapi/strapi/middlewares-list.test.cli.js
 tests/cli/tests/strapi/strapi/policies-list.test.cli.js
 tests/cli/tests/strapi/strapi/README.md
 tests/cli/tests/strapi/strapi/hooks-list.test.cli.js
+tests/cli/tests/strapi/strapi/openapi-generate.test.cli.ts
 tests/cli/tests/strapi/strapi/services-list.test.cli.js
 tests/cli/tests/strapi/strapi/content-types-list.test.cli.js
 tests/cli/tests/strapi/strapi/version.test.cli.js
@@ -4415,6 +4427,7 @@ tests/api/core/upload/utils/strapi.svg
 tests/api/core/upload/utils/strapi.tiff
 tests/api/core/upload/utils/strapi.webp
 tests/api/core/upload/utils/rec.pdf
+tests/api/core/strapi/plugin-routes-extension-bc.test.api.ts
 tests/api/core/strapi/migrations/migration-draft-publish.test.api.js
 tests/api/core/strapi/migrations/migration-unique-attribute.test.api.js
 tests/api/core/strapi/migrations/migration-required-attribute.test.api.js

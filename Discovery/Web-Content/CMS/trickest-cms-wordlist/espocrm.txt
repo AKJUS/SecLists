@@ -241,6 +241,7 @@ client/src/views/role/record/panels/side.js
 client/src/views/role/record/detail-side.js
 client/src/views/role/record/table.js
 client/src/views/role/list.js
+client/src/views/role/fields/info.js
 client/src/views/role/fields/permission.js
 client/src/views/role/modals/add-field.js
 client/src/views/site/header.js
@@ -475,6 +476,7 @@ client/src/views/settings/fields/tab-list.js
 client/src/views/settings/fields/stream-email-with-content-entity-type-list.js
 client/src/views/settings/fields/email-address-lookup-entity-type-list.js
 client/src/views/settings/fields/phone-number-preferred-country-list.js
+client/src/views/settings/fields/baseline-role.js
 client/src/views/settings/fields/authentication-method.js
 client/src/views/settings/fields/calendar-entity-list.js
 client/src/views/settings/fields/date-format.js
@@ -1712,7 +1714,6 @@ application/Espo/Core/Di/FieldValidationManagerSetter.php
 application/Espo/Core/Di/DateTimeAware.php
 application/Espo/Core/Di/MetadataAware.php
 application/Espo/Core/Di/DateTimeSetter.php
-application/Espo/Core/Di/SelectBuilderFactorySetter.php
 application/Espo/Core/Di/ApplicationStateSetter.php
 application/Espo/Core/Di/TemplateFileManagerSetter.php
 application/Espo/Core/Di/AssignmentCheckerManagerAware.php
@@ -1727,7 +1728,6 @@ application/Espo/Core/Di/AclAware.php
 application/Espo/Core/Di/HookManagerAware.php
 application/Espo/Core/Di/MetadataSetter.php
 application/Espo/Core/Di/EntityManagerSetter.php
-application/Espo/Core/Di/SelectBuilderFactoryAware.php
 application/Espo/Core/Di/UserAware.php
 application/Espo/Core/Di/ConfigSetter.php
 application/Espo/Core/Di/CryptSetter.php
@@ -2448,12 +2448,14 @@ application/Espo/Core/ORM/PDO/PDOFactoryFactory.php
 application/Espo/Core/ORM/Type/FieldType.php
 application/Espo/Core/ORM/EntityFactory.php
 application/Espo/Core/ORM/MetadataDataProvider.php
+application/Espo/Core/Mail/Importer/AutoReplyDetector.php
 application/Espo/Core/Mail/Importer/DefaultImporter.php
 application/Espo/Core/Mail/Importer/Data.php
 application/Espo/Core/Mail/Importer/DefaultParentFinder.php
 application/Espo/Core/Mail/Importer/ParentFinder.php
 application/Espo/Core/Mail/Importer/DuplicateFinder.php
 application/Espo/Core/Mail/Importer/DefaultDuplicateFinder.php
+application/Espo/Core/Mail/Importer/DefaultAutoReplyDetector.php
 application/Espo/Core/Mail/Sender/Message.php
 application/Espo/Core/Mail/Sender/TransportPreparator.php
 application/Espo/Core/Mail/Sender/DefaultTransportPreparator.php
@@ -3136,6 +3138,8 @@ application/Espo/Core/Record/DynamicLogic/InputFilterProcessor.php
 application/Espo/Core/Record/UpdateParamsFetcher.php
 application/Espo/Core/Record/DeleteParams.php
 application/Espo/Core/Record/ReadParamsFetcher.php
+application/Espo/Core/Record/Deleted/Restorer.php
+application/Espo/Core/Record/Deleted/DefaultRestorer.php
 application/Espo/Core/Record/UpdateContext.php
 application/Espo/Core/Record/ReadParams.php
 application/Espo/Core/Record/Crud.php
@@ -5696,6 +5700,7 @@ application/Espo/Resources/metadata/selectDefs/AddressCountry.json
 application/Espo/Resources/metadata/selectDefs/Template.json
 application/Espo/Resources/metadata/selectDefs/Note.json
 application/Espo/Resources/metadata/selectDefs/PhoneNumber.json
+application/Espo/Resources/metadata/selectDefs/GroupEmailFolder.json
 application/Espo/Resources/metadata/selectDefs/Import.json
 application/Espo/Resources/metadata/selectDefs/ScheduledJob.json
 application/Espo/Resources/metadata/selectDefs/ImportError.json
@@ -7686,6 +7691,7 @@ application/Espo/Classes/Select/User/AccessControlFilters/PortalOnlyOwn.php
 application/Espo/Classes/Select/User/AccessControlFilters/OnlyOwn.php
 application/Espo/Classes/Select/User/AccessControlFilters/Mandatory.php
 application/Espo/Classes/Select/User/Where/ItemConverters/IsOfType.php
+application/Espo/Classes/Select/GroupEmailFolder/AccessControlFilters/OnlyTeam.php
 application/Espo/Classes/Select/WorkingTimeRange/PrimaryFilters/Actual.php
 application/Espo/Classes/Select/AppLogRecord/PrimaryFilters/Errors.php
 application/Espo/Classes/Select/EmailAddress/PrimaryFilters/Orphan.php
@@ -7811,6 +7817,7 @@ application/Espo/Classes/FieldProcessing/OAuthAccount/DataLoader.php
 application/Espo/Classes/FieldProcessing/Note/AdditionalFieldsLoader.php
 application/Espo/Classes/RecordHooks/User/AfterUpdate.php
 application/Espo/Classes/RecordHooks/User/BeforeCreate.php
+application/Espo/Classes/RecordHooks/User/BeforeDelete.php
 application/Espo/Classes/RecordHooks/User/BeforeUpdate.php
 application/Espo/Classes/RecordHooks/PortalRole/AfterSave.php
 application/Espo/Classes/RecordHooks/Event/BeforeUpdatePreserveDuration.php
@@ -7868,6 +7875,8 @@ application/Espo/Classes/Acl/Note/OwnershipChecker.php
 application/Espo/Classes/Acl/Note/AccessChecker.php
 application/Espo/Classes/Record/AppSecret/ValueInputFilter.php
 application/Espo/Classes/Record/User/OutputFilter.php
+application/Espo/Classes/Record/User/DeletedRestorer.php
+application/Espo/Classes/Record/User/InputFilter.php
 application/Espo/Classes/Record/AuthToken/UpdateInputFilter.php
 application/Espo/Classes/Record/Portal/InputFilter.php
 application/Espo/Classes/Record/InboundEmail/PasswordsInputFilter.php

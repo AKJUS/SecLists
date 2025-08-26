@@ -1077,7 +1077,6 @@ app/migrations/Version20240708153845.php
 app/migrations/Version20210330075323.php
 app/migrations/Version20250409150450.php
 app/migrations/Version20230506113422.php
-app/migrations/Version20230522141144.php
 app/migrations/Version20220429091934.php
 app/migrations/Version20200513162918.php
 app/migrations/Version20230519154448.php
@@ -1348,6 +1347,7 @@ app/bundles/CoreBundle/Resources/views/Error/500.html.twig
 app/bundles/CoreBundle/Resources/views/Error/403.html.twig
 app/bundles/CoreBundle/Resources/views/Error/base.html.twig
 app/bundles/CoreBundle/Resources/views/Error/404.html.twig
+app/bundles/CoreBundle/Resources/views/Components/code-snippet.html.twig
 app/bundles/CoreBundle/Resources/views/Components/modal.html.twig
 app/bundles/CoreBundle/Resources/views/Components/contained-list--interactive.html.twig
 app/bundles/CoreBundle/Resources/views/Components/content-item-row.html.twig
@@ -2022,6 +2022,7 @@ app/bundles/CoreBundle/Predis/Replication/StrategyConfig.php
 app/bundles/CoreBundle/Predis/Replication/MasterOnlyStrategy.php
 app/bundles/CoreBundle/Twig/Extension/ClassExtension.php
 app/bundles/CoreBundle/Twig/Extension/ObjectExtension.php
+app/bundles/CoreBundle/Twig/Extension/ThemeExtension.php
 app/bundles/CoreBundle/Twig/Extension/LanguageExtension.php
 app/bundles/CoreBundle/Twig/Extension/TranslatorExtension.php
 app/bundles/CoreBundle/Twig/Extension/ThemesExtension.php
@@ -2365,6 +2366,7 @@ app/bundles/AssetBundle/Tests/Controller/Api/AssetApiControllerFunctionalTest.ph
 app/bundles/AssetBundle/Tests/Controller/AssetControllerFunctionalTest.php
 app/bundles/AssetBundle/Tests/Model/AssetModelTest.php
 app/bundles/AssetBundle/Tests/Asset/AbstractAssetTestCase.php
+app/bundles/AssetBundle/Tests/EventListener/ReportSubscriberFunctionalTest.php
 app/bundles/AssetBundle/Tests/EventListener/ReportSubscriberTest.php
 app/bundles/AssetBundle/Tests/EventListener/DetermineWinnerSubscriberTest.php
 app/bundles/AssetBundle/MauticAssetBundle.php
@@ -2522,10 +2524,12 @@ app/bundles/CampaignBundle/Tests/Command/TriggerCampaignCommandTest.php
 app/bundles/CampaignBundle/Tests/Command/CampaignDeleteEventLogsCommandFunctionalTest.php
 app/bundles/CampaignBundle/Tests/Service/CampaignAuditServiceTest.php
 app/bundles/CampaignBundle/Tests/Functional/Controller/CampaignAuditLogTest.php
+app/bundles/CampaignBundle/Tests/Functional/Controller/CampaignControllerTrait.php
 app/bundles/CampaignBundle/Tests/Functional/Controller/CampaignControllerTest.php
 app/bundles/CampaignBundle/Tests/Functional/Controller/CampaignOptimisticLockTest.php
 app/bundles/CampaignBundle/Tests/Functional/Controller/CampaignImportControllerTest.php
 app/bundles/CampaignBundle/Tests/Functional/Entity/LeadEventLogRepositoryTest.php
+app/bundles/CampaignBundle/Tests/Functional/Validator/OrphanEventsValidationFunctionalTest.php
 app/bundles/CampaignBundle/Tests/Functional/Campaign/DetailsTest.php
 app/bundles/CampaignBundle/Tests/Functional/Campaign/CampaignEntitiesTrait.php
 app/bundles/CampaignBundle/Tests/Functional/Campaign/JumpToActionTest.php
@@ -2555,6 +2559,7 @@ app/bundles/CampaignBundle/Tests/Executioner/Dispatcher/ConditionDispatcherTest.
 app/bundles/CampaignBundle/Tests/Executioner/Dispatcher/LegacyEventDispatcherTest.php
 app/bundles/CampaignBundle/Tests/Executioner/Dispatcher/ActionDispatcherTest.php
 app/bundles/CampaignBundle/Tests/Executioner/Logger/EventLoggerTest.php
+app/bundles/CampaignBundle/Tests/EventListener/ReportSubscriberFunctionalTest.php
 app/bundles/CampaignBundle/Tests/EventListener/CampaignEventSubscriberTest.php
 app/bundles/CampaignBundle/Tests/EventListener/CampaignSubscriberTest.php
 app/bundles/CampaignBundle/Tests/EventListener/CampaignActionJumpToEventSubscriberTest.php
@@ -2578,6 +2583,8 @@ app/bundles/CampaignBundle/Translations/en_US/validators.ini
 app/bundles/CampaignBundle/Translations/en_US/flashes.ini
 app/bundles/CampaignBundle/Translations/en_US/messages.ini
 app/bundles/CampaignBundle/DependencyInjection/MauticCampaignExtension.php
+app/bundles/CampaignBundle/Validator/Constraints/NoOrphanEventsValidator.php
+app/bundles/CampaignBundle/Validator/Constraints/NoOrphanEvents.php
 app/bundles/CampaignBundle/Assets/js/campaign.js
 app/bundles/CampaignBundle/MauticCampaignBundle.php
 app/bundles/CampaignBundle/Twig/Extension/CampaignEventIconExtension.php
@@ -3948,6 +3955,7 @@ app/bundles/LeadBundle/Tests/Report/FieldsBuilderTest.php
 app/bundles/LeadBundle/Tests/Security/LeadPermissionsFunctionalTest.php
 app/bundles/LeadBundle/Tests/EventListener/WebhookSubscriberTest.php
 app/bundles/LeadBundle/Tests/EventListener/SearchSubscriberTest.php
+app/bundles/LeadBundle/Tests/EventListener/ReportSubscriberFunctionalTest.php
 app/bundles/LeadBundle/Tests/EventListener/PointSubscriberTest.php
 app/bundles/LeadBundle/Tests/EventListener/DoNotContactSubscriberTest.php
 app/bundles/LeadBundle/Tests/EventListener/ImportCompanySubscriberTest.php
@@ -4166,6 +4174,7 @@ app/bundles/LeadBundle/Config/config.php
 app/bundles/LeadBundle/Config/services.php
 app/bundles/LeadBundle/DataObject/LeadManipulator.php
 app/bundles/LeadBundle/DataObject/ContactFieldToken.php
+app/bundles/LeadBundle/Report/DncReportService.php
 app/bundles/LeadBundle/Report/FieldsBuilder.php
 app/bundles/LeadBundle/Security/Permissions/LeadPermissions.php
 app/bundles/LeadBundle/EventListener/ImportCompanySubscriber.php
@@ -4227,6 +4236,7 @@ app/bundles/LeadBundle/Helper/CustomFieldHelper.php
 app/bundles/LeadBundle/Helper/CustomFieldValueHelper.php
 app/bundles/LeadBundle/Helper/Progress.php
 app/bundles/LeadBundle/Helper/SegmentCountCacheHelper.php
+app/bundles/LeadBundle/Helper/DncFormatterHelper.php
 app/bundles/LeadBundle/Helper/FakeContactHelper.php
 app/bundles/LeadBundle/Helper/FieldAliasHelper.php
 app/bundles/DashboardBundle/Resources/views/Dashboard/widget.html.twig
@@ -4875,6 +4885,8 @@ app/bundles/ApiBundle/Serializer/Exclusion/FieldExclusionStrategy.php
 app/bundles/ApiBundle/Serializer/Exclusion/FieldInclusionStrategy.php
 app/bundles/ApiBundle/Serializer/Exclusion/PublishDetailsExclusionStrategy.php
 app/bundles/ApiBundle/Serializer/Driver/ApiMetadataDriver.php
+app/bundles/ApiBundle/ApiPlatform/EventListener/MauticWriteSubscriber.php
+app/bundles/ApiBundle/ApiPlatform/EventListener/MauticDenyAccessListener.php
 app/bundles/ApiBundle/Resources/views/SubscribedEvents/Search/global.html.twig
 app/bundles/ApiBundle/Resources/views/FormTheme/Config/_config_apiconfig_widget.html.twig
 app/bundles/ApiBundle/Resources/views/Client/authorized.html.twig
@@ -4897,6 +4909,8 @@ app/bundles/ApiBundle/Entity/oAuth2/AccessToken.php
 app/bundles/ApiBundle/Entity/oAuth2/RefreshToken.php
 app/bundles/ApiBundle/Entity/oAuth2/Client.php
 app/bundles/ApiBundle/Entity/oAuth2/AuthCode.php
+app/bundles/ApiBundle/Tests/ApiPlatform/EventListener/MauticWriteSubscriberTest.php
+app/bundles/ApiBundle/Tests/ApiPlatform/EventListener/MauticDenyAccessListenerTest.php
 app/bundles/ApiBundle/Tests/Controller/CommonApiControllerTest.php
 app/bundles/ApiBundle/Tests/EntityResultHelperTest.php
 app/bundles/ApiBundle/Tests/Form/Type/ClientTypeTest.php
@@ -4920,6 +4934,7 @@ app/bundles/ApiBundle/Config/config.php
 app/bundles/ApiBundle/Config/services.php
 app/bundles/ApiBundle/ApiEvents.php
 app/bundles/ApiBundle/Security/Permissions/ApiPermissions.php
+app/bundles/ApiBundle/Security/Voter/ApiPermissionVoter.php
 app/bundles/ApiBundle/EventListener/SearchSubscriber.php
 app/bundles/ApiBundle/EventListener/ConfigSubscriber.php
 app/bundles/ApiBundle/EventListener/PreAuthorizationEventListener.php
@@ -5342,6 +5357,7 @@ app/bundles/FormBundle/Tests/Form/Type/FormFieldNumberTypeTest.php
 app/bundles/FormBundle/Tests/Collection/ObjectCollectionTest.php
 app/bundles/FormBundle/Tests/Collection/FieldCollectionTest.php
 app/bundles/FormBundle/Tests/EventListener/FormFieldSubscriberTest.php
+app/bundles/FormBundle/Tests/EventListener/ReportSubscriberFunctionalTest.php
 app/bundles/FormBundle/Tests/EventListener/CampaignSubscriberFunctionalTest.php
 app/bundles/FormBundle/Tests/EventListener/ReportSubscriberTest.php
 app/bundles/FormBundle/Tests/EventListener/FormSubscriberTest.php
@@ -5519,6 +5535,7 @@ app/bundles/PageBundle/Tests/Form/Type/PageListTypeTest.php
 app/bundles/PageBundle/Tests/Form/Type/RedirectListTypeTest.php
 app/bundles/PageBundle/Tests/Functional/Model/PageModelTest.php
 app/bundles/PageBundle/Tests/Functional/EventListener/BuilderSubscriberTest.php
+app/bundles/PageBundle/Tests/EventListener/ReportSubscriberFunctionalTest.php
 app/bundles/PageBundle/Tests/EventListener/PointSubscriberTest.php
 app/bundles/PageBundle/Tests/EventListener/ReportSubscriberTest.php
 app/bundles/PageBundle/Tests/EventListener/PageSubscriberTest.php
