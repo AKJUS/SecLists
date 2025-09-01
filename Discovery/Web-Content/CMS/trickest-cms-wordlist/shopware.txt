@@ -1,5 +1,3 @@
-.devcontainer/devcontainer.json
-.devcontainer/compose.yml
 .run/Run BC-Checker.run.xml
 .run/Storefront Stylelint.run.xml
 .run/Storefront Build.run.xml
@@ -1266,6 +1264,7 @@ src/Core/Content/Category/Event/SalesChannelCategoryIdsFetchedEvent.php
 src/Core/Content/Category/Event/NavigationRouteCacheKeyEvent.php
 src/Core/Content/Category/Event/CategoryRouteCacheTagsEvent.php
 src/Core/Content/Category/Event/NavigationRouteCacheTagsEvent.php
+src/Core/Content/Category/Event/CategoryLevelLoaderCacheKeyEvent.php
 src/Core/Content/Category/SalesChannel/SalesChannelCategoryEntity.php
 src/Core/Content/Category/SalesChannel/SalesChannelCategoryDefinition.php
 src/Core/Content/Category/SalesChannel/NavigationRoute.php
@@ -1286,10 +1285,13 @@ src/Core/Content/Category/CategoryException.php
 src/Core/Content/Category/CategoryEntity.php
 src/Core/Content/Category/Exception/CategoryNotFoundException.php
 src/Core/Content/Category/Cms/CategoryNavigationCmsElementResolver.php
+src/Core/Content/Category/Service/DefaultCategoryLevelLoader.php
 src/Core/Content/Category/Service/CategoryUrlGenerator.php
+src/Core/Content/Category/Service/CachedDefaultCategoryLevelLoader.php
 src/Core/Content/Category/Service/CategoryBreadcrumbBuilder.php
 src/Core/Content/Category/Service/NavigationLoaderInterface.php
 src/Core/Content/Category/Service/AbstractCategoryUrlGenerator.php
+src/Core/Content/Category/Service/DefaultCategoryLevelLoaderInterface.php
 src/Core/Content/Category/Service/NavigationLoader.php
 src/Core/Content/Category/Subscriber/CategoryTreeMovedSubscriber.php
 src/Core/Content/Category/Subscriber/CategorySubscriber.php
@@ -2377,6 +2379,7 @@ src/Core/Checkout/Promotion/Aggregate/PromotionDiscountPrice/PromotionDiscountPr
 src/Core/Checkout/Promotion/Event/PromotionIndexerEvent.php
 src/Core/Checkout/Promotion/DataAbstractionLayer/PromotionIndexer.php
 src/Core/Checkout/Promotion/DataAbstractionLayer/PromotionExclusionUpdater.php
+src/Core/Checkout/Promotion/DataAbstractionLayer/PromotionValidator.php
 src/Core/Checkout/Promotion/DataAbstractionLayer/PromotionRedemptionUpdater.php
 src/Core/Checkout/Promotion/DataAbstractionLayer/PromotionIndexingMessage.php
 src/Core/Checkout/Promotion/Gateway/PromotionGateway.php
@@ -3609,6 +3612,11 @@ src/Core/Framework/App/Event/AppUpdatedEvent.php
 src/Core/Framework/App/Event/AppDeletedEvent.php
 src/Core/Framework/App/AppException.php
 src/Core/Framework/App/AppDownloader.php
+src/Core/Framework/App/ShopIdChangeResolver/ReinstallAppsStrategy.php
+src/Core/Framework/App/ShopIdChangeResolver/Resolver.php
+src/Core/Framework/App/ShopIdChangeResolver/AbstractShopIdChangeStrategy.php
+src/Core/Framework/App/ShopIdChangeResolver/UninstallAppsStrategy.php
+src/Core/Framework/App/ShopIdChangeResolver/MoveShopPermanentlyStrategy.php
 src/Core/Framework/App/ActiveAppsLoader.php
 src/Core/Framework/App/Delta/AppConfirmationDeltaProvider.php
 src/Core/Framework/App/Delta/DomainsDeltaProvider.php
@@ -3645,18 +3653,16 @@ src/Core/Framework/App/Exception/ShopIdChangeSuggestedException.php
 src/Core/Framework/App/Exception/AppArchiveValidationFailure.php
 src/Core/Framework/App/Exception/AppRegistrationException.php
 src/Core/Framework/App/Exception/UserAbortedCommandException.php
-src/Core/Framework/App/Exception/AppUrlChangeStrategyNotFoundHttpException.php
 src/Core/Framework/App/Exception/AppAlreadyInstalledException.php
 src/Core/Framework/App/Exception/InvalidAppFlowActionVariableException.php
 src/Core/Framework/App/Exception/AppXmlParsingException.php
 src/Core/Framework/App/Exception/CustomFieldTypeNotFoundException.php
 src/Core/Framework/App/Exception/AppValidationException.php
-src/Core/Framework/App/Exception/AppUrlChangeDetectedException.php
 src/Core/Framework/App/Exception/AppCmsExtensionException.php
 src/Core/Framework/App/Exception/AppDownloadException.php
+src/Core/Framework/App/Exception/ShopIdChangeStrategyNotFoundException.php
 src/Core/Framework/App/Exception/AppLicenseCouldNotBeVerifiedException.php
 src/Core/Framework/App/Exception/AppNotFoundException.php
-src/Core/Framework/App/Exception/AppUrlChangeStrategyNotFoundException.php
 src/Core/Framework/App/Exception/InvalidAppConfigurationException.php
 src/Core/Framework/App/AppExtractor.php
 src/Core/Framework/App/Cms/BlockTemplateLoader.php
@@ -3668,9 +3674,9 @@ src/Core/Framework/App/Cms/Xml/Slot.php
 src/Core/Framework/App/Cms/Xml/Block.php
 src/Core/Framework/App/Cms/Xml/DefaultConfig.php
 src/Core/Framework/App/Cms/Xml/Blocks.php
+src/Core/Framework/App/Api/ShopIdController.php
 src/Core/Framework/App/Api/AppActionController.php
 src/Core/Framework/App/Api/AppPrivilegeController.php
-src/Core/Framework/App/Api/AppUrlChangeController.php
 src/Core/Framework/App/Api/AppJWTGenerateRoute.php
 src/Core/Framework/App/Api/AppCmsController.php
 src/Core/Framework/App/ScheduledTask/UpdateAppsTask.php
@@ -3684,8 +3690,9 @@ src/Core/Framework/App/Command/CreateAppCommand.php
 src/Core/Framework/App/Command/InstallAppCommand.php
 src/Core/Framework/App/Command/UninstallAppCommand.php
 src/Core/Framework/App/Command/ValidateAppCommand.php
+src/Core/Framework/App/Command/ChangeShopIdCommand.php
+src/Core/Framework/App/Command/CheckShopIdCommand.php
 src/Core/Framework/App/Command/AbstractAppActivationCommand.php
-src/Core/Framework/App/Command/ResolveAppUrlChangeCommand.php
 src/Core/Framework/App/Command/AppPrinter.php
 src/Core/Framework/App/Command/DeactivateAppCommand.php
 src/Core/Framework/App/Command/RefreshAppCommand.php
@@ -3812,11 +3819,6 @@ src/Core/Framework/App/Validation/TranslationValidator.php
 src/Core/Framework/App/Validation/ManifestValidator.php
 src/Core/Framework/App/Validation/AbstractManifestValidator.php
 src/Core/Framework/App/Validation/HookableValidator.php
-src/Core/Framework/App/AppUrlChangeResolver/ReinstallAppsStrategy.php
-src/Core/Framework/App/AppUrlChangeResolver/Resolver.php
-src/Core/Framework/App/AppUrlChangeResolver/AbstractAppUrlChangeStrategy.php
-src/Core/Framework/App/AppUrlChangeResolver/UninstallAppsStrategy.php
-src/Core/Framework/App/AppUrlChangeResolver/MoveShopPermanentlyStrategy.php
 src/Core/Framework/App/TaxProvider/Response/TaxProviderResponse.php
 src/Core/Framework/App/TaxProvider/Payload/TaxProviderPayloadService.php
 src/Core/Framework/App/TaxProvider/Payload/TaxProviderPayload.php
@@ -9874,6 +9876,7 @@ src/Administration/Resources/app/administration/src/module/sw-import-export/comp
 src/Administration/Resources/app/administration/src/module/sw-import-export/component/sw-import-export-progress/sw-import-export-progress.spec.js
 src/Administration/Resources/app/administration/src/module/sw-import-export/component/sw-import-export-progress/index.js
 src/Administration/Resources/app/administration/src/module/sw-import-export/component/sw-import-export-progress/sw-import-export-progress.scss
+src/Administration/Resources/app/administration/src/module/sw-import-export/acl/index.spec.js
 src/Administration/Resources/app/administration/src/module/sw-import-export/acl/index.js
 src/Administration/Resources/app/administration/src/module/sw-import-export/snippet/en-GB.json
 src/Administration/Resources/app/administration/src/module/sw-import-export/snippet/de-DE.json
@@ -11366,14 +11369,14 @@ src/Administration/Resources/app/administration/src/app/component/app/sw-app-top
 src/Administration/Resources/app/administration/src/app/component/app/sw-app-topbar-button/sw-app-topbar-button.html.twig
 src/Administration/Resources/app/administration/src/app/component/app/sw-app-topbar-button/index.js
 src/Administration/Resources/app/administration/src/app/component/app/sw-app-topbar-button/sw-app-topbar-button.scss
+src/Administration/Resources/app/administration/src/app/component/app/sw-app-shop-id-change-modal/index.ts
+src/Administration/Resources/app/administration/src/app/component/app/sw-app-shop-id-change-modal/sw-app-shop-id-change-modal.spec.js
+src/Administration/Resources/app/administration/src/app/component/app/sw-app-shop-id-change-modal/sw-app-shop-id-change-modal.scss
+src/Administration/Resources/app/administration/src/app/component/app/sw-app-shop-id-change-modal/sw-app-shop-id-change-modal.html.twig
 src/Administration/Resources/app/administration/src/app/component/app/sw-app-wrong-app-url-modal/sw-app-wrong-app-url-modal.html.twig
 src/Administration/Resources/app/administration/src/app/component/app/sw-app-wrong-app-url-modal/index.js
 src/Administration/Resources/app/administration/src/app/component/app/sw-app-wrong-app-url-modal/sw-app-wrong-app-url-modal.scss
 src/Administration/Resources/app/administration/src/app/component/app/sw-app-wrong-app-url-modal/sw-app-wrong-app-url-modal.spec.js
-src/Administration/Resources/app/administration/src/app/component/app/sw-app-app-url-changed-modal/sw-app-app-url-changed-modal.scss
-src/Administration/Resources/app/administration/src/app/component/app/sw-app-app-url-changed-modal/sw-app-app-url-changed-modal.html.twig
-src/Administration/Resources/app/administration/src/app/component/app/sw-app-app-url-changed-modal/index.js
-src/Administration/Resources/app/administration/src/app/component/app/sw-app-app-url-changed-modal/sw-app-app-url-changed-modal.spec.js
 src/Administration/Resources/app/administration/src/app/component/app/sw-app-topbar-sidebar/index.ts
 src/Administration/Resources/app/administration/src/app/component/app/sw-app-topbar-sidebar/sw-app-topbar-sidebar.spec.js
 src/Administration/Resources/app/administration/src/app/component/app/sw-app-topbar-sidebar/sw-app-topbar-sidebar.scss
@@ -11465,6 +11468,9 @@ src/Administration/Resources/app/administration/src/app/component/form/select/en
 src/Administration/Resources/app/administration/src/app/component/form/select/entity/sw-entity-multi-select/index.js
 src/Administration/Resources/app/administration/src/app/component/form/select/entity/sw-entity-multi-select/sw-entity-multi-select.scss
 src/Administration/Resources/app/administration/src/app/component/form/select/entity/sw-entity-multi-select/sw-entity-multi-select.html.twig
+src/Administration/Resources/app/administration/src/app/component/form/select/entity/sw-entity-many-to-many-select/sw-many-to-many-select.spec.js
+src/Administration/Resources/app/administration/src/app/component/form/select/entity/sw-entity-many-to-many-select/sw-entity-many-to-many-select.html.twig
+src/Administration/Resources/app/administration/src/app/component/form/select/entity/sw-entity-many-to-many-select/index.js
 src/Administration/Resources/app/administration/src/app/component/form/select/entity/advanced-selection-entities/sw-advanced-selection-rule/sw-advanced-selection-rule.scss
 src/Administration/Resources/app/administration/src/app/component/form/select/entity/advanced-selection-entities/sw-advanced-selection-rule/sw-advanced-selection-rule.html.twig
 src/Administration/Resources/app/administration/src/app/component/form/select/entity/advanced-selection-entities/sw-advanced-selection-rule/sw-advanced-selection-rule.spec.js
@@ -12007,10 +12013,10 @@ src/Administration/Resources/app/administration/src/core/service/api/notificatio
 src/Administration/Resources/app/administration/src/core/service/api/product-export.api.service.js
 src/Administration/Resources/app/administration/src/core/service/api/recommendations.api.service.js
 src/Administration/Resources/app/administration/src/core/service/api/flow-actions.api.service.js
+src/Administration/Resources/app/administration/src/core/service/api/shop-id-change.service.spec.js
 src/Administration/Resources/app/administration/src/core/service/api/usage-data.api.service.spec.js
 src/Administration/Resources/app/administration/src/core/service/api/media-folder.api.service.js
 src/Administration/Resources/app/administration/src/core/service/api/document.api.service.spec.js
-src/Administration/Resources/app/administration/src/core/service/api/app-url-change.service.js
 src/Administration/Resources/app/administration/src/core/service/api/user-config.api.service.spec.js
 src/Administration/Resources/app/administration/src/core/service/api/store-context.api.service.ts
 src/Administration/Resources/app/administration/src/core/service/api/extension-sdk.service.ts
@@ -12056,11 +12062,11 @@ src/Administration/Resources/app/administration/src/core/service/api/app-modules
 src/Administration/Resources/app/administration/src/core/service/api/state-machine.api.service.js
 src/Administration/Resources/app/administration/src/core/service/api/promotion-sync.api.service.js
 src/Administration/Resources/app/administration/src/core/service/api/system-config.api.service.js
-src/Administration/Resources/app/administration/src/core/service/api/app-url-change.service.spec.js
 src/Administration/Resources/app/administration/src/core/service/api/media.api.service.spec.js
 src/Administration/Resources/app/administration/src/core/service/api/snippet-set.api.service.js
 src/Administration/Resources/app/administration/src/core/service/api/sync.api.service.js
 src/Administration/Resources/app/administration/src/core/service/api/user-recovery.api.service.ts
+src/Administration/Resources/app/administration/src/core/service/api/shop-id-change.service.ts
 src/Administration/Resources/app/administration/src/core/service/api/sso-settings.service.spec.js
 src/Administration/Resources/app/administration/src/core/service/api/language-plugin.api.service.js
 src/Administration/Resources/app/administration/src/core/service/api/mail.api.service.js
@@ -12496,6 +12502,7 @@ adr/2023-08-03-collecting-entity-data.md
 adr/2024-10-02-vue-2-options-api-to-vue-3-composition-api-conversion-codemod.md
 adr/2022-02-24-domain-exceptions.md
 adr/2021-09-14-technical-concept-custom-entities.md
+adr/2025-08-19-cache-layer-for-navigation-loader.md
 adr/2021-09-22-refactor-theme-inheritance.md
 adr/2022-05-12-remove-static-analysis-with-psalm.md
 adr/2022-09-28-mapping-of-product-area.md
@@ -12599,6 +12606,7 @@ tests/acceptance/tests/Settings/RuleAssignments.spec.ts
 tests/acceptance/tests/Settings/Wishlist/WishlistDisabled.spec.ts
 tests/acceptance/tests/Settings/Wishlist/WishlistRegisteredCustomerFunctionalities.spec.ts
 tests/acceptance/tests/Settings/Wishlist/WishlistGuestFunctionalities.spec.ts
+tests/acceptance/tests/Settings/ShopwareServices.spec.ts
 tests/acceptance/tests/Settings/BasicConsentBannerAcceptAllCookies.spec.ts
 tests/acceptance/tests/Settings/Documents.spec.ts
 tests/acceptance/tests/Settings/GoogleAnalyticsAcceptTracking.spec.ts
@@ -13543,13 +13551,12 @@ tests/integration/Core/Framework/App/Api/AppActionControllerTest.php
 tests/integration/Core/Framework/App/Api/_fixtures/action-button-script/Resources/scripts/api-action-button/action-button-script-integration.twig
 tests/integration/Core/Framework/App/Api/_fixtures/action-button-script/manifest.xml
 tests/integration/Core/Framework/App/Api/_fixtures/expectedCmsBlocks.json
-tests/integration/Core/Framework/App/Api/AppUrlChangeControllerTest.php
 tests/integration/Core/Framework/App/ScheduledTask/DeleteCascadeAppsHandlerTest.php
 tests/integration/Core/Framework/App/Command/RefreshAppCommandTest.php
 tests/integration/Core/Framework/App/Command/ActivateAppCommandTest.php
-tests/integration/Core/Framework/App/Command/ResolveAppUrlChangeCommandTest.php
 tests/integration/Core/Framework/App/Command/DeactivateAppCommandTest.php
 tests/integration/Core/Framework/App/Command/UninstallAppCommandTest.php
+tests/integration/Core/Framework/App/Command/ChangeShopIdCommandTest.php
 tests/integration/Core/Framework/App/Command/InstallAppCommandTest.php
 tests/integration/Core/Framework/App/Command/_fixtures/withAllowedHosts/manifest.xml
 tests/integration/Core/Framework/App/Command/_fixtures/validationFailure/manifest.xml
@@ -14354,7 +14361,6 @@ tests/migration/Administration/V6_7/Migration1744203319MailTemplateTest.php
 tests/migration/Administration/V6_7/Migration1737472122TokenUserTest.php
 tests/migration/Administration/.gitkeep
 tests/migration/MigrationTestTrait.php
-tests/migration/phpunit.xml
 tests/unit/Elasticsearch/Sort/CountSortTest.php
 tests/unit/Elasticsearch/Event/ElasticsearchCustomFieldsMappingEventTest.php
 tests/unit/Elasticsearch/Framework/ElasticsearchLanguageProviderTest.php
@@ -14773,10 +14779,13 @@ tests/unit/Core/Content/Sitemap/Service/SitemapExporterTest.php
 tests/unit/Core/Content/Sitemap/Service/SitemapListerTest.php
 tests/unit/Core/Content/Sitemap/SitemapExceptionTest.php
 tests/unit/Core/Content/Category/CategoryExceptionTest.php
+tests/unit/Core/Content/Category/Event/CategoryLevelLoaderCacheKeyEventTest.php
 tests/unit/Core/Content/Category/SalesChannel/NavigationRouteTest.php
 tests/unit/Core/Content/Category/SalesChannel/CategoryRouteTest.php
 tests/unit/Core/Content/Category/DataAbstractionLayer/CategoryNonExistentExceptionHandlerTest.php
 tests/unit/Core/Content/Category/Cms/CategoryNavigationCmsElementResolverTest.php
+tests/unit/Core/Content/Category/Service/DefaultCategoryLevelLoaderTest.php
+tests/unit/Core/Content/Category/Service/CachedDefaultCategoryLevelLoaderTest.php
 tests/unit/Core/Content/Category/Service/CategoryUrlGeneratorTest.php
 tests/unit/Core/Content/Category/Service/CategoryBreadcrumbBuilderTest.php
 tests/unit/Core/Content/Category/Subscriber/CategorySubscriberTest.php
@@ -15264,6 +15273,7 @@ tests/unit/Core/Checkout/Rule/Rule/LineItem/LineItemWithQuantityRuleTest.php
 tests/unit/Core/Checkout/Rule/Rule/LineItem/LineItemTotalPriceRuleTest.php
 tests/unit/Core/Checkout/Rule/Rule/LineItem/LineItemRuleTest.php
 tests/unit/Core/Checkout/Rule/Rule/LineItem/LineItemOfTypeRuleTest.php
+tests/unit/Core/Checkout/Promotion/DataAbstractionLayer/PromotionValidatorTest.php
 tests/unit/Core/Checkout/Promotion/DataAbstractionLayer/PromotionRedemptionUpdaterTest.php
 tests/unit/Core/Checkout/Promotion/Util/PromotionCodeServiceTest.php
 tests/unit/Core/Checkout/Promotion/Cart/CartPromotionsSubscriberTest.php
@@ -15626,6 +15636,7 @@ tests/unit/Core/Framework/App/Event/AppUpdatedEventTest.php
 tests/unit/Core/Framework/App/Event/AppActivatedEventTest.php
 tests/unit/Core/Framework/App/Event/AppPermissionsUpdatedTest.php
 tests/unit/Core/Framework/App/Event/AppInstalledEventTest.php
+tests/unit/Core/Framework/App/ShopIdChangeResolver/ResolverTest.php
 tests/unit/Core/Framework/App/Payload/AppPayloadServiceHelperTest.php
 tests/unit/Core/Framework/App/Context/Payload/AppContextGatewayPayloadServiceTest.php
 tests/unit/Core/Framework/App/Context/Gateway/AppContextGatewayResponseTest.php
@@ -15636,7 +15647,7 @@ tests/unit/Core/Framework/App/ActionButton/ExecutorTest.php
 tests/unit/Core/Framework/App/Exception/AppArchiveValidationFailureTest.php
 tests/unit/Core/Framework/App/Exception/AppDownloadExceptionTest.php
 tests/unit/Core/Framework/App/Exception/AppAlreadyInstalledExceptionTest.php
-tests/unit/Core/Framework/App/Exception/AppUrlChangeDetectedExceptionTest.php
+tests/unit/Core/Framework/App/Exception/ShopIdChangeStrategyNotFoundExceptionTest.php
 tests/unit/Core/Framework/App/Exception/ShopIdChangeSuggestedExceptionTest.php
 tests/unit/Core/Framework/App/_fixtures/Resources/flow-action.xml
 tests/unit/Core/Framework/App/_fixtures/Resources/cms.xml
@@ -15645,11 +15656,13 @@ tests/unit/Core/Framework/App/_fixtures/Resources/flow.xml
 tests/unit/Core/Framework/App/_fixtures/manifest_no_setup.xml
 tests/unit/Core/Framework/App/_fixtures/manifest.xml
 tests/unit/Core/Framework/App/Cms/Xml/BlockTest.php
+tests/unit/Core/Framework/App/Api/ShopIdControllerTest.php
 tests/unit/Core/Framework/App/Api/AppJWTGenerateRouteTest.php
 tests/unit/Core/Framework/App/Api/AppPrivilegeControllerTest.php
 tests/unit/Core/Framework/App/ScheduledTask/UpdateAppsTaskTest.php
 tests/unit/Core/Framework/App/Command/_fixtures/create-app-project/.gitkeep
 tests/unit/Core/Framework/App/Command/AppListCommandTest.php
+tests/unit/Core/Framework/App/Command/CheckShopIdCommandTest.php
 tests/unit/Core/Framework/App/Command/CreateAppCommandTest.php
 tests/unit/Core/Framework/App/Template/TemplateLoaderTest.php
 tests/unit/Core/Framework/App/Manifest/ManifestTest.php
@@ -15689,6 +15702,7 @@ tests/unit/Core/Framework/App/Manifest/_fixtures/test/Resources/scripts/rule-con
 tests/unit/Core/Framework/App/Manifest/_fixtures/test/Resources/scripts/rule-conditions/customer-first-name-rule-script.twig
 tests/unit/Core/Framework/App/Manifest/_fixtures/test/Resources/scripts/rule-conditions/customer-first-name-rule-script-constraints.twig
 tests/unit/Core/Framework/App/Manifest/_fixtures/test/Resources/scripts/app-deactivated/deactivate-script.twig
+tests/unit/Core/Framework/App/Manifest/_fixtures/test/manifest_crud.xml
 tests/unit/Core/Framework/App/Manifest/_fixtures/test/manifest_arbitraryRule_firstName.xml
 tests/unit/Core/Framework/App/Manifest/_fixtures/test/manifest1_1_0.xml
 tests/unit/Core/Framework/App/Manifest/_fixtures/test/manifest_arbitraryRule_constraints.xml
@@ -15772,7 +15786,6 @@ tests/unit/Core/Framework/App/Lifecycle/AppRegistrationServiceTest.php
 tests/unit/Core/Framework/App/Lifecycle/AppLifecycleIteratorTest.php
 tests/unit/Core/Framework/App/Validation/TranslationValidatorTest.php
 tests/unit/Core/Framework/App/Validation/AppNameValidatorTest.php
-tests/unit/Core/Framework/App/AppUrlChangeResolver/ResolverTest.php
 tests/unit/Core/Framework/App/TaxProvider/Response/TaxProviderResponseTest.php
 tests/unit/Core/Framework/App/TaxProvider/Payload/TaxProviderPayloadServiceTest.php
 tests/unit/Core/Framework/Struct/StateAwareTraitTest.php
@@ -15968,6 +15981,7 @@ tests/unit/Core/Framework/Api/OAuth/ClientRepositoryTest.php
 tests/unit/Core/Framework/Api/OAuth/_fixtures/private.txt
 tests/unit/Core/Framework/Api/OAuth/_fixtures/public.txt
 tests/unit/Core/Framework/Api/OAuth/JWTConfigurationFactoryTest.php
+tests/unit/Core/Framework/Api/OAuth/UserRepositoryTest.php
 tests/unit/Core/Framework/Api/ApiDefinition/Generator/OpenApi3GeneratorTest.php
 tests/unit/Core/Framework/Api/ApiDefinition/Generator/BundleSchemaPathCollectionTest.php
 tests/unit/Core/Framework/Api/ApiDefinition/Generator/CachedEntitySchemaGeneratorTest.php
@@ -16104,6 +16118,7 @@ tests/unit/Core/Framework/Store/StoreExceptionTest.php
 tests/unit/Core/Framework/Store/InAppPurchases/Services/InAppPurchaseUpdaterTest.php
 tests/unit/Core/Framework/Store/InAppPurchases/Services/InAppPurchaseProviderTest.php
 tests/unit/Core/Framework/Store/InAppPurchases/Services/KeyFetcherTest.php
+tests/unit/Core/Framework/Store/InAppPurchases/Services/DecodedPurchaseStructTest.php
 tests/unit/Core/Framework/Store/InAppPurchases/Event/InAppPurchaseChangedEventTest.php
 tests/unit/Core/Framework/Store/InAppPurchases/Handler/InAppPurchaseUpdateHandlerTest.php
 tests/unit/Core/Framework/Store/InAppPurchases/Api/InAppPurchasesControllerTest.php
@@ -19462,6 +19477,7 @@ changelog/_unreleased/2025-06-15-fix-document-route-authentication.md
 changelog/_unreleased/2025-05-23-add-new-increment-api-to-delete-unused-keys-or-cluster.md
 changelog/_unreleased/2025-08-06-event-interfaces-for-extension-events.md
 changelog/_unreleased/2025-06-27-fix-document-number-customization.md
+changelog/_unreleased/2025-08-25-compatbile-with-symfony-validator-7-3.md
 changelog/_unreleased/2025-06-14-remove-superfluous-vat-id-block-from-address-form-html-twig.md
 changelog/_unreleased/2024-07-26-fix-variant-listing-config-when-cloning-products-or-deleting-variants.md
 changelog/_unreleased/2025-07-30-change-createdcomponent-back-to-being-sync.md
@@ -19481,6 +19497,7 @@ changelog/_unreleased/2025-07-17-add-missing-context-setting-optional-chaining.m
 changelog/_unreleased/2024-11-29-make-product-slider-defaults-accessible.md
 changelog/_unreleased/2025-04-01-ar-viewer-bug.md
 changelog/_unreleased/2025-07-14-deprecated-entitydefinition-constructor.md
+changelog/_unreleased/2025-08-28-fix-order-entities-in-search-preferences.md
 changelog/_unreleased/2025-07-02-multiple-promotions-order-count-fix.md
 changelog/_unreleased/2025-07-30-copy-context-rules-to-esi-request-context.md
 changelog/_unreleased/2025-05-22-fix-paging-listing-page-parameter-post.md
@@ -19497,6 +19514,7 @@ changelog/_unreleased/2025-06-11-improve-fetching-of-language-information-for-sa
 changelog/_unreleased/2025-05-06-added-dive-as-a-3d-viewer-for-storefront.md
 changelog/_unreleased/2025-04-15-improve-promotion-calculation.md
 changelog/_unreleased/2025-05-05-add-measurement-settings-into-sales-channel-domain-configuration.md
+changelog/_unreleased/2025-08-25-shop-id-change-suggestion-modal.md
 changelog/_unreleased/2025-07-11-fix-correctly-sort-product-variants-with-different-prices.md
 changelog/_unreleased/2025-08-12-optimize-storefront-elasticsearch.md
 changelog/_unreleased/2025-07-11-delete-admin-snippet-cache-after-app-install.md
@@ -19543,6 +19561,7 @@ changelog/_unreleased/2025-07-08-optimize-product-slider-cms-element.md
 changelog/_unreleased/2022-04-05-keep-track-of-changes-on-rule-builder-detail-page.md
 changelog/_unreleased/2025-08-15-allow-configuring-the-minimum-search-term-length.md
 changelog/_unreleased/2025-05-05-update-domain-listing-to-show-measurement-information.md
+changelog/_unreleased/2025-08-29-remove-load-expensive-administration-order-sorting.md
 changelog/_unreleased/2025-07-11-error-when-trying-to-remove-main-category-for-product.md
 changelog/_unreleased/2025-07-24-fix-sorting-order-when-search-property-values.md
 changelog/_unreleased/2025-06-06-deprecate-i18n-tc-function.md
@@ -19558,6 +19577,7 @@ changelog/_unreleased/2025-08-12-added-return-address-display-option.md
 changelog/_unreleased/2025-01-31-move-flow-execution-after-business-process.md
 changelog/_unreleased/2025-07-18-implemented-a-command-to-download-and-install-translation.md
 changelog/_unreleased/2025-05-05-message-queues-statistics.md
+changelog/_unreleased/2025-08-26-add-natural-sorting-for-property-option-list.md
 changelog/_unreleased/2025-07-03-add-staging-config-to-event.md
 changelog/_unreleased/2025-01-07-unify-constraint-option-structure-and-checks.md
 changelog/_unreleased/2024-10-04-add-primary-order-delivery-and-transaction-reference.md
@@ -19568,6 +19588,7 @@ changelog/_unreleased/2025-07-02-add-admin-product-number-filter.md
 changelog/_unreleased/2025-04-04-fix-product-media-import-with-whitespace-in-url.md
 changelog/_unreleased/2025-05-28-add-deprecations-to-the-theme-configuration-apis.md
 changelog/_unreleased/2025-08-06-adjust-matrix-element-extends-struct-for-store-api.md
+changelog/_unreleased/2025-08-07-cache-default-category-levels.md
 changelog/_unreleased/2025-06-06-skip-media-indexing-when-remote-thumbnails-are-enabled.md
 changelog/_unreleased/2025-08-12-fix-webhook-deactivation-on-failure.md
 changelog/_unreleased/2025-07-30-add-custom-field-entities-to-apps.md
@@ -19612,6 +19633,7 @@ changelog/_unreleased/2025-07-03-use-single-shared-interval-for-sw-time-ago.md
 changelog/_unreleased/2025-05-05-remove-obsolete-requiredmessage-variable-declarations.md
 changelog/_unreleased/2025-07-23-don-t-check-for-canonical-seo-urls-when-no-path-info-given.md
 changelog/_unreleased/2025-06-17-es-should-work-correctly-with-scorequery.md
+changelog/_unreleased/2025-08-21-make-product-of-orderlineitem-api-aware.md
 changelog/_unreleased/2025-03-25-fix-show-product-name-for-variants-in-admin-category-products.md
 changelog/_unreleased/2025-06-18-improve-app-uninstalls-with-custom-entities.md
 changelog/_unreleased/2024-11-08-add-configuration-for-meta-tag-robots.md
@@ -19671,6 +19693,7 @@ changelog/_unreleased/2025-07-07-change-api-aware-visibility-external-user-produ
 changelog/_unreleased/2025-08-01-remove-language-switch-from-import-export.md
 changelog/_unreleased/2025-07-24-allow-for-lineitemfactoryhandler-decoration.md
 changelog/_unreleased/2025-06-28-use-display-index-to-get-active-slide-element.md
+changelog/_unreleased/2025-08-27-update-sales-channel-context-after-switching.md
 changelog/_unreleased/2025-08-19-add-design-tokens-to-the-tooltip.md
 changelog/_unreleased/2025-07-30-add-dark-mode-support-to-modals.md
 changelog/_unreleased/2025-07-15-scope-renamepaidtransitionactions-migration-to-ordertransactions.md
@@ -19709,11 +19732,13 @@ changelog/_unreleased/2025-08-19-add-design-tokens-to-the-review-module.md
 changelog/_unreleased/2025-07-24-skip-persisting-admin-snippets-for-non-existing-locales.md
 changelog/_unreleased/2025-08-20-navigation-cache-invalidation.md
 changelog/_unreleased/2025-08-17-make-navbar-template-extendable.md
+changelog/_unreleased/2025-08-27-add-a-crud-permission-shortcut-to-manifest.md
 changelog/_unreleased/2025-07-21-min-search-term-is-now-configurable.md
 changelog/_unreleased/2025-08-22-use-bootstrap-gutter-variables-for-product-listing-grid.md
 changelog/_unreleased/2025-08-18-fix-sidebar-renderer-width-update.md
 changelog/_unreleased/2025-08-06-fix-cms-content-slot-overrides-for-modules-and-languages.md
 changelog/_unreleased/2025-08-22-fix-confusing-error-on-user-create.md
+changelog/_unreleased/2025-07-23-add-constants-to-global-shopware-object.md
 changelog/_unreleased/2025-07-21-fix-sidebar-sdk-handlers-sw-meteor-page.md
 changelog/_unreleased/2025-03-26-remove-non-existing-imports-from-admin-module-stub.md
 changelog/_unreleased/2025-06-13-allow-admin-scripts-provided-by-bundles.md
@@ -19728,6 +19753,7 @@ changelog/_unreleased/2025-04-04-add-renaming-scales-unit-alert-in-settings-over
 changelog/_unreleased/2025-03-27-meta-information-in-landing-pages-is-not-inherited.md
 changelog/_unreleased/2025-08-14-updated-ignored-url-parameters-for-http-cache.md
 changelog/_unreleased/2024-09-16-exchange-recursive-categories-macro-with-tpl.md
+changelog/_unreleased/2025-07-28-fix-cart-error-message-translation-in-store-api.md
 changelog/_unreleased/2025-07-29-added-dark-mode-support-to-select-components.md
 changelog/_unreleased/2025-05-20-apply-last-chosen-measurement-settings-as-user-preferred-settings.md
 changelog/_unreleased/2025-07-01-change-path-of-header-and-footer-routes.md
@@ -19749,15 +19775,20 @@ changelog/_unreleased/2025-05-08-add-sw-settings-measurement-module.md
 changelog/_unreleased/2025-06-06-added-price-calculation-extension.md
 changelog/_unreleased/2025-08-04-fix-cms-block-slot-config-error-highlighting.md
 changelog/_unreleased/2024-01-31-improve-cart-page-performance.md
+changelog/_unreleased/2025-08-27-consider-landing-page-assignments-in-cms-page-list.md
 changelog/_unreleased/2025-07-28-symfony-components-updated.md
+changelog/_unreleased/2025-08-12-serialization-cart-size-check.md
 changelog/_unreleased/2025-06-11-improve-es-search-scoring-for-numeric-tokens.md
+changelog/_unreleased/2025-08-07-fix-price-calculation-runs-twice.md
 changelog/_unreleased/2025-07-10-add-env-variables-for-opensearch-min_ngram-and-max_ngram.md
+changelog/_unreleased/2025-08-27-fix-app-user-id-admin-privileges.md
 changelog/_unreleased/2025-06-26-remove-usage-of-file_exists-in-admin.md
 changelog/_unreleased/2025-07-22-add-missing-cms-block-and-section-id-api-aware.md
 changelog/_unreleased/2025-07-24-fix-theme-lifecycle-service-refresh-themes-without-plugins.md
 changelog/_unreleased/2025-08-07-fix-duplicate-address-display-in-order-detail.md
 changelog/_unreleased/2025-07-28-increased-minimum-required-version-of-mysql-database.md
 changelog/_unreleased/2025-06-10-fix-wrong-variant-of-mt-banner-on-sales-channel-detail-page.md
+changelog/_unreleased/2025-08-20-fix-media-search-navigation
 changelog/_unreleased/2025-07-31-fix-script-loader-loading-invalid-cache-paths.md
 changelog/_unreleased/2025-05-28-add-recalculated-custom-line-items-to-delivery.md
 changelog/release-6-4-17-0/2022-10-04-fix-storefront-presentation-sorting.md
