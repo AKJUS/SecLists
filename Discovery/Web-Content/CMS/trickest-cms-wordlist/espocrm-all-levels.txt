@@ -16904,6 +16904,13 @@ Select/Primary/Filters/Starred.php
 Primary/Filters/Starred.php
 Filters/Starred.php
 Starred.php
+application/Espo/Core/Select/Primary/Filters/All.php
+Espo/Core/Select/Primary/Filters/All.php
+Core/Select/Primary/Filters/All.php
+Select/Primary/Filters/All.php
+Primary/Filters/All.php
+Filters/All.php
+All.php
 application/Espo/Core/Select/Primary/Filters/Followed.php
 Espo/Core/Select/Primary/Filters/Followed.php
 Core/Select/Primary/Filters/Followed.php
@@ -56643,6 +56650,13 @@ upgrades/7.3/data.json
 data.json
 upgrades/7.3/scripts/BeforeUpgrade.php
 7.3/scripts/BeforeUpgrade.php
+scripts/BeforeUpgrade.php
+BeforeUpgrade.php
+upgrades/9.2/data.json
+9.2/data.json
+data.json
+upgrades/9.2/scripts/BeforeUpgrade.php
+9.2/scripts/BeforeUpgrade.php
 scripts/BeforeUpgrade.php
 BeforeUpgrade.php
 upgrades/8.2/data.json
