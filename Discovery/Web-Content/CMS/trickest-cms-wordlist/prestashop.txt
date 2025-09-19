@@ -3188,6 +3188,13 @@ src/Core/Domain/Category/Command/DeleteCategoryCommand.php
 src/Core/Domain/Category/Command/DeleteCategoryCoverImageCommand.php
 src/Core/Domain/Category/Command/BulkEnableCategoriesCommand.php
 src/Core/Domain/Category/SeoSettings.php
+src/Core/Domain/Search/CommandHandler/SearchIndexationHandlerInterface.php
+src/Core/Domain/Search/Exception/SearchIndexationProductNotFoundException.php
+src/Core/Domain/Search/Exception/SearchIndexationInvalidContextException.php
+src/Core/Domain/Search/Exception/SearchIndexationShopGroupNotFoundException.php
+src/Core/Domain/Search/Exception/SearchIndexationShopNotFoundException.php
+src/Core/Domain/Search/Exception/SearchIndexationException.php
+src/Core/Domain/Search/Command/SearchIndexationCommand.php
 src/Core/Domain/AbstractBulkCommandHandler.php
 src/Core/Domain/Webservice/QueryResult/EditableWebserviceKey.php
 src/Core/Domain/Webservice/ValueObject/Permission.php
@@ -4018,6 +4025,7 @@ src/PrestaShopBundle/Resources/config/services/adapter/pdf.yml
 src/PrestaShopBundle/Resources/config/services/adapter/profile.yml
 src/PrestaShopBundle/Resources/config/services/adapter/mail_template.yml
 src/PrestaShopBundle/Resources/config/services/adapter/admin.yml
+src/PrestaShopBundle/Resources/config/services/adapter/search.yml
 src/PrestaShopBundle/Resources/config/services/adapter/webservice.yml
 src/PrestaShopBundle/Resources/config/services/adapter/form.yml
 src/PrestaShopBundle/Resources/config/services/adapter/language.yml
@@ -5074,6 +5082,7 @@ src/PrestaShopBundle/Twig/ContextIsoCodeProviderExtension.php
 src/PrestaShopBundle/Command/DebugCommand.php
 src/PrestaShopBundle/Command/GenerateMailTemplatesCommand.php
 src/PrestaShopBundle/Command/AppendHooksListForSqlUpgradeFileCommand.php
+src/PrestaShopBundle/Command/SearchIndexationCommand.php
 src/PrestaShopBundle/Command/SecurityAttributeLinterCommand.php
 src/PrestaShopBundle/Command/NamingConventionLinterCommand.php
 src/PrestaShopBundle/Command/UpdateSchemaCommand.php
@@ -5265,6 +5274,7 @@ src/PrestaShopBundle/Form/Admin/Sell/Discount/DiscountValueType.php
 src/PrestaShopBundle/Form/Admin/Sell/Discount/DiscountProductSegmentType.php
 src/PrestaShopBundle/Form/Admin/Sell/Discount/DeliveryConditionsType.php
 src/PrestaShopBundle/Form/Admin/Sell/Discount/DiscountUsabilityType.php
+src/PrestaShopBundle/Form/Admin/Sell/Discount/DiscountFeaturesType.php
 src/PrestaShopBundle/Form/Admin/Sell/Discount/DiscountUsabilityModeType.php
 src/PrestaShopBundle/Form/Admin/Sell/Order/ChangeOrderAddressType.php
 src/PrestaShopBundle/Form/Admin/Sell/Order/AddOrderCartRuleType.php
@@ -6386,6 +6396,7 @@ src/Adapter/OrderReturnState/Repository/OrderReturnStateRepository.php
 src/Adapter/Upload/UploadQuotaConfiguration.php
 src/Adapter/Notification/QueryHandler/GetNotificationLastElementsHandler.php
 src/Adapter/Notification/CommandHandler/UpdateEmployeeNotificationLastElementHandler.php
+src/Adapter/Shipment/DeliveryOptionsInterface.php
 src/Adapter/Shipment/OrderShipmentCreator.php
 src/Adapter/Shipment/QueryHandler/GetShipmentForViewingHandler.php
 src/Adapter/Shipment/QueryHandler/GetOrderShipmentsHandler.php
@@ -6397,6 +6408,7 @@ src/Adapter/Shipment/CommandHandler/SwitchShipmentCarrierHandler.php
 src/Adapter/Shipment/CommandHandler/SplitShipmentHandler.php
 src/Adapter/Shipment/CommandHandler/DeleteProductFromShipmentHandler.php
 src/Adapter/Shipment/CommandHandler/MergeProductsToShipmentHandler.php
+src/Adapter/Shipment/DeliveryOptionsProvider.php
 src/Adapter/Contact/QueryHandler/GetContactForEditingHandler.php
 src/Adapter/Contact/CommandHandler/EditContactHandler.php
 src/Adapter/Contact/CommandHandler/AddContactHandler.php
@@ -6563,6 +6575,7 @@ src/Adapter/Category/CommandHandler/AbstractEditCategoryHandler.php
 src/Adapter/Category/CategoryDataProvider.php
 src/Adapter/Category/Repository/CategoryPreviewRepository.php
 src/Adapter/Category/Repository/CategoryRepository.php
+src/Adapter/Search/CommandHandler/SearchIndexationHandler.php
 src/Adapter/Search/SearchProductSearchProvider.php
 src/Adapter/Environment.php
 src/Adapter/LegacyContext.php
@@ -10438,6 +10451,7 @@ tests/Integration/Behaviour/Features/Scenario/Discount/FO/discount_with_brand_tr
 tests/Integration/Behaviour/Features/Scenario/Discount/FO/full_user_experience_test_with_discount_product_level.feature
 tests/Integration/Behaviour/Features/Scenario/Discount/FO/full_user_experience_test_with_two_discounts.feature
 tests/Integration/Behaviour/Features/Scenario/Discount/FO/discount_with_country_trigger.feature
+tests/Integration/Behaviour/Features/Scenario/Discount/FO/discount_with_feature_trigger.feature
 tests/Integration/Behaviour/Features/Scenario/Discount/FO/discount_with_attribute_trigger.feature
 tests/Integration/Behaviour/Features/Scenario/Discount/FO/discount_with_category_trigger.feature
 tests/Integration/Behaviour/Features/Scenario/Discount/FO/discount_with_restricted_combinations.feature
@@ -10461,6 +10475,7 @@ tests/Integration/Behaviour/Features/Scenario/Discount/BO/add_discount_with_code
 tests/Integration/Behaviour/Features/Scenario/Discount/BO/add_discount_with_category_trigger.feature
 tests/Integration/Behaviour/Features/Scenario/Discount/BO/update_free_gift_discount.feature
 tests/Integration/Behaviour/Features/Scenario/Discount/BO/add_discount_with_carrier_trigger.feature
+tests/Integration/Behaviour/Features/Scenario/Discount/BO/add_discount_with_feature_discount.feature
 tests/Integration/Behaviour/Features/Scenario/Discount/BO/delete_discount.feature
 tests/Integration/Behaviour/Features/Scenario/Discount/BO/add_free_gift_discount.feature
 tests/Integration/Behaviour/Features/Scenario/Discount/BO/add_discount_with_supplier_trigger.feature
@@ -12102,6 +12117,7 @@ tests/Unit/PrestaShopBundle/Command/ExportThemeCommandTest.php
 tests/Unit/PrestaShopBundle/Command/ListCommandsAndQueriesCommandTest.php
 tests/Unit/PrestaShopBundle/Command/UpdateSchemaCommandTest.php
 tests/Unit/PrestaShopBundle/Command/DebugCommandTest.php
+tests/Unit/PrestaShopBundle/Command/SearchIndexationCommandTest.php
 tests/Unit/PrestaShopBundle/Service/Grid/ResponseBuilderTest.php
 tests/Unit/PrestaShopBundle/Service/DataProvider/Admin/CategoriesProviderTest.php
 tests/Unit/PrestaShopBundle/Service/DataProvider/Admin/fixtures/categories.yml

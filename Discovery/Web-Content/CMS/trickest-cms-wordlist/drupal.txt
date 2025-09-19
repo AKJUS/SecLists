@@ -4864,13 +4864,14 @@ core/modules/workspaces/tests/src/Functional/PathWorkspacesTest.php
 core/modules/workspaces/tests/src/Functional/WorkspaceCacheContextTest.php
 core/modules/workspaces/tests/src/Functional/WorkspaceTestUtilities.php
 core/modules/workspaces/tests/src/Functional/Update/WorkspaceAssociationStringIdsUpdatePathTest.php
+core/modules/workspaces/tests/src/Functional/Update/WorkspaceAssociationRevisionTableUpdateTest.php
 core/modules/workspaces/tests/src/Functional/WorkspaceFormValidationTest.php
 core/modules/workspaces/tests/src/Functional/WorkspacesUninstallTest.php
 core/modules/workspaces/tests/src/Functional/UpdateSystem/ActiveWorkspaceUpdateTest.php
 core/modules/workspaces/tests/src/Functional/WorkspaceViewTest.php
 core/modules/workspaces/tests/src/Unit/WorkspaceRequestSubscriberTest.php
 core/modules/workspaces/tests/src/Unit/ActiveWorkspaceCheckTest.php
-core/modules/workspaces/tests/fixtures/update/workspaces.php
+core/modules/workspaces/tests/fixtures/update/workspaces-10.3.0.php
 core/modules/workspaces/tests/modules/workspace_access_test/workspace_access_test.info.yml
 core/modules/workspaces/tests/modules/workspace_access_test/src/Hook/WorkspaceAccessTestHooks.php
 core/modules/workspaces/tests/modules/workspace_update_test/src/Negotiator/TestWorkspaceNegotiator.php
@@ -6004,12 +6005,14 @@ core/modules/file/src/ComputedFileUrl.php
 core/modules/file/src/Hook/FileDownloadHook.php
 core/modules/file/src/Hook/FileFormHooks.php
 core/modules/file/src/Hook/FileRequirements.php
+core/modules/file/src/Hook/FileThemeHooks.php
 core/modules/file/src/Hook/FileViewsHooks.php
 core/modules/file/src/Hook/TokenHooks.php
 core/modules/file/src/Hook/CronHook.php
 core/modules/file/src/Hook/FileHooks.php
 core/modules/file/src/FileAccessFormatterControlHandlerInterface.php
 core/modules/file/src/EventSubscriber/FileEventSubscriber.php
+core/modules/file/src/EventSubscriber/DefaultContentSubscriber.php
 core/modules/file/src/Upload/FormUploadedFile.php
 core/modules/file/src/Upload/InputStreamUploadedFile.php
 core/modules/file/src/Upload/FileUploadLocationTrait.php
@@ -6854,6 +6857,7 @@ core/modules/block_content/src/Plugin/views/wizard/BlockContent.php
 core/modules/block_content/src/Plugin/Validation/Constraint/BlockContentEntityChangedConstraint.php
 core/modules/block_content/src/Plugin/Validation/Constraint/BlockContentEntityChangedConstraintValidator.php
 core/modules/block_content/src/Controller/BlockContentController.php
+core/modules/block_content/src/Access/BlockContentIsReusableAccessCheck.php
 core/modules/block_content/src/Event/BlockContentGetDependencyEvent.php
 core/modules/block_content/src/Entity/BlockContentType.php
 core/modules/block_content/src/Entity/BlockContent.php
@@ -6928,6 +6932,7 @@ core/modules/block_content/tests/src/Functional/Views/BlockContentFieldFilterTes
 core/modules/block_content/tests/src/Functional/BlockContentCreationTest.php
 core/modules/block_content/tests/src/Functional/UnpublishedBlockTest.php
 core/modules/block_content/tests/src/Functional/BlockContentListTest.php
+core/modules/block_content/tests/src/Functional/BlockContentRouteAccessTest.php
 core/modules/block_content/tests/src/Functional/PageEditTest.php
 core/modules/block_content/tests/src/Functional/BlockContentPageViewTest.php
 core/modules/block_content/tests/src/Functional/BlockContentRevisionRevertTest.php
@@ -6991,6 +6996,7 @@ core/modules/system/src/SystemConfigSubscriber.php
 core/modules/system/src/ModuleAdminLinksHelper.php
 core/modules/system/src/CronController.php
 core/modules/system/src/Theme/DbUpdateNegotiator.php
+core/modules/system/src/Theme/SystemAdminThemePreprocess.php
 core/modules/system/src/Theme/BatchNegotiator.php
 core/modules/system/src/PhpStorage/MockPhpStorage.php
 core/modules/system/src/Plugin/migrate/source/d7/ThemeSettings.php
@@ -7059,7 +7065,6 @@ core/modules/system/src/Hook/PageAttachmentsHook.php
 core/modules/system/src/Hook/SystemRequirementsHooks.php
 core/modules/system/src/Hook/SystemHooks.php
 core/modules/system/src/Hook/SystemThemeHooks.php
-core/modules/system/src/Hook/ThemeHook.php
 core/modules/system/src/MenuInterface.php
 core/modules/system/src/DateFormatListBuilder.php
 core/modules/system/src/Install/Requirements/SystemRequirements.php
@@ -7177,7 +7182,6 @@ core/modules/system/help_topics/system.theme_install.html.twig
 core/modules/system/help_topics/system.reports.html.twig
 core/modules/system/help_topics/system.module_uninstall.html.twig
 core/modules/system/help_topics/system.config_error.html.twig
-core/modules/system/system.theme.inc
 core/modules/system/tests/logo.svgz
 core/modules/system/tests/themes/test_invalid_engine/test_invalid_engine.info.yml
 core/modules/system/tests/themes/test_base_theme/test_base_theme.libraries.yml
@@ -7305,6 +7309,8 @@ core/modules/system/tests/themes/test_theme_with_a_base_theme_depending_on_modul
 core/modules/system/tests/themes/test_ckeditor_stylesheets_relative/test_ckeditor_stylesheets_relative.info.yml
 core/modules/system/tests/themes/test_messages/test_messages.info.yml
 core/modules/system/tests/themes/test_messages/templates/status-messages.html.twig
+core/modules/system/tests/themes/test_theme_alter/test_theme_alter.theme
+core/modules/system/tests/themes/test_theme_alter/test_theme_alter.info.yml
 core/modules/system/tests/themes/test_parent_theme/test_parent_theme.info.yml
 core/modules/system/tests/themes/test_parent_theme/test_parent_theme.layouts.yml
 core/modules/system/tests/themes/name_collision_test/name_collision_test.info.yml
@@ -8173,6 +8179,7 @@ core/modules/system/tests/modules/entity_test/src/Plugin/Field/FieldType/ShapeIt
 core/modules/system/tests/modules/entity_test/src/Plugin/Field/FieldType/ComputedTestCacheableStringItem.php
 core/modules/system/tests/modules/entity_test/src/Plugin/Field/FieldType/SerializedPropertyItem.php
 core/modules/system/tests/modules/entity_test/src/Plugin/Field/FieldType/FieldTestItem.php
+core/modules/system/tests/modules/entity_test/src/Plugin/Field/FieldType/NullableSerializedItem.php
 core/modules/system/tests/modules/entity_test/src/Plugin/Field/ComputedReferenceTestFieldItemList.php
 core/modules/system/tests/modules/entity_test/src/Plugin/Field/FieldFormatter/EntityTestReferenceCustomCacheTagFormatter.php
 core/modules/system/tests/modules/entity_test/src/Plugin/Field/ComputedTestCacheableIntegerItemList.php
@@ -8396,7 +8403,6 @@ core/modules/system/tests/modules/common_test/src/Render/MainContent/JsonRendere
 core/modules/system/tests/modules/common_test/src/Hook/CommonTestThemeHooks.php
 core/modules/system/tests/modules/common_test/src/Hook/CommonTestHooks.php
 core/modules/system/tests/modules/common_test/common_test.info.yml
-core/modules/system/tests/modules/common_test/common_test.module
 core/modules/system/tests/modules/common_test/templates/common-test-render-element.html.twig
 core/modules/system/tests/modules/common_test/templates/common-test-foo.html.twig
 core/modules/system/tests/modules/common_test/common_test.libraries.yml
@@ -8728,15 +8734,12 @@ core/modules/system/tests/modules/system_test/src/MockFileTransfer.php
 core/modules/system/tests/modules/system_test/src/Form/CopyFieldValueTestForm.php
 core/modules/system/tests/modules/system_test/system_test.module
 core/modules/system/tests/modules/system_test/system_test.permissions.yml
-core/modules/system/tests/modules/theme_test/theme_test.inc
 core/modules/system/tests/modules/theme_test/theme_test.info.yml
 core/modules/system/tests/modules/theme_test/theme_test.routing.yml
 core/modules/system/tests/modules/theme_test/src/ThemeTestController.php
 core/modules/system/tests/modules/theme_test/src/Theme/CustomThemeNegotiator.php
 core/modules/system/tests/modules/theme_test/src/Theme/HighPriorityThemeNegotiator.php
 core/modules/system/tests/modules/theme_test/src/ThemeTestPreprocess.php
-core/modules/system/tests/modules/theme_test/src/Hook/ThemeTestThemeHooks1.php
-core/modules/system/tests/modules/theme_test/src/Hook/ThemeTestThemeHooks.php
 core/modules/system/tests/modules/theme_test/src/Hook/ThemeTestHooks.php
 core/modules/system/tests/modules/theme_test/src/EventSubscriber/ThemeTestSubscriber.php
 core/modules/system/tests/modules/theme_test/theme_test.services.yml
@@ -8755,7 +8758,6 @@ core/modules/system/tests/modules/theme_test/templates/theme-test-general-sugges
 core/modules/system/tests/modules/theme_test/templates/theme-test-deprecations-hook-theme.html.twig
 core/modules/system/tests/modules/theme_test/templates/theme-test-theme-class.html.twig
 core/modules/system/tests/modules/theme_test/templates/theme-test-deprecations-preprocess.html.twig
-core/modules/system/tests/modules/theme_test/theme_test.module
 core/modules/system/tests/modules/link_generation_test/src/Hook/LinkGenerationTestHooks.php
 core/modules/system/tests/modules/link_generation_test/link_generation_test.info.yml
 core/modules/system/tests/modules/drupal_system_listing_compatible_test/drupal_system_listing_compatible_test.info.yml
@@ -11358,6 +11360,8 @@ core/modules/navigation/tests/src/Unit/TopBarItemManagerTest.php
 core/modules/navigation/tests/navigation_test_block/navigation_test_block.info.yml
 core/modules/navigation/tests/navigation_test_block/src/Plugin/Block/NavigationTestBlock.php
 core/modules/navigation/tests/navigation_test_block/src/Hook/NavigationTestBlockHooks.php
+core/modules/navigation/tests/navigation_test_top_bar/src/Plugin/TopBarItem/TopBarItemLinkAttribute.php
+core/modules/navigation/tests/navigation_test_top_bar/navigation_test_top_bar.info.yml
 core/modules/navigation/tests/navigation_test/assets/icons/radioactive.svg
 core/modules/navigation/tests/navigation_test/assets/icons/star.svg
 core/modules/navigation/tests/navigation_test/src/Plugin/TopBarItem/TopBarItemInstantiation.php
@@ -13200,7 +13204,6 @@ core/modules/layout_builder/tests/src/Kernel/LayoutBuilderInstallTest.php
 core/modules/layout_builder/tests/src/Kernel/SimpleConfigSectionListTest.php
 core/modules/layout_builder/tests/src/Kernel/OverridesSectionStorageTest.php
 core/modules/layout_builder/tests/src/Kernel/SectionListTestBase.php
-core/modules/layout_builder/tests/src/Kernel/LayoutBuilderFieldLayoutCompatibilityTest.php
 core/modules/layout_builder/tests/src/Kernel/DefaultsSectionStorageTest.php
 core/modules/layout_builder/tests/src/Kernel/ConfigActionsTest.php
 core/modules/layout_builder/tests/src/Kernel/LayoutSectionItemListTest.php
@@ -13331,6 +13334,7 @@ core/modules/field_layout/field_layout.info.yml
 core/modules/field_layout/field_layout.services.yml
 core/modules/field_layout/config/schema/field_layout.schema.yml
 core/modules/field_layout/tests/src/Kernel/FieldLayoutEntityDisplayTest.php
+core/modules/field_layout/tests/src/Kernel/LayoutBuilderFieldLayoutCompatibilityTest.php
 core/modules/field_layout/tests/src/Kernel/FieldLayoutUninstallTest.php
 core/modules/field_layout/tests/src/FunctionalJavascript/FieldLayoutTest.php
 core/modules/field_layout/tests/src/Functional/GenericTest.php
@@ -14327,10 +14331,13 @@ core/tests/fixtures/config_install/multilingual/core.entity_view_mode.node.rss.y
 core/tests/PHPStan/phpunit.xml.dist
 core/tests/PHPStan/README.md
 core/tests/PHPStan/fixtures/component-tests.php
+core/tests/PHPStan/fixtures/abstract-test-classes.php
+core/tests/PHPStan/tests/NoClassMetadataOnAbstractTestClassesTest.php
 core/tests/PHPStan/tests/ComponentTestDoesNotExtendCoreTestTest.php
 core/tests/PHPStan/tests/EnsurePHPStanVersionsMatchTest.php
 core/tests/PHPStan/composer.json
 core/tests/PHPStan/Rules/ComponentTestDoesNotExtendCoreTest.php
+core/tests/PHPStan/Rules/NoClassMetadataOnAbstractTestClasses.php
 core/tests/Drupal/KernelTests/Component/Render/FormattableMarkupKernelTest.php
 core/tests/Drupal/KernelTests/Component/ComponentRenderTest.php
 core/tests/Drupal/KernelTests/Core/Menu/MenuTreeStorageTest.php
@@ -17727,6 +17734,7 @@ core/lib/Drupal/Core/DefaultContent/ExportMetadata.php
 core/lib/Drupal/Core/DefaultContent/Finder.php
 core/lib/Drupal/Core/DefaultContent/PreExportEvent.php
 core/lib/Drupal/Core/DefaultContent/AdminAccountSwitcher.php
+core/lib/Drupal/Core/DefaultContent/ExportResult.php
 core/lib/Drupal/Core/DefaultContent/Exporter.php
 core/lib/Drupal/Core/DefaultContent/Importer.php
 core/lib/Drupal/Core/DefaultContent/InvalidEntityException.php

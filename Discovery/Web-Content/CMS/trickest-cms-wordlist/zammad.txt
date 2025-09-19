@@ -2362,6 +2362,7 @@ spec/lib/external_data_source_spec.rb
 spec/lib/tasks/zammad/command_spec.rb
 spec/lib/tasks/zammad/store/move_files_spec.rb
 spec/lib/tasks/zammad/store/verify_files_spec.rb
+spec/lib/tasks/zammad/db/max_connections_spec.rb
 spec/lib/excel_sheet/ticket_spec.rb
 spec/lib/mixin/has_backends_examples.rb
 spec/lib/external_sync_spec.rb
@@ -2489,6 +2490,7 @@ spec/lib/background_services/service/manage_sessions_jobs_spec.rb
 spec/lib/background_services/service_config_spec.rb
 spec/lib/ai/service_spec.rb
 spec/lib/ai/vectordb/version_spec.rb
+spec/lib/ai/provider/mistral_spec.rb
 spec/lib/ai/provider/open_ai_spec.rb
 spec/lib/ai/provider/zammad_ai_spec.rb
 spec/lib/ai/provider/azure_spec.rb
@@ -3806,6 +3808,7 @@ app/assets/javascripts/app/views/generic/searchable_select_option.jst.eco
 app/assets/javascripts/app/views/generic/application_selector_subclause.jst.eco
 app/assets/javascripts/app/views/generic/icon_picker.jst.eco
 app/assets/javascripts/app/views/generic/datepicker.jst.eco
+app/assets/javascripts/app/views/generic/searchable_select_option_inactive_with_children.jst.eco
 app/assets/javascripts/app/views/generic/ticket_duplicate_detection/warning.jst.eco
 app/assets/javascripts/app/views/generic/table_row.jst.eco
 app/assets/javascripts/app/views/generic/business_hours.jst.eco
@@ -4009,6 +4012,7 @@ app/assets/javascripts/app/lib/app_post/two_factor_methods/authenticator_app.cof
 app/assets/javascripts/app/lib/app_post/two_factor_methods/recovery_codes.coffee
 app/assets/javascripts/app/lib/app_post/two_factor_methods/security_keys.coffee
 app/assets/javascripts/app/lib/app_post/ai_provider/ollama.coffee
+app/assets/javascripts/app/lib/app_post/ai_provider/mistral.coffee
 app/assets/javascripts/app/lib/app_post/ai_provider/anthropic.coffee
 app/assets/javascripts/app/lib/app_post/ai_provider/zammad_ai.coffee
 app/assets/javascripts/app/lib/app_post/ai_provider/open_ai.coffee
@@ -9522,6 +9526,11 @@ test/data/vcr_cassettes/lib/service/geo_location/osm/service_geolocation_osm_rev
 test/data/vcr_cassettes/lib/service/geo_location/osm/service_geolocation_osm_geocode_with_a_german_address_without_a_separator_between_street_zipcode_and_city_example_at_spec_lib_service_geo_location_osm_spec_rb_25.yml
 test/data/vcr_cassettes/lib/service/geo_location/osm/service_geolocation_osm_geocode_with_a_swiss_address_example_at_spec_lib_service_geo_location_osm_spec_rb_32.yml
 test/data/vcr_cassettes/lib/service/geo_location/osm/service_geolocation_osm_geocode_with_a_swiss_address_without_a_separator_between_street_zipcode_and_city_example_at_spec_lib_service_geo_location_osm_spec_rb_37.yml
+test/data/vcr_cassettes/lib/ai/provider/mistral/ai_provider_mistral_when_specifying_a_model_without_a_model_does_exchange_data_with_mistral_endpoint.yml
+test/data/vcr_cassettes/lib/ai/provider/mistral/ai_provider_mistral_when_specifying_a_model_with_an_invalid_model_raises_an_error.yml
+test/data/vcr_cassettes/lib/ai/provider/mistral/ai_provider_mistral_when_specifying_a_model_with_a_valid_model_with_a_model_that_does_not_support_temperature_raises_an_error_for_invalid_model.yml
+test/data/vcr_cassettes/lib/ai/provider/mistral/ai_provider_mistral_when_api_is_faulty_raises_an_error.yml
+test/data/vcr_cassettes/lib/ai/provider/mistral/ai_provider_mistral_when_specifying_a_model_with_a_valid_model_does_exchange_data_with_mistral_endpoint.yml
 test/data/vcr_cassettes/lib/ai/provider/anthropic/ai_provider_anthropic_when_specifying_a_model_with_an_invalid_model_raises_an_error.yml
 test/data/vcr_cassettes/lib/ai/provider/anthropic/ai_provider_anthropic_when_specifying_a_model_without_a_model_does_exchange_data_with_anthropic_endpoint.yml
 test/data/vcr_cassettes/lib/ai/provider/anthropic/ai_provider_anthropic_when_embeddings_are_requested_raises_an_error.yml
@@ -10295,6 +10304,8 @@ lib/tasks/zammad/db/reset.rake
 lib/tasks/zammad/db/rebuild.rake
 lib/tasks/zammad/db/init.rake
 lib/tasks/zammad/db/unseeded.rake
+lib/tasks/zammad/db/max_connections.rake
+lib/tasks/zammad/db/max_connections.rb
 lib/tasks/zammad/setup/auto_wizard.rake
 lib/tasks/zammad/setup/db_config.rake
 lib/tasks/cache/clear.rake
@@ -10810,6 +10821,7 @@ lib/ai/provider/zammad_ai.rb
 lib/ai/provider/open_ai.rb
 lib/ai/provider/ollama.rb
 lib/ai/provider/azure.rb
+lib/ai/provider/mistral.rb
 lib/ai/provider/concerns/handles_response.rb
 lib/ai/provider/anthropic.rb
 lib/ai/service/text_tool.rb

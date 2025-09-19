@@ -1099,7 +1099,14 @@ wp-includes/SimplePie/src/Cache/NameFilter.php
 wp-includes/SimplePie/src/Cache/CallableNameFilter.php
 wp-includes/SimplePie/src/Registry.php
 wp-includes/SimplePie/src/Parser.php
+wp-includes/SimplePie/src/HTTP/RawTextResponse.php
+wp-includes/SimplePie/src/HTTP/FileClient.php
 wp-includes/SimplePie/src/HTTP/Parser.php
+wp-includes/SimplePie/src/HTTP/ClientException.php
+wp-includes/SimplePie/src/HTTP/Response.php
+wp-includes/SimplePie/src/HTTP/Psr7Response.php
+wp-includes/SimplePie/src/HTTP/Psr18Client.php
+wp-includes/SimplePie/src/HTTP/Client.php
 wp-includes/SimplePie/src/Item.php
 wp-includes/SimplePie/src/Locator.php
 wp-includes/SimplePie/src/SimplePie.php
@@ -1410,6 +1417,7 @@ wp-includes/class-wp-customize-nav-menus.php
 wp-includes/class-wp-block-type.php
 wp-includes/rewrite.php
 wp-includes/class-wp-customize-manager.php
+wp-includes/compat-utf8.php
 wp-includes/class-phpmailer.php
 wp-includes/registration.php
 wp-includes/speculative-loading.php

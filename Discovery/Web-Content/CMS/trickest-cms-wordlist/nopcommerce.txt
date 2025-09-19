@@ -235,6 +235,7 @@ src/Presentation/Nop.Web/Views/Shared/_Notifications.cshtml
 src/Presentation/Nop.Web/Views/Shared/_CreateOrUpdateAddress.cshtml
 src/Presentation/Nop.Web/Views/Shared/_AddWishlistModal.cshtml
 src/Presentation/Nop.Web/Views/Shared/_ProductBox.cshtml
+src/Presentation/Nop.Web/Views/Shared/_OrderCustomValues.cshtml
 src/Presentation/Nop.Web/Views/Shared/_EstimateShippingPopUp.cshtml
 src/Presentation/Nop.Web/Views/Shared/_Print.cshtml
 src/Presentation/Nop.Web/Views/Shared/_ProductReviewHelpfulness.cshtml
@@ -375,6 +376,7 @@ src/Presentation/Nop.Web/wwwroot/js/public.catalogproducts.js
 src/Presentation/Nop.Web/wwwroot/js/admintour/admin.tour.common.js
 src/Presentation/Nop.Web/wwwroot/lib_npm/jsrender/jsrender.min.js
 src/Presentation/Nop.Web/wwwroot/lib_npm/jsrender/jsrender.min.js.map
+src/Presentation/Nop.Web/wwwroot/lib_npm/chart.js/chart.umd.min.js.map
 src/Presentation/Nop.Web/wwwroot/lib_npm/chart.js/chart.umd.js.min.map
 src/Presentation/Nop.Web/wwwroot/lib_npm/chart.js/chart.umd.min.js
 src/Presentation/Nop.Web/wwwroot/lib_npm/filepond/filepond.min.js
@@ -397,10 +399,10 @@ src/Presentation/Nop.Web/wwwroot/lib_npm/globalize/globalize/date.js
 src/Presentation/Nop.Web/wwwroot/lib_npm/globalize/node-main.js
 src/Presentation/Nop.Web/wwwroot/lib_npm/globalize/globalize.js
 src/Presentation/Nop.Web/wwwroot/lib_npm/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js
+src/Presentation/Nop.Web/wwwroot/lib_npm/datatables.net-buttons-bs4/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js
+src/Presentation/Nop.Web/wwwroot/lib_npm/datatables.net-buttons-bs4/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.mjs
 src/Presentation/Nop.Web/wwwroot/lib_npm/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.mjs
 src/Presentation/Nop.Web/wwwroot/lib_npm/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js
-src/Presentation/Nop.Web/wwwroot/lib_npm/datatables.net-bs4/js/dataTables.bootstrap4.min.js
-src/Presentation/Nop.Web/wwwroot/lib_npm/datatables.net-bs4/js/dataTables.bootstrap4.min.mjs
 src/Presentation/Nop.Web/wwwroot/lib_npm/farbstastic/farbtastic.min.js
 src/Presentation/Nop.Web/wwwroot/lib_npm/ionicons/fonts/ionicons.eot
 src/Presentation/Nop.Web/wwwroot/lib_npm/ionicons/fonts/ionicons.svg
@@ -775,7 +777,7 @@ src/Presentation/Nop.Web/wwwroot/lib_npm/summernote/lang/summernote-mn-MN.min.js
 src/Presentation/Nop.Web/wwwroot/lib_npm/summernote/lang/summernote-es-ES.js
 src/Presentation/Nop.Web/wwwroot/lib_npm/summernote/lang/summernote-el-GR.js
 src/Presentation/Nop.Web/wwwroot/lib_npm/summernote/lang/summernote-pt-PT.js
-src/Presentation/Nop.Web/wwwroot/lib_npm/marked/marked.min.js
+src/Presentation/Nop.Web/wwwroot/lib_npm/marked/marked.umd.js
 src/Presentation/Nop.Web/wwwroot/lib_npm/cldrjs/cldr/event.js
 src/Presentation/Nop.Web/wwwroot/lib_npm/cldrjs/cldr/unresolved.js
 src/Presentation/Nop.Web/wwwroot/lib_npm/cldrjs/cldr/supplemental.js
@@ -783,12 +785,8 @@ src/Presentation/Nop.Web/wwwroot/lib_npm/cldrjs/cldr.js
 src/Presentation/Nop.Web/wwwroot/lib_npm/cldrjs/node_main.js
 src/Presentation/Nop.Web/wwwroot/lib_npm/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2
 src/Presentation/Nop.Web/wwwroot/lib_npm/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.woff2
-src/Presentation/Nop.Web/wwwroot/lib_npm/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.ttf
 src/Presentation/Nop.Web/wwwroot/lib_npm/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2
-src/Presentation/Nop.Web/wwwroot/lib_npm/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf
-src/Presentation/Nop.Web/wwwroot/lib_npm/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf
 src/Presentation/Nop.Web/wwwroot/lib_npm/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2
-src/Presentation/Nop.Web/wwwroot/lib_npm/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf
 src/Presentation/Nop.Web/wwwroot/lib_npm/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js
 src/Presentation/Nop.Web/wwwroot/lib_npm/jquery-validation/additional-methods.min.js
 src/Presentation/Nop.Web/wwwroot/lib_npm/jquery-validation/localization/methods_pt.min.js
@@ -2713,6 +2711,7 @@ src/Presentation/Nop.Web.Framework/Migrations/UpgradeTo470/AppSettingsMigration.
 src/Presentation/Nop.Web.Framework/Migrations/UpgradeTo490/MenuMigration.cs
 src/Presentation/Nop.Web.Framework/Migrations/UpgradeTo490/LocalizationMigration.cs
 src/Presentation/Nop.Web.Framework/Migrations/UpgradeTo490/SettingMigration.cs
+src/Presentation/Nop.Web.Framework/Migrations/UpgradeTo490/AppSettingsMigration.cs
 src/Presentation/Nop.Web.Framework/Migrations/UpgradeTo460/LocalizationMigration.cs
 src/Presentation/Nop.Web.Framework/Migrations/UpgradeTo460/UploadedImagesMigration.cs
 src/Presentation/Nop.Web.Framework/Migrations/UpgradeTo460/SettingMigration.cs
@@ -3890,8 +3889,18 @@ src/Tests/Nop.Tests/Nop.Web.Tests/Startup.cs
 src/Tests/Nop.Tests/Nop.Web.Tests/Events/DateTimeConsumer.cs
 src/Tests/Nop.Tests/Nop.Web.Tests/Events/EventsTests.cs
 src/Tests/Nop.Tests/Nop.Web.Tests/Admin/Validators/Vendors/VendorValidatorTests.cs
+src/Tests/Nop.Tests/Nop.Web.Tests/Admin/Validators/Catalog/ProductValidatorTests.cs
 src/Tests/Nop.Tests/Nop.Web.Tests/Admin/Validators/Catalog/ManufacturerValidatorTests.cs
+src/Tests/Nop.Tests/Nop.Web.Tests/Admin/Validators/Catalog/ArtificialIntelligenceFullDescriptionValidatorTests.cs
+src/Tests/Nop.Tests/Nop.Web.Tests/Admin/Validators/Catalog/ProductAttributeValueModelValidatorTests.cs
+src/Tests/Nop.Tests/Nop.Web.Tests/Admin/Validators/Catalog/SpecificationAttributeValidatorTests.cs
+src/Tests/Nop.Tests/Nop.Web.Tests/Admin/Validators/Catalog/ProductReviewValidatorTests.cs
+src/Tests/Nop.Tests/Nop.Web.Tests/Admin/Validators/Catalog/ProductAttributeValidatorTests.cs
+src/Tests/Nop.Tests/Nop.Web.Tests/Admin/Validators/Catalog/ReviewTypeValidatorTests.cs
+src/Tests/Nop.Tests/Nop.Web.Tests/Admin/Validators/Catalog/ProductTagValidatorTests.cs
 src/Tests/Nop.Tests/Nop.Web.Tests/Admin/Validators/Catalog/CategoryValidatorTests.cs
+src/Tests/Nop.Tests/Nop.Web.Tests/Admin/Validators/Catalog/PredefinedProductAttributeValueModelValidatorTests.cs
+src/Tests/Nop.Tests/Nop.Web.Tests/Admin/Validators/Blogs/BlogPostValidatorTests.cs
 src/Tests/Nop.Tests/Nop.Web.Tests/Admin/Readme.txt
 src/Tests/Nop.Tests/Nop.Web.Tests/Admin/Infrastructure/AutoMapperConfigurationTest.cs
 src/Tests/Nop.Tests/BaseEntityEqualityComparer.cs
@@ -3913,6 +3922,7 @@ src/Tests/Nop.Tests/Nop.Services.Tests/Common/AttributeParserTests.cs
 src/Tests/Nop.Tests/Nop.Services.Tests/Common/NopLinksDefaultsTests.cs
 src/Tests/Nop.Tests/Nop.Services.Tests/Common/GenericAttributeServiceTests.cs
 src/Tests/Nop.Tests/Nop.Services.Tests/Orders/OrderProcessingServiceTests.cs
+src/Tests/Nop.Tests/Nop.Services.Tests/Orders/OrderCustomValuesTests.cs
 src/Tests/Nop.Tests/Nop.Services.Tests/Orders/CheckoutAttributeParserAndFormatterTests.cs
 src/Tests/Nop.Tests/Nop.Services.Tests/Orders/OrderServiceTests.cs
 src/Tests/Nop.Tests/Nop.Services.Tests/Orders/OrderTotalCalculationServiceTests.cs
@@ -4554,6 +4564,7 @@ src/Libraries/Nop.Services/Stores/StoreService.cs
 src/Libraries/Nop.Services/Stores/IStoreService.cs
 src/Libraries/Nop.Services/Stores/StoreMappingService.cs
 src/Libraries/Nop.Services/Stores/IStoreMappingService.cs
+src/Libraries/Nop.Services/BaseNopResult.cs
 src/Libraries/Nop.Services/Html/HtmlFormatter.cs
 src/Libraries/Nop.Services/Html/IHtmlFormatter.cs
 src/Libraries/Nop.Services/Html/CodeFormatter/TsqlFormat.cs
@@ -4761,8 +4772,10 @@ src/Libraries/Nop.Services/Orders/Caching/CheckoutAttributeCacheEventConsumer.cs
 src/Libraries/Nop.Services/Orders/Caching/GiftCardCacheEventConsumer.cs
 src/Libraries/Nop.Services/Orders/IOrderProcessingService.cs
 src/Libraries/Nop.Services/Orders/AppStartedConsumer.cs
+src/Libraries/Nop.Services/Orders/CustomValue.cs
 src/Libraries/Nop.Services/Orders/OrderReportService.cs
 src/Libraries/Nop.Services/Orders/ReturnRequestService.cs
+src/Libraries/Nop.Services/Orders/CustomValueDisplayLocation.cs
 src/Libraries/Nop.Services/Orders/IOrderTotalCalculationService.cs
 src/Libraries/Nop.Services/Orders/ReturnRequestAvailability.cs
 src/Libraries/Nop.Services/Orders/NopOrderDefaults.cs
@@ -4778,6 +4791,7 @@ src/Libraries/Nop.Services/Orders/ReturnableOrderItem.cs
 src/Libraries/Nop.Services/Orders/GiftCardService.cs
 src/Libraries/Nop.Services/Orders/ShoppingCartService.cs
 src/Libraries/Nop.Services/Orders/OrderService.cs
+src/Libraries/Nop.Services/Orders/CustomValues.cs
 src/Libraries/Nop.Services/Orders/IRewardPointService.cs
 src/Libraries/Nop.Services/Orders/IOrderService.cs
 src/Libraries/Nop.Services/Extensions.cs
