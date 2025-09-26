@@ -553,19 +553,6 @@ upload/extension/opencart/admin/controller/analytics/index.html
 upload/extension/opencart/admin/controller/feed/index.html
 upload/extension/opencart/install.json
 upload/extension/index.html
-upload/extension/ocmod/system/config/admin.php
-upload/extension/ocmod/system/config/catalog.php
-upload/extension/ocmod/catalog/startup/extension.php
-upload/extension/ocmod/catalog/event/modification.php
-upload/extension/ocmod/admin/model/setting/modification.php
-upload/extension/ocmod/admin/view/marketplace/modification.twig
-upload/extension/ocmod/admin/view/marketplace/modification_list.twig
-upload/extension/ocmod/admin/language/marketplace/modification.php
-upload/extension/ocmod/admin/controller/startup/extension.php
-upload/extension/ocmod/admin/controller/event/modification.php
-upload/extension/ocmod/admin/controller/marketplace/installer.php
-upload/extension/ocmod/admin/controller/marketplace/modification.php
-upload/extension/ocmod/index.html
 upload/system/library/template.php
 upload/system/library/language.php
 upload/system/library/request.php
@@ -3829,6 +3816,7 @@ upload/catalog/model/design/banner.php
 upload/catalog/model/design/seo_url.php
 upload/catalog/model/design/theme.php
 upload/catalog/model/design/layout.php
+upload/catalog/model/design/seo_regex.php
 upload/catalog/model/catalog/information.php
 upload/catalog/model/catalog/review.php
 upload/catalog/model/catalog/product.php
@@ -4421,6 +4409,7 @@ upload/admin/model/design/banner.php
 upload/admin/model/design/seo_url.php
 upload/admin/model/design/theme.php
 upload/admin/model/design/layout.php
+upload/admin/model/design/seo_regex.php
 upload/admin/model/catalog/information.php
 upload/admin/model/catalog/review.php
 upload/admin/model/catalog/filter_group.php
@@ -4973,11 +4962,14 @@ upload/admin/view/template/design/banner_form.twig
 upload/admin/view/template/design/seo_url_list.twig
 upload/admin/view/template/design/banner.twig
 upload/admin/view/template/design/translation.twig
+upload/admin/view/template/design/seo_regex_list.twig
+upload/admin/view/template/design/seo_regex_form.twig
 upload/admin/view/template/design/theme.twig
 upload/admin/view/template/design/theme_list.twig
 upload/admin/view/template/design/layout_list.twig
 upload/admin/view/template/design/seo_url_form.twig
 upload/admin/view/template/design/seo_url.twig
+upload/admin/view/template/design/seo_regex.twig
 upload/admin/view/template/design/banner_list.twig
 upload/admin/view/template/design/theme_form.twig
 upload/admin/view/template/extension/module.twig
@@ -6373,6 +6365,7 @@ upload/admin/language/en-gb/design/banner.php
 upload/admin/language/en-gb/design/seo_url.php
 upload/admin/language/en-gb/design/theme.php
 upload/admin/language/en-gb/design/layout.php
+upload/admin/language/en-gb/design/seo_regex.php
 upload/admin/language/en-gb/extension/fraud.php
 upload/admin/language/en-gb/extension/module.php
 upload/admin/language/en-gb/extension/language.php
@@ -6556,6 +6549,7 @@ upload/admin/controller/design/banner.php
 upload/admin/controller/design/seo_url.php
 upload/admin/controller/design/theme.php
 upload/admin/controller/design/layout.php
+upload/admin/controller/design/seo_regex.php
 upload/admin/controller/extension/fraud.php
 upload/admin/controller/extension/module.php
 upload/admin/controller/extension/language.php

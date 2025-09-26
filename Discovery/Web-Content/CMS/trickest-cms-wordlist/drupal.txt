@@ -5846,6 +5846,7 @@ core/modules/filter/src/FilterFormatAccessControlHandler.php
 core/modules/filter/src/Attribute/Filter.php
 core/modules/filter/src/FilterFormatFormBase.php
 core/modules/filter/src/Render/FilteredMarkup.php
+core/modules/filter/src/Hook/FilterThemeHooks.php
 core/modules/filter/src/Hook/FilterHooks.php
 core/modules/filter/src/FilterFormatEditForm.php
 core/modules/filter/src/FilterPluginCollection.php
@@ -8007,6 +8008,9 @@ core/modules/system/tests/modules/unique_field_constraint_test/unique_field_cons
 core/modules/system/tests/modules/experimental_module_dependency_test/experimental_module_dependency_test.info.yml
 core/modules/system/tests/modules/update_test_no_preexisting/update_test_no_preexisting.info.yml
 core/modules/system/tests/modules/update_test_no_preexisting/update_test_no_preexisting.install
+core/modules/system/tests/modules/twig_fibers_test/src/TwigExtension/FibersTestExtension.php
+core/modules/system/tests/modules/twig_fibers_test/twig_fibers_test.services.yml
+core/modules/system/tests/modules/twig_fibers_test/twig_fibers_test.info.yml
 core/modules/system/tests/modules/driver_test/src/Driver/Database/DriverTestPgsql/Connection.php
 core/modules/system/tests/modules/driver_test/src/Driver/Database/DriverTestPgsql/Install/Tasks.php
 core/modules/system/tests/modules/driver_test/src/Driver/Database/DriverTestMysqlDeprecatedVersion/Connection.php
@@ -10897,6 +10901,7 @@ core/modules/views/tests/src/Functional/UserBatchActionTest.php
 core/modules/views/tests/src/Functional/Update/ViewsAddDefaultTableCssClassUpdateTest.php
 core/modules/views/tests/src/Functional/Update/EntityArgumentUpdateTest.php
 core/modules/views/tests/src/Functional/Update/BlockItemsPerPageUpdateTest.php
+core/modules/views/tests/src/Functional/Update/ConfigUpdateTest.php
 core/modules/views/tests/src/Functional/Update/UserRememberRolesFilterSettingTest.php
 core/modules/views/tests/src/Functional/ViewsConfigUpdaterTest.php
 core/modules/views/tests/src/Functional/ViewsFormMultipleTest.php
@@ -11299,6 +11304,7 @@ core/modules/navigation/src/NavigationRenderer.php
 core/modules/navigation/src/Attribute/TopBarItem.php
 core/modules/navigation/src/Hook/NavigationRequirements.php
 core/modules/navigation/src/Hook/NavigationHooks.php
+core/modules/navigation/src/Hook/NavigationThemeHooks.php
 core/modules/navigation/src/NavigationContentLinks.php
 core/modules/navigation/src/NavigationServiceProvider.php
 core/modules/navigation/src/ShortcutLazyBuilder.php
@@ -11417,6 +11423,7 @@ core/modules/link/src/Plugin/Validation/Constraint/LinkTypeConstraint.php
 core/modules/link/src/Plugin/Validation/Constraint/LinkTypeConstraintValidator.php
 core/modules/link/src/Plugin/Validation/Constraint/LinkAccessConstraint.php
 core/modules/link/src/AttributeXss.php
+core/modules/link/src/Hook/LinkThemeHooks.php
 core/modules/link/src/Hook/LinkHooks.php
 core/modules/link/src/EventSubscriber/DefaultContentSubscriber.php
 core/modules/link/src/LinkTitleVisibility.php
@@ -13969,6 +13976,7 @@ core/modules/migrate_drupal_ui/migrate_drupal_ui.info.yml
 core/modules/migrate_drupal_ui/migrate_drupal_ui.libraries.yml
 core/modules/layout_discovery/layout_discovery.libraries.yml
 core/modules/layout_discovery/src/Hook/LayoutDiscoveryHooks.php
+core/modules/layout_discovery/src/Hook/LayoutDiscoveryThemeHooks.php
 core/modules/layout_discovery/src/Install/Requirements/LayoutDiscoveryRequirements.php
 core/modules/layout_discovery/layouts/threecol_25_50_25/layout--threecol-25-50-25.html.twig
 core/modules/layout_discovery/layouts/twocol/layout--twocol.html.twig
@@ -14408,6 +14416,7 @@ core/tests/Drupal/KernelTests/Core/Theme/ThemeSettingsTest.php
 core/tests/Drupal/KernelTests/Core/Theme/FrontMatterTest.php
 core/tests/Drupal/KernelTests/Core/Theme/ImageTest.php
 core/tests/Drupal/KernelTests/Core/Theme/Stable9LibraryOverrideTest.php
+core/tests/Drupal/KernelTests/Core/Theme/TwigAttributesTest.php
 core/tests/Drupal/KernelTests/Core/Theme/ThemeInstallerTest.php
 core/tests/Drupal/KernelTests/Core/Site/SettingsRewriteTest.php
 core/tests/Drupal/KernelTests/Core/HttpKernel/StackKernelIntegrationTest.php
@@ -14553,6 +14562,7 @@ core/tests/Drupal/KernelTests/Core/KeyValueStore/StorageTestBase.php
 core/tests/Drupal/KernelTests/Core/KeyValueStore/DatabaseStorageExpirableTest.php
 core/tests/Drupal/KernelTests/Core/Locale/CountryManagerTest.php
 core/tests/Drupal/KernelTests/Core/Render/ElementInfoIntegrationTest.php
+core/tests/Drupal/KernelTests/Core/Render/LazyBuilderPlaceholderTest.php
 core/tests/Drupal/KernelTests/Core/Render/RenderTest.php
 core/tests/Drupal/KernelTests/Core/Render/Element/StatusReportTest.php
 core/tests/Drupal/KernelTests/Core/Render/Element/LegacyStatusReportTest.php

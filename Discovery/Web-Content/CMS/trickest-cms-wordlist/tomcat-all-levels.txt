@@ -21984,6 +21984,12 @@ apache/coyote/http2/TestHttp2InitialConnection.java
 coyote/http2/TestHttp2InitialConnection.java
 http2/TestHttp2InitialConnection.java
 TestHttp2InitialConnection.java
+test/org/apache/coyote/http2/TestStandardSessionIntegrationHttp2.java
+org/apache/coyote/http2/TestStandardSessionIntegrationHttp2.java
+apache/coyote/http2/TestStandardSessionIntegrationHttp2.java
+coyote/http2/TestStandardSessionIntegrationHttp2.java
+http2/TestStandardSessionIntegrationHttp2.java
+TestStandardSessionIntegrationHttp2.java
 test/org/apache/coyote/http2/TestHttp2ConnectionTimeouts.java
 org/apache/coyote/http2/TestHttp2ConnectionTimeouts.java
 apache/coyote/http2/TestHttp2ConnectionTimeouts.java
@@ -22138,6 +22144,11 @@ apache/coyote/http11/TestHttp11InputBufferCRLF.java
 coyote/http11/TestHttp11InputBufferCRLF.java
 http11/TestHttp11InputBufferCRLF.java
 TestHttp11InputBufferCRLF.java
+test/org/apache/juli/TestPerWebappJuliIntegration.java
+org/apache/juli/TestPerWebappJuliIntegration.java
+apache/juli/TestPerWebappJuliIntegration.java
+juli/TestPerWebappJuliIntegration.java
+TestPerWebappJuliIntegration.java
 test/org/apache/juli/TestFileHandlerNonRotatable.java
 org/apache/juli/TestFileHandlerNonRotatable.java
 apache/juli/TestFileHandlerNonRotatable.java
