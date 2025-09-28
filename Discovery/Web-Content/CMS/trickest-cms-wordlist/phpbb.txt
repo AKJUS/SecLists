@@ -1,8 +1,11 @@
 .devcontainer/resources/xdebug.ini
-.devcontainer/resources/phpbb-config.yml
-.devcontainer/resources/setup.sh
-.devcontainer/devcontainer.json
+.devcontainer/customisations-team/devcontainer.json
+.devcontainer/customisations-team/phpbb-config.yml
+.devcontainer/customisations-team/setup.sh
 .devcontainer/Dockerfile
+.devcontainer/development-team/devcontainer.json
+.devcontainer/development-team/phpbb-config.yml
+.devcontainer/development-team/setup.sh
 gulpfile.js
 phpunit.xml.dist
 .postcss-sorting.json
@@ -1510,6 +1513,7 @@ phpBB/phpbb/db/migration/data/v400/ban_table_p2.php
 phpBB/phpbb/db/migration/data/v400/storage_track_index.php
 phpBB/phpbb/db/migration/data/v400/remove_remote_upload.php
 phpBB/phpbb/db/migration/data/v400/remove_broken_captcha.php
+phpBB/phpbb/db/migration/data/v400/v400a1.php
 phpBB/phpbb/db/migration/data/v400/remove_smtp_auth_method.php
 phpBB/phpbb/db/migration/data/v400/dev.php
 phpBB/phpbb/db/migration/data/v400/add_bbcode_font_icon.php
