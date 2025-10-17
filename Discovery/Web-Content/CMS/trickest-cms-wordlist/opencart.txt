@@ -1565,6 +1565,7 @@ upload/admin/view/data/en-gb/language/task/admin/sass.json
 upload/admin/view/data/en-gb/language/task/admin/currency.json
 upload/admin/view/data/en-gb/language/task/admin/return_status.json
 upload/admin/view/data/en-gb/language/task/admin/return_action.json
+upload/admin/view/data/en-gb/language/task/admin/information.json
 upload/admin/view/data/en-gb/language/task/admin/option.json
 upload/admin/view/data/en-gb/language/task/admin/length_class.json
 upload/admin/view/data/en-gb/language/task/admin/store.json
@@ -1572,9 +1573,11 @@ upload/admin/view/data/en-gb/language/task/admin/return_reason.json
 upload/admin/view/data/en-gb/language/task/admin/translation.json
 upload/admin/view/data/en-gb/language/task/admin/weight_class.json
 upload/admin/view/data/en-gb/language/task/admin/subscription_status.json
+upload/admin/view/data/en-gb/language/task/admin/stock_status.json
 upload/admin/view/data/en-gb/language/task/admin/order_status.json
 upload/admin/view/data/en-gb/language/task/report/review.json
 upload/admin/view/data/en-gb/language/task/report/returns.json
+upload/admin/view/data/en-gb/language/task/report/order.json
 upload/admin/view/data/en-gb/language/task/report/stock.json
 upload/admin/view/data/en-gb/language/task/report/sale.json
 upload/admin/view/data/en-gb/language/task/report/order_sale.json
@@ -1589,6 +1592,7 @@ upload/admin/view/data/en-gb/language/task/catalog/language.json
 upload/admin/view/data/en-gb/language/task/catalog/country.json
 upload/admin/view/data/en-gb/language/task/catalog/article.json
 upload/admin/view/data/en-gb/language/task/catalog/category.json
+upload/admin/view/data/en-gb/language/task/catalog/review.json
 upload/admin/view/data/en-gb/language/task/catalog/product.json
 upload/admin/view/data/en-gb/language/task/catalog/currency.json
 upload/admin/view/data/en-gb/language/task/catalog/manufacturer.json
@@ -1617,12 +1621,14 @@ upload/admin/view/data/en-gb/language/design/translation.json
 upload/admin/view/data/en-gb/language/design/seo_url.json
 upload/admin/view/data/en-gb/language/design/banner.json
 upload/admin/view/data/en-gb/language/design/theme.json
+upload/admin/view/data/en-gb/language/design/seo_regex.json
 upload/admin/view/data/en-gb/language/cron/subscription.json
 upload/admin/view/data/en-gb/language/cron/cron.json
 upload/admin/view/data/en-gb/language/user/profile.json
 upload/admin/view/data/en-gb/language/user/api.json
 upload/admin/view/data/en-gb/language/user/user_group.json
 upload/admin/view/data/en-gb/language/user/user.json
+upload/admin/view/data/en-gb/language/startup/cli.json
 upload/admin/view/data/en-gb/language/report/report.json
 upload/admin/view/data/en-gb/language/report/statistics.json
 upload/admin/view/data/en-gb/language/report/online.json
@@ -1887,7 +1893,6 @@ upload/admin/language/en-gb/localisation/geo_zone.php
 upload/admin/language/en-gb/localisation/length_class.php
 upload/admin/language/en-gb/task/admin/order_status.php
 upload/admin/language/en-gb/task/admin/subscription.php
-upload/admin/language/en-gb/task/admin/sass.php
 upload/admin/language/en-gb/task/admin/store.php
 upload/admin/language/en-gb/task/admin/stock_status.php
 upload/admin/language/en-gb/task/admin/weight_class.php
@@ -1911,14 +1916,13 @@ upload/admin/language/en-gb/task/system/restore.php
 upload/admin/language/en-gb/task/system/mail.php
 upload/admin/language/en-gb/task/system/backup.php
 upload/admin/language/en-gb/task/catalog/banner.php
-upload/admin/language/en-gb/task/catalog/weight_class.php
 upload/admin/language/en-gb/task/catalog/customer_group.php
 upload/admin/language/en-gb/task/catalog/return_reason.php
 upload/admin/language/en-gb/task/catalog/translation.php
+upload/admin/language/en-gb/task/catalog/review.php
 upload/admin/language/en-gb/task/catalog/language.php
 upload/admin/language/en-gb/task/catalog/currency.php
 upload/admin/language/en-gb/task/catalog/country.php
-upload/admin/language/en-gb/task/catalog/length_class.php
 upload/admin/language/en-gb/common/authorize.php
 upload/admin/language/en-gb/common/login.php
 upload/admin/language/en-gb/common/forgotten.php
@@ -1940,6 +1944,7 @@ upload/admin/language/en-gb/user/api.php
 upload/admin/language/en-gb/user/user_group.php
 upload/admin/language/en-gb/user/user.php
 upload/admin/language/en-gb/user/profile.php
+upload/admin/language/en-gb/startup/cli.php
 upload/admin/language/en-gb/report/report.php
 upload/admin/language/en-gb/report/online.php
 upload/admin/language/en-gb/default.php
@@ -2036,7 +2041,6 @@ upload/admin/controller/localisation/geo_zone.php
 upload/admin/controller/localisation/length_class.php
 upload/admin/controller/task/admin/order_status.php
 upload/admin/controller/task/admin/subscription.php
-upload/admin/controller/task/admin/sass.php
 upload/admin/controller/task/admin/store.php
 upload/admin/controller/task/admin/stock_status.php
 upload/admin/controller/task/admin/weight_class.php
@@ -2062,7 +2066,6 @@ upload/admin/controller/task/system/notification.php
 upload/admin/controller/task/system/mail.php
 upload/admin/controller/task/system/backup.php
 upload/admin/controller/task/catalog/banner.php
-upload/admin/controller/task/catalog/sass.php
 upload/admin/controller/task/catalog/customer_group.php
 upload/admin/controller/task/catalog/return_reason.php
 upload/admin/controller/task/catalog/translation.php
@@ -2134,7 +2137,6 @@ upload/admin/controller/user/profile.php
 upload/admin/controller/startup/authorize.php
 upload/admin/controller/startup/event.php
 upload/admin/controller/startup/cli.php
-upload/admin/controller/startup/sass.php
 upload/admin/controller/startup/login.php
 upload/admin/controller/startup/setting.php
 upload/admin/controller/startup/startup.php
@@ -2143,7 +2145,6 @@ upload/admin/controller/startup/extension.php
 upload/admin/controller/startup/language.php
 upload/admin/controller/startup/application.php
 upload/admin/controller/startup/session.php
-upload/admin/controller/startup/task.php
 upload/admin/controller/startup/permission.php
 upload/admin/controller/report/report.php
 upload/admin/controller/report/online.php
@@ -5846,6 +5847,7 @@ upload/catalog/view/stylesheet/scss/_progress.scss
 upload/catalog/view/stylesheet/scss/_button-group.scss
 upload/catalog/view/stylesheet/scss/bootstrap-grid.scss
 upload/catalog/view/stylesheet/scss/_images.scss
+upload/catalog/view/javascript/framework/template/cart.liquid
 upload/catalog/view/javascript/framework/library/config.js
 upload/catalog/view/javascript/framework/library/language.js
 upload/catalog/view/javascript/framework/library/registry.js

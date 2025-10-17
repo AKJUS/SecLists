@@ -1287,6 +1287,7 @@ htdocs/core/modules/modBookmark.class.php
 htdocs/core/modules/modOauth.class.php
 htdocs/core/actions_addupdatedelete.inc.php
 htdocs/core/get_info.php
+htdocs/core/redirect_if_setup_not_complete.inc.php
 htdocs/core/triggers/interface_90_modSociete_ContactRoles.class.php
 htdocs/core/triggers/interface_20_all_Logevents.class.php
 htdocs/core/triggers/interface_95_modZapier_ZapierTriggers.class.php
@@ -1338,7 +1339,6 @@ htdocs/admin/payment.php
 htdocs/admin/supplier_order.php
 htdocs/admin/bank.php
 htdocs/admin/resource_extrafields.php
-htdocs/admin/propal_pdf.php
 htdocs/admin/defaultvalues.php
 htdocs/admin/workstation_extrafields.php
 htdocs/admin/supplier_payment.php
@@ -1351,7 +1351,6 @@ htdocs/admin/receptiondet_batch_extrafields.php
 htdocs/admin/ecm.php
 htdocs/admin/ticket.php
 htdocs/admin/agenda_reminder.php
-htdocs/admin/invoice_pdf.php
 htdocs/admin/taxes.php
 htdocs/admin/debugbar.php
 htdocs/admin/agenda_extsites.php
@@ -1388,7 +1387,6 @@ htdocs/admin/menus.php
 htdocs/admin/notification.php
 htdocs/admin/boxes.php
 htdocs/admin/index.php
-htdocs/admin/order_pdf.php
 htdocs/admin/sms.php
 htdocs/admin/emailcollector_card.php
 htdocs/admin/compta.php
@@ -1807,7 +1805,6 @@ htdocs/webservices/demo_wsclient_actioncomm.php-NORUN
 htdocs/webservices/server_contact.php
 htdocs/webservices/demo_wsclient_project.php-NORUN
 htdocs/webservices/server_other.php
-htdocs/salaries/paiement_salary.php
 htdocs/salaries/list.php
 htdocs/salaries/admin/salaries_extrafields.php
 htdocs/salaries/admin/salaries.php
@@ -1823,6 +1820,7 @@ htdocs/salaries/class/paymentsalary.class.php
 htdocs/salaries/class/salary.class.php
 htdocs/salaries/class/api_salaries.class.php
 htdocs/salaries/class/salariesstats.class.php
+htdocs/salaries/payment_salary.php
 htdocs/cron/list.php
 htdocs/cron/admin/cron.php
 htdocs/cron/card.php
@@ -2954,6 +2952,7 @@ htdocs/comm/mailing/class/advtargetemailing.class.php
 htdocs/comm/mailing/class/mailing.class.php
 htdocs/comm/mailing/class/api_mailings.class.php
 htdocs/comm/mailing/class/html.formadvtargetemailing.class.php
+htdocs/comm/mailing/class/mailing_targets.class.php
 htdocs/comm/mailing/targetemailing.php
 htdocs/comm/mailing/advtargetemailing.php
 htdocs/comm/index.php
@@ -5217,7 +5216,6 @@ htdocs/includes/leaflet/leaflet-geoman.min.js
 htdocs/includes/leaflet/leaflet-src.js
 htdocs/includes/mike42/escpos-php/composer.json
 htdocs/includes/mike42/escpos-php/doc/Makefile
-htdocs/includes/mike42/escpos-php/doc/FAQ.md
 htdocs/includes/mike42/escpos-php/doc/escpos.doxyfile
 htdocs/includes/mike42/escpos-php/composer.lock
 htdocs/includes/mike42/escpos-php/.coveralls.yml
@@ -13727,6 +13725,7 @@ test/hurl/api/00_explorer.hurl
 test/hurl/api/00_foobar.hurl
 test/hurl/api/status/10_status.hurl
 test/hurl/api/status/00_status.hurl
+test/hurl/api/mailings/10_mailings.hurl
 test/hurl/api/login/00_login_GET.hurl
 test/hurl/api/login/00_login_POST.hurl
 test/hurl/api/setup/10_setup_conf.hurl

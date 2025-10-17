@@ -5606,6 +5606,9 @@ actions_addupdatedelete.inc.php
 htdocs/core/get_info.php
 core/get_info.php
 get_info.php
+htdocs/core/redirect_if_setup_not_complete.inc.php
+core/redirect_if_setup_not_complete.inc.php
+redirect_if_setup_not_complete.inc.php
 htdocs/core/triggers/interface_90_modSociete_ContactRoles.class.php
 core/triggers/interface_90_modSociete_ContactRoles.class.php
 triggers/interface_90_modSociete_ContactRoles.class.php
@@ -5785,9 +5788,6 @@ bank.php
 htdocs/admin/resource_extrafields.php
 admin/resource_extrafields.php
 resource_extrafields.php
-htdocs/admin/propal_pdf.php
-admin/propal_pdf.php
-propal_pdf.php
 htdocs/admin/defaultvalues.php
 admin/defaultvalues.php
 defaultvalues.php
@@ -5824,9 +5824,6 @@ ticket.php
 htdocs/admin/agenda_reminder.php
 admin/agenda_reminder.php
 agenda_reminder.php
-htdocs/admin/invoice_pdf.php
-admin/invoice_pdf.php
-invoice_pdf.php
 htdocs/admin/taxes.php
 admin/taxes.php
 taxes.php
@@ -5937,9 +5934,6 @@ boxes.php
 htdocs/admin/index.php
 admin/index.php
 index.php
-htdocs/admin/order_pdf.php
-admin/order_pdf.php
-order_pdf.php
 htdocs/admin/sms.php
 admin/sms.php
 sms.php
@@ -7525,9 +7519,6 @@ demo_wsclient_project.php-NORUN
 htdocs/webservices/server_other.php
 webservices/server_other.php
 server_other.php
-htdocs/salaries/paiement_salary.php
-salaries/paiement_salary.php
-paiement_salary.php
 htdocs/salaries/list.php
 salaries/list.php
 list.php
@@ -7582,6 +7573,9 @@ htdocs/salaries/class/salariesstats.class.php
 salaries/class/salariesstats.class.php
 class/salariesstats.class.php
 salariesstats.class.php
+htdocs/salaries/payment_salary.php
+salaries/payment_salary.php
+payment_salary.php
 htdocs/cron/list.php
 cron/list.php
 list.php
@@ -13185,6 +13179,11 @@ comm/mailing/class/html.formadvtargetemailing.class.php
 mailing/class/html.formadvtargetemailing.class.php
 class/html.formadvtargetemailing.class.php
 html.formadvtargetemailing.class.php
+htdocs/comm/mailing/class/mailing_targets.class.php
+comm/mailing/class/mailing_targets.class.php
+mailing/class/mailing_targets.class.php
+class/mailing_targets.class.php
+mailing_targets.class.php
 htdocs/comm/mailing/targetemailing.php
 comm/mailing/targetemailing.php
 mailing/targetemailing.php
@@ -30875,12 +30874,6 @@ mike42/escpos-php/doc/Makefile
 escpos-php/doc/Makefile
 doc/Makefile
 Makefile
-htdocs/includes/mike42/escpos-php/doc/FAQ.md
-includes/mike42/escpos-php/doc/FAQ.md
-mike42/escpos-php/doc/FAQ.md
-escpos-php/doc/FAQ.md
-doc/FAQ.md
-FAQ.md
 htdocs/includes/mike42/escpos-php/doc/escpos.doxyfile
 includes/mike42/escpos-php/doc/escpos.doxyfile
 mike42/escpos-php/doc/escpos.doxyfile
@@ -66974,6 +66967,11 @@ hurl/api/status/00_status.hurl
 api/status/00_status.hurl
 status/00_status.hurl
 00_status.hurl
+test/hurl/api/mailings/10_mailings.hurl
+hurl/api/mailings/10_mailings.hurl
+api/mailings/10_mailings.hurl
+mailings/10_mailings.hurl
+10_mailings.hurl
 test/hurl/api/login/00_login_GET.hurl
 hurl/api/login/00_login_GET.hurl
 api/login/00_login_GET.hurl
