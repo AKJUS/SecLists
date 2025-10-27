@@ -136,6 +136,7 @@ dev/tests/integration/framework/Magento/TestFramework/Fixture/Data/UniqueIdProce
 dev/tests/integration/framework/Magento/TestFramework/Fixture/Data/ProcessorInterface.php
 dev/tests/integration/framework/Magento/TestFramework/Fixture/Data/CompositeProcessor.php
 dev/tests/integration/framework/Magento/TestFramework/Fixture/Config.php
+dev/tests/integration/framework/Magento/TestFramework/Fixture/ScopeFixture.php
 dev/tests/integration/framework/Magento/TestFramework/Fixture/DataFixtureFactory.php
 dev/tests/integration/framework/Magento/TestFramework/Fixture/RevertibleDataFixtureInterface.php
 dev/tests/integration/framework/Magento/TestFramework/Fixture/DataFixtureBeforeTransaction.php
@@ -3572,6 +3573,7 @@ dev/tests/integration/testsuite/Magento/Catalog/Block/Adminhtml/Product/Edit/Tab
 dev/tests/integration/testsuite/Magento/Catalog/Block/Adminhtml/Product/Edit/Tab/Alerts/StockTest.php
 dev/tests/integration/testsuite/Magento/Catalog/Block/Adminhtml/Product/Edit/Tab/Options/OptionTest.php
 dev/tests/integration/testsuite/Magento/Catalog/Block/Adminhtml/Product/Edit/Tab/Options/Type/SelectTest.php
+dev/tests/integration/testsuite/Magento/Catalog/Block/Product/ImageTemplateEscapingTest.php
 dev/tests/integration/testsuite/Magento/Catalog/Block/Product/ListTest.php
 dev/tests/integration/testsuite/Magento/Catalog/Block/Product/NewTest.php
 dev/tests/integration/testsuite/Magento/Catalog/Block/Product/View/DescriptionTest.php
@@ -8985,6 +8987,7 @@ lib/internal/Magento/Framework/Acl/LoaderInterface.php
 lib/internal/Magento/Framework/Acl/Data/CacheInterface.php
 lib/internal/Magento/Framework/Acl/Data/Cache.php
 lib/internal/Magento/Framework/Acl/AclResource.php
+lib/internal/Magento/Framework/Acl/Role/CurrentRoleContext.php
 lib/internal/Magento/Framework/Acl/Role/Registry.php
 lib/internal/Magento/Framework/Acl/AclResourceFactory.php
 lib/internal/Magento/Framework/Acl/Test/Unit/Loader/ResourceLoaderTest.php
@@ -15607,6 +15610,7 @@ app/code/Magento/LoginAsCustomerApi/Api/IsLoginAsCustomerEnabledForCustomerInter
 app/code/Magento/LoginAsCustomerApi/Api/Data/IsLoginAsCustomerEnabledForCustomerResultInterface.php
 app/code/Magento/LoginAsCustomerApi/Api/Data/AuthenticationDataInterface.php
 app/code/Magento/LoginAsCustomerApi/Api/IsLoginAsCustomerSessionActiveInterface.php
+app/code/Magento/LoginAsCustomerApi/Api/DeleteAuthenticationDataForListOfUserInterface.php
 app/code/Magento/LoginAsCustomerApi/Api/SetLoggedAsCustomerCustomerIdInterface.php
 app/code/Magento/LoginAsCustomerApi/Api/SetLoggedAsCustomerAdminIdInterface.php
 app/code/Magento/LoginAsCustomerApi/Api/GetLoggedAsCustomerCustomerIdInterface.php
@@ -19927,11 +19931,15 @@ app/code/Magento/LoginAsCustomer/etc/module.xml
 app/code/Magento/LoginAsCustomer/etc/db_schema_whitelist.json
 app/code/Magento/LoginAsCustomer/etc/config.xml
 app/code/Magento/LoginAsCustomer/etc/db_schema.xml
+app/code/Magento/LoginAsCustomer/etc/adminhtml/di.xml
+app/code/Magento/LoginAsCustomer/Plugin/Authorization/Model/ResourceModel/RulesPlugin.php
 app/code/Magento/LoginAsCustomer/Plugin/AdminLogoutPlugin.php
+app/code/Magento/LoginAsCustomer/Plugin/User/Model/User.php
 app/code/Magento/LoginAsCustomer/Model/GetLoggedAsCustomerCustomerId.php
 app/code/Magento/LoginAsCustomer/Model/GetAuthenticationDataBySecret.php
 app/code/Magento/LoginAsCustomer/Model/GenerateAuthenticationSecret.php
 app/code/Magento/LoginAsCustomer/Model/Config.php
+app/code/Magento/LoginAsCustomer/Model/Validator/UserRolePermission.php
 app/code/Magento/LoginAsCustomer/Model/SetLoggedAsCustomerAdminId.php
 app/code/Magento/LoginAsCustomer/Model/AuthenticateCustomerBySecret.php
 app/code/Magento/LoginAsCustomer/Model/GetLoggedAsCustomerAdminId.php
@@ -19939,11 +19947,14 @@ app/code/Magento/LoginAsCustomer/Model/IsLoginAsCustomerEnabledForCustomerResult
 app/code/Magento/LoginAsCustomer/Model/SetLoggedAsCustomerCustomerId.php
 app/code/Magento/LoginAsCustomer/Model/ResourceModel/IsLoginAsCustomerSessionActive.php
 app/code/Magento/LoginAsCustomer/Model/ResourceModel/SaveAuthenticationData.php
+app/code/Magento/LoginAsCustomer/Model/ResourceModel/DeleteAuthenticationDataForListOfUser.php
 app/code/Magento/LoginAsCustomer/Model/ResourceModel/DeleteAuthenticationDataForUser.php
 app/code/Magento/LoginAsCustomer/Model/AuthenticationData.php
 app/code/Magento/LoginAsCustomer/Model/Resolver/IsLoginAsCustomerEnabledResolver.php
 app/code/Magento/LoginAsCustomer/README.md
 app/code/Magento/LoginAsCustomer/LICENSE_AFL.txt
+app/code/Magento/LoginAsCustomer/Test/Unit/Plugin/Authorization/Model/ResourceModel/RulesPluginTest.php
+app/code/Magento/LoginAsCustomer/Test/Unit/Plugin/User/Model/UserTest.php
 app/code/Magento/LoginAsCustomer/Test/Mftf/Data/UserRoleData.xml
 app/code/Magento/LoginAsCustomer/Test/Mftf/Data/CustomerData.xml
 app/code/Magento/LoginAsCustomer/Test/Mftf/Data/AdminMenuData.xml

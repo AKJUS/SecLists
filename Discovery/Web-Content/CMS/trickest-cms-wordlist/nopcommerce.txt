@@ -620,6 +620,10 @@ src/Plugins/Nop.Plugin.Misc.RFQ/Data/Migrations/SchemaMigration.cs
 src/Plugins/Nop.Plugin.Misc.RFQ/plugin.json
 src/Plugins/Nop.Plugin.Misc.RFQ/Services/RfqService.cs
 src/Plugins/Nop.Plugin.Misc.RFQ/Services/RfqMessageService.cs
+src/Plugins/Nop.Plugin.Misc.RFQ/Services/Caching/RequestQuoteCacheEventConsumer.cs
+src/Plugins/Nop.Plugin.Misc.RFQ/Services/Caching/RequestQuoteItemCacheEventConsumer.cs
+src/Plugins/Nop.Plugin.Misc.RFQ/Services/Caching/QuoteCacheEventConsumer.cs
+src/Plugins/Nop.Plugin.Misc.RFQ/Services/Caching/QuoteItemCacheEventConsumer.cs
 src/Plugins/Nop.Plugin.Misc.RFQ/Services/EventConsumer.cs
 src/Plugins/Nop.Plugin.Misc.RFQ/Services/RfqMessageTokenEventConsumer.cs
 src/Plugins/Nop.Plugin.Misc.RFQ/Services/RfqPermissionConfigManager.cs
@@ -5141,6 +5145,10 @@ src/Tests/Nop.Tests/Nop.Services.Tests/Messages/MessageTemplateServiceTests.cs
 src/Tests/Nop.Tests/Nop.Services.Tests/Messages/QueuedEmailServiceTests.cs
 src/Tests/Nop.Tests/Nop.Services.Tests/Messages/EmailSenderTests.cs
 src/Tests/Nop.Tests/Nop.Services.Tests/Messages/EmailAccountServiceTests.cs
+src/Tests/Nop.Tests/Nop.Services.Tests/ArtificialIntelligence/ChatGptHttpClientHelperTests.cs
+src/Tests/Nop.Tests/Nop.Services.Tests/ArtificialIntelligence/GeminiHttpClientHelperTests.cs
+src/Tests/Nop.Tests/Nop.Services.Tests/ArtificialIntelligence/ArtificialIntelligenceHttpClientTests.cs
+src/Tests/Nop.Tests/Nop.Services.Tests/ArtificialIntelligence/DeepSeekHttpClientHelperTests.cs
 src/Tests/Nop.Tests/Nop.Services.Tests/Helpers/DateTimeHelperTests.cs
 src/Tests/Nop.Tests/Nop.Services.Tests/Logging/CustomerActivityServiceTests.cs
 src/Tests/Nop.Tests/Nop.Services.Tests/CrudData.cs

@@ -325,6 +325,7 @@ packages/core/utils/src/__tests__/validate.visitors.test.ts
 packages/core/utils/src/__tests__/validators.test.ts
 packages/core/utils/src/__tests__/sanitize.visitors.test.ts
 packages/core/utils/src/__tests__/yup-formatter.test.ts
+packages/core/utils/src/__tests__/security.test.ts
 packages/core/utils/src/__tests__/morph.test.ts
 packages/core/utils/src/__tests__/async.test.ts
 packages/core/utils/src/__tests__/uid-transformation.test.ts
@@ -364,6 +365,7 @@ packages/core/utils/src/validate/visitors/throw-private.ts
 packages/core/utils/src/validate/visitors/throw-restricted-relations.ts
 packages/core/utils/src/async.ts
 packages/core/utils/src/format-yup-error.ts
+packages/core/utils/src/security.ts
 packages/core/utils/src/file.ts
 packages/core/utils/src/yup.ts
 packages/core/utils/src/print-value.ts
@@ -691,13 +693,16 @@ packages/core/upload/admin/src/hooks/useSelectionState.ts
 packages/core/upload/admin/src/hooks/__mocks__/useEditFolder.ts
 packages/core/upload/admin/src/hooks/__mocks__/useBulkRemove.ts
 packages/core/upload/admin/src/hooks/__mocks__/useFolders.ts
+packages/core/upload/admin/src/hooks/__mocks__/useTracking.ts
 packages/core/upload/admin/src/hooks/__mocks__/useBulkMove.ts
 packages/core/upload/admin/src/hooks/__mocks__/useModalQueryParams.ts
+packages/core/upload/admin/src/hooks/__mocks__/useSettings.ts
 packages/core/upload/admin/src/hooks/__mocks__/useAssets.ts
 packages/core/upload/admin/src/hooks/__mocks__/useFolderStructure.ts
 packages/core/upload/admin/src/hooks/__mocks__/useMediaLibraryPermissions.ts
 packages/core/upload/admin/src/hooks/__mocks__/useFolder.ts
 packages/core/upload/admin/src/hooks/__mocks__/useConfig.ts
+packages/core/upload/admin/src/hooks/useTracking.ts
 packages/core/upload/admin/src/hooks/useBulkMove.ts
 packages/core/upload/admin/src/hooks/useModalQueryParams.ts
 packages/core/upload/admin/src/hooks/tests/useFolderStructure.test.tsx
@@ -3711,6 +3716,7 @@ packages/plugins/i18n/admin/tests/setup.ts
 packages/plugins/i18n/admin/tsconfig.build.json
 packages/plugins/i18n/admin/tsconfig.json
 packages/plugins/i18n/admin/src/hooks/useI18n.ts
+packages/plugins/i18n/admin/src/hooks/useAILocalizationJobsPolling.ts
 packages/plugins/i18n/admin/src/utils/fields.ts
 packages/plugins/i18n/admin/src/utils/tests/schemas.test.ts
 packages/plugins/i18n/admin/src/utils/tests/prefixPluginTranslations.test.ts
@@ -3726,6 +3732,7 @@ packages/plugins/i18n/admin/src/services/settings.ts
 packages/plugins/i18n/admin/src/services/api.ts
 packages/plugins/i18n/admin/src/services/locales.ts
 packages/plugins/i18n/admin/src/services/relations.ts
+packages/plugins/i18n/admin/src/services/aiLocalizationJobs.ts
 packages/plugins/i18n/admin/src/contentManagerHooks/tests/listView.test.ts
 packages/plugins/i18n/admin/src/contentManagerHooks/editView.tsx
 packages/plugins/i18n/admin/src/contentManagerHooks/listView.tsx
@@ -3782,6 +3789,7 @@ packages/plugins/i18n/server/src/services/permissions/engine.ts
 packages/plugins/i18n/server/src/services/permissions/sections-builder.ts
 packages/plugins/i18n/server/src/services/permissions/conditions.ts
 packages/plugins/i18n/server/src/services/permissions/actions.ts
+packages/plugins/i18n/server/src/services/ai-localization-jobs.ts
 packages/plugins/i18n/server/src/services/settings.ts
 packages/plugins/i18n/server/src/services/permissions.ts
 packages/plugins/i18n/server/src/services/sanitize/index.ts
@@ -3797,6 +3805,8 @@ packages/plugins/i18n/server/src/services/content-types.ts
 packages/plugins/i18n/server/src/services/index.ts
 packages/plugins/i18n/server/src/services/iso-locales.ts
 packages/plugins/i18n/server/src/services/metrics.ts
+packages/plugins/i18n/server/src/models/ai-localization-job.ts
+packages/plugins/i18n/server/src/models/index.ts
 packages/plugins/i18n/server/src/routes/validation/index.ts
 packages/plugins/i18n/server/src/routes/validation/locale.ts
 packages/plugins/i18n/server/src/routes/admin.ts
@@ -3809,6 +3819,7 @@ packages/plugins/i18n/server/src/validation/content-types.ts
 packages/plugins/i18n/server/src/index.ts
 packages/plugins/i18n/server/src/bootstrap.ts
 packages/plugins/i18n/server/src/domain/locale.ts
+packages/plugins/i18n/server/src/controllers/ai-localization-jobs.ts
 packages/plugins/i18n/server/src/controllers/settings.ts
 packages/plugins/i18n/server/src/controllers/__tests__/iso-locales.test.ts
 packages/plugins/i18n/server/src/controllers/__tests__/locales.test.ts
@@ -3829,6 +3840,7 @@ packages/plugins/i18n/package.json
 packages/plugins/i18n/rollup.config.mjs
 packages/plugins/i18n/.eslintrc
 packages/plugins/i18n/jest.config.js
+packages/plugins/i18n/shared/contracts/ai-localization-jobs.ts
 packages/plugins/i18n/shared/contracts/settings.ts
 packages/plugins/i18n/shared/contracts/locales.ts
 packages/plugins/i18n/shared/contracts/content-manager.ts
@@ -4807,6 +4819,7 @@ tests/e2e/tests/i18n/settings.spec.ts
 tests/e2e/tests/search/content-type.spec.ts
 tests/e2e/tests/content-releases/release-details-page.spec.ts
 tests/e2e/tests/content-releases/home-widgets.spec.ts
+tests/e2e/tests/content-releases/document-status.spec.ts
 tests/e2e/tests/content-releases/releases-page.spec.ts
 tests/e2e/constants.ts
 tests/e2e/README.md
@@ -4992,8 +5005,10 @@ examples/getstarted/src/admin/preview/dummy-preview.jsx
 examples/getstarted/src/admin/webpack.config.js
 examples/getstarted/src/admin/app.jsx
 examples/getstarted/src/middlewares/test-middleware.js
+examples/getstarted/src/components/default/links.json
 examples/getstarted/src/components/default/restaurantservice.json
 examples/getstarted/src/components/default/car.json
+examples/getstarted/src/components/default/social-links.json
 examples/getstarted/src/components/default/dish.json
 examples/getstarted/src/components/default/apple.json
 examples/getstarted/src/components/default/closingperiod.json
@@ -5002,6 +5017,7 @@ examples/getstarted/src/components/default/openingtimes.json
 examples/getstarted/src/components/blog/test-como.json
 examples/getstarted/src/components/basic/relation.json
 examples/getstarted/src/components/basic/simple.json
+examples/getstarted/src/components/basic/team-members.json
 examples/getstarted/src/index.js
 examples/getstarted/src/plugins/local-plugin/admin/src/utils/prefixPluginTranslations.js
 examples/getstarted/src/plugins/local-plugin/admin/src/utils/getTrad.js
@@ -5052,6 +5068,18 @@ examples/getstarted/src/api/like/services/like.js
 examples/getstarted/src/api/like/routes/like.js
 examples/getstarted/src/api/like/controllers/like.js
 examples/getstarted/src/api/like/content-types/like/schema.json
+examples/getstarted/src/api/config/services/config.js
+examples/getstarted/src/api/config/routes/config.js
+examples/getstarted/src/api/config/controllers/config.js
+examples/getstarted/src/api/config/content-types/config/schema.json
+examples/getstarted/src/api/footer/services/footer.js
+examples/getstarted/src/api/footer/routes/footer.js
+examples/getstarted/src/api/footer/controllers/footer.js
+examples/getstarted/src/api/footer/content-types/footer/schema.json
+examples/getstarted/src/api/about/services/about.js
+examples/getstarted/src/api/about/routes/about.js
+examples/getstarted/src/api/about/controllers/about.js
+examples/getstarted/src/api/about/content-types/about/schema.json
 examples/getstarted/src/api/address/services/address.js
 examples/getstarted/src/api/address/routes/address.js
 examples/getstarted/src/api/address/middlewares/address-middleware.js
@@ -5076,6 +5104,10 @@ examples/getstarted/src/api/country/services/country.js
 examples/getstarted/src/api/country/routes/country.js
 examples/getstarted/src/api/country/controllers/country.js
 examples/getstarted/src/api/country/content-types/country/schema.json
+examples/getstarted/src/api/article/services/article.js
+examples/getstarted/src/api/article/routes/article.js
+examples/getstarted/src/api/article/controllers/article.js
+examples/getstarted/src/api/article/content-types/article/schema.json
 examples/getstarted/src/api/condition/services/condition.js
 examples/getstarted/src/api/condition/routes/condition.js
 examples/getstarted/src/api/condition/controllers/condition.js

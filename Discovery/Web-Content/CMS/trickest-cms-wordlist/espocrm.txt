@@ -5319,6 +5319,7 @@ application/Espo/Core/Utils/Database/Schema/Utils.php
 application/Espo/Core/Utils/Database/ConfigDataProvider.php
 application/Espo/Core/Utils/Database/DetailsProvider.php
 application/Espo/Core/Utils/Database/Dbal/Platforms/PostgresqlPlatform.php
+application/Espo/Core/Utils/Database/Dbal/Platforms/Keywords/MariaDb102Keywords.php
 application/Espo/Core/Utils/Database/Dbal/Platforms/PostgreSQLSchemaManager.php
 application/Espo/Core/Utils/Database/Dbal/Factories/PostgresqlConnectionFactory.php
 application/Espo/Core/Utils/Database/Dbal/Factories/MysqlConnectionFactory.php
@@ -5357,6 +5358,7 @@ application/Espo/Core/Utils/Hasher.php
 application/Espo/Core/Utils/Metadata/Builder.php
 application/Espo/Core/Utils/Metadata/BuilderHelper.php
 application/Espo/Core/Utils/Metadata/AdditionalBuilder.php
+application/Espo/Core/Utils/Metadata/AdditionalBuilder/DisableAssignedUser.php
 application/Espo/Core/Utils/Metadata/AdditionalBuilder/Fields.php
 application/Espo/Core/Utils/Metadata/AdditionalBuilder/LogicDefsBc.php
 application/Espo/Core/Utils/Metadata/AdditionalBuilder/DeleteIdField.php
@@ -7683,7 +7685,6 @@ client/modules/crm/src/acl-portal/document.js
 client/modules/crm/src/acl-portal/contact.js
 client/modules/crm/src/acl-portal/account.js
 client/img/logo-lite.svg
-client/img/logo-hazy.svg
 client/img/favicon.svg
 client/img/logo.svg
 client/img/logo-light.svg
