@@ -1337,6 +1337,7 @@ htdocs/admin/expeditiondet_extrafields.php
 htdocs/admin/mrp_production_extrafields.php
 htdocs/admin/website_options.php
 htdocs/admin/modules.php
+htdocs/admin/subcontractors.php
 htdocs/admin/payment.php
 htdocs/admin/supplier_order.php
 htdocs/admin/bank.php
@@ -1383,7 +1384,6 @@ htdocs/admin/dav.php
 htdocs/admin/eventorganization.php
 htdocs/admin/knowledgemanagement.php
 htdocs/admin/contract.php
-htdocs/admin/accountant.php
 htdocs/admin/supplierorderdet_extrafields.php
 htdocs/admin/menus.php
 htdocs/admin/notification.php
@@ -1771,6 +1771,10 @@ htdocs/datapolicy/README.md
 htdocs/datapolicy/lib/datapolicy.lib.php
 htdocs/datapolicy/class/datapolicycron.class.php
 htdocs/reception/tpl/linkedobjectblock.tpl.php
+htdocs/reception/tpl/objectline_edit.tpl.php
+htdocs/reception/tpl/objectline_view.tpl.php
+htdocs/reception/tpl/objectline_create.tpl.php
+htdocs/reception/tpl/objectline_title.tpl.php
 htdocs/reception/list.php
 htdocs/reception/stats/month.php
 htdocs/reception/stats/index.php
@@ -6329,6 +6333,7 @@ htdocs/holiday/document.php
 htdocs/holiday/card.php
 htdocs/holiday/info.php
 htdocs/holiday/class/holiday.class.php
+htdocs/holiday/class/api_holidays.class.php
 htdocs/holiday/view_log.php
 htdocs/holiday/month_report.php
 htdocs/modulebuilder/template/js/mymodule.js.php
@@ -13731,11 +13736,13 @@ test/hurl/README.md
 test/hurl/public/onlinesign/00_onlinesign_newonlinesign.hurl
 test/hurl/public/payment/00_payment_newpayment.hurl
 test/hurl/api/emailtemplates/10_emailtemplates.hurl
+test/hurl/api/warehouses/10_warehouses.hurl
 test/hurl/api/00_explorer.hurl
 test/hurl/api/00_foobar.hurl
 test/hurl/api/status/10_status.hurl
 test/hurl/api/status/00_status.hurl
 test/hurl/api/mailings/10_mailings.hurl
+test/hurl/api/contracts/10_contracts.hurl
 test/hurl/api/login/00_login_GET.hurl
 test/hurl/api/login/00_login_POST.hurl
 test/hurl/api/setup/10_setup_conf.hurl

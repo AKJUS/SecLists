@@ -3705,6 +3705,12 @@ apache/tomcat/jni/SSLContext.java
 tomcat/jni/SSLContext.java
 jni/SSLContext.java
 SSLContext.java
+java/org/apache/tomcat/jni/AprStatus.java
+org/apache/tomcat/jni/AprStatus.java
+apache/tomcat/jni/AprStatus.java
+tomcat/jni/AprStatus.java
+jni/AprStatus.java
+AprStatus.java
 java/org/apache/tomcat/jni/Library.java
 org/apache/tomcat/jni/Library.java
 apache/tomcat/jni/Library.java
@@ -8417,6 +8423,14 @@ util/net/openssl/LocalStrings_de.properties
 net/openssl/LocalStrings_de.properties
 openssl/LocalStrings_de.properties
 LocalStrings_de.properties
+java/org/apache/tomcat/util/net/openssl/OpenSSLCertificateVerifier.java
+org/apache/tomcat/util/net/openssl/OpenSSLCertificateVerifier.java
+apache/tomcat/util/net/openssl/OpenSSLCertificateVerifier.java
+tomcat/util/net/openssl/OpenSSLCertificateVerifier.java
+util/net/openssl/OpenSSLCertificateVerifier.java
+net/openssl/OpenSSLCertificateVerifier.java
+openssl/OpenSSLCertificateVerifier.java
+OpenSSLCertificateVerifier.java
 java/org/apache/tomcat/util/net/openssl/OpenSSLStatus.java
 org/apache/tomcat/util/net/openssl/OpenSSLStatus.java
 apache/tomcat/util/net/openssl/OpenSSLStatus.java

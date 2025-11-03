@@ -627,6 +627,7 @@ src/Plugins/Nop.Plugin.Misc.RFQ/Services/Caching/QuoteItemCacheEventConsumer.cs
 src/Plugins/Nop.Plugin.Misc.RFQ/Services/EventConsumer.cs
 src/Plugins/Nop.Plugin.Misc.RFQ/Services/RfqMessageTokenEventConsumer.cs
 src/Plugins/Nop.Plugin.Misc.RFQ/Services/RfqPermissionConfigManager.cs
+src/Plugins/Nop.Plugin.Misc.RFQ/Migrations/AddLocales.cs
 src/Plugins/Nop.Plugin.Misc.RFQ/Views/Components/CustomerRfqMenu.cshtml
 src/Plugins/Nop.Plugin.Misc.RFQ/Views/Components/ClearRfq.cshtml
 src/Plugins/Nop.Plugin.Misc.RFQ/Views/Components/AddRfq.cshtml
@@ -1208,6 +1209,8 @@ src/Presentation/Nop.Web.Framework/Migrations/UpgradeTo490/MenuMigration.cs
 src/Presentation/Nop.Web.Framework/Migrations/UpgradeTo450/SettingMigration.cs
 src/Presentation/Nop.Web.Framework/Migrations/UpgradeTo450/AppSettingsMigration.cs
 src/Presentation/Nop.Web.Framework/Migrations/UpgradeTo450/LocalizationMigration.cs
+src/Presentation/Nop.Web.Framework/Migrations/UpgradeTo500/SettingMigration.cs
+src/Presentation/Nop.Web.Framework/Migrations/UpgradeTo500/LocalizationMigration.cs
 src/Presentation/Nop.Web.Framework/Events/ThirdPartyPluginsMenuItemCreatedEvent.cs
 src/Presentation/Nop.Web.Framework/Events/PageRenderingEvent.cs
 src/Presentation/Nop.Web.Framework/Events/ProductSearchEvent.cs
