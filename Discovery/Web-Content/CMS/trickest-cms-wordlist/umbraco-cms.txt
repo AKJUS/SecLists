@@ -194,6 +194,16 @@ tests/Umbraco.Tests.AcceptanceTest/tests/DefaultConfig/RenderingContent/Renderin
 tests/Umbraco.Tests.AcceptanceTest/tests/DefaultConfig/RenderingContent/RenderingContentWithMultipleMediaPicker.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/DefaultConfig/RenderingContent/RenderingContentWithImageCropper.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/DefaultConfig/RelationTypes/RelationTypes.spec.ts
+tests/Umbraco.Tests.AcceptanceTest/tests/EntityDataPicker/Content/EntityPickerCollection.spec.ts
+tests/Umbraco.Tests.AcceptanceTest/tests/EntityDataPicker/Content/EntityPickerTree.spec.ts
+tests/Umbraco.Tests.AcceptanceTest/tests/EntityDataPicker/AdditionalSetup/App_Plugins/picker-data-source/umbraco-package.json
+tests/Umbraco.Tests.AcceptanceTest/tests/EntityDataPicker/AdditionalSetup/App_Plugins/picker-data-source/collection-api.js
+tests/Umbraco.Tests.AcceptanceTest/tests/EntityDataPicker/AdditionalSetup/App_Plugins/picker-data-source/tree-api.js
+tests/Umbraco.Tests.AcceptanceTest/tests/EntityDataPicker/AdditionalSetup/appsettings.json
+tests/Umbraco.Tests.AcceptanceTest/tests/EntityDataPicker/DataType/EntityPickerCollection.spec.ts
+tests/Umbraco.Tests.AcceptanceTest/tests/EntityDataPicker/DataType/EntityPickerTree.spec.ts
+tests/Umbraco.Tests.AcceptanceTest/tests/EntityDataPicker/RenderedContent/EntityPickerCollection.spec.ts
+tests/Umbraco.Tests.AcceptanceTest/tests/EntityDataPicker/RenderedContent/EntityPickerTree.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/DeliveryApi/AdditionalSetup/Program.cs
 tests/Umbraco.Tests.AcceptanceTest/tests/DeliveryApi/AdditionalSetup/appsettings.json
 tests/Umbraco.Tests.AcceptanceTest/tests/DeliveryApi/MediaDeliveryApi.spec.ts
@@ -211,6 +221,9 @@ tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_P
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/custom-property-editor/dist/customtexteditor.js.map
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/custom-property-editor/dist/customtexteditor.js
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/custom-property-editor/umbraco-package.json
+tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/my-collection-view/umbraco-package.json
+tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/my-collection-view/my-collection-view.js.map
+tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/my-collection-view/my-collection-view.js
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/workspace-view/workspace-view.js
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/workspace-view/workspace-view.js.map
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/workspace-view/umbraco-package.json
@@ -234,6 +247,7 @@ tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/BlockCustomView.spec.
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/ReadOnlyGuardRules.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/CustomPropertyEditor.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/CustomDashboard.spec.ts
+tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/CollectionView.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/PropertyAction.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/WorkspaceView.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/RetrieveAction.spec.ts
@@ -877,6 +891,7 @@ tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/Persistence/Repositories/
 tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/Persistence/Repositories/DocumentVersionRepositoryTest.cs
 tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/Persistence/LocksTests.cs
 tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/Security/BackOfficeUserStoreTests.cs
+tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/Routing/RedirectTrackerTests.cs
 tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/PropertyEditors/BlockEditorElementVariationTestBase.cs
 tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/PropertyEditors/BlockListElementLevelVariationTests.Editing.cs
 tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/PropertyEditors/BlockListElementLevelVariationTests.Validation.cs
@@ -974,6 +989,7 @@ tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/Services/PublicAccessServ
 tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/Services/DictionaryItemServiceTests.cs
 tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/Services/ContentEditingServiceTestsBase.cs
 tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/Services/ContentBlueprintEditingServiceTests.Delete.cs
+tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/Services/PropertyTypeUsageServiceTests.cs
 tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/Services/ExternalLoginServiceTests.cs
 tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/Services/ContentServiceNotificationWithCacheTests.cs
 tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/Services/ContentEditingServiceTests.Move.cs
@@ -1702,6 +1718,8 @@ src/Umbraco.Web.UI.Login/src/mocks/handlers/login.handlers.ts
 src/Umbraco.Web.UI.Login/src/mocks/handlers/index.ts
 src/Umbraco.Web.UI.Login/src/mocks/handlers/backoffice.handlers.ts
 src/Umbraco.Web.UI.Login/src/mocks/data/login.data.ts
+src/Umbraco.Web.UI.Login/src/assets/eye-open.svg
+src/Umbraco.Web.UI.Login/src/assets/eye-closed.svg
 src/Umbraco.Web.UI.Login/src/controllers/index.ts
 src/Umbraco.Web.UI.Login/src/controllers/slim-backoffice-initializer.ts
 src/Umbraco.Web.UI.Login/src/manifests.ts
@@ -1741,10 +1759,8 @@ src/Umbraco.Web.UI.Login/src/api/core/types.gen.ts
 src/Umbraco.Web.UI.Login/src/api/core/serverSentEvents.gen.ts
 src/Umbraco.Web.UI.Login/.nvmrc
 src/Umbraco.Web.UI.Login/openapi-ts.config.ts
-src/Umbraco.Web.UI.Login/public/closedEye.svg
 src/Umbraco.Web.UI.Login/public/mockServiceWorker.js
 src/Umbraco.Web.UI.Login/public/favicon.svg
-src/Umbraco.Web.UI.Login/public/openEye.svg
 src/Umbraco.Cms.Targets/buildTransitive/Umbraco.Cms.Targets.targets
 src/Umbraco.Cms.Targets/buildTransitive/Umbraco.Cms.Targets.props
 src/Umbraco.Cms.Targets/Umbraco.Cms.Targets.csproj
@@ -2314,6 +2330,7 @@ src/Umbraco.Core/Configuration/IUserPasswordConfiguration.cs
 src/Umbraco.Core/Configuration/LoggingSettingsExtensions.cs
 src/Umbraco.Core/Configuration/IEntryAssemblyMetadata.cs
 src/Umbraco.Core/Configuration/Models/LuceneDirectoryFactory.cs
+src/Umbraco.Core/Configuration/Models/BackOfficeTokenCookieSettings.cs
 src/Umbraco.Core/Configuration/Models/ContentNotificationSettings.cs
 src/Umbraco.Core/Configuration/Models/NuCacheSerializerType.cs
 src/Umbraco.Core/Configuration/Models/ContentSettings.cs
@@ -4335,6 +4352,8 @@ src/Umbraco.Cms.Persistence.Sqlite/SqliteComposer.cs
 src/Umbraco.Cms.Persistence.Sqlite/Constants.cs
 src/Umbraco.Cms.Persistence.Sqlite/Mappers/SqliteGuidScalarMapper.cs
 src/Umbraco.Cms.Persistence.Sqlite/Mappers/SqlitePocoGuidMapper.cs
+src/Umbraco.Cms.Persistence.Sqlite/Mappers/SqlitePocoDecimalMapper.cs
+src/Umbraco.Cms.Persistence.Sqlite/Mappers/SqlitePocoDateAndTimeOnlyMapper.cs
 src/Umbraco.Cms.Persistence.Sqlite/Umbraco.Cms.Persistence.Sqlite.csproj
 src/Umbraco.Cms.Persistence.Sqlite/Services/SqliteDatabaseProviderMetadata.cs
 src/Umbraco.Cms.Persistence.Sqlite/Services/SqliteSpecificMapperFactory.cs
@@ -4469,6 +4488,7 @@ src/Umbraco.Cms.Api.Common/Security/ExposeBackOfficeAuthenticationOpenIddictServ
 src/Umbraco.Cms.Api.Common/Accessors/RequestContextOutputExpansionStrategyAccessor.cs
 src/Umbraco.Cms.Api.Common/Accessors/RequestContextServiceAccessorBase.cs
 src/Umbraco.Cms.Api.Common/Builders/ProblemDetailsBuilder.cs
+src/Umbraco.Cms.Api.Common/DependencyInjection/HideBackOfficeTokensHandler.cs
 src/Umbraco.Cms.Api.Common/DependencyInjection/MvcBuilderExtensions.cs
 src/Umbraco.Cms.Api.Common/DependencyInjection/UmbracoBuilderAuthExtensions.cs
 src/Umbraco.Cms.Api.Common/DependencyInjection/ProcessRequestContextHandler.cs
@@ -13376,6 +13396,15 @@ src/Umbraco.Infrastructure/Migrations/Upgrade/V_17_0_0/MigrateSystemDatesToUtc.c
 src/Umbraco.Infrastructure/Migrations/Upgrade/V_17_0_0/AddGuidsToAuditEntries.cs
 src/Umbraco.Infrastructure/Migrations/Upgrade/V_17_0_0/UpdateToOpenIddictV7.cs
 src/Umbraco.Infrastructure/Migrations/Upgrade/V_15_3_0/AddNameAndDescriptionToWebhooks.cs
+src/Umbraco.Infrastructure/Migrations/Upgrade/V_18_0_0/MigrateSingleBlockList.cs
+src/Umbraco.Infrastructure/Migrations/Upgrade/V_18_0_0/SingleBlockList/MigrateSingleBlockListComposer.cs
+src/Umbraco.Infrastructure/Migrations/Upgrade/V_18_0_0/SingleBlockList/SingleBlockListConfigurationCache.cs
+src/Umbraco.Infrastructure/Migrations/Upgrade/V_18_0_0/SingleBlockList/ITypedSingleBlockListProcessor.cs
+src/Umbraco.Infrastructure/Migrations/Upgrade/V_18_0_0/SingleBlockList/SingleBlockListBlockGridProcessor.cs
+src/Umbraco.Infrastructure/Migrations/Upgrade/V_18_0_0/SingleBlockList/SingleBlockListProcessor.cs
+src/Umbraco.Infrastructure/Migrations/Upgrade/V_18_0_0/SingleBlockList/SingleBlockBlockProcessorBase.cs
+src/Umbraco.Infrastructure/Migrations/Upgrade/V_18_0_0/SingleBlockList/SingleBlockListBlockListProcessor.cs
+src/Umbraco.Infrastructure/Migrations/Upgrade/V_18_0_0/SingleBlockList/SingleBlockListRteProcessor.cs
 src/Umbraco.Infrastructure/Migrations/Upgrade/V_13_3_0/AlignUpgradedDatabase.cs
 src/Umbraco.Infrastructure/Migrations/Upgrade/V_13_0_0/RenameEventNameColumn.cs
 src/Umbraco.Infrastructure/Migrations/Upgrade/V_13_0_0/ChangeWebhookUrlColumnsToNvarcharMax.cs

@@ -3,6 +3,7 @@ contributing.md
 pnpm-workspace.yaml
 tests/blackbox/vitest.config.ts
 tests/blackbox/tests/db/routes/files/storage.test.ts
+tests/blackbox/tests/db/routes/files/tus.test.ts
 tests/blackbox/tests/db/routes/fields/crud.seed.ts
 tests/blackbox/tests/db/routes/fields/crud.test.ts
 tests/blackbox/tests/db/routes/fields/change-fields.seed.ts
@@ -123,6 +124,15 @@ code_of_conduct.md
 .vscode/extensions.json
 .editorconfig
 pnpm-lock.yaml
+.changeset/strict-crabs-jump.md
+.changeset/wet-cities-start.md
+.changeset/ready-bags-take.md
+.changeset/sparkly-lines-turn.md
+.changeset/social-worms-watch.md
+.changeset/mighty-showers-tell.md
+.changeset/cool-flowers-scream.md
+.changeset/slick-eagles-dance.md
+.changeset/clear-mugs-tease.md
 .changeset/config.json
 .dockerignore
 security.md
@@ -440,6 +450,9 @@ app/src/interfaces/input-rich-text-html/index.ts
 app/src/interfaces/input-rich-text-html/useMedia.ts
 app/src/interfaces/input-rich-text-html/usePre.ts
 app/src/interfaces/input-rich-text-html/get-editor-styles.ts
+app/src/interfaces/collection-item-multiple-dropdown/preview.svg
+app/src/interfaces/collection-item-multiple-dropdown/index.ts
+app/src/interfaces/collection-item-multiple-dropdown/collection-item-multiple-dropdown.vue
 app/src/interfaces/input/preview.svg
 app/src/interfaces/input/index.ts
 app/src/interfaces/input/input.vue
@@ -2827,6 +2840,7 @@ api/src/redis/utils/redis-config-available.test.ts
 api/src/rate-limiter.ts
 api/src/extensions/lib/installation/index.ts
 api/src/extensions/lib/installation/manager.ts
+api/src/extensions/lib/installation/manager.test.ts
 api/src/extensions/lib/get-extensions-settings.ts
 api/src/extensions/lib/sync-extensions.ts
 api/src/extensions/lib/wrap-embeds.ts
@@ -3001,6 +3015,7 @@ api/src/services/graphql/schema/read.ts
 api/src/services/graphql/schema/parse-query.ts
 api/src/services/graphql/schema/get-types.ts
 api/src/services/authentication.ts
+api/src/services/extensions.test.ts
 api/src/services/utils.ts
 api/src/services/roles.test.ts
 api/src/services/shares.ts
