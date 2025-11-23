@@ -1169,6 +1169,7 @@ core/tests/Drupal/FunctionalTests/Routing/CaseInsensitivePathTest.php
 core/tests/Drupal/FunctionalTests/Routing/PathEncodedTest.php
 core/tests/Drupal/FunctionalTests/Routing/RouteCachingLanguageTest.php
 core/tests/Drupal/FunctionalTests/Routing/LazyRouteProviderInstallTest.php
+core/tests/Drupal/FunctionalTests/Routing/SystemFilesTest.php
 core/tests/Drupal/FunctionalTests/Routing/RouteCachingNonPathLanguageNegotiationTest.php
 core/tests/Drupal/FunctionalTests/Routing/RouteCachingQueryAlteredTest.php
 core/tests/Drupal/FunctionalTests/Routing/DefaultFormatTest.php
@@ -1232,6 +1233,7 @@ core/tests/Drupal/FunctionalTests/Datetime/TimestampAgoFormatterTest.php
 core/tests/Drupal/FunctionalTests/Datetime/TimestampTest.php
 core/tests/Drupal/FunctionalTests/DefaultContent/ContentImportTest.php
 core/tests/Drupal/FunctionalTests/DefaultContent/ContentExportTest.php
+core/tests/Drupal/FunctionalTests/DefaultContent/ContentImportAlreadyExistsTest.php
 core/tests/Drupal/FunctionalTests/BrowserTestBaseTest.php
 core/tests/Drupal/FunctionalTests/EventSubscriber/Fast404Test.php
 core/tests/Drupal/TestTools/ErrorHandler/BootstrapErrorHandler.php
@@ -1577,6 +1579,7 @@ core/tests/Drupal/KernelTests/Core/Bootstrap/ExtensionPathResolverTest.php
 core/tests/Drupal/KernelTests/Core/Block/MultipleBlockFormTest.php
 core/tests/Drupal/KernelTests/Core/Block/BlockBaseTest.php
 core/tests/Drupal/KernelTests/Core/Block/AutowireBlockTest.php
+core/tests/Drupal/KernelTests/Core/StreamWrapper/ExtensionStreamTest.php
 core/tests/Drupal/KernelTests/Core/StreamWrapper/StreamWrapperManagerTest.php
 core/tests/Drupal/KernelTests/Core/Routing/ContentNegotiationRoutingTest.php
 core/tests/Drupal/KernelTests/Core/Routing/RouteProviderTest.php
@@ -1600,10 +1603,12 @@ core/tests/Drupal/KernelTests/Core/Extension/ExtensionAvailableConstraintValidat
 core/tests/Drupal/KernelTests/Core/Extension/ModuleImplementsAlterTest.php
 core/tests/Drupal/KernelTests/Core/Extension/ModuleHandlerTest.php
 core/tests/Drupal/KernelTests/Core/Validation/ConstraintFactoryTest.php
+core/tests/Drupal/KernelTests/Core/Validation/NestedCompositeConstraintValidatorTest.php
 core/tests/Drupal/KernelTests/Core/Validation/UriHostValidatorTest.php
 core/tests/Drupal/KernelTests/Core/Validation/AtLeastOneOfConstraintValidatorTest.php
 core/tests/Drupal/KernelTests/Core/Validation/ValidSequenceKeysValidatorTest.php
 core/tests/Drupal/KernelTests/Core/Validation/UniqueValuesConstraintValidatorTest.php
+core/tests/Drupal/KernelTests/Core/Validation/SequentiallyConstraintValidatorTest.php
 core/tests/Drupal/KernelTests/Core/Validation/UuidValidatorTest.php
 core/tests/Drupal/KernelTests/Core/Validation/UniqueFieldConstraintTest.php
 core/tests/Drupal/KernelTests/Core/Asset/ResolvedLibraryDefinitionsFilesMatchTest.php
@@ -1723,6 +1728,7 @@ core/tests/Drupal/KernelTests/Core/Field/Entity/BaseFieldOverrideTest.php
 core/tests/Drupal/KernelTests/Core/Field/FieldItemTest.php
 core/tests/Drupal/KernelTests/Core/Field/FieldSettingsTest.php
 core/tests/Drupal/KernelTests/Core/Field/FieldType/PasswordItemTest.php
+core/tests/Drupal/KernelTests/Core/Field/FieldStorageGetPropertyDefinitionTest.php
 core/tests/Drupal/KernelTests/Core/Field/FieldAccessTest.php
 core/tests/Drupal/KernelTests/Core/Field/FieldStorageCreateCheckDeprecationTest.php
 core/tests/Drupal/KernelTests/Core/Common/XssUnitTest.php
@@ -5486,6 +5492,7 @@ core/lib/Drupal/Core/Entity/Exception/EntityTypeIdLengthException.php
 core/lib/Drupal/Core/Entity/Exception/NoCorrespondingEntityClassException.php
 core/lib/Drupal/Core/Entity/Exception/AmbiguousBundleClassException.php
 core/lib/Drupal/Core/Entity/Exception/AmbiguousEntityClassException.php
+core/lib/Drupal/Core/Entity/EntityLinkTargetInterface.php
 core/lib/Drupal/Core/Entity/EntityDeleteForm.php
 core/lib/Drupal/Core/Entity/EntityConfirmFormBase.php
 core/lib/Drupal/Core/Entity/ContentEntityBase.php
@@ -5638,6 +5645,7 @@ core/lib/Drupal/Core/Block/Annotation/Block.php
 core/lib/Drupal/Core/Block/TitleBlockPluginInterface.php
 core/lib/Drupal/Core/Block/BlockManagerInterface.php
 core/lib/Drupal/Core/StreamWrapper/StreamWrapperManagerInterface.php
+core/lib/Drupal/Core/StreamWrapper/ExtensionStreamBase.php
 core/lib/Drupal/Core/StreamWrapper/LocalReadOnlyStream.php
 core/lib/Drupal/Core/StreamWrapper/PublicStream.php
 core/lib/Drupal/Core/StreamWrapper/TemporaryStream.php
@@ -5645,6 +5653,8 @@ core/lib/Drupal/Core/StreamWrapper/ReadOnlyStream.php
 core/lib/Drupal/Core/StreamWrapper/PhpStreamWrapperInterface.php
 core/lib/Drupal/Core/StreamWrapper/AssetsStream.php
 core/lib/Drupal/Core/StreamWrapper/PrivateStream.php
+core/lib/Drupal/Core/StreamWrapper/ModuleStream.php
+core/lib/Drupal/Core/StreamWrapper/ThemeStream.php
 core/lib/Drupal/Core/StreamWrapper/LocalStream.php
 core/lib/Drupal/Core/StreamWrapper/StreamWrapperInterface.php
 core/lib/Drupal/Core/StreamWrapper/StreamWrapperManager.php
@@ -5756,6 +5766,7 @@ core/lib/Drupal/Core/Extension/DatabaseDriverUninstallValidator.php
 core/lib/Drupal/Core/Extension/ThemeInstaller.php
 core/lib/Drupal/Core/Extension/InfoParserInterface.php
 core/lib/Drupal/Core/Validation/ExecutionContext.php
+core/lib/Drupal/Core/Validation/CompositeConstraintInterface.php
 core/lib/Drupal/Core/Validation/BasicRecursiveValidatorFactory.php
 core/lib/Drupal/Core/Validation/ConstraintValidatorFactory.php
 core/lib/Drupal/Core/Validation/ExecutionContextFactory.php
@@ -5791,8 +5802,8 @@ core/lib/Drupal/Core/Validation/Plugin/Validation/Constraint/ComplexDataConstrai
 core/lib/Drupal/Core/Validation/Plugin/Validation/Constraint/AllowedValuesConstraintValidator.php
 core/lib/Drupal/Core/Validation/Plugin/Validation/Constraint/PrimitiveTypeConstraintValidator.php
 core/lib/Drupal/Core/Validation/Plugin/Validation/Constraint/RangeConstraintValidator.php
+core/lib/Drupal/Core/Validation/Plugin/Validation/Constraint/SequentiallyConstraint.php
 core/lib/Drupal/Core/Validation/Plugin/Validation/Constraint/IsNullConstraint.php
-core/lib/Drupal/Core/Validation/Plugin/Validation/Constraint/AtLeastOneOfConstraintValidator.php
 core/lib/Drupal/Core/Validation/Plugin/Validation/Constraint/ComplexDataConstraint.php
 core/lib/Drupal/Core/Validation/ConstraintViolationBuilder.php
 core/lib/Drupal/Core/Validation/Attribute/Constraint.php
@@ -5909,6 +5920,7 @@ core/lib/Drupal/Core/Template/Loader/ComponentLoader.php
 core/lib/Drupal/Core/Template/AttributeBoolean.php
 core/lib/Drupal/Core/Template/TwigExtension.php
 core/lib/Drupal/Core/Template/ComponentsTwigExtension.php
+core/lib/Drupal/Core/Template/Attribute/TwigAllowed.php
 core/lib/Drupal/Core/Template/AttributeArray.php
 core/lib/Drupal/Core/Template/AttributeValueBase.php
 core/lib/Drupal/Core/Template/TwigEnvironment.php
@@ -6455,6 +6467,7 @@ core/lib/Drupal/Core/Utility/TableSort.php
 core/lib/Drupal/Core/Utility/CallableResolver.php
 core/lib/Drupal/Core/Utility/ProjectInfo.php
 core/lib/Drupal/Core/Utility/link.api.php
+core/lib/Drupal/Core/Utility/FiberResumeType.php
 core/lib/Drupal/Core/Field/FormatterBase.php
 core/lib/Drupal/Core/Field/RequiredFieldStorageDefinitionInterface.php
 core/lib/Drupal/Core/Field/FieldStorageDefinitionListener.php
@@ -9914,6 +9927,7 @@ core/modules/shortcut/src/ShortcutSetListBuilder.php
 core/modules/shortcut/src/ShortcutInterface.php
 core/modules/shortcut/src/Entity/Shortcut.php
 core/modules/shortcut/src/Entity/ShortcutSet.php
+core/modules/shortcut/src/Entity/ShortcutLinkTarget.php
 core/modules/shortcut/src/ShortcutLazyBuilders.php
 core/modules/shortcut/src/Plugin/Block/ShortcutsBlock.php
 core/modules/shortcut/src/Plugin/migrate/source/d7/Shortcut.php
@@ -12154,6 +12168,7 @@ core/modules/system/tests/modules/entity_test/src/Entity/EntityTestNoUuid.php
 core/modules/system/tests/modules/entity_test/src/Entity/EntityTestExternal.php
 core/modules/system/tests/modules/entity_test/src/Entity/EntitySerializedField.php
 core/modules/system/tests/modules/entity_test/src/Entity/EntityTestCompositeConstraint.php
+core/modules/system/tests/modules/entity_test/src/Entity/EntityTestNoIdBundle.php
 core/modules/system/tests/modules/entity_test/src/Entity/EntityTest.php
 core/modules/system/tests/modules/entity_test/src/Entity/EntityTestBaseFieldDisplay.php
 core/modules/system/tests/modules/entity_test/src/Entity/EntityTestMulDefaultValue.php
@@ -13358,6 +13373,8 @@ core/modules/filter/tests/src/Kernel/FilterAPITest.php
 core/modules/filter/tests/src/Kernel/FilterFormatValidationTest.php
 core/modules/filter/tests/src/Kernel/TextFormatElementFormTest.php
 core/modules/filter/tests/src/Kernel/FilterCaptionTwigDebugTest.php
+core/modules/filter/tests/src/Kernel/FilterSecurityKernelTest.php
+core/modules/filter/tests/src/Kernel/EntityLinksTest.php
 core/modules/filter/tests/src/Kernel/FilterKernelTest.php
 core/modules/filter/tests/src/Kernel/FilterNoFormatTest.php
 core/modules/filter/tests/src/Functional/FilterAdminTest.php
@@ -13432,6 +13449,7 @@ core/modules/filter/src/Plugin/Filter/FilterHtmlEscape.php
 core/modules/filter/src/Plugin/Filter/FilterAutoP.php
 core/modules/filter/src/Plugin/Filter/FilterNull.php
 core/modules/filter/src/Plugin/Filter/FilterHtml.php
+core/modules/filter/src/Plugin/Filter/EntityLinks.php
 core/modules/filter/src/Plugin/Filter/FilterHtmlImageSecure.php
 core/modules/filter/src/Plugin/Filter/FilterHtmlCorrector.php
 core/modules/filter/src/Plugin/Filter/FilterCaption.php
@@ -14338,6 +14356,7 @@ core/modules/file/src/Controller/FileWidgetAjaxController.php
 core/modules/file/src/FileStorageSchema.php
 core/modules/file/src/FileStorage.php
 core/modules/file/src/Entity/File.php
+core/modules/file/src/Entity/FileLinkTarget.php
 core/modules/file/src/Entity/FileRouteProvider.php
 core/modules/file/src/Validation/RecursiveValidatorFactory.php
 core/modules/file/src/Validation/FileValidatorSettingsTrait.php
@@ -15824,6 +15843,7 @@ core/modules/text/tests/src/Kernel/TextWithSummaryItemTest.php
 core/modules/text/tests/src/Kernel/TextFormatterTest.php
 core/modules/text/tests/src/FunctionalJavascript/TextareaWithSummaryTest.php
 core/modules/text/tests/src/Functional/TextFieldTest.php
+core/modules/text/tests/src/Functional/TextSummaryNodeFieldsTokenTest.php
 core/modules/text/tests/src/Functional/GenericTest.php
 core/modules/text/tests/src/Functional/TextareaWithSummaryTest.php
 core/modules/text/tests/modules/text_test/text_test.info.yml
@@ -15898,6 +15918,7 @@ core/modules/menu_link_content/menu_link_content.post_update.php
 core/modules/menu_link_content/src/MenuLinkContentStorageSchema.php
 core/modules/menu_link_content/src/Controller/MenuController.php
 core/modules/menu_link_content/src/Entity/MenuLinkContent.php
+core/modules/menu_link_content/src/Entity/MenuLinkContentLinkTarget.php
 core/modules/menu_link_content/src/Plugin/Deriver/MenuLinkContentDeriver.php
 core/modules/menu_link_content/src/Plugin/Validation/Constraint/MenuTreeHierarchyConstraintValidator.php
 core/modules/menu_link_content/src/Plugin/Validation/Constraint/MenuTreeHierarchyConstraint.php
@@ -16611,8 +16632,10 @@ core/modules/media/src/Controller/MediaFilterController.php
 core/modules/media/src/MediaTypeInterface.php
 core/modules/media/src/IFrameMarkup.php
 core/modules/media/src/IFrameUrlHelper.php
+core/modules/media/src/Entity/MediaLinkTargetStandaloneWhenAvailable.php
 core/modules/media/src/Entity/Media.php
 core/modules/media/src/Entity/MediaType.php
+core/modules/media/src/Entity/MediaLinkTarget.php
 core/modules/media/src/MediaSourceFieldConstraintsInterface.php
 core/modules/media/src/Routing/MediaRouteProvider.php
 core/modules/media/src/MediaSourceManager.php
@@ -16633,6 +16656,7 @@ core/modules/media/src/Plugin/media/Source/AudioFile.php
 core/modules/media/src/Plugin/media/Source/OEmbedInterface.php
 core/modules/media/src/Plugin/media/Source/OEmbed.php
 core/modules/media/src/Plugin/EntityReferenceSelection/MediaSelection.php
+core/modules/media/src/Plugin/EntityReferenceSelection/MediaWithLinkTargetSelection.php
 core/modules/media/src/Plugin/Field/FieldWidget/OEmbedWidget.php
 core/modules/media/src/Plugin/Field/FieldFormatter/OEmbedFormatter.php
 core/modules/media/src/Plugin/Field/FieldFormatter/MediaThumbnailFormatter.php
@@ -17571,9 +17595,11 @@ core/modules/ckeditor5/tests/src/Unit/CKEditor5Test.php
 core/modules/ckeditor5/tests/src/Unit/StylePluginTest.php
 core/modules/ckeditor5/tests/src/Unit/VersionTest.php
 core/modules/ckeditor5/tests/src/Traits/SynchronizeCsrfTokenSeedTrait.php
+core/modules/ckeditor5/tests/src/Traits/CKEditor5ValidationTestTrait.php
 core/modules/ckeditor5/tests/src/Traits/PrivateMethodUnitTestTrait.php
 core/modules/ckeditor5/tests/src/Traits/CKEditor5TestTrait.php
 core/modules/ckeditor5/tests/src/Kernel/WildcardHtmlSupportTest.php
+core/modules/ckeditor5/tests/src/Kernel/EntityLinkSuggestionTest.php
 core/modules/ckeditor5/tests/src/Kernel/ConfigAction/AddItemToToolbarConfigActionTest.php
 core/modules/ckeditor5/tests/src/Kernel/LanguageTest.php
 core/modules/ckeditor5/tests/src/Kernel/CKEditor5StylesheetsTest.php
@@ -17596,6 +17622,7 @@ core/modules/ckeditor5/tests/src/FunctionalJavascript/MediaPreviewTest.php
 core/modules/ckeditor5/tests/src/FunctionalJavascript/AdminUiTest.php
 core/modules/ckeditor5/tests/src/FunctionalJavascript/CKEditor5FragmentLinkTest.php
 core/modules/ckeditor5/tests/src/FunctionalJavascript/ImageTestProviderTrait.php
+core/modules/ckeditor5/tests/src/FunctionalJavascript/EntityLinkSuggestionsTest.php
 core/modules/ckeditor5/tests/src/FunctionalJavascript/ImageTestBase.php
 core/modules/ckeditor5/tests/src/FunctionalJavascript/ImageTestTestBase.php
 core/modules/ckeditor5/tests/src/FunctionalJavascript/StyleTest.php
@@ -17646,6 +17673,7 @@ core/modules/ckeditor5/tests/modules/ckeditor5_test/ckeditor5_test.info.yml
 core/modules/ckeditor5/tests/modules/ckeditor5_test/ckeditor5_test.ckeditor5.yml
 core/modules/ckeditor5/tests/modules/ckeditor5_test/src/Controller/CKEditor5OffCanvasTestController.php
 core/modules/ckeditor5/tests/modules/ckeditor5_test/src/Controller/CKEditor5DialogTestController.php
+core/modules/ckeditor5/tests/modules/ckeditor5_test/src/Hook/Ckeditor5TestHooks.php
 core/modules/ckeditor5/tests/modules/ckeditor5_definition_supporting_element/ckeditor5_definition_supporting_element.ckeditor5.yml
 core/modules/ckeditor5/tests/modules/ckeditor5_definition_supporting_element/ckeditor5_definition_supporting_element.info.yml
 core/modules/ckeditor5/tests/modules/ckeditor5_automatic_link_decorator_test_2/ckeditor5_automatic_link_decorator_test_2.ckeditor5.yml
@@ -17671,6 +17699,7 @@ core/modules/ckeditor5/js/build/drupalEmphasis.js
 core/modules/ckeditor5/js/build/drupalMedia.js
 core/modules/ckeditor5/js/build/ckeditor5.types.jsdoc
 core/modules/ckeditor5/js/build/drupalImage.js
+core/modules/ckeditor5/js/build/drupalEntityLinkSuggestions.js
 core/modules/ckeditor5/js/build/drupalHtmlEngine.js
 core/modules/ckeditor5/js/ckeditor5.js
 core/modules/ckeditor5/js/ckeditor5.image.admin.js
@@ -17727,6 +17756,11 @@ core/modules/ckeditor5/js/ckeditor5_plugins/drupalImage/src/imageupload/drupalim
 core/modules/ckeditor5/js/ckeditor5_plugins/drupalImage/src/imageupload/drupalimageupload.js
 core/modules/ckeditor5/js/ckeditor5_plugins/drupalImage/src/imageupload/drupalfilerepository.js
 core/modules/ckeditor5/js/ckeditor5_plugins/drupalImage/src/imageupload/drupalimageuploadediting.js
+core/modules/ckeditor5/js/ckeditor5_plugins/drupalEntityLinkSuggestions/src/autocomplete.js
+core/modules/ckeditor5/js/ckeditor5_plugins/drupalEntityLinkSuggestions/src/utils.js
+core/modules/ckeditor5/js/ckeditor5_plugins/drupalEntityLinkSuggestions/src/linksuggestioncommand.js
+core/modules/ckeditor5/js/ckeditor5_plugins/drupalEntityLinkSuggestions/src/index.js
+core/modules/ckeditor5/js/ckeditor5_plugins/drupalEntityLinkSuggestions/src/linksuggestionediting.js
 core/modules/ckeditor5/icons/medialibrary.svg
 core/modules/ckeditor5/icons/subscript.svg
 core/modules/ckeditor5/icons/warning.svg
@@ -17765,6 +17799,7 @@ core/modules/ckeditor5/templates/ckeditor5-settings-toolbar.html.twig
 core/modules/ckeditor5/ckeditor5.post_update.php
 core/modules/ckeditor5/ckeditor5.ckeditor5.yml
 core/modules/ckeditor5/src/Controller/CKEditor5MediaController.php
+core/modules/ckeditor5/src/Controller/EntityLinkSuggestionsController.php
 core/modules/ckeditor5/src/Controller/CKEditor5ImageController.php
 core/modules/ckeditor5/src/HTMLRestrictions.php
 core/modules/ckeditor5/src/SmartDefaultSettings.php
@@ -17779,6 +17814,7 @@ core/modules/ckeditor5/src/Plugin/CKEditor5Plugin/Image.php
 core/modules/ckeditor5/src/Plugin/CKEditor5Plugin/Heading.php
 core/modules/ckeditor5/src/Plugin/CKEditor5Plugin/Media.php
 core/modules/ckeditor5/src/Plugin/CKEditor5Plugin/Alignment.php
+core/modules/ckeditor5/src/Plugin/CKEditor5Plugin/EntityLinkSuggestions.php
 core/modules/ckeditor5/src/Plugin/CKEditor5Plugin/ImageResize.php
 core/modules/ckeditor5/src/Plugin/CKEditor5Plugin/Language.php
 core/modules/ckeditor5/src/Plugin/CKEditor5Plugin/Style.php
@@ -17890,8 +17926,10 @@ core/modules/history/src/Controller/HistoryController.php
 core/modules/history/src/Plugin/views/field/HistoryUserTimestamp.php
 core/modules/history/src/Plugin/views/field/NodeNewComments.php
 core/modules/history/src/Plugin/views/filter/HistoryUserTimestamp.php
+core/modules/history/src/HistoryManager.php
 core/modules/history/src/HistoryCommentLinkBuilder.php
 core/modules/history/src/HistoryRenderCallback.php
+core/modules/history/src/Hook/HistoryTokensHooks.php
 core/modules/history/src/Hook/HistoryViewsHooks.php
 core/modules/history/src/Hook/HistoryHooks.php
 core/modules/history/history.module

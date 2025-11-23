@@ -161,6 +161,7 @@ database/migrations/2022_06_23_164407_add_user_id_to_users.php
 database/migrations/2015_02_17_231020_add_localonly_to_settings.php
 database/migrations/2013_11_19_062250_edit_location_id_asset_logs_table.php
 database/migrations/2014_10_28_222654_add_avatar_field_to_users_table.php
+database/migrations/2025_11_14_150613_add_color_to_companies.php
 database/migrations/2016_07_22_054850_one_more_mac_addr_fix.php
 database/migrations/2025_05_12_183803_add_req_serial_bool_to_models_table.php
 database/migrations/2016_09_04_180400_create_actionlog_table.php
@@ -600,6 +601,7 @@ tests/Feature/Suppliers/Ui/UpdateSupplierTest.php
 tests/Feature/Suppliers/Ui/ShowSupplierTest.php
 tests/Feature/Suppliers/Api/DeleteSuppliersTest.php
 tests/Feature/Notifications/Webhooks/SlackNotificationsUponCheckinTest.php
+tests/Feature/Notifications/Webhooks/NotificationTests.php
 tests/Feature/Notifications/Webhooks/SlackNotificationsUponCheckoutTest.php
 tests/Feature/Notifications/Email/EmailNotificationsToUserUponCheckinTest.php
 tests/Feature/Notifications/Email/EmailNotificationsToAdminAlertEmailUponCheckoutTest.php
@@ -917,11 +919,12 @@ app/Listeners/.gitkeep
 app/Listeners/CheckoutableListener.php
 app/Listeners/LogSuccessfulLogin.php
 app/Notifications/ExpectedCheckinNotification.php
-app/Notifications/AcceptanceAssetAcceptedNotification.php
 app/Notifications/CheckoutAccessoryNotification.php
 app/Notifications/CheckoutConsumableNotification.php
+app/Notifications/AcceptanceItemAcceptedNotification.php
 app/Notifications/CheckinAccessoryNotification.php
 app/Notifications/CheckoutComponentNotification.php
+app/Notifications/AcceptanceItemAcceptedToUserNotification.php
 app/Notifications/ExpiringLicenseNotification.php
 app/Notifications/RequestAssetNotification.php
 app/Notifications/CheckinAssetNotification.php
@@ -930,13 +933,12 @@ app/Notifications/ExpiringAssetsNotification.php
 app/Notifications/CurrentInventory.php
 app/Notifications/FirstAdminNotification.php
 app/Notifications/ExpectedCheckinAdminNotification.php
-app/Notifications/AcceptanceAssetDeclinedNotification.php
 app/Notifications/MailTest.php
+app/Notifications/AcceptanceItemDeclinedNotification.php
 app/Notifications/CheckoutAssetNotification.php
 app/Notifications/RequestAssetCancelation.php
 app/Notifications/CheckinComponentNotification.php
 app/Notifications/CheckinLicenseSeatNotification.php
-app/Notifications/AcceptanceAssetAcceptedToUserNotification.php
 app/Notifications/AuditNotification.php
 app/Notifications/InventoryAlert.php
 app/Notifications/WelcomeNotification.php
@@ -1065,12 +1067,14 @@ app/Models/Labels/Sheets/Avery/L6009_A.php
 app/Models/Labels/Sheets/Avery/_5520.php
 app/Models/Labels/Sheets/Avery/L7162_B.php
 app/Models/Labels/Sheets/Avery/L6009.php
+app/Models/Labels/Sheets/Avery/L4736.php
 app/Models/Labels/Sheets/Avery/_5267_A.php
 app/Models/Labels/Sheets/Avery/_5267.php
 app/Models/Labels/Sheets/Avery/L7163.php
 app/Models/Labels/Sheets/Avery/L7162.php
 app/Models/Labels/Sheets/Avery/_5520_A.php
 app/Models/Labels/Sheets/Avery/L7163_A.php
+app/Models/Labels/Sheets/Avery/L4736_A.php
 app/Models/Labels/Sheets/Avery/_3490.php
 app/Models/Labels/Sheets/Avery/_3490_A.php
 app/Models/Labels/Label.php
@@ -1171,6 +1175,7 @@ app/Presenters/LocationPresenter.php
 app/Presenters/SupplierPresenter.php
 app/Presenters/AssetModelPresenter.php
 app/Presenters/LicensePresenter.php
+app/Presenters/DepartmentPresenter.php
 app/Presenters/ConsumablePresenter.php
 app/Presenters/AssetAuditPresenter.php
 app/Presenters/MaintenancesPresenter.php
@@ -1380,6 +1385,7 @@ app/Observers/AssetObserver.php
 app/Observers/SettingObserver.php
 app/Observers/LicenseObserver.php
 app/Observers/ConsumableObserver.php
+app/Mail/BaseMailable.php
 app/Mail/ExpiringLicenseMail.php
 app/Mail/CheckoutAcceptanceResponseMail.php
 app/Mail/CheckinAccessoryMail.php
@@ -1631,6 +1637,7 @@ resources/views/blade/form-legend.blade.php
 resources/views/blade/input/time-display-format.blade.php
 resources/views/blade/input/date-display-format.blade.php
 resources/views/blade/input/email-format-select.blade.php
+resources/views/blade/input/colorpicker.blade.php
 resources/views/blade/input/datepicker.blade.php
 resources/views/blade/input/skin.blade.php
 resources/views/blade/input/location-select.blade.php

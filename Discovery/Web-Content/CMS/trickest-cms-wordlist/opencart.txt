@@ -659,6 +659,7 @@ upload/catalog/view/javascript/address.js
 upload/catalog/view/javascript/gdpr.js
 upload/catalog/view/javascript/cart.js
 upload/catalog/view/javascript/review.js
+upload/catalog/view/javascript/framework.js
 upload/catalog/view/javascript/search.js
 upload/catalog/view/javascript/subscription.js
 upload/catalog/view/javascript/checkout.js
@@ -4055,12 +4056,15 @@ upload/assets/jquery/jquery-3.7.1.min.js
 upload/assets/framework/library/webcomponent.js
 upload/assets/framework/library/tax.js
 upload/assets/framework/library/template.js
+upload/assets/framework/library/local.js
 upload/assets/framework/library/currency.js
 upload/assets/framework/library/registry.js
+upload/assets/framework/library/session.js
 upload/assets/framework/library/loader.js
 upload/assets/framework/library/cart.js
 upload/assets/framework/library/language.js
 upload/assets/framework/library/storage.js
+upload/assets/framework/library/config.js
 upload/assets/framework/liquid.browser.umd.js
 upload/assets/framework/component/datetime.js
 upload/assets/framework/component/autocomplete.js
@@ -4952,6 +4956,8 @@ upload/admin/language/en-gb/task/catalog/banner.php
 upload/admin/language/en-gb/task/catalog/country.php
 upload/admin/language/en-gb/task/catalog/currency.php
 upload/admin/language/en-gb/task/catalog/customer_group.php
+upload/admin/language/en-gb/task/catalog/setting.php
+upload/admin/language/en-gb/task/catalog/tax_class.php
 upload/admin/language/en-gb/task/catalog/return_reason.php
 upload/admin/language/en-gb/task/catalog/language.php
 upload/admin/language/en-gb/task/catalog/review.php
@@ -4969,6 +4975,7 @@ upload/admin/language/en-gb/task/admin/currency.php
 upload/admin/language/en-gb/task/admin/customer_group.php
 upload/admin/language/en-gb/task/admin/weight_class.php
 upload/admin/language/en-gb/task/admin/length_class.php
+upload/admin/language/en-gb/task/admin/tax_class.php
 upload/admin/language/en-gb/task/admin/store.php
 upload/admin/language/en-gb/task/admin/subscription.php
 upload/admin/language/en-gb/task/admin/information.php
@@ -5104,6 +5111,7 @@ upload/admin/controller/task/catalog/country.php
 upload/admin/controller/task/catalog/currency.php
 upload/admin/controller/task/catalog/customer_group.php
 upload/admin/controller/task/catalog/setting.php
+upload/admin/controller/task/catalog/tax_class.php
 upload/admin/controller/task/catalog/return_reason.php
 upload/admin/controller/task/catalog/language.php
 upload/admin/controller/task/catalog/review.php
@@ -5122,6 +5130,7 @@ upload/admin/controller/task/admin/currency.php
 upload/admin/controller/task/admin/customer_group.php
 upload/admin/controller/task/admin/weight_class.php
 upload/admin/controller/task/admin/length_class.php
+upload/admin/controller/task/admin/tax_class.php
 upload/admin/controller/task/admin/store.php
 upload/admin/controller/task/admin/subscription.php
 upload/admin/controller/task/admin/information.php
@@ -5261,6 +5270,7 @@ upload/admin/controller/event/attribute.php
 upload/admin/controller/event/attribute_group.php
 upload/admin/controller/event/manufacturer.php
 upload/admin/controller/event/option.php
+upload/admin/controller/event/tax_class.php
 upload/admin/controller/event/filter_group.php
 upload/admin/controller/event/store.php
 upload/admin/controller/event/product.php
@@ -5900,6 +5910,7 @@ upload/admin/view/javascript/gdpr.js
 upload/admin/view/javascript/article.js
 upload/admin/view/javascript/review.js
 upload/admin/view/javascript/information.js
+upload/admin/view/javascript/framework.js
 upload/admin/view/javascript/notification.js
 upload/admin/view/javascript/backup.js
 upload/admin/view/javascript/geo_zone.s.js
@@ -6765,6 +6776,7 @@ phpstan.neon
 apigen.neon
 .dockerignore
 UPGRADE.md
+CONTRIBUTING.md
 buildspec.yml
 LICENSE.md
 tools/user_agent.php

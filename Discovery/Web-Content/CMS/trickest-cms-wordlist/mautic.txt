@@ -1473,6 +1473,7 @@ app/bundles/CampaignBundle/Tests/EventListener/CampaignEventSubscriberTest.php
 app/bundles/CampaignBundle/Tests/EventListener/CampaignActionJumpToEventSubscriberTest.php
 app/bundles/CampaignBundle/Tests/EventListener/CampaignSubscriberTest.php
 app/bundles/CampaignBundle/Tests/EventListener/CampaignEventSubscriberFunctionalTest.php
+app/bundles/CampaignBundle/Tests/EventListener/GeneratedColumnSubscriberTest.php
 app/bundles/CampaignBundle/Tests/EventListener/ReportSubscriberFunctionalTest.php
 app/bundles/CampaignBundle/Tests/EventListener/NotifyOfUnpublishSubscriberTest.php
 app/bundles/CampaignBundle/Tests/EventListener/CampaignEventIconExtensionTest.php
@@ -1580,6 +1581,7 @@ app/bundles/CampaignBundle/EventListener/CampaignInjectCustomContentSubscriber.p
 app/bundles/CampaignBundle/EventListener/CampaignEventDeleteSubscriber.php
 app/bundles/CampaignBundle/EventListener/CampaignSubscriber.php
 app/bundles/CampaignBundle/EventListener/LeadSubscriber.php
+app/bundles/CampaignBundle/EventListener/GeneratedColumnSubscriber.php
 app/bundles/CampaignBundle/Service/CampaignAuditService.php
 app/bundles/CampaignBundle/Resources/views/Campaign/list.html.twig
 app/bundles/CampaignBundle/Resources/views/Campaign/graph.html.twig
@@ -2248,6 +2250,7 @@ app/bundles/FormBundle/Tests/Validator/UploadFieldValidatorTest.php
 app/bundles/FormBundle/Tests/EventListener/FormValidationSubscriberTest.php
 app/bundles/FormBundle/Tests/EventListener/FormFieldSubscriberTest.php
 app/bundles/FormBundle/Tests/EventListener/CampaignSubscriberFunctionalTest.php
+app/bundles/FormBundle/Tests/EventListener/CustomFieldSubscriberFunctionalTest.php
 app/bundles/FormBundle/Tests/EventListener/ReportSubscriberFunctionalTest.php
 app/bundles/FormBundle/Tests/EventListener/FormConditionalSubscriberTest.php
 app/bundles/FormBundle/Tests/EventListener/DetermineWinnerSubscriberTest.php
@@ -2316,6 +2319,7 @@ app/bundles/FormBundle/EventListener/ReportSubscriber.php
 app/bundles/FormBundle/EventListener/ActionImportExportSubscriber.php
 app/bundles/FormBundle/EventListener/DetermineWinnerSubscriber.php
 app/bundles/FormBundle/EventListener/SearchSubscriber.php
+app/bundles/FormBundle/EventListener/CustomFieldSubscriber.php
 app/bundles/FormBundle/EventListener/FormImportExportSubscriber.php
 app/bundles/FormBundle/EventListener/DashboardSubscriber.php
 app/bundles/FormBundle/EventListener/FormConditionalSubscriber.php
@@ -3878,6 +3882,7 @@ app/bundles/PageBundle/Helper/TokenHelper.php
 app/bundles/PageBundle/Helper/PageConfig.php
 app/bundles/PageBundle/Helper/PointActionHelper.php
 app/bundles/PageBundle/Tests/Helper/PointActionHelperTest.php
+app/bundles/PageBundle/Tests/Helper/PointActionHelperFunctionalTest.php
 app/bundles/PageBundle/Tests/Controller/PageProjectSearchFunctionalTest.php
 app/bundles/PageBundle/Tests/Controller/PageDraftFunctionalTest.php
 app/bundles/PageBundle/Tests/Controller/PublicControllerTest.php
@@ -4588,6 +4593,7 @@ app/bundles/CoreBundle/Tests/Functional/UserEntityTrait.php
 app/bundles/CoreBundle/Tests/Functional/DependencyInjection/Compiler/SystemThemeTemplatePathPassTest.php
 app/bundles/CoreBundle/Tests/Functional/ParametersTest.php
 app/bundles/CoreBundle/Tests/Functional/EventListener/ConfigSubscriberTest.php
+app/bundles/CoreBundle/Tests/Functional/EventListener/MigrationCommandSubscriberTest.php
 app/bundles/CoreBundle/Tests/Functional/EventListener/EditorFontsSubscriberTest.php
 app/bundles/CoreBundle/Tests/Functional/Service/LocalFileAdapterServiceTest.php
 app/bundles/CoreBundle/Tests/Functional/Command/AnonymizeIpCommandTest.php

@@ -92,7 +92,6 @@ $rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService
 /*/commits
 /*/compare
 /*/contributors
-/*/edit$
 /*/forks
 /*/graphs
 /*/issues/new
@@ -104,7 +103,6 @@ $rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService
 /*/stargazers
 /*/tags
 /*/watchers
-/*source=
 /.git
 /MANUALS/*.pdf$
 /Search/
@@ -147,7 +145,6 @@ $rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService
 /download/thankyou.aspx
 /download/thankyou.aspx?
 /download?
-/edit$
 /events/atom
 /events/rss
 /events/xml
@@ -190,9 +187,7 @@ $rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService
 /rsvps/*xml
 /search
 /search/
-/search/*?q=
 /search?
-/search?q=
 /security/search-results.aspx?
 /signin-oidc
 /store/*/layout/
@@ -377,8 +372,6 @@ $rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService
 ?x
 ?ysclid
 ?zipstatecity=
-@me
-@me$
 AccountDisavow?
 ActivityUID=
 COG
@@ -480,11 +473,6 @@ _
 _/aihub_pod
 _/ain/_/js
 _/alkali-learn
-_/api/posts/*/related
-_/api/posts/*/responses
-_/api/posts/*/responsesStream
-_/api/users/*/meta
-_/api/users/*/profile/stream
 _/apps-viewer
 _/atari
 _/boq
@@ -500,6 +488,7 @@ _/fonts
 _/gstore
 _/mss/boq-bard-web
 _/mss/boq-chrome-cloudcast
+_/mss/boq-cloud-client
 _/mss/boq-cloud-web3-portal
 _/mss/boq-deepmind-alphafold-server
 _/mss/boq-discover-labs
@@ -866,7 +855,6 @@ books?*zoom=1
 books?*zoom=5
 boutique/sitemaps
 bricks/image
-business
 business/adshare
 business/adshare/faqs
 business/blahblah
@@ -1107,7 +1095,6 @@ drawings
 drive
 droidguard
 e
-earn
 earth/00-favicon.ico
 earth/social
 ebook
@@ -1387,7 +1374,6 @@ get_midroll_info
 get_video
 get_video_info
 gethelp/
-gift
 gifts
 gist
 giveaway/host/setup
@@ -1548,9 +1534,9 @@ hp/video
 hpc/*/supported-applications.aspx?
 hpm
 hpmob
-http://eventbrite.com/robots.txt
-http://npr.org/robots.txt
-http://support.cloudflare.com/robots.txt
+http://discord.gg/robots.txt
+http://maps.app.goo.gl/robots.txt
+http://s3.amazonaws.com/robots.txt
 hub?category=
 hz/contact-us/ajax/initiate-trusted-contact
 hz/help/contact/*/message/$
@@ -1855,12 +1841,10 @@ mats/default.aspx?diagid=100001&eulaaccept=yes*
 mbox
 me
 medgen/?term=
-media
 media-manager
 meetup_api/?
 meetup_api?
 memberInvite
-membership
 merchant/reviews?
 merchantapps
 message
@@ -1971,7 +1955,6 @@ osview
 otherContacts
 ott
 p.php
-p/*/share
 package_files_uploaded_via_chrome
 page-
 page-2158488_44000074$
@@ -1987,7 +1970,6 @@ panel
 pantheon
 pantheon-platform
 participate/conferences.xml
-partner-program
 partners
 password_expired
 patent-search/frontend
@@ -2145,7 +2127,6 @@ q=
 qnasearch?
 qr
 quality_form?
-r
 rackspace/elevating-performance
 radio/imda
 ramfiles
@@ -2253,8 +2234,6 @@ search/users
 search/video?
 search?
 search?*tbm=map
-search?q$
-search?q=
 search?q=%23
 search\?
 search_history
@@ -2860,7 +2839,6 @@ travel/scripts
 travel/search
 travel/secure
 travel/story
-trending
 trends
 trends/api
 trends/beta
@@ -2919,7 +2897,6 @@ v2
 v3
 v3/openapi
 valkyrie-playground
-verified-authors
 verify_age
 vi-vn.www.cloudflare.com
 vi-vn/feedback
@@ -3273,7 +3250,7 @@ wiki/Wikipedia_Diskussion:Checkuser
 wiki/Wikipedia_Diskussion:Spam-Blacklist-Log
 wiki/Wikipedia_talk%3AAbuse_reports
 wiki/Wikipedia_talk%3AAbuse_response
-wiki/Wikipedia_talk%3AAdministrator_electionshttp://goo.gl/robots.txt
+wiki/Wikipedia_talk%3AAdministrator_electionshttp://medium.com/robots.txt
 wiki/Wikipedia_talk%3AAdministrator_recall
 wiki/Wikipedia_talk%3AAdministrator_review
 wiki/Wikipedia_talk%3AAdministrators%27_noticeboard
