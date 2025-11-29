@@ -649,8 +649,10 @@ upload/catalog/view/fonts/fontawesome/LICENSE.txt
 upload/catalog/view/fonts/opencart.eot
 upload/catalog/view/javascript/topic.js
 upload/catalog/view/javascript/register.js
+upload/catalog/view/javascript/currency.js
 upload/catalog/view/javascript/comment.js
 upload/catalog/view/javascript/wishlist.js
+upload/catalog/view/javascript/cookie.js
 upload/catalog/view/javascript/product.js
 upload/catalog/view/javascript/common.js
 upload/catalog/view/javascript/order.js
@@ -659,12 +661,12 @@ upload/catalog/view/javascript/address.js
 upload/catalog/view/javascript/gdpr.js
 upload/catalog/view/javascript/cart.js
 upload/catalog/view/javascript/review.js
-upload/catalog/view/javascript/framework.js
 upload/catalog/view/javascript/search.js
 upload/catalog/view/javascript/subscription.js
 upload/catalog/view/javascript/checkout.js
 upload/catalog/view/javascript/affiliate.js
 upload/catalog/view/javascript/login.js
+upload/catalog/view/javascript/language.js
 upload/.htaccess.txt
 upload/system/library/template.php
 upload/system/library/mail/mail.php
@@ -4058,10 +4060,12 @@ upload/assets/framework/library/tax.js
 upload/assets/framework/library/template.js
 upload/assets/framework/library/local.js
 upload/assets/framework/library/currency.js
+upload/assets/framework/library/db.js
 upload/assets/framework/library/registry.js
 upload/assets/framework/library/session.js
-upload/assets/framework/library/loader.js
+upload/assets/framework/library/factory.js
 upload/assets/framework/library/cart.js
+upload/assets/framework/library/url.js
 upload/assets/framework/library/language.js
 upload/assets/framework/library/storage.js
 upload/assets/framework/library/config.js
@@ -5112,6 +5116,7 @@ upload/admin/controller/task/catalog/currency.php
 upload/admin/controller/task/catalog/customer_group.php
 upload/admin/controller/task/catalog/setting.php
 upload/admin/controller/task/catalog/tax_class.php
+upload/admin/controller/task/catalog/product.php
 upload/admin/controller/task/catalog/return_reason.php
 upload/admin/controller/task/catalog/language.php
 upload/admin/controller/task/catalog/review.php

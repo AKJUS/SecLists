@@ -59,6 +59,7 @@ tsconfig.base.json
 .dev/rubocop/cop/zammad/prefer_negated_if_over_unless.rb
 .dev/rubocop/cop/zammad/forbid_redis_client.rb
 .dev/rubocop/cop/zammad/timezone_default.rb
+.dev/rubocop/cop/zammad/prefer_models_all.rb
 .dev/rubocop/cop/zammad/update_copyright.rb
 .dev/rubocop/cop/zammad/exists_reset_column_information.rb
 .dev/rubocop/cop/zammad/ensures_time_zone_at_spec_top_level.rb
@@ -1028,6 +1029,7 @@ spec/services/service/ai/vectordb/item/upsert_spec.rb
 spec/services/service/ai/vectordb/available_spec.rb
 spec/services/service/execute_locked_block_spec.rb
 spec/services/service/ticket/create_spec.rb
+spec/services/service/ticket/stats/monthly_spec.rb
 spec/services/service/ticket/article/create_spec.rb
 spec/services/service/ticket/article/type/whatsapp_message/deliver_spec.rb
 spec/services/service/ticket/article/change_visibility_spec.rb
@@ -1906,6 +1908,7 @@ spec/fixtures/files/ldap/ca.crt
 spec/fixtures/files/imap/ca.crt
 spec/rubocop/cop/zammad/to_forbid_over_not_to_permit_spec.rb
 spec/rubocop/cop/zammad/forbid_def_send_spec.rb
+spec/rubocop/cop/zammad/prefer_models_all_spec.rb
 spec/rubocop/cop/zammad/forbid_loofah_fragment_spec.rb
 spec/rubocop/cop/zammad/forbid_loofah_document_spec.rb
 spec/rubocop/cop/zammad/ensures_time_zone_at_spec_top_level_spec.rb
@@ -1976,6 +1979,8 @@ spec/graphql/gql/queries/object_manager/frontend_attributes_spec.rb
 spec/graphql/gql/queries/knowledge_base/answer/suggestions_spec.rb
 spec/graphql/gql/queries/ai_assistance/text_tools/list_spec.rb
 spec/graphql/gql/queries/search_spec.rb
+spec/graphql/gql/queries/tickets/stats/monthly_by_customer_spec.rb
+spec/graphql/gql/queries/tickets/stats/monthly_by_organization_spec.rb
 spec/graphql/gql/queries/tickets/recent_by_customer_spec.rb
 spec/graphql/gql/queries/tickets/cached/by_overview_spec.rb
 spec/graphql/gql/queries/tickets/by_filter_spec.rb
@@ -2104,8 +2109,10 @@ spec/graphql/gql/subscriptions/online_notifications_count_spec.rb
 spec/graphql/gql/subscriptions/ticket/live_user_updates_spec.rb
 spec/graphql/gql/subscriptions/ticket/article_updates_spec.rb
 spec/graphql/gql/subscriptions/ticket/checklist_updates_spec.rb
+spec/graphql/gql/subscriptions/ticket/customer_tickets_by_filter_updates_spec.rb
 spec/graphql/gql/subscriptions/ticket/overview_updates_spec.rb
 spec/graphql/gql/subscriptions/ticket/shared_draft/start/update_by_group_spec.rb
+spec/graphql/gql/subscriptions/ticket/organization_tickets_by_filter_updates_spec.rb
 spec/graphql/gql/subscriptions/ticket/ai_assistance/summary_updates_spec.rb
 spec/graphql/gql/subscriptions/user_updates_spec.rb
 spec/graphql/gql/subscriptions/public_link_updates_spec.rb
@@ -2788,6 +2795,7 @@ test/data/vcr_cassettes/models/webhook/pre_defined/slack/webhook_slack_with_tick
 test/data/vcr_cassettes/models/webhook/pre_defined/slack/webhook_slack_with_ticket_reminder_reached_as_condition_creates_a_message_in_the_slack_channel.yml
 test/data/vcr_cassettes/models/webhook/pre_defined/slack/webhook_slack_with_ticket_update_as_condition_creates_a_message_in_the_slack_channel.yml
 test/data/vcr_cassettes/models/webhook/pre_defined/microsoft_teams/webhook_ms_teams_with_ticket_create_as_condition_creates_a_message_in_the_ms_teams_channel.yml
+test/data/vcr_cassettes/system/manage/calendars/manage_calendars_date_show_festivity_dates_correctly_far_away_from_utc.yml
 test/data/vcr_cassettes/system/import/kayako/import_from_kayako_fields_validation_invalid_credentials.yml
 test/data/vcr_cassettes/system/import/kayako/import_from_kayako_fields_validation_invalid_hostname.yml
 test/data/vcr_cassettes/system/import/kayako/import_from_kayako_fields_validation_shows_start_button.yml
@@ -4662,6 +4670,9 @@ app/frontend/entrypoints/desktop.ts
 app/frontend/tsconfig.json
 app/frontend/apps/desktop/components/CommonCalendarPreviewFlyout/__tests__/CommonCalendarPreviewFlyout.spec.ts
 app/frontend/apps/desktop/components/CommonCalendarPreviewFlyout/CommonCalendarPreviewFlyout.vue
+app/frontend/apps/desktop/components/Ticket/TicketBarChart/OrganizationTicketBarChart.vue
+app/frontend/apps/desktop/components/Ticket/TicketBarChart/UserTicketBarChart.vue
+app/frontend/apps/desktop/components/Ticket/TicketBarChart/useTicketStatsChart.ts
 app/frontend/apps/desktop/components/Ticket/TicketListTable.vue
 app/frontend/apps/desktop/components/Ticket/TicketBulkEditFlyout/__tests__/TicketBulkEditFlyout.spec.ts
 app/frontend/apps/desktop/components/Ticket/TicketBulkEditFlyout/TicketBulkEditFlyout.vue
@@ -4858,6 +4869,10 @@ app/frontend/apps/desktop/components/Organization/OrganizationListTable.vue
 app/frontend/apps/desktop/components/Organization/OrganizationInfo.vue
 app/frontend/apps/desktop/components/CommonOverlayContainer/__tests__/CommonOverlayContainer.spec.ts
 app/frontend/apps/desktop/components/CommonOverlayContainer/CommonOverlayContainer.vue
+app/frontend/apps/desktop/components/CommonCharts/CommonBarChart/types.ts
+app/frontend/apps/desktop/components/CommonCharts/CommonBarChart/CommonBarChart.vue
+app/frontend/apps/desktop/components/CommonCharts/useChartStyles.ts
+app/frontend/apps/desktop/components/CommonCharts/useChartTheme.ts
 app/frontend/apps/desktop/components/CommonButton/CommonButton.vue
 app/frontend/apps/desktop/components/CommonButton/__tests__/CommonButton.spec.ts
 app/frontend/apps/desktop/components/CommonButton/types.ts
@@ -4886,12 +4901,14 @@ app/frontend/apps/desktop/components/CommonTicketLabel/CommonTicketLabel.vue
 app/frontend/apps/desktop/components/CommonTicketLabel/__tests__/CommonTicketLabel.spec.ts
 app/frontend/apps/desktop/components/CommonSimpleEntityList/entity/OrganizationEntity.vue
 app/frontend/apps/desktop/components/CommonSimpleEntityList/entity/UserEntity.vue
+app/frontend/apps/desktop/components/CommonSimpleEntityList/entity/TicketEntity.vue
 app/frontend/apps/desktop/components/CommonSimpleEntityList/CommonSimpleEntityList.vue
-app/frontend/apps/desktop/components/CommonSimpleEntityList/__tests__/CommonEntityList.spec.ts
+app/frontend/apps/desktop/components/CommonSimpleEntityList/__tests__/CommonSimpleEntityList.spec.ts
 app/frontend/apps/desktop/components/CommonSimpleEntityList/__tests__/support/entityOptions.ts
 app/frontend/apps/desktop/components/CommonSimpleEntityList/types.ts
 app/frontend/apps/desktop/components/CommonSimpleEntityList/plugins/index.ts
 app/frontend/apps/desktop/components/CommonSimpleEntityList/plugins/user.ts
+app/frontend/apps/desktop/components/CommonSimpleEntityList/plugins/ticket.ts
 app/frontend/apps/desktop/components/CommonSimpleEntityList/plugins/organization.ts
 app/frontend/apps/desktop/components/CommonError/CommonError.vue
 app/frontend/apps/desktop/components/CommonUpdateIndicator/CommonUpdateIndicator.vue
@@ -5069,18 +5086,24 @@ app/frontend/apps/desktop/entities/ticket/composables/useTicketCreateTitle.ts
 app/frontend/apps/desktop/entities/ticket/types.ts
 app/frontend/apps/desktop/entities/ticket/graphql/queries/overviewsWithCachedCount.graphql
 app/frontend/apps/desktop/entities/ticket/graphql/queries/userCurrentTicketOverviewsCount.api.ts
-app/frontend/apps/desktop/entities/ticket/graphql/queries/ticketsByFilter.graphql
-app/frontend/apps/desktop/entities/ticket/graphql/queries/ticketsByFilter.mocks.ts
+app/frontend/apps/desktop/entities/ticket/graphql/queries/customerTicketsByFilter.graphql
+app/frontend/apps/desktop/entities/ticket/graphql/queries/customerTicketsByFilter.api.ts
 app/frontend/apps/desktop/entities/ticket/graphql/queries/userCurrentTicketOverviews.graphql
 app/frontend/apps/desktop/entities/ticket/graphql/queries/userCurrentTicketOverviewsCount.graphql
+app/frontend/apps/desktop/entities/ticket/graphql/queries/customerTicketsByFilter.mocks.ts
 app/frontend/apps/desktop/entities/ticket/graphql/queries/userCurrentTicketOverviewsCount.mocks.ts
 app/frontend/apps/desktop/entities/ticket/graphql/queries/ticketsCachedByOverview.graphql
 app/frontend/apps/desktop/entities/ticket/graphql/queries/ticketsCachedByOverview.api.ts
 app/frontend/apps/desktop/entities/ticket/graphql/queries/userCurrentTicketOverviews.mocks.ts
+app/frontend/apps/desktop/entities/ticket/graphql/queries/ticketsStatsMonthlyByCustomer.graphql
+app/frontend/apps/desktop/entities/ticket/graphql/queries/ticketsStatsMonthlyByCustomer.mocks.ts
 app/frontend/apps/desktop/entities/ticket/graphql/queries/overviewsWithCachedCount.mocks.ts
 app/frontend/apps/desktop/entities/ticket/graphql/queries/overviewsWithCachedCount.api.ts
+app/frontend/apps/desktop/entities/ticket/graphql/queries/ticketsStatsMonthlyByOrganization.graphql
+app/frontend/apps/desktop/entities/ticket/graphql/queries/ticketsStatsMonthlyByOrganization.mocks.ts
+app/frontend/apps/desktop/entities/ticket/graphql/queries/ticketsStatsMonthlyByOrganization.api.ts
+app/frontend/apps/desktop/entities/ticket/graphql/queries/ticketsStatsMonthlyByCustomer.api.ts
 app/frontend/apps/desktop/entities/ticket/graphql/queries/ticketsCachedByOverview.mocks.ts
-app/frontend/apps/desktop/entities/ticket/graphql/queries/ticketsByFilter.api.ts
 app/frontend/apps/desktop/entities/ticket/graphql/queries/userCurrentTicketOverviews.api.ts
 app/frontend/apps/desktop/entities/ticket/graphql/mutations/updateBulk.graphql
 app/frontend/apps/desktop/entities/ticket/graphql/mutations/updateBulk.mocks.ts
@@ -5089,14 +5112,17 @@ app/frontend/apps/desktop/entities/ticket/graphql/mutations/userCurrentOverviewU
 app/frontend/apps/desktop/entities/ticket/graphql/mutations/userCurrentOverviewUpdateLastUsed.graphql
 app/frontend/apps/desktop/entities/ticket/graphql/mutations/updateBulk.api.ts
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/userCurrentTicketOverviewUpdates.graphql
+app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/customerTicketsByFilterUpdates.api.ts
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/userCurrentTicketOverviewFullAttributesUpdates.mocks.ts
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/useCurrentOverviewOrderingFullAttributesUpdates.mocks.ts
+app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/customerTicketsByFilterUpdates.mocks.ts
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/useCurrentOverviewOrderingFullAttributesUpdates.graphql
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/userCurrentOverviewOrderingUpdates.graphql
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/userCurrentTicketOverviewUpdates.mocks.ts
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/useCurrentOverviewOrderingFullAttributesUpdates.api.ts
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/userCurrentTicketOverviewUpdates.api.ts
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/userCurrentOverviewOrderingUpdates.api.ts
+app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/customerTicketsByFilterUpdates.graphql
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/userCurrentTicketOverviewFullAttributesUpdates.graphql
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/userCurrentTicketOverviewFullAttributesUpdates.api.ts
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/userCurrentOverviewOrderingUpdates.mocks.ts
@@ -5876,6 +5902,10 @@ app/frontend/apps/desktop/pages/ticket/graphql/subscriptions/ticketChecklistUpda
 app/frontend/apps/desktop/pages/ticket/graphql/subscriptions/checklistTemplateUpdates.mocks.ts
 app/frontend/apps/desktop/pages/user/components/UserDetailViewContent.vue
 app/frontend/apps/desktop/pages/user/components/UserDetailTopBar.vue
+app/frontend/apps/desktop/pages/user/components/UserRelatedCustomerTickets/skeleton/CustomerTicketListSkeleton.vue
+app/frontend/apps/desktop/pages/user/components/UserRelatedCustomerTickets/__tests__/CustomerTicketList.spec.ts
+app/frontend/apps/desktop/pages/user/components/UserRelatedCustomerTickets/CustomerTicketList.vue
+app/frontend/apps/desktop/pages/user/components/UserRelatedCustomerTickets.vue
 app/frontend/apps/desktop/pages/user/views/UserDetailView.vue
 app/frontend/apps/desktop/pages/user/__tests__/user-detail-view-a11y.spec.ts
 app/frontend/apps/desktop/pages/user/__tests__/user-detail-view.spec.ts
@@ -5939,6 +5969,7 @@ app/frontend/apps/desktop/server/apollo/cache/initializer/ticketHistory.ts
 app/frontend/apps/desktop/server/apollo/cache/initializer/userCurrentTaskbarItemList.ts
 app/frontend/apps/desktop/server/apollo/cache/initializer/templates.ts
 app/frontend/apps/desktop/server/apollo/cache/initializer/search.ts
+app/frontend/apps/desktop/server/apollo/cache/initializer/ticketsByFilterQuery.ts
 app/frontend/apps/desktop/server/apollo/cache/initializer/ticketExternalReferencesIssueTrackerItemTicketList.ts
 app/frontend/apps/desktop/server/apollo/cache/initializer/userRedirect.ts
 app/frontend/apps/desktop/server/apollo/cache/initializer/linkList.ts
@@ -6746,7 +6777,6 @@ app/frontend/shared/components/Form/fields/FieldEditor/extensions/Image.ts
 app/frontend/shared/components/Form/fields/FieldEditor/extensions/TextModuleSuggestion.ts
 app/frontend/shared/components/Form/fields/FieldEditor/extensions/Indent.ts
 app/frontend/shared/components/Form/fields/FieldEditor/extensions/Styles.ts
-app/frontend/shared/components/Form/fields/FieldEditor/extensions/TextDirection.ts
 app/frontend/shared/components/Form/fields/FieldEditor/extensions/KnowledgeBaseSuggestion.ts
 app/frontend/shared/components/Form/fields/FieldEditor/extensions/UserMention.ts
 app/frontend/shared/components/Form/fields/FieldEditor/extensions/HardBreakPlain.ts
@@ -7404,6 +7434,7 @@ app/frontend/shared/router/guards/before/redirect.ts
 app/frontend/shared/router/guards/before/authentication.ts
 app/frontend/shared/router/error.ts
 app/frontend/shared/router/walker.ts
+app/frontend/shared/utils/tailwind.ts
 app/frontend/shared/utils/getUuid.ts
 app/frontend/shared/utils/helpers.ts
 app/frontend/shared/utils/testSw.ts
@@ -7821,6 +7852,8 @@ app/models/application_model/can_lookup_search_index_attributes.rb
 app/models/application_model/can_creates_and_updates.rb
 app/models/application_model/has_exists_check_by_object_and_id.rb
 app/models/application_model/checks_import.rb
+app/models/application_model/can_lookup_search_index_attributes/sanitizer.rb
+app/models/application_model/can_lookup_search_index_attributes/request_cache.rb
 app/models/application_model/can_latest_change.rb
 app/models/application_model/has_cache.rb
 app/models/application_model/can_touch_references.rb
@@ -8528,6 +8561,7 @@ app/views/mailer/signup/uk.html.erb
 app/views/mailer/signup/sr.html.erb
 app/views/mailer/signup/hu.html.erb
 app/views/mailer/signup/nl.html.erb
+app/views/mailer/signup/ko.html.erb
 app/views/mailer/signup/zh-cn.html.erb
 app/views/mailer/signup/es.html.erb
 app/views/mailer/signup/ro.html.erb
@@ -8551,6 +8585,7 @@ app/views/mailer/ticket_article_update_reaction/uk.html.erb
 app/views/mailer/ticket_article_update_reaction/sr.html.erb
 app/views/mailer/ticket_article_update_reaction/hu.html.erb
 app/views/mailer/ticket_article_update_reaction/nl.html.erb
+app/views/mailer/ticket_article_update_reaction/ko.html.erb
 app/views/mailer/ticket_article_update_reaction/de.html.erb
 app/views/mailer/ticket_article_update_reaction/ru.html.erb
 app/views/mailer/ticket_article_update_reaction/lt.html.erb
@@ -8665,6 +8700,7 @@ app/views/mailer/ticket_escalation/uk.html.erb
 app/views/mailer/ticket_escalation/sr.html.erb
 app/views/mailer/ticket_escalation/hu.html.erb
 app/views/mailer/ticket_escalation/nl.html.erb
+app/views/mailer/ticket_escalation/ko.html.erb
 app/views/mailer/ticket_escalation/zh-cn.html.erb
 app/views/mailer/ticket_escalation/es.html.erb
 app/views/mailer/ticket_escalation/ro.html.erb
@@ -8687,6 +8723,7 @@ app/views/mailer/test_ticket/uk.html.erb
 app/views/mailer/test_ticket/sr.html.erb
 app/views/mailer/test_ticket/hu.html.erb
 app/views/mailer/test_ticket/nl.html.erb
+app/views/mailer/test_ticket/ko.html.erb
 app/views/mailer/test_ticket/zh-cn.html.erb
 app/views/mailer/test_ticket/es.html.erb
 app/views/mailer/test_ticket/ro.html.erb
@@ -8709,6 +8746,7 @@ app/views/mailer/ticket_create/uk.html.erb
 app/views/mailer/ticket_create/sr.html.erb
 app/views/mailer/ticket_create/hu.html.erb
 app/views/mailer/ticket_create/nl.html.erb
+app/views/mailer/ticket_create/ko.html.erb
 app/views/mailer/ticket_create/fa.html.erb
 app/views/mailer/ticket_create/zh-cn.html.erb
 app/views/mailer/ticket_create/es.html.erb
@@ -8732,6 +8770,7 @@ app/views/mailer/signup_taken_reset/uk.html.erb
 app/views/mailer/signup_taken_reset/sr.html.erb
 app/views/mailer/signup_taken_reset/hu.html.erb
 app/views/mailer/signup_taken_reset/nl.html.erb
+app/views/mailer/signup_taken_reset/ko.html.erb
 app/views/mailer/signup_taken_reset/zh-cn.html.erb
 app/views/mailer/signup_taken_reset/es.html.erb
 app/views/mailer/signup_taken_reset/ro.html.erb
@@ -8756,6 +8795,7 @@ app/views/mailer/password_reset/uk.html.erb
 app/views/mailer/password_reset/sr.html.erb
 app/views/mailer/password_reset/hu.html.erb
 app/views/mailer/password_reset/nl.html.erb
+app/views/mailer/password_reset/ko.html.erb
 app/views/mailer/password_reset/zh-cn.html.erb
 app/views/mailer/password_reset/es.html.erb
 app/views/mailer/password_reset/ro.html.erb
@@ -8783,6 +8823,7 @@ app/views/mailer/email_oversized/zh-cn.txt.erb
 app/views/mailer/email_oversized/pt-br.txt.erb
 app/views/mailer/email_oversized/sv.txt.erb
 app/views/mailer/email_oversized/sr.txt.erb
+app/views/mailer/email_oversized/ko.txt.erb
 app/views/mailer/user_invite/sk.html.erb
 app/views/mailer/user_invite/sr-latn-rs.html.erb
 app/views/mailer/user_invite/hr.html.erb
@@ -8802,6 +8843,7 @@ app/views/mailer/user_invite/uk.html.erb
 app/views/mailer/user_invite/sr.html.erb
 app/views/mailer/user_invite/hu.html.erb
 app/views/mailer/user_invite/nl.html.erb
+app/views/mailer/user_invite/ko.html.erb
 app/views/mailer/user_invite/zh-cn.html.erb
 app/views/mailer/user_invite/es.html.erb
 app/views/mailer/user_invite/ro.html.erb
@@ -8825,6 +8867,7 @@ app/views/mailer/ticket_update/uk.html.erb
 app/views/mailer/ticket_update/sr.html.erb
 app/views/mailer/ticket_update/hu.html.erb
 app/views/mailer/ticket_update/nl.html.erb
+app/views/mailer/ticket_update/ko.html.erb
 app/views/mailer/ticket_update/fa.html.erb
 app/views/mailer/ticket_update/zh-cn.html.erb
 app/views/mailer/ticket_update/es.html.erb
@@ -8881,6 +8924,7 @@ app/views/mailer/password_change/uk.html.erb
 app/views/mailer/password_change/sr.html.erb
 app/views/mailer/password_change/hu.html.erb
 app/views/mailer/password_change/nl.html.erb
+app/views/mailer/password_change/ko.html.erb
 app/views/mailer/password_change/zh-cn.html.erb
 app/views/mailer/password_change/es.html.erb
 app/views/mailer/password_change/ro.html.erb
@@ -8903,6 +8947,7 @@ app/views/mailer/ticket_update_merged_into/uk.html.erb
 app/views/mailer/ticket_update_merged_into/sr.html.erb
 app/views/mailer/ticket_update_merged_into/hu.html.erb
 app/views/mailer/ticket_update_merged_into/nl.html.erb
+app/views/mailer/ticket_update_merged_into/ko.html.erb
 app/views/mailer/ticket_update_merged_into/es.html.erb
 app/views/mailer/ticket_update_merged_into/ro.html.erb
 app/views/mailer/ticket_update_merged_into/de.html.erb
@@ -8924,6 +8969,7 @@ app/views/mailer/ticket_escalation_warning/uk.html.erb
 app/views/mailer/ticket_escalation_warning/sr.html.erb
 app/views/mailer/ticket_escalation_warning/hu.html.erb
 app/views/mailer/ticket_escalation_warning/nl.html.erb
+app/views/mailer/ticket_escalation_warning/ko.html.erb
 app/views/mailer/ticket_escalation_warning/zh-cn.html.erb
 app/views/mailer/ticket_escalation_warning/es.html.erb
 app/views/mailer/ticket_escalation_warning/ro.html.erb
@@ -8947,6 +8993,7 @@ app/views/mailer/ticket_reminder_reached/uk.html.erb
 app/views/mailer/ticket_reminder_reached/sr.html.erb
 app/views/mailer/ticket_reminder_reached/hu.html.erb
 app/views/mailer/ticket_reminder_reached/nl.html.erb
+app/views/mailer/ticket_reminder_reached/ko.html.erb
 app/views/mailer/ticket_reminder_reached/zh-cn.html.erb
 app/views/mailer/ticket_reminder_reached/es.html.erb
 app/views/mailer/ticket_reminder_reached/ro.html.erb
@@ -10519,6 +10566,7 @@ app/services/service/ai/vectordb/item/upsert.rb
 app/services/service/ai/vectordb/rebuild.rb
 app/services/service/concerns/handles_setting.rb
 app/services/service/concerns/handles_core_workflow.rb
+app/services/service/ticket/stats/monthly.rb
 app/services/service/ticket/create.rb
 app/services/service/ticket/article/change_visibility.rb
 app/services/service/ticket/article/create.rb
@@ -10678,6 +10726,9 @@ app/graphql/gql/queries/session.rb
 app/graphql/gql/queries/templates.rb
 app/graphql/gql/queries/application_config.rb
 app/graphql/gql/queries/tickets/recently_viewed.rb
+app/graphql/gql/queries/tickets/stats/monthly_by_customer.rb
+app/graphql/gql/queries/tickets/stats/monthly_by_organization.rb
+app/graphql/gql/queries/tickets/stats/base_monthly.rb
 app/graphql/gql/queries/tickets/cached/by_overview.rb
 app/graphql/gql/queries/tickets/by_overview.rb
 app/graphql/gql/queries/tickets/by_filter.rb
@@ -10934,6 +10985,7 @@ app/graphql/gql/types/ticket/article/type_type.rb
 app/graphql/gql/types/ticket/article/sender_type.rb
 app/graphql/gql/types/ticket/article/media_error_state_type.rb
 app/graphql/gql/types/ticket/article/security_state_type.rb
+app/graphql/gql/types/ticket/stats_monthly_type.rb
 app/graphql/gql/types/ticket/shared_draft_start_type.rb
 app/graphql/gql/types/ticket/live_user/app_type.rb
 app/graphql/gql/types/ticket/external_references/issue_tracker_item_type.rb
@@ -11055,6 +11107,8 @@ app/graphql/gql/subscriptions/user_updates.rb
 app/graphql/gql/subscriptions/concerns/can_initial_result.rb
 app/graphql/gql/subscriptions/ticket/article_updates.rb
 app/graphql/gql/subscriptions/ticket/overview_updates.rb
+app/graphql/gql/subscriptions/ticket/organization_tickets_by_filter_updates.rb
+app/graphql/gql/subscriptions/ticket/customer_tickets_by_filter_updates.rb
 app/graphql/gql/subscriptions/ticket/live_user_updates.rb
 app/graphql/gql/subscriptions/ticket/shared_draft/start/update_by_group.rb
 app/graphql/gql/subscriptions/ticket/checklist_updates.rb

@@ -677,6 +677,7 @@ ads/local
 ads/public
 ads/research
 ads/ubaq
+advice
 advisor/*zx1fa
 adx/bin
 affil
@@ -1021,6 +1022,7 @@ community/feed
 community/trackback
 community_comment
 community_post
+company
 companyDir
 compare
 compressiontest
@@ -1640,10 +1642,10 @@ hp/video
 hpc/*/supported-applications.aspx?
 hpm
 hpmob
-http://dropbox.com/robots.txt
-http://ftc.gov/robots.txt
-http://patreon.com/robots.txt
-http://web.archive.org/robots.txt
+http://amazon.de/robots.txt
+http://api.whatsapp.com/robots.txt
+http://apple.com/robots.txt
+http://sites.google.com/robots.txt
 hub?category=
 hz/contact-us/ajax/initiate-trusted-contact
 hz/help/contact/*/message/$
@@ -1685,6 +1687,7 @@ imgres
 imode/?
 imode/search?
 imode?
+in
 inapp
 inbox
 inboxcommerce
@@ -2284,6 +2287,7 @@ pt-br/searchresults
 pt-br/solutions
 pt-br/upload
 pt-br/vimeo-academy
+pub/dir
 publications
 purchases
 puzzles/leaderboards/invite
@@ -2384,6 +2388,7 @@ sars-cov-2
 sc
 scholar
 scholar_share
+school
 scl
 scripts
 sdch
@@ -2470,6 +2475,7 @@ shopping/shoppingpage/casa
 shopping/suppliers/search
 shopping?
 shopstream
+showcase
 sidewiki/entry
 signature
 signin
@@ -3452,7 +3458,7 @@ wiki/Wikipedia_Diskussion:Checkuser
 wiki/Wikipedia_Diskussion:Spam-Blacklist-Log
 wiki/Wikipedia_talk%3AAbuse_reports
 wiki/Wikipedia_talk%3AAbuse_response
-wiki/Wikipedia_talk%3AAdministrator_electionshttp://google.com/robots.txt
+wiki/Wikipedia_talk%3AAdministrator_electionshttp://eventbrite.com/robots.txt
 wiki/Wikipedia_talk%3AAdministrator_recall
 wiki/Wikipedia_talk%3AAdministrator_review
 wiki/Wikipedia_talk%3AAdministrators%27_noticeboard

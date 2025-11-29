@@ -5434,6 +5434,8 @@ dev/tests/api-functional/testsuite/Magento/Sales/Service/V1/OrderCommentsListTes
 dev/tests/api-functional/testsuite/Magento/Sales/Service/V1/OrderListTest.php
 dev/tests/api-functional/testsuite/Magento/Sales/Service/V1/ShipmentRemoveTrackTest.php
 dev/tests/api-functional/testsuite/Magento/Sales/Service/V1/CreditmemoAddCommentTest.php
+dev/tests/api-functional/testsuite/Magento/Sales/Service/V1/OrderItemsWithCustomOptionsTest.php
+dev/tests/api-functional/testsuite/Magento/Sales/Service/V1/CreditmemoCreateReturnToStockTest.php
 dev/tests/api-functional/testsuite/Magento/Sales/Service/V1/OrderItemGetListTest.php
 dev/tests/api-functional/testsuite/Magento/Sales/Service/V1/CreditmemoCommentsListTest.php
 dev/tests/api-functional/testsuite/Magento/Sales/Service/V1/InvoiceCommentsListTest.php
@@ -7765,6 +7767,7 @@ dev/tests/integration/testsuite/Magento/Sales/Model/Order/Payment/TransactionTes
 dev/tests/integration/testsuite/Magento/Sales/Model/Order/AddressRepositoryTest.php
 dev/tests/integration/testsuite/Magento/Sales/Model/Order/Email/Sender/ShipmentSenderTest.php
 dev/tests/integration/testsuite/Magento/Sales/Model/Order/Email/Sender/CreditmemoSenderTest.php
+dev/tests/integration/testsuite/Magento/Sales/Model/Order/Email/Sender/AdminOrderAsyncEmailTest.php
 dev/tests/integration/testsuite/Magento/Sales/Model/Order/Email/Sender/CreditmemoAsyncEmailTest.php
 dev/tests/integration/testsuite/Magento/Sales/Model/Order/Email/Sender/OrderSenderTest.php
 dev/tests/integration/testsuite/Magento/Sales/Model/Order/Email/Sender/InvoiceSenderTest.php
@@ -15460,6 +15463,7 @@ app/code/Magento/Catalog/Test/Unit/Block/Product/ProductList/ToolbarTest.php
 app/code/Magento/Catalog/Test/Unit/Block/Product/ProductList/RelatedTest.php
 app/code/Magento/Catalog/Test/Unit/Block/Product/ViewTest.php
 app/code/Magento/Catalog/Test/Unit/Block/Ui/ProductViewCounterTest.php
+app/code/Magento/Catalog/Test/Unit/Block/Adminhtml/Category/Checkboxes/TreeTest.php
 app/code/Magento/Catalog/Test/Unit/Block/Adminhtml/Category/Tab/ProductBlockPrepareCollectionTest.php
 app/code/Magento/Catalog/Test/Unit/Block/Adminhtml/Category/AbstractCategoryTest.php
 app/code/Magento/Catalog/Test/Unit/Block/Adminhtml/Rss/Grid/LinkTest.php
@@ -22901,6 +22905,7 @@ app/code/Magento/CatalogRule/Test/Unit/Model/Product/PriceModifierTest.php
 app/code/Magento/CatalogRule/Test/Unit/Model/CatalogRuleRepositoryTest.php
 app/code/Magento/CatalogRule/Test/Unit/Model/Rule/JobTest.php
 app/code/Magento/CatalogRule/Test/Unit/Model/Rule/DataProviderTest.php
+app/code/Magento/CatalogRule/Test/Unit/Model/Rule/Condition/ConditionsToSearchCriteriaMapperTest.php
 app/code/Magento/CatalogRule/Test/Unit/Model/Rule/Condition/ProductTest.php
 app/code/Magento/CatalogRule/Test/Unit/Model/Rule/Condition/MappableConditionProcessorTest.php
 app/code/Magento/CatalogRule/Test/Unit/Model/Rule/CustomerGroupsOptionsProviderTest.php
@@ -23411,6 +23416,7 @@ app/code/Magento/LayeredNavigation/Test/Unit/Observer/Edit/Tab/Front/ProductAttr
 app/code/Magento/LayeredNavigation/Test/Unit/Observer/Edit/Tab/Front/ProductAttributeFormBuildFormFieldDependenciesObserverTest.php
 app/code/Magento/LayeredNavigation/Test/Unit/Plugin/Save/AdjustAttributeSearchableTest.php
 app/code/Magento/LayeredNavigation/Test/Mftf/Test/StorefrontDropdownAttributeInLayeredNavigationTest.xml
+app/code/Magento/LayeredNavigation/Test/Mftf/Test/StorefrontSimpleProductsDisplayedAfterSwatchFilteringTest.xml
 app/code/Magento/LayeredNavigation/Test/Mftf/Test/AdminSpecifyLayerNavigationConfigurationTest.xml
 app/code/Magento/LayeredNavigation/Test/Mftf/Test/AdminCheckResultsOfColorAndOtherFiltersTest.xml
 app/code/Magento/LayeredNavigation/Test/Mftf/Test/StorefrontAllAttributeOptionsAreShownInLayeredNavigationTest.xml
@@ -28199,6 +28205,7 @@ app/code/Magento/GroupedProduct/Test/Mftf/Test/AdvanceCatalogSearchGroupedProduc
 app/code/Magento/GroupedProduct/Test/Mftf/Test/AdvanceCatalogSearchGroupedProductTest/AdvanceCatalogSearchGroupedProductByDescriptionTest.xml
 app/code/Magento/GroupedProduct/Test/Mftf/Test/AssertGroupedProductQtyOnProductPageTest.xml
 app/code/Magento/GroupedProduct/Test/Mftf/Test/AdminGroupedSetEditRelatedProductsTest.xml
+app/code/Magento/GroupedProduct/Test/Mftf/Test/AdminCreateGroupedProductWithUkTaxDisplayTest.xml
 app/code/Magento/GroupedProduct/Test/Mftf/Test/StorefrontAdvanceCatalogSearchGroupedProductBySkuWithHyphenTest.xml
 app/code/Magento/GroupedProduct/Test/Mftf/Test/AdminDeleteGroupedProductTest.xml
 app/code/Magento/GroupedProduct/Test/Mftf/Test/AdminSortingAssociatedProductsTest.xml
@@ -28802,6 +28809,7 @@ app/code/Magento/Tax/Test/Mftf/Test/StorefrontVerifyRecentlyViewedWidgetTaxPrice
 app/code/Magento/Tax/Test/Mftf/Test/AdminCheckingTaxReportGridTest.xml
 app/code/Magento/Tax/Test/Mftf/Test/AdminDeleteTaxRuleTest.xml
 app/code/Magento/Tax/Test/Mftf/Test/Update100TaxRateEntityTest.xml
+app/code/Magento/Tax/Test/Mftf/Test/AdminVerifyTaxRateStateResetWhenChangingCountryTest.xml
 app/code/Magento/Tax/Test/Mftf/Test/AdminCreateTaxRuleWithNewTaxClassesAndTaxRateTest.xml
 app/code/Magento/Tax/Test/Mftf/Test/AdminCreateTaxRateSpecificPostcodeTest.xml
 app/code/Magento/Tax/Test/Mftf/Test/AdminCreateTaxRuleWithNewAndExistingTaxRateAndCustomerAndProductTaxClassTest.xml
@@ -32872,12 +32880,14 @@ app/code/Magento/Swatches/Test/Mftf/Test/StorefrontSwatchAttributeDisplayedInWid
 app/code/Magento/Swatches/Test/Mftf/Test/CreateConfigProductBasedOnVisualSwatchAttributeWithImagesAndCustomLabelOnDifferentStoreViewsTest.xml
 app/code/Magento/Swatches/Test/Mftf/Test/AdminSwatchValuesRequiredBehaviorTest.xml
 app/code/Magento/Swatches/Test/Mftf/Test/SwatchesAreVisibleInLayeredNavigationTest.xml
+app/code/Magento/Swatches/Test/Mftf/Test/AdminCreateProductWithTextSwatchInCustomAttributeSetTest.xml
 app/code/Magento/Swatches/Test/Mftf/Test/StorefrontConfigurableSwatchOptionsThumbImagesTest.xml
 app/code/Magento/Swatches/Test/Mftf/Test/AdminCreateVisualSwatchTest.xml
 app/code/Magento/Swatches/Test/Mftf/Test/StorefrontSeeProductImagesMatchingProductSwatchesTest.xml
 app/code/Magento/Swatches/Test/Mftf/Test/StorefrontConfigurableProductWithTwoAttributeSwatchWithDisplayOutOfStockEnabledTest.xml
 app/code/Magento/Swatches/Test/Mftf/Test/StorefrontFilterByTextSwatchTest.xml
 app/code/Magento/Swatches/Test/Mftf/Test/AdminVisualSwatchAttributeFunctionalityTest.xml
+app/code/Magento/Swatches/Test/Mftf/Test/StorefrontConfigurableProductImageChangesByLayeredNavigationTest.xml
 app/code/Magento/Swatches/Test/Mftf/Test/StorefrontConfigurableProductSwatchTierPriceTest.xml
 app/code/Magento/Swatches/Test/Mftf/Test/AdminSimpleProductwithTextandVisualSwatchTest.xml
 app/code/Magento/Swatches/Test/Mftf/Test/StorefrontConfigurableOptionsImportSameBaseImageTest.xml
@@ -32911,6 +32921,7 @@ app/code/Magento/Swatches/Test/Mftf/ActionGroup/StorefrontSelectVisualSwatchOpti
 app/code/Magento/Swatches/Test/Mftf/ActionGroup/AssertStorefrontSwatchColorActionGroup.xml
 app/code/Magento/Swatches/Test/Mftf/ActionGroup/SetColorPickerByHexActionGroup.xml
 app/code/Magento/Swatches/Test/Mftf/ActionGroup/StorefrontAddProductWithSwatchesTextOptionToTheCartActionGroup.xml
+app/code/Magento/Swatches/Test/Mftf/ActionGroup/AdminSelectTextSwatchAttributeOptionActionGroup.xml
 app/code/Magento/Swatches/Test/Mftf/ActionGroup/AssertSwatchColorActionGroup.xml
 app/code/Magento/Swatches/Test/Mftf/ActionGroup/StorefrontSelectSwatchOptionOnProductPageAndCheckImageActionGroup.xml
 app/code/Magento/Swatches/Test/Mftf/ActionGroup/StorefrontUpdateCartConfigurableProductWithSwatchesActionGroup.xml
@@ -33926,6 +33937,7 @@ app/code/Magento/SalesRule/Test/Mftf/Test/AdminMarketingCartPriceRulesNavigateMe
 app/code/Magento/SalesRule/Test/Mftf/Test/AdminCreateCartPriceRuleWithMatchingTotalWeightAndVerifyRuleConditionIsAppliedTest.xml
 app/code/Magento/SalesRule/Test/Mftf/Test/AdminCreateCartPriceRuleAndVerifyRuleConditionAndFreeShippingIsAppliedTest.xml
 app/code/Magento/SalesRule/Test/Mftf/Test/AdminCouponCodeCheckTimesUsedAfterGuestOrderTest.xml
+app/code/Magento/SalesRule/Test/Mftf/Test/AdminVerifySalesRuleProductSubselectionWithQuantityConditionTest.xml
 app/code/Magento/SalesRule/Test/Mftf/Test/StorefrontCartPriceRuleCountryTest.xml
 app/code/Magento/SalesRule/Test/Mftf/Test/StorefrontAutoGeneratedCouponCodeTest.xml
 app/code/Magento/SalesRule/Test/Mftf/Test/AdminCreateFixedAmountWholeCartDiscountTest.xml
@@ -34004,6 +34016,8 @@ app/code/Magento/SalesRule/Test/Mftf/ActionGroup/SelectNotLoggedInCustomerGroupA
 app/code/Magento/SalesRule/Test/Mftf/ActionGroup/AdminCreateCartPriceRuleActionsSectionFreeShippingActionGroup.xml
 app/code/Magento/SalesRule/Test/Mftf/ActionGroup/VerifyDiscountAmountActionGroup.xml
 app/code/Magento/SalesRule/Test/Mftf/ActionGroup/AddProductToStorefrontActionGroup.xml
+app/code/Magento/SalesRule/Test/Mftf/ActionGroup/StorefrontAssertDiscountAmountOnPaymentPageActionGroup.xml
+app/code/Magento/SalesRule/Test/Mftf/ActionGroup/AdminCreateCartPriceRuleWithProductSubselectionActionGroup.xml
 app/code/Magento/SalesRule/Test/Mftf/ActionGroup/AdminDeleteCartPriceRuleForRetailerActionGroup.xml
 app/code/Magento/SalesRule/Test/Mftf/ActionGroup/SetCartAttributeConditionForCartPriceRuleActionGroup.xml
 app/code/Magento/SalesRule/Test/Mftf/Data/SalesRuleCouponData.xml
@@ -39587,6 +39601,7 @@ app/code/Magento/Checkout/view/frontend/web/template/form/element/email.html
 app/code/Magento/Checkout/view/frontend/web/template/shipping-information.html
 app/code/Magento/Checkout/view/frontend/web/template/progress-bar.html
 app/code/Magento/Checkout/view/frontend/web/js/empty-cart.js
+app/code/Magento/Checkout/view/frontend/web/js/cart/ensure-subtotal-sync.js
 app/code/Magento/Checkout/view/frontend/web/js/shopping-cart.js
 app/code/Magento/Checkout/view/frontend/web/js/checkout-data.js
 app/code/Magento/Checkout/view/frontend/web/js/model/customer-email-validator.js

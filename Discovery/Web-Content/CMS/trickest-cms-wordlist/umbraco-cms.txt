@@ -194,6 +194,8 @@ tests/Umbraco.Tests.AcceptanceTest/tests/DefaultConfig/RenderingContent/Renderin
 tests/Umbraco.Tests.AcceptanceTest/tests/DefaultConfig/RenderingContent/RenderingContentWithMultipleMediaPicker.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/DefaultConfig/RenderingContent/RenderingContentWithImageCropper.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/DefaultConfig/RelationTypes/RelationTypes.spec.ts
+tests/Umbraco.Tests.AcceptanceTest/tests/SMTP/AdditionalSetup/appsettings.json
+tests/Umbraco.Tests.AcceptanceTest/tests/SMTP/NotificationEmailForContent.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/EntityDataPicker/Content/EntityPickerCollection.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/EntityDataPicker/Content/EntityPickerTree.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/EntityDataPicker/AdditionalSetup/App_Plugins/picker-data-source/umbraco-package.json
@@ -416,6 +418,7 @@ tests/Umbraco.Tests.Common/Builders/ContentCultureInfosBuilder.cs
 tests/Umbraco.Tests.Common/Extensions/StringExtensions.cs
 tests/Umbraco.Tests.Common/Extensions/ContentBaseExtensions.cs
 tests/Umbraco.Tests.Common/TestLastChanceFinder.cs
+tests/Umbraco.Tests.Common/CompatibilitySuppressions.xml
 tests/Umbraco.Tests.Common/TestVariationContextAccessor.cs
 tests/Umbraco.Tests.Common/TaskHelper.cs
 tests/Umbraco.Tests.Common/TestClone.cs
@@ -1361,6 +1364,7 @@ tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/PropertyEditors/DateTimeUns
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/PropertyEditors/DateTimeWithTimeZonePropertyIndexValueFactoryTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/PropertyEditors/DateOnlyPropertyIndexValueFactoryTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/BackOffice/BackOfficeClaimsPrincipalFactoryTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Examine/UmbracoFieldDefinitionCollectionTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Examine/UmbracoContentValueSetValidatorTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Models/PathValidationTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Models/DataTypeTests.cs
@@ -1549,6 +1553,7 @@ src/Umbraco.Cms.Persistence.EFCore/Locking/SqliteEFCoreDistributedLockingMechani
 src/Umbraco.Cms.Persistence.EFCore/Locking/SqlServerEFCoreDistributedLockingMechanism.cs
 src/Umbraco.Cms.Persistence.EFCore/Extensions/DbContextExtensions.cs
 src/Umbraco.Cms.Persistence.EFCore/Extensions/UmbracoEFCoreServiceCollectionExtensions.cs
+src/Umbraco.Cms.Persistence.EFCore/CLAUDE.md
 src/Umbraco.Cms.Persistence.EFCore/Migrations/IMigrationProvider.cs
 src/Umbraco.Cms.Persistence.EFCore/Migrations/IMigrationProviderSetup.cs
 src/Umbraco.Cms.Persistence.EFCore/Umbraco.Cms.Persistence.EFCore.csproj
@@ -1587,6 +1592,7 @@ src/Umbraco.Cms.Persistence.SqlServer/Services/SqlServerSyntaxProvider.cs
 src/Umbraco.Cms.Persistence.SqlServer/Services/SqlServerBulkSqlInsertProvider.cs
 src/Umbraco.Cms.Persistence.SqlServer/Services/SqlAzureDatabaseProviderMetadata.cs
 src/Umbraco.Cms.Persistence.SqlServer/Services/PocoDataDataReader.cs
+src/Umbraco.Cms.Persistence.SqlServer/CLAUDE.md
 src/Umbraco.Cms.Persistence.SqlServer/Interceptors/SqlServerAddMiniProfilerInterceptor.cs
 src/Umbraco.Cms.Persistence.SqlServer/Interceptors/SqlServerConnectionInterceptor.cs
 src/Umbraco.Cms.Persistence.SqlServer/Interceptors/SqlServerAddRetryPolicyInterceptor.cs
@@ -1596,6 +1602,7 @@ src/Umbraco.Cms.Imaging.ImageSharp2/Media/ImageSharpDimensionExtractor.cs
 src/Umbraco.Cms.Imaging.ImageSharp2/Media/ImageSharpImageUrlGenerator.cs
 src/Umbraco.Cms.Imaging.ImageSharp2/ConfigureImageSharpMiddlewareOptions.cs
 src/Umbraco.Cms.Imaging.ImageSharp2/Umbraco.Cms.Imaging.ImageSharp2.csproj
+src/Umbraco.Cms.Imaging.ImageSharp2/CLAUDE.md
 src/Umbraco.Cms.Imaging.ImageSharp2/ImageSharpComposer.cs
 src/Umbraco.Cms.Imaging.ImageSharp2/ConfigurePhysicalFileSystemCacheOptions.cs
 src/Umbraco.Cms.Imaging.ImageSharp/UmbracoBuilderExtensions.cs
@@ -1603,6 +1610,7 @@ src/Umbraco.Cms.Imaging.ImageSharp/ImageProcessors/CropWebProcessor.cs
 src/Umbraco.Cms.Imaging.ImageSharp/Media/ImageSharpDimensionExtractor.cs
 src/Umbraco.Cms.Imaging.ImageSharp/Media/ImageSharpImageUrlGenerator.cs
 src/Umbraco.Cms.Imaging.ImageSharp/ConfigureImageSharpMiddlewareOptions.cs
+src/Umbraco.Cms.Imaging.ImageSharp/CLAUDE.md
 src/Umbraco.Cms.Imaging.ImageSharp/Umbraco.Cms.Imaging.ImageSharp.csproj
 src/Umbraco.Cms.Imaging.ImageSharp/ImageSharpComposer.cs
 src/Umbraco.Cms.Imaging.ImageSharp/ConfigurePhysicalFileSystemCacheOptions.cs
@@ -1659,6 +1667,7 @@ src/Umbraco.Cms.Api.Delivery/Services/RequestSegmentService.cs
 src/Umbraco.Cms.Api.Delivery/Services/RequestMemberAccessService.cs
 src/Umbraco.Cms.Api.Delivery/Services/RequestCultureService.cs
 src/Umbraco.Cms.Api.Delivery/Services/RequestRoutingService.cs
+src/Umbraco.Cms.Api.Delivery/CLAUDE.md
 src/Umbraco.Cms.Api.Delivery/Controllers/Content/ContentApiControllerBase.cs
 src/Umbraco.Cms.Api.Delivery/Controllers/Content/QueryContentApiController.cs
 src/Umbraco.Cms.Api.Delivery/Controllers/Content/ByIdContentApiController.cs
@@ -1761,6 +1770,7 @@ src/Umbraco.Web.UI.Login/src/api/core/types.gen.ts
 src/Umbraco.Web.UI.Login/src/api/core/serverSentEvents.gen.ts
 src/Umbraco.Web.UI.Login/.nvmrc
 src/Umbraco.Web.UI.Login/openapi-ts.config.ts
+src/Umbraco.Web.UI.Login/CLAUDE.md
 src/Umbraco.Web.UI.Login/public/mockServiceWorker.js
 src/Umbraco.Web.UI.Login/public/favicon.svg
 src/Umbraco.Cms.Targets/buildTransitive/Umbraco.Cms.Targets.targets
@@ -3927,6 +3937,7 @@ src/Umbraco.Core/Services/IContentServiceBase.cs
 src/Umbraco.Core/Services/MemberTwoFactorLoginService.cs
 src/Umbraco.Core/Services/MemberTypeService.cs
 src/Umbraco.Core/Services/DataTypeUsageService.cs
+src/Umbraco.Core/CLAUDE.md
 src/Umbraco.Core/Constants-DataTypes.cs
 src/Umbraco.Core/Webhooks/WebhookEventAttribute.cs
 src/Umbraco.Core/Webhooks/WebhookEventBase.cs
@@ -4369,6 +4380,7 @@ src/Umbraco.Cms.Persistence.Sqlite/Services/SqliteDistributedLockingMechanism.cs
 src/Umbraco.Cms.Persistence.Sqlite/Services/SqliteTransientErrorDetectionStrategy.cs
 src/Umbraco.Cms.Persistence.Sqlite/Services/SqliteDatabaseCreator.cs
 src/Umbraco.Cms.Persistence.Sqlite/Services/SqliteExceptionExtensions.cs
+src/Umbraco.Cms.Persistence.Sqlite/CLAUDE.md
 src/Umbraco.Cms.Persistence.Sqlite/Interceptors/SqliteConnectionInterceptor.cs
 src/Umbraco.Cms.Persistence.Sqlite/Interceptors/SqliteAddPreferDeferredInterceptor.cs
 src/Umbraco.Cms.Persistence.Sqlite/Interceptors/SqliteAddRetryPolicyInterceptor.cs
@@ -4392,6 +4404,7 @@ src/Umbraco.Cms.DevelopmentMode.Backoffice/InMemoryAuto/UmbracoRazorReferenceMan
 src/Umbraco.Cms.DevelopmentMode.Backoffice/InMemoryAuto/ModelsBuilderBindingErrorHandler.cs
 src/Umbraco.Cms.DevelopmentMode.Backoffice/InMemoryAuto/ModelsBuilderAssemblyAttribute.cs
 src/Umbraco.Cms.DevelopmentMode.Backoffice/InMemoryAuto/UmbracoCompilationException.cs
+src/Umbraco.Cms.DevelopmentMode.Backoffice/CLAUDE.md
 src/Umbraco.Cms.StaticAssets/Umbraco.Cms.StaticAssets.csproj
 src/Umbraco.Cms.StaticAssets/umbraco/UmbracoWebsite/NotFound.cshtml
 src/Umbraco.Cms.StaticAssets/umbraco/UmbracoWebsite/Maintenance.cshtml
@@ -4417,6 +4430,7 @@ src/Umbraco.Cms.StaticAssets/wwwroot/umbraco/website/fonts/lato/LatoLatin-Regula
 src/Umbraco.Cms.StaticAssets/wwwroot/umbraco/website/fonts/lato/LatoLatin-Italic.woff2
 src/Umbraco.Cms.StaticAssets/wwwroot/umbraco/website/preview.js
 src/Umbraco.Cms.StaticAssets/wwwroot/umbraco/website/nonodesbg.webp
+src/Umbraco.Cms.StaticAssets/CLAUDE.md
 src/Umbraco.PublishedCache.HybridCache/DomainCache.cs
 src/Umbraco.PublishedCache.HybridCache/MemberCache.cs
 src/Umbraco.PublishedCache.HybridCache/Persistence/DatabaseCacheRepository.cs
@@ -4461,6 +4475,7 @@ src/Umbraco.PublishedCache.HybridCache/Services/DocumentCacheService.cs
 src/Umbraco.PublishedCache.HybridCache/Services/DomainCacheService.cs
 src/Umbraco.PublishedCache.HybridCache/Services/MediaCacheService.cs
 src/Umbraco.PublishedCache.HybridCache/Services/MemberCacheService.cs
+src/Umbraco.PublishedCache.HybridCache/CLAUDE.md
 src/Umbraco.PublishedCache.HybridCache/DocumentCache.cs
 src/Umbraco.PublishedCache.HybridCache/ContentNode.cs
 src/Umbraco.PublishedCache.HybridCache/Factories/IPublishedContentFactory.cs
@@ -4472,6 +4487,7 @@ src/Umbraco.PublishedCache.HybridCache/IElementsCache.cs
 src/Umbraco.PublishedCache.HybridCache/ISeedKeyProvider.cs
 src/Umbraco.Cms.Persistence.EFCore.Sqlite/EFCoreSqliteComposer.cs
 src/Umbraco.Cms.Persistence.EFCore.Sqlite/SqliteMigrationProviderSetup.cs
+src/Umbraco.Cms.Persistence.EFCore.Sqlite/CLAUDE.md
 src/Umbraco.Cms.Persistence.EFCore.Sqlite/SqliteMigrationProvider.cs
 src/Umbraco.Cms.Persistence.EFCore.Sqlite/Migrations/20230807123456_AddOpenIddict.cs
 src/Umbraco.Cms.Persistence.EFCore.Sqlite/Migrations/20230622183638_InitialCreate.Designer.cs
@@ -4506,6 +4522,7 @@ src/Umbraco.Cms.Api.Common/Serialization/UmbracoJsonTypeInfoResolver.cs
 src/Umbraco.Cms.Api.Common/Serialization/IUmbracoJsonTypeInfoResolver.cs
 src/Umbraco.Cms.Api.Common/Umbraco.Cms.Api.Common.csproj
 src/Umbraco.Cms.Api.Common/Filters/JsonOptionsNameAttribute.cs
+src/Umbraco.Cms.Api.Common/CLAUDE.md
 src/Umbraco.Cms.Api.Common/Mvc/ActionResults/EmptyCreatedAtActionResult.cs
 src/Umbraco.Cms.Api.Common/Rendering/ElementOnlyOutputExpansionStrategy.cs
 src/Umbraco.Cms.Api.Common/Json/NamedSystemTextJsonOutputFormatter.cs
@@ -4534,6 +4551,7 @@ src/Umbraco.Cms.Persistence.EFCore.SqlServer/Umbraco.Cms.Persistence.EFCore.SqlS
 src/Umbraco.Cms.Persistence.EFCore.SqlServer/EFCoreSqlServerComposer.cs
 src/Umbraco.Cms.Persistence.EFCore.SqlServer/SqlServerMigrationProvider.cs
 src/Umbraco.Cms.Persistence.EFCore.SqlServer/SqlServerMigrationProviderSetup.cs
+src/Umbraco.Cms.Persistence.EFCore.SqlServer/CLAUDE.md
 src/Umbraco.Cms.Persistence.EFCore.SqlServer/Migrations/20230807654321_AddOpenIddict.cs
 src/Umbraco.Cms.Persistence.EFCore.SqlServer/Migrations/20230807654321_AddOpenIddict.Designer.cs
 src/Umbraco.Cms.Persistence.EFCore.SqlServer/Migrations/20251006140751_UpdateOpenIddictToV7.cs
@@ -4652,9 +4670,19 @@ src/Umbraco.Web.UI.Client/examples/user-permission/entity-action/action-1.ts
 src/Umbraco.Web.UI.Client/examples/user-permission/entity-action/manifests.ts
 src/Umbraco.Web.UI.Client/examples/user-permission/constants.ts
 src/Umbraco.Web.UI.Client/examples/user-permission/entity-user-permission/manifests.ts
+src/Umbraco.Web.UI.Client/examples/workspace-context-initial-name/workspace-context.ts
+src/Umbraco.Web.UI.Client/examples/workspace-context-initial-name/README.md
+src/Umbraco.Web.UI.Client/examples/workspace-context-initial-name/index.ts
 src/Umbraco.Web.UI.Client/examples/block-custom-view/README.md
 src/Umbraco.Web.UI.Client/examples/block-custom-view/block-custom-view.ts
 src/Umbraco.Web.UI.Client/examples/block-custom-view/index.ts
+src/Umbraco.Web.UI.Client/examples/menu-item/entity/manifests.ts
+src/Umbraco.Web.UI.Client/examples/menu-item/README.md
+src/Umbraco.Web.UI.Client/examples/menu-item/tree/README.md
+src/Umbraco.Web.UI.Client/examples/menu-item/link/manifests.ts
+src/Umbraco.Web.UI.Client/examples/menu-item/index.ts
+src/Umbraco.Web.UI.Client/examples/menu-item/action/manifests.ts
+src/Umbraco.Web.UI.Client/examples/menu-item/action/action-menu-item.api.ts
 src/Umbraco.Web.UI.Client/examples/index.js
 src/Umbraco.Web.UI.Client/examples/picker-data-source/example-document-picker-data-source.ts
 src/Umbraco.Web.UI.Client/examples/picker-data-source/index.ts
@@ -9288,6 +9316,7 @@ src/Umbraco.Web.UI.Client/src/packages/log-viewer/repository/sources/log-viewer.
 src/Umbraco.Web.UI.Client/src/packages/log-viewer/repository/index.ts
 src/Umbraco.Web.UI.Client/src/packages/log-viewer/repository/log-viewer.repository.ts
 src/Umbraco.Web.UI.Client/src/packages/log-viewer/vite.config.ts
+src/Umbraco.Web.UI.Client/src/packages/log-viewer/types.ts
 src/Umbraco.Web.UI.Client/src/packages/log-viewer/menu-item/manifests.ts
 src/Umbraco.Web.UI.Client/src/packages/log-viewer/constants.ts
 src/Umbraco.Web.UI.Client/src/packages/log-viewer/umbraco-package.ts
@@ -12507,11 +12536,21 @@ src/Umbraco.Web.UI.Client/src/external/uui/package.json
 src/Umbraco.Web.UI.Client/src/external/uui/index.ts
 src/Umbraco.Web.UI.Client/src/external/uui/vite.config.ts
 src/Umbraco.Web.UI.Client/.nvmrc
+src/Umbraco.Web.UI.Client/CLAUDE.md
 src/Umbraco.Web.UI.Client/typedoc.config.js
 src/Umbraco.Web.UI.Client/.madgerc
 src/Umbraco.Web.UI.Client/vite.cms.config.ts
 src/Umbraco.Web.UI.Client/utils/test-utils.ts
 src/Umbraco.Web.UI.Client/utils/json-schema/test-umbraco-package.json
+src/Umbraco.Web.UI.Client/docs/style-guide.md
+src/Umbraco.Web.UI.Client/docs/agentic-workflow.md
+src/Umbraco.Web.UI.Client/docs/clean-code.md
+src/Umbraco.Web.UI.Client/docs/commands.md
+src/Umbraco.Web.UI.Client/docs/security.md
+src/Umbraco.Web.UI.Client/docs/error-handling.md
+src/Umbraco.Web.UI.Client/docs/edge-cases.md
+src/Umbraco.Web.UI.Client/docs/architecture.md
+src/Umbraco.Web.UI.Client/docs/testing.md
 src/Umbraco.Web.UI.Client/.prettierignore
 src/Umbraco.Web.UI.Client/public/mockServiceWorker.js
 src/Umbraco.Web.UI.Client/.env.staging
@@ -12526,6 +12565,7 @@ src/Umbraco.Web.UI/Views/Partials/singleblock/default.cshtml
 src/Umbraco.Web.UI/Program.cs
 src/Umbraco.Web.UI/Composers/ControllersAsServicesComposer.cs
 src/Umbraco.Web.UI/Composers/UmbracoAppAuthenticatorComposer.cs
+src/Umbraco.Web.UI/CLAUDE.md
 src/Umbraco.Web.UI/appsettings.template.json
 src/Umbraco.Web.UI/appsettings.Development.template.json
 src/Umbraco.Web.UI/Umbraco.Web.UI.csproj
@@ -13246,6 +13286,7 @@ src/Umbraco.Infrastructure/Services/ContentTypeSearchService.cs
 src/Umbraco.Infrastructure/Services/IDistributedJobService.cs
 src/Umbraco.Infrastructure/Services/CacheInstructionService.cs
 src/Umbraco.Infrastructure/Services/IIndexingRebuilderService.cs
+src/Umbraco.Infrastructure/CLAUDE.md
 src/Umbraco.Infrastructure/TagQuery.cs
 src/Umbraco.Infrastructure/BackgroundJobs/RecurringBackgroundJobHostedServiceRunner.cs
 src/Umbraco.Infrastructure/BackgroundJobs/IRecurringBackgroundJob.cs
@@ -13584,6 +13625,7 @@ src/Umbraco.Web.Website/Extensions/UmbracoApplicationBuilder.Website.cs
 src/Umbraco.Web.Website/Extensions/WebsiteUmbracoBuilderExtensions.cs
 src/Umbraco.Web.Website/Middleware/BasicAuthenticationMiddleware.cs
 src/Umbraco.Web.Website/Umbraco.Web.Website.csproj
+src/Umbraco.Web.Website/CLAUDE.md
 src/Umbraco.Web.Website/Controllers/SurfaceController.cs
 src/Umbraco.Web.Website/Controllers/UmbLoginStatusController.cs
 src/Umbraco.Web.Website/Controllers/UmbLoginController.cs
@@ -13610,6 +13652,7 @@ src/Umbraco.Examine.Lucene/Extensions/ExamineExtensions.cs
 src/Umbraco.Examine.Lucene/UmbracoExamineIndexDiagnostics.cs
 src/Umbraco.Examine.Lucene/UmbracoTempEnvFileSystemDirectoryFactory.cs
 src/Umbraco.Examine.Lucene/DeliveryApiContentIndex.cs
+src/Umbraco.Examine.Lucene/CLAUDE.md
 src/Umbraco.Examine.Lucene/ConfigurationEnabledDirectoryFactory.cs
 src/Umbraco.Examine.Lucene/Umbraco.Examine.Lucene.csproj
 src/Umbraco.Examine.Lucene/UmbracoApplicationRoot.cs
@@ -14240,6 +14283,7 @@ src/Umbraco.Cms.Api.Management/Services/JsonPatchService.cs
 src/Umbraco.Cms.Api.Management/Services/IBackOfficeExternalLoginService.cs
 src/Umbraco.Cms.Api.Management/Services/IExamineManagerService.cs
 src/Umbraco.Cms.Api.Management/Services/IJsonPatchService.cs
+src/Umbraco.Cms.Api.Management/CLAUDE.md
 src/Umbraco.Cms.Api.Management/Controllers/Indexer/AllIndexerController.cs
 src/Umbraco.Cms.Api.Management/Controllers/Indexer/RebuildIndexerController.cs
 src/Umbraco.Cms.Api.Management/Controllers/Indexer/DetailsIndexerController.cs
@@ -15089,6 +15133,7 @@ src/Umbraco.Web.Common/Filters/UmbracoVirtualPageFilterAttribute.cs
 src/Umbraco.Web.Common/Filters/ValidateUmbracoFormRouteStringAttribute.cs
 src/Umbraco.Web.Common/Filters/ModelBindingExceptionAttribute.cs
 src/Umbraco.Web.Common/Filters/BackOfficeCultureFilter.cs
+src/Umbraco.Web.Common/CLAUDE.md
 src/Umbraco.Web.Common/Controllers/IVirtualPageController.cs
 src/Umbraco.Web.Common/Controllers/ProxyViewDataFeature.cs
 src/Umbraco.Web.Common/Controllers/IRenderController.cs
@@ -15142,6 +15187,7 @@ src/Umbraco.Web.Common/ModelBinders/ContentModelBinder.cs
 src/Umbraco.Web.Common/ModelBinders/ModelBindingException.cs
 src/Umbraco.Web.Common/ModelBinders/HttpQueryStringModelBinder.cs
 src/Umbraco.Web.Common/ModelBinders/ContentModelBinderProvider.cs
+CLAUDE.md
 NOTICES.txt
 Umbraco.Client.code-workspace
 nuget.config
