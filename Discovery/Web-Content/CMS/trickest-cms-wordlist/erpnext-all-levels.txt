@@ -336,6 +336,10 @@ erpnext/patches/v16_0/__init__.py
 patches/v16_0/__init__.py
 v16_0/__init__.py
 __init__.py
+erpnext/patches/v16_0/migrate_account_freezing_settings_to_company.py
+patches/v16_0/migrate_account_freezing_settings_to_company.py
+v16_0/migrate_account_freezing_settings_to_company.py
+migrate_account_freezing_settings_to_company.py
 erpnext/patches/v16_0/rename_subcontracted_quantity.py
 patches/v16_0/rename_subcontracted_quantity.py
 v16_0/rename_subcontracted_quantity.py
@@ -2062,6 +2066,10 @@ maintenance/doctype/maintenance_schedule/maintenance_schedule.js
 doctype/maintenance_schedule/maintenance_schedule.js
 maintenance_schedule/maintenance_schedule.js
 maintenance_schedule.js
+erpnext/maintenance/report/__init__.py
+maintenance/report/__init__.py
+report/__init__.py
+__init__.py
 erpnext/maintenance/report/maintenance_schedules/__init__.py
 maintenance/report/maintenance_schedules/__init__.py
 report/maintenance_schedules/__init__.py

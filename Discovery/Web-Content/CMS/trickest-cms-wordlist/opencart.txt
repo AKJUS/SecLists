@@ -5119,6 +5119,7 @@ upload/admin/controller/task/catalog/country.php
 upload/admin/controller/task/catalog/currency.php
 upload/admin/controller/task/catalog/customer_group.php
 upload/admin/controller/task/catalog/setting.php
+upload/admin/controller/task/catalog/tax_rate.php
 upload/admin/controller/task/catalog/tax_class.php
 upload/admin/controller/task/catalog/product.php
 upload/admin/controller/task/catalog/return_reason.php
@@ -5264,6 +5265,7 @@ upload/admin/controller/event/category.php
 upload/admin/controller/event/filter.php
 upload/admin/controller/event/return_status.php
 upload/admin/controller/event/article.php
+upload/admin/controller/event/tax.php
 upload/admin/controller/event/order_status.php
 upload/admin/controller/event/theme.php
 upload/admin/controller/event/return_action.php
@@ -5279,7 +5281,6 @@ upload/admin/controller/event/attribute.php
 upload/admin/controller/event/attribute_group.php
 upload/admin/controller/event/manufacturer.php
 upload/admin/controller/event/option.php
-upload/admin/controller/event/tax_class.php
 upload/admin/controller/event/filter_group.php
 upload/admin/controller/event/store.php
 upload/admin/controller/event/product.php
@@ -5880,6 +5881,7 @@ upload/admin/view/template/marketplace/event_list.twig
 upload/admin/view/template/marketplace/installer_extension.twig
 upload/admin/view/template/marketplace/cron.twig
 upload/admin/view/template/marketplace/marketplace_reply.twig
+upload/admin/view/template/marketplace/task_log.twig
 upload/admin/view/template/marketplace/marketplace_comment.twig
 upload/admin/view/fonts/opencart.svg
 upload/admin/view/fonts/opencart.woff
