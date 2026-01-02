@@ -186,6 +186,7 @@ tests/functions_user/fixtures/group_user_attributes.xml
 tests/functions_user/whois_test.php
 tests/functions_user/delete_user_test.php
 tests/functions_user/group_user_attributes_test.php
+tests/manifest/controller_test.php
 tests/compress/extract/.gitkeep
 tests/compress/fixtures/archive.tar.gz
 tests/compress/fixtures/archive.tar
@@ -1968,6 +1969,7 @@ phpBB/phpbb/db/migration/data/v400/v400a1.php
 phpBB/phpbb/db/migration/data/v400/storage_adapter_local_subfolders_remove.php
 phpBB/phpbb/db/migration/data/v400/rename_duplicated_index_names.php
 phpBB/phpbb/db/migration/data/v400/storage_backup.php
+phpBB/phpbb/db/migration/data/v400/extensions_composer_4.php
 phpBB/phpbb/db/migration/data/v400/storage_avatar.php
 phpBB/phpbb/db/migration/data/v400/storage_attachment.php
 phpBB/phpbb/db/migration/data/v400/extensions_composer_3.php

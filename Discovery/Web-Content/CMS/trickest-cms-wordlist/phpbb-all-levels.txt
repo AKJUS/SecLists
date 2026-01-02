@@ -694,6 +694,9 @@ delete_user_test.php
 tests/functions_user/group_user_attributes_test.php
 functions_user/group_user_attributes_test.php
 group_user_attributes_test.php
+tests/manifest/controller_test.php
+manifest/controller_test.php
+controller_test.php
 tests/compress/extract/.gitkeep
 compress/extract/.gitkeep
 extract/.gitkeep
@@ -8607,6 +8610,13 @@ migration/data/v400/storage_backup.php
 data/v400/storage_backup.php
 v400/storage_backup.php
 storage_backup.php
+phpBB/phpbb/db/migration/data/v400/extensions_composer_4.php
+phpbb/db/migration/data/v400/extensions_composer_4.php
+db/migration/data/v400/extensions_composer_4.php
+migration/data/v400/extensions_composer_4.php
+data/v400/extensions_composer_4.php
+v400/extensions_composer_4.php
+extensions_composer_4.php
 phpBB/phpbb/db/migration/data/v400/storage_avatar.php
 phpbb/db/migration/data/v400/storage_avatar.php
 db/migration/data/v400/storage_avatar.php
