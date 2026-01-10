@@ -86,7 +86,9 @@ tests/Umbraco.Tests.AcceptanceTest/tests/DefaultConfig/Content/ContentWithDocume
 tests/Umbraco.Tests.AcceptanceTest/tests/DefaultConfig/Content/ContentWithDocumentTypeProperties/ContentWithAllowVaryByCulture.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/DefaultConfig/Content/ContentWithTags.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/DefaultConfig/Content/RedirectManagement.spec.ts
+tests/Umbraco.Tests.AcceptanceTest/tests/DefaultConfig/Content/AllowEditInvariantFromNonDefaultIsTrue.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/DefaultConfig/Content/ContentWithTextstring.spec.ts
+tests/Umbraco.Tests.AcceptanceTest/tests/DefaultConfig/Content/VariantDocWithVariantBlockListInvariantBlock.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/DefaultConfig/Content/ContentWithMediaPicker.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/DefaultConfig/Content/ContentWithListViewContent.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/DefaultConfig/Content/IssueWithScheduledPublishing.spec.ts
@@ -233,6 +235,8 @@ tests/Umbraco.Tests.AcceptanceTest/tests/DefaultConfig/Packages/PackagesPackages
 tests/Umbraco.Tests.AcceptanceTest/tests/DefaultConfig/Packages/CreatedPackages.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/DefaultConfig/Packages/InstalledPackages.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/auth.setup.ts
+tests/Umbraco.Tests.AcceptanceTest/tests/ContentSettingConfig/AdditionalSetup/appsettings.json
+tests/Umbraco.Tests.AcceptanceTest/tests/ContentSettingConfig/AllowEditInvariantFromNonDefaultIsFalse.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/EntityDataPicker/Content/EntityPickerTree.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/EntityDataPicker/Content/EntityPickerCollection.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/EntityDataPicker/DataType/EntityPickerTree.spec.ts
@@ -361,6 +365,7 @@ tests/Umbraco.Tests.Integration/Umbraco.Core/Services/UserServiceCrudTests.Filte
 tests/Umbraco.Tests.Integration/Umbraco.Core/Services/ContentPublishingServiceTests.UnscheduleUnpublish.cs
 tests/Umbraco.Tests.Integration/Umbraco.Core/Services/ContentTypeEditingServiceModelsBuilderDisabledTests.cs
 tests/Umbraco.Tests.Integration/Umbraco.Core/Services/ContentPublishingServiceTests.ScheduleUnpublish.cs
+tests/Umbraco.Tests.Integration/Umbraco.Core/Services/UserGroupServiceTests.cs
 tests/Umbraco.Tests.Integration/Umbraco.Core/Services/ContentTypeEditingServiceModelsBuilderDisabledTestsBase.cs
 tests/Umbraco.Tests.Integration/Umbraco.Core/Services/ContentEditingServiceTests.cs
 tests/Umbraco.Tests.Integration/Umbraco.Core/Services/ContentPublishingServiceTests.SchedulePublish.cs
@@ -372,7 +377,6 @@ tests/Umbraco.Tests.Integration/Umbraco.Core/Services/MediaNavigationServiceTest
 tests/Umbraco.Tests.Integration/Umbraco.Core/Services/DocumentNavigationServiceTests.Move.cs
 tests/Umbraco.Tests.Integration/Umbraco.Core/Services/PublishStatusServiceTests.Query.cs
 tests/Umbraco.Tests.Integration/Umbraco.Core/Services/UserServiceCrudTests.Get.cs
-tests/Umbraco.Tests.Integration/Umbraco.Core/Services/UserGroupServiceValidationTests.cs
 tests/Umbraco.Tests.Integration/Umbraco.Core/Services/ContentTypeEditingServiceTests.cs
 tests/Umbraco.Tests.Integration/Umbraco.Core/Services/ContentTypeEditingServiceModelsBuilderEnabledTestsBase.cs
 tests/Umbraco.Tests.Integration/Umbraco.Core/Services/MetricsConsentServiceTest.cs
@@ -1178,6 +1182,8 @@ tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/ServerEvents/ServerEven
 tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/ServerEvents/FakeAuthorizer.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/ServerEvents/ServerEventAuthorizerTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/ServerEvents/ServerEventUserManagerTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/ServerEvents/ServerEventSenderTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/Factories/MediaUrlFactoryTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/Factories/IndexPresentationFactoryTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/Mapping/Content/DocumentVariantStateHelperTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/Services/BackOfficeExternalLoginServiceTests.ExternalLoginStatusForUserAsync.cs
@@ -1211,6 +1217,7 @@ tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/HostedServices/RecurringHos
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Runtime/DefaultMainDomKeyGeneratorTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Examine/UmbracoFieldDefinitionCollectionTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Examine/UmbracoContentValueSetValidatorTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/HealthChecks/MarkdownToHtmlConverterTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/HealthChecks/HealthCheckResultsTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Extensions/EmailMessageExtensionsTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Editors/UserEditorAuthorizationHelperTests.cs
@@ -1227,6 +1234,7 @@ tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Serialization/JsonUdiConver
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Serialization/JsonBlockValueConverterTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Serialization/JsonStringInternConverterTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/PropertyEditors/DateTimeWithTimeZonePropertyIndexValueFactoryTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/PropertyEditors/RecycleBinMediaProtectionHelperTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/PropertyEditors/DateOnlyPropertyIndexValueFactoryTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/PropertyEditors/DateTimePropertyEditorTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/PropertyEditors/BlockEditorVarianceHandlerTests.cs
@@ -1243,6 +1251,7 @@ tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Migrations/Stubs/DropForeig
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Migrations/Stubs/Dummy.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Migrations/MigrationPlanTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Migrations/AlterMigrationTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Strings/MarkdownToHtmlConverterTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/BackgroundJobs/Jobs/CacheInstructionsPruningJobTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/BackgroundJobs/Jobs/HealthCheckNotifierJobTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/BackgroundJobs/Jobs/TempFileCleanupJobTests.cs
@@ -1512,6 +1521,7 @@ templates/UmbracoExtension/Controllers/UmbracoExtensionApiController.cs
 templates/UmbracoExtension/Umbraco.Extension.csproj
 templates/readme.md
 templates/Directory.Build.props
+templates/UmbracoProject/entrypoint.sh
 templates/UmbracoProject/appsettings.Development.json
 templates/UmbracoProject/UmbracoProject.csproj
 templates/UmbracoProject/.dockerignore
@@ -1658,6 +1668,8 @@ src/Umbraco.Cms.Api.Common/OpenApi/IOperationIdHandler.cs
 src/Umbraco.Cms.Api.Common/OpenApi/SchemaIdHandler.cs
 src/Umbraco.Cms.Api.Common/OpenApi/SchemaIdSelector.cs
 src/Umbraco.Cms.Api.Common/OpenApi/EnumSchemaFilter.cs
+src/Umbraco.Cms.Api.Common/OpenApi/IDocumentInclusionSelector.cs
+src/Umbraco.Cms.Api.Common/OpenApi/DocumentInclusionSelector.cs
 src/Umbraco.Cms.Api.Common/OpenApi/ISchemaIdHandler.cs
 src/Umbraco.Cms.Api.Common/OpenApi/OperationIdSelector.cs
 src/Umbraco.Cms.Api.Common/OpenApi/IOperationIdSelector.cs
@@ -3495,6 +3507,7 @@ src/Umbraco.Core/Strings/IUrlSegmentProvider.cs
 src/Umbraco.Core/Strings/IHtmlEncodedString.cs
 src/Umbraco.Core/Strings/DefaultUrlSegmentProvider.cs
 src/Umbraco.Core/Strings/Utf8ToAsciiConverter.cs
+src/Umbraco.Core/Strings/IMarkdownToHtmlConverter.cs
 src/Umbraco.Core/Strings/Css/StylesheetRule.cs
 src/Umbraco.Core/Strings/Css/StylesheetHelper.cs
 src/Umbraco.Core/Strings/PathUtility.cs
@@ -5587,6 +5600,7 @@ src/Umbraco.Web.UI.Client/src/packages/core/property/components/property/index.t
 src/Umbraco.Web.UI.Client/src/packages/core/property/components/property/property.context.ts
 src/Umbraco.Web.UI.Client/src/packages/core/property/components/property/property.element.ts
 src/Umbraco.Web.UI.Client/src/packages/core/property/components/property/property.stories.ts
+src/Umbraco.Web.UI.Client/src/packages/core/property/components/property/property.context-token.ts
 src/Umbraco.Web.UI.Client/src/packages/core/property/components/index.ts
 src/Umbraco.Web.UI.Client/src/packages/core/property/components/property-layout/property-layout.element.ts
 src/Umbraco.Web.UI.Client/src/packages/core/property/components/property-layout/index.ts
@@ -9965,11 +9979,13 @@ src/Umbraco.Web.UI.Client/src/packages/content/content/tree/sort-children-of-con
 src/Umbraco.Web.UI.Client/src/packages/content/content/tree/types.ts
 src/Umbraco.Web.UI.Client/src/packages/content/content/workspace/manifests.ts
 src/Umbraco.Web.UI.Client/src/packages/content/content/workspace/content-detail-validation-path-translator.ts
+src/Umbraco.Web.UI.Client/src/packages/content/content/workspace/content-detail-workspace-type-transform.controller.ts
 src/Umbraco.Web.UI.Client/src/packages/content/content/workspace/index.ts
 src/Umbraco.Web.UI.Client/src/packages/content/content/workspace/content-detail-workspace-base.ts
 src/Umbraco.Web.UI.Client/src/packages/content/content/workspace/content-workspace-context.interface.ts
 src/Umbraco.Web.UI.Client/src/packages/content/content/workspace/constants.ts
 src/Umbraco.Web.UI.Client/src/packages/content/content/workspace/content-validation-to-hints.manager.ts
+src/Umbraco.Web.UI.Client/src/packages/content/content/workspace/content-detail-workspace-type-transform.controller.test.ts
 src/Umbraco.Web.UI.Client/src/packages/content/content/workspace/content-detail-validation-path-translator.test.ts
 src/Umbraco.Web.UI.Client/src/packages/content/content/workspace/views/edit/manifests.ts
 src/Umbraco.Web.UI.Client/src/packages/content/content/workspace/views/edit/content-editor.element.ts
@@ -10521,6 +10537,10 @@ src/Umbraco.Web.UI.Client/src/packages/documents/documents/publishing/pending-ch
 src/Umbraco.Web.UI.Client/src/packages/documents/documents/publishing/pending-changes/document-published-pending-changes.manager.ts
 src/Umbraco.Web.UI.Client/src/packages/documents/documents/publishing/pending-changes/types.ts
 src/Umbraco.Web.UI.Client/src/packages/documents/documents/publishing/types.ts
+src/Umbraco.Web.UI.Client/src/packages/documents/documents/allow-edit-invariant-from-non-default/document-block-workspace-allow-edit-invariant-from-non-default.controller.ts
+src/Umbraco.Web.UI.Client/src/packages/documents/documents/allow-edit-invariant-from-non-default/manifests.ts
+src/Umbraco.Web.UI.Client/src/packages/documents/documents/allow-edit-invariant-from-non-default/document-workspace-allow-edit-invariant-from-non-default.controller.ts
+src/Umbraco.Web.UI.Client/src/packages/documents/documents/allow-edit-invariant-from-non-default/document-allow-edit-invariant-from-non-default-controller-base.ts
 src/Umbraco.Web.UI.Client/src/packages/documents/documents/property-editors/manifests.ts
 src/Umbraco.Web.UI.Client/src/packages/documents/documents/property-editors/document-picker/manifests.ts
 src/Umbraco.Web.UI.Client/src/packages/documents/documents/property-editors/document-picker/Umbraco.ContentPicker.ts
@@ -14556,6 +14576,7 @@ src/Umbraco.Infrastructure/Migrations/Upgrade/V_15_1_0/FixConvertLocalLinks.cs
 src/Umbraco.Infrastructure/Migrations/Upgrade/V_15_1_0/RebuildCacheMigration.cs
 src/Umbraco.Infrastructure/Migrations/Upgrade/V_15_4_0/AddRelationTypeForMembers.cs
 src/Umbraco.Infrastructure/Migrations/Upgrade/V_15_4_0/UpdateDocumentUrlToPersistMultipleSegmentsPerDocument.cs
+src/Umbraco.Infrastructure/Migrations/Upgrade/V_17_2_0/AddDescriptionToUserGroup.cs
 src/Umbraco.Infrastructure/Migrations/Upgrade/V_15_3_0/AddNameAndDescriptionToWebhooks.cs
 src/Umbraco.Infrastructure/Migrations/Upgrade/V_15_0_0/AddUserClientId.cs
 src/Umbraco.Infrastructure/Migrations/Upgrade/V_15_0_0/ConvertLocalLinks.cs
@@ -14641,6 +14662,8 @@ src/Umbraco.Infrastructure/Migrations/Upgrade/UmbracoPremigrationPlan.cs
 src/Umbraco.Infrastructure/Migrations/Upgrade/Common/CreateKeysAndIndexes.cs
 src/Umbraco.Infrastructure/Migrations/Upgrade/Common/DeleteKeysAndIndexes.cs
 src/Umbraco.Infrastructure/PublishedContentQuery.cs
+src/Umbraco.Infrastructure/Strings/HeyRedMarkdownToHtmlConverter.cs
+src/Umbraco.Infrastructure/Strings/MarkdigMarkdownToHtmlConverter.cs
 src/Umbraco.Infrastructure/IPublishedContentQueryAccessor.cs
 src/Umbraco.Infrastructure/BackgroundJobs/RecurringBackgroundJobHostedServiceRunner.cs
 src/Umbraco.Infrastructure/BackgroundJobs/Jobs/DistributedJobs/OpenIddictCleanupJob.cs
