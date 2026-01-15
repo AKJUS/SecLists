@@ -6008,6 +6008,7 @@ tests/unit/Administration/Framework/App/Subscriber/SystemLanguageChangedSubscrib
 tests/unit/Administration/Framework/Routing/AdministrationRouteScopeTest.php
 tests/unit/Administration/Framework/Routing/KnownIps/KnownIpsCollectorTest.php
 tests/unit/Administration/Framework/Routing/NotFound/AdministrationNotFoundSubscriberTest.php
+tests/unit/Administration/Framework/Adapter/Cache/Http/AdministrationCacheControlListenerTest.php
 tests/unit/Administration/Framework/Search/CriteriaCollectionTest.php
 tests/unit/Administration/Framework/SystemCheck/AdministrationReadinessCheckTest.php
 tests/unit/Administration/Service/AdminSearcherTest.php
@@ -6246,6 +6247,8 @@ tests/unit/Core/Content/Mail/Transport/SmtpOauthTokenProviderTest.php
 tests/unit/Core/Content/Mail/Transport/MailerTransportLoaderTest.php
 tests/unit/Core/Content/Rule/RuleCollectionTest.php
 tests/unit/Core/Content/Rule/DataAbstractionLayer/RuleAreaUpdaterTest.php
+tests/unit/Core/Content/Rule/DataAbstractionLayer/RuleIndexerSubscriberTest.php
+tests/unit/Core/Content/Rule/DataAbstractionLayer/RulePayloadUpdaterTest.php
 tests/unit/Core/Content/ContactForm/Event/ContactFormEventTest.php
 tests/unit/Core/Content/ContactForm/Validation/ContactFormValidationFactoryTest.php
 tests/unit/Core/Content/ContactForm/SalesChannel/ContactFormRouteTest.php
@@ -6758,6 +6761,7 @@ tests/unit/Core/Checkout/Customer/Subscriber/AddressHashSubscriberTest.php
 tests/unit/Core/Checkout/Customer/Subscriber/CustomerRemoteAddressSubscriberTest.php
 tests/unit/Core/Checkout/Customer/Subscriber/ProductReviewSubscriberTest.php
 tests/unit/Core/Checkout/Customer/Subscriber/CustomerFlowEventsSubscriberTest.php
+tests/unit/Core/Checkout/Customer/Subscriber/CustomerAddressSubscriberTest.php
 tests/unit/Core/Checkout/Customer/Subscriber/CustomerBeforeDeleteSubscriberTest.php
 tests/unit/Core/Checkout/Customer/Rule/AffiliateCodeRuleTest.php
 tests/unit/Core/Checkout/Customer/Rule/DaysSinceLastLoginRuleTest.php
@@ -6789,11 +6793,13 @@ tests/unit/Core/Checkout/Customer/Api/CustomerGroupRegistrationActionControllerT
 tests/unit/Core/Checkout/Customer/SalesChannel/RegisterRouteTest.php
 tests/unit/Core/Checkout/Customer/SalesChannel/ConvertGuestRouteTest.php
 tests/unit/Core/Checkout/Customer/SalesChannel/AccountServiceTest.php
+tests/unit/Core/Checkout/Customer/SalesChannel/ListAddressRouteTest.php
 tests/unit/Core/Checkout/Customer/SalesChannel/RegisterConfirmRouteTest.php
 tests/unit/Core/Checkout/Customer/SalesChannel/UpsertAddressRouteTest.php
 tests/unit/Core/Checkout/Customer/SalesChannel/SendPasswordRecoveryMailRouteTest.php
 tests/unit/Core/Checkout/Customer/SalesChannel/ChangeCustomerProfileRouteTest.php
 tests/unit/Core/Checkout/Customer/SalesChannel/ImitateCustomerRouteTest.php
+tests/unit/Core/Checkout/Customer/SalesChannel/SalesChannelCustomerAddressDefinitionTest.php
 tests/unit/Core/Checkout/Customer/SalesChannel/DownloadRouteTest.php
 tests/unit/Core/Checkout/Shipping/Cart/ShippingMethodValidatorTest.php
 tests/unit/Core/Checkout/Shipping/Cart/Error/ShippingMethodBlockedErrorTest.php
@@ -7817,6 +7823,7 @@ tests/unit/Core/Framework/Store/Exception/LicenseNotFoundExceptionTest.php
 tests/unit/Core/Framework/Store/Services/StoreSessionExpiredMiddlewareTest.php
 tests/unit/Core/Framework/Store/Services/InstanceServiceTest.php
 tests/unit/Core/Framework/Store/Services/ShopSecretInvalidMiddlewareTest.php
+tests/unit/Core/Framework/Store/Services/ExtensionLoaderTest.php
 tests/unit/Core/Framework/Store/Services/ExtensionListingLoaderTest.php
 tests/unit/Core/Framework/Store/Services/FirstRunWizardClientTest.php
 tests/unit/Core/Framework/Store/Services/FirstRunWizardServiceTest.php
@@ -8862,6 +8869,11 @@ tests/integration/Core/System/SystemConfig/Facade/SystemConfigFacadeTest.php
 tests/integration/Core/System/SystemConfig/MemoizedSystemConfigLoaderTest.php
 tests/integration/Core/System/SystemConfig/SystemConfigServiceTest.php
 tests/integration/Core/System/SystemConfig/Validation/SystemConfigValidatorTest.php
+tests/integration/Core/System/SystemConfig/Service/ConfigurationServiceTest.php
+tests/integration/Core/System/SystemConfig/Service/_fixtures/ValidConfigPlugin/Resources/config/config.xml
+tests/integration/Core/System/SystemConfig/Service/_fixtures/ValidConfigPlugin/ValidConfigPlugin.php
+tests/integration/Core/System/SystemConfig/Service/_fixtures/BrokenConfigPlugin/Resources/config/config.xml
+tests/integration/Core/System/SystemConfig/Service/_fixtures/BrokenConfigPlugin/BrokenConfigPlugin.php
 tests/integration/Core/System/Salutation/SalesChannel/SalutationRouteTest.php
 tests/integration/Core/System/User/UserCrudTest.php
 tests/integration/Core/System/User/Recovery/UserRecoveryServiceTest.php
@@ -9250,6 +9262,7 @@ tests/integration/Core/Framework/DataAbstractionLayer/fixture/AttributeEntityCol
 tests/integration/Core/Framework/DataAbstractionLayer/fixture/AttributeEntityUnionEnum.php
 tests/integration/Core/Framework/DataAbstractionLayer/fixture/IntEnum.php
 tests/integration/Core/Framework/DataAbstractionLayer/fixture/DummyHydrator.php
+tests/integration/Core/Framework/DataAbstractionLayer/fixture/AttributeEntityWithInheritance.php
 tests/integration/Core/Framework/DataAbstractionLayer/fixture/AttributeEntity.php
 tests/integration/Core/Framework/DataAbstractionLayer/fixture/AttributeEntityAgg.php
 tests/integration/Core/Framework/DataAbstractionLayer/fixture/AttributeEntityInvalidEnum.php
@@ -9481,6 +9494,7 @@ tests/integration/Core/Framework/Adapter/Cache/Script/_fixtures/InvalidationCase
 tests/integration/Core/Framework/Adapter/Cache/Script/_fixtures/InvalidationCases/Resources/scripts/cache-invalidation/filter-by-entity.twig
 tests/integration/Core/Framework/Adapter/Cache/Script/_fixtures/InvalidationCases/Resources/scripts/cache-invalidation/simple-script.twig
 tests/integration/Core/Framework/Adapter/Cache/Script/_fixtures/InvalidationCases/manifest.xml
+tests/integration/Core/Framework/Adapter/Cache/Http/CacheResponseSubscriberTest.php
 tests/integration/Core/Framework/Adapter/Cache/InvalidatorStorage/MySQLInvalidatorStorageTest.php
 tests/integration/Core/Framework/Adapter/Cache/InvalidatorStorage/RedisInvalidatorStorageTest.php
 tests/integration/Core/Framework/Adapter/Cache/RedisConnectionFactoryTest.php
@@ -10209,6 +10223,7 @@ src/Administration/Resources/app/administration/jsdoc.config.js
 src/Administration/Resources/app/administration/technical-docs/06-ui/01-meteor-component-library.md
 src/Administration/Resources/app/administration/technical-docs/10-commercial/01-commercial-plugin.md
 src/Administration/Resources/app/administration/technical-docs/09-security/01-acl-permissions.md
+src/Administration/Resources/app/administration/technical-docs/09-security/axios-migration-guide.md
 src/Administration/Resources/app/administration/technical-docs/README.md
 src/Administration/Resources/app/administration/technical-docs/02-architecture/01-boot-process.md
 src/Administration/Resources/app/administration/technical-docs/02-architecture/02-folder-structure.md
@@ -10469,7 +10484,9 @@ src/Administration/Resources/app/administration/src/core/factory/module.factory.
 src/Administration/Resources/app/administration/src/core/factory/worker-notification.factory.ts
 src/Administration/Resources/app/administration/src/core/factory/async-component.factory.spec.js
 src/Administration/Resources/app/administration/src/core/factory/http.factory.spec.js
+src/Administration/Resources/app/administration/src/core/factory/http-client-adapter.ts
 src/Administration/Resources/app/administration/src/core/factory/http.factory.js
+src/Administration/Resources/app/administration/src/core/factory/http-client-adapter.spec.ts
 src/Administration/Resources/app/administration/src/core/factory/filter.factory.ts
 src/Administration/Resources/app/administration/src/core/factory/plugin-boot.factory.js
 src/Administration/Resources/app/administration/src/core/factory/state.factory.ts
@@ -10477,6 +10494,7 @@ src/Administration/Resources/app/administration/src/core/factory/api-service.fac
 src/Administration/Resources/app/administration/src/core/factory/state-deprecated.factory.js
 src/Administration/Resources/app/administration/src/core/factory/shortcut.factory.js
 src/Administration/Resources/app/administration/src/core/factory/locale.factory.ts
+src/Administration/Resources/app/administration/src/core/factory/locale.factory.spec.ts
 src/Administration/Resources/app/administration/src/core/factory/entity-definition.factory.js
 src/Administration/Resources/app/administration/src/core/factory/mixin.factory.ts
 src/Administration/Resources/app/administration/src/core/factory/module.factory.ts
@@ -10551,6 +10569,7 @@ src/Administration/Resources/app/administration/src/core/service/timezone.servic
 src/Administration/Resources/app/administration/src/core/service/customer-group-registration-listener.service.js
 src/Administration/Resources/app/administration/src/core/service/api/shop-id-change.service.ts
 src/Administration/Resources/app/administration/src/core/service/api/calculate-price.api.service.js
+src/Administration/Resources/app/administration/src/core/service/api/snippet.api.service.spec.ts
 src/Administration/Resources/app/administration/src/core/service/api/document.api.service.spec.js
 src/Administration/Resources/app/administration/src/core/service/api/sso-settings.service.spec.js
 src/Administration/Resources/app/administration/src/core/service/api/number-range.api.service.js
@@ -13870,6 +13889,10 @@ src/Administration/Resources/app/administration/src/app/component/media/sw-image
 src/Administration/Resources/app/administration/src/app/component/media/sw-image-slider/index.js
 src/Administration/Resources/app/administration/src/app/component/media/sw-image-slider/sw-image-slider.html.twig
 src/Administration/Resources/app/administration/src/app/component/media/sw-image-slider/sw-image-slider.scss
+src/Administration/Resources/app/administration/src/app/component/media/sw-model-viewer/index.ts
+src/Administration/Resources/app/administration/src/app/component/media/sw-model-viewer/sw-model-viewer.spec.ts
+src/Administration/Resources/app/administration/src/app/component/media/sw-model-viewer/sw-model-viewer.scss
+src/Administration/Resources/app/administration/src/app/component/media/sw-model-viewer/sw-model-viewer.html.twig
 src/Administration/Resources/app/administration/src/app/component/media/sw-media-modal-move/index.js
 src/Administration/Resources/app/administration/src/app/component/media/sw-media-modal-move/sw-media-modal-move.scss
 src/Administration/Resources/app/administration/src/app/component/media/sw-media-modal-move/sw-media-modal-move.html.twig
@@ -14987,6 +15010,7 @@ src/Administration/Framework/Routing/AdministrationRouteScope.php
 src/Administration/Framework/Routing/KnownIps/KnownIpsCollector.php
 src/Administration/Framework/Routing/KnownIps/KnownIpsCollectorInterface.php
 src/Administration/Framework/Routing/NotFound/AdministrationNotFoundSubscriber.php
+src/Administration/Framework/Adapter/Cache/Http/AdministrationCacheControlListener.php
 src/Administration/Framework/Search/CriteriaCollection.php
 src/Administration/Framework/SystemCheck/AdministrationReadinessCheck.php
 src/Administration/Migration/V6_4/Migration1636121186CopySalesChannelIdsIntoUserConfig.php
@@ -17032,6 +17056,7 @@ src/Core/Checkout/Customer/Subscriber/CustomerSalutationSubscriber.php
 src/Core/Checkout/Customer/Subscriber/CustomerChangePasswordSubscriber.php
 src/Core/Checkout/Customer/Subscriber/CustomerBeforeDeleteSubscriber.php
 src/Core/Checkout/Customer/Subscriber/CustomerFlowEventsSubscriber.php
+src/Core/Checkout/Customer/Subscriber/CustomerAddressSubscriber.php
 src/Core/Checkout/Customer/Subscriber/CustomerLogoutSubscriber.php
 src/Core/Checkout/Customer/Subscriber/ProductReviewSubscriber.php
 src/Core/Checkout/Customer/Rule/CustomerAgeRule.php
@@ -17100,6 +17125,7 @@ src/Core/Checkout/Customer/SalesChannel/AbstractListAddressRoute.php
 src/Core/Checkout/Customer/SalesChannel/ListAddressRoute.php
 src/Core/Checkout/Customer/SalesChannel/AbstractRegisterConfirmRoute.php
 src/Core/Checkout/Customer/SalesChannel/ConvertGuestRoute.php
+src/Core/Checkout/Customer/SalesChannel/SalesChannelCustomerAddressEntity.php
 src/Core/Checkout/Customer/SalesChannel/CustomerResponse.php
 src/Core/Checkout/Customer/SalesChannel/AbstractSwitchDefaultAddressRoute.php
 src/Core/Checkout/Customer/SalesChannel/AbstractChangeLanguageRoute.php
@@ -17116,6 +17142,7 @@ src/Core/Checkout/Customer/SalesChannel/AbstractChangeEmailRoute.php
 src/Core/Checkout/Customer/SalesChannel/AbstractCustomerRoute.php
 src/Core/Checkout/Customer/SalesChannel/AbstractDeleteCustomerRoute.php
 src/Core/Checkout/Customer/SalesChannel/CustomerRecoveryIsExpiredRoute.php
+src/Core/Checkout/Customer/SalesChannel/SalesChannelCustomerAddressDefinition.php
 src/Core/Checkout/Customer/SalesChannel/AbstractConvertGuestRoute.php
 src/Core/Checkout/Customer/SalesChannel/AccountNewsletterRecipientResult.php
 src/Core/Checkout/Customer/SalesChannel/AbstractLoadWishlistRoute.php
@@ -17125,6 +17152,7 @@ src/Core/Checkout/Customer/SalesChannel/AbstractLogoutRoute.php
 src/Core/Checkout/Customer/SalesChannel/CustomerGroupRegistrationSettingsRouteResponse.php
 src/Core/Checkout/Customer/SalesChannel/AbstractCustomerRecoveryIsExpiredRoute.php
 src/Core/Checkout/Customer/SalesChannel/ChangePasswordRoute.php
+src/Core/Checkout/Customer/SalesChannel/SalesChannelCustomerAddressCollection.php
 src/Core/Checkout/Customer/SalesChannel/AbstractUpsertAddressRoute.php
 src/Core/Checkout/Customer/SalesChannel/CustomerAddressValidationTrait.php
 src/Core/Checkout/Customer/SalesChannel/SwitchDefaultAddressRoute.php
@@ -19126,6 +19154,7 @@ src/Core/Framework/Adapter/Storage/MySQLKeyValueStorage.php
 src/Core/Framework/Adapter/Storage/AbstractKeyValueStorage.php
 src/Core/Framework/Adapter/Messenger/Stamp/SentAtStamp.php
 src/Core/Framework/Adapter/Messenger/Middleware/QueuedTimeMiddleware.php
+src/Core/Framework/Adapter/Request/RequestParamHelper.php
 src/Core/Framework/Adapter/Console/ShopwareStyle.php
 src/Core/Framework/Adapter/Asset/AssetPackageService.php
 src/Core/Framework/Adapter/Asset/PrefixVersionStrategy.php
@@ -19215,6 +19244,7 @@ src/Core/Framework/Adapter/Cache/Http/CacheControlListener.php
 src/Core/Framework/Adapter/Cache/Http/Extension/CacheHashRequiredExtension.php
 src/Core/Framework/Adapter/Cache/Http/Extension/ResolveCacheRelevantRuleIdsExtension.php
 src/Core/Framework/Adapter/Cache/Http/CachePolicy.php
+src/Core/Framework/Adapter/Cache/Http/Event/BeforeCacheControlEvent.php
 src/Core/Framework/Adapter/Cache/Http/CacheResponseSubscriber.php
 src/Core/Framework/Adapter/Cache/Http/CachePolicyProvider.php
 src/Core/Framework/Adapter/Cache/Http/CacheHeadersService.php

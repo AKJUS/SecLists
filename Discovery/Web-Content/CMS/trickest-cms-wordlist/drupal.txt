@@ -94,6 +94,7 @@ core/modules/config/tests/config_test/tests/src/Functional/Rest/ConfigTestJsonAn
 core/modules/config/tests/config_test/tests/src/Functional/Rest/ConfigTestXmlAnonTest.php
 core/modules/config/tests/config_test/tests/src/Functional/Rest/ConfigTestJsonBasicAuthTest.php
 core/modules/config/tests/config_test/tests/src/Kernel/ConfigValidationTest.php
+core/modules/config/tests/config_test/tests/src/Kernel/ConfigTestValidationTest.php
 core/modules/config/tests/config_test/config_test.permissions.yml
 core/modules/config/tests/config_test/config_test.links.action.yml
 core/modules/config/tests/config_test/config_test.links.task.yml
@@ -3502,8 +3503,10 @@ core/modules/system/tests/themes/test_theme/templates/theme-test-registered-by-m
 core/modules/system/tests/themes/test_theme/templates/theme-test-specific-suggestions--variant.html.twig
 core/modules/system/tests/themes/test_theme/templates/theme-test--suggestion.html.twig
 core/modules/system/tests/themes/test_theme/templates/node.html.twig
+core/modules/system/tests/themes/test_theme/templates/field--comment.html.twig
 core/modules/system/tests/themes/test_theme/templates/theme-test-general-suggestions--module-override.html.twig
 core/modules/system/tests/themes/test_theme/templates/theme-test-specific-suggestions--variant--foo.html.twig
+core/modules/system/tests/themes/test_theme/templates/field--comment-other.html.twig
 core/modules/system/tests/themes/test_theme/templates/theme-test-suggestions--module-override.html.twig
 core/modules/system/tests/themes/test_theme/theme_test.template_test.html.twig
 core/modules/system/tests/themes/test_theme/theme-test-function-template-override.html.twig
@@ -4399,6 +4402,7 @@ core/modules/navigation/tests/src/Kernel/NavigationContentLinksTest.php
 core/modules/navigation/tests/src/Kernel/NavigationMenuBlockTest.php
 core/modules/navigation/tests/src/Unit/TopBarItemManagerTest.php
 core/modules/navigation/tests/src/Unit/TopBarItemBaseTest.php
+core/modules/navigation/tests/src/Unit/PageContextTest.php
 core/modules/navigation/tests/src/Unit/NavigationMenuLinkTreeManipulatorsTest.php
 core/modules/navigation/tests/src/FunctionalJavascript/NavigationBlockUiTest.php
 core/modules/navigation/tests/src/FunctionalJavascript/NavigationUserBlockTest.php
@@ -7114,6 +7118,7 @@ core/modules/comment/tests/src/Functional/CommentNonNodeTest.php
 core/modules/comment/tests/src/Functional/CommentFieldsTest.php
 core/modules/comment/tests/src/Kernel/CommentItemTest.php
 core/modules/comment/tests/src/Kernel/CommentOrphanTest.php
+core/modules/comment/tests/src/Kernel/CommentFieldPreprocessTest.php
 core/modules/comment/tests/src/Kernel/CommentBaseFieldTest.php
 core/modules/comment/tests/src/Kernel/CommentFieldAccessTest.php
 core/modules/comment/tests/src/Kernel/Plugin/migrate/source/d7/CommentEntityTranslationTest.php
@@ -7683,6 +7688,7 @@ core/modules/node/tests/src/Kernel/Migrate/d6/NodeTranslationRedirectTest.php
 core/modules/node/tests/src/Kernel/Migrate/MigrateNodeStubTest.php
 core/modules/node/tests/src/Kernel/ConfigActionsTest.php
 core/modules/node/tests/src/Kernel/NodeFieldAccessTest.php
+core/modules/node/tests/src/Kernel/NodeSearchTest.php
 core/modules/node/tests/src/Kernel/NodeAliasedRouteTest.php
 core/modules/node/tests/src/Kernel/NodeViewBuilderTest.php
 core/modules/node/tests/src/Kernel/NodeRequirementsStatusFilterWarningTest.php
@@ -8913,6 +8919,7 @@ core/modules/jsonapi/tests/src/Unit/Query/OffsetPageTest.php
 core/modules/jsonapi/tests/src/Unit/Query/SortTest.php
 core/modules/jsonapi/tests/src/Unit/Query/EntityConditionTest.php
 core/modules/jsonapi/tests/src/Unit/Query/EntityConditionGroupTest.php
+core/modules/jsonapi/tests/src/Unit/Encoder/JsonEncoderTest.php
 core/modules/jsonapi/tests/src/Unit/EventSubscriber/ResourceResponseValidatorTest.php
 core/modules/jsonapi/tests/src/Unit/Routing/RoutesTest.php
 core/modules/jsonapi/tests/src/Unit/JsonApiSpecTest.php
@@ -10423,6 +10430,7 @@ core/modules/link/tests/src/Unit/Plugin/Validation/Constraint/LinkTypeConstraint
 core/modules/link/tests/src/Unit/Plugin/Validation/Constraint/LinkAccessConstraintValidatorTest.php
 core/modules/link/tests/src/Unit/Plugin/Validation/Constraint/LinkExternalProtocolsConstraintValidatorTest.php
 core/modules/link/tests/src/Unit/Plugin/Validation/Constraint/LinkNotExistingInternalConstraintValidatorTest.php
+core/modules/link/tests/src/Unit/Plugin/Validation/Constraint/LinkTitleRequiredConstraintValidatorTest.php
 core/modules/link/tests/src/Unit/Plugin/migrate/process/FieldLinkTest.php
 core/modules/link/tests/src/Unit/Plugin/migrate/field/d6/LinkFieldTest.php
 core/modules/link/tests/src/Unit/LinkFormatterTest.php
@@ -10433,10 +10441,12 @@ core/modules/link/link.libraries.yml
 core/modules/link/link.info.yml
 core/modules/link/link.module
 core/modules/link/src/Plugin/Validation/Constraint/LinkExternalProtocolsConstraint.php
+core/modules/link/src/Plugin/Validation/Constraint/LinkTitleRequiredConstraint.php
 core/modules/link/src/Plugin/Validation/Constraint/LinkNotExistingInternalConstraintValidator.php
 core/modules/link/src/Plugin/Validation/Constraint/LinkTypeConstraintValidator.php
 core/modules/link/src/Plugin/Validation/Constraint/LinkTypeConstraint.php
 core/modules/link/src/Plugin/Validation/Constraint/LinkAccessConstraint.php
+core/modules/link/src/Plugin/Validation/Constraint/LinkTitleRequiredConstraintValidator.php
 core/modules/link/src/Plugin/Validation/Constraint/LinkAccessConstraintValidator.php
 core/modules/link/src/Plugin/Validation/Constraint/LinkExternalProtocolsConstraintValidator.php
 core/modules/link/src/Plugin/Validation/Constraint/LinkNotExistingInternalConstraint.php
@@ -11842,7 +11852,6 @@ core/tests/Drupal/Tests/Core/Plugin/Discovery/HookDiscoveryTest.php
 core/tests/Drupal/Tests/Core/Plugin/Discovery/TestDerivativeDiscoveryWithObject.php
 core/tests/Drupal/Tests/Core/Plugin/Discovery/Fixtures/test_1/test_1.test.yml
 core/tests/Drupal/Tests/Core/Plugin/Discovery/Fixtures/test_2/test_2.test.yml
-core/tests/Drupal/Tests/Core/Plugin/Discovery/ContainerDerivativeDiscoveryDecoratorTest.php
 core/tests/Drupal/Tests/Core/Plugin/Discovery/TestContainerDerivativeDiscovery.php
 core/tests/Drupal/Tests/Core/Plugin/Discovery/DerivativeDiscoveryDecoratorTest.php
 core/tests/Drupal/Tests/Core/Plugin/Discovery/YamlDirectoryDiscoveryTest.php
@@ -12262,6 +12271,7 @@ core/tests/Drupal/Tests/Core/Render/Element/MachineNameTest.php
 core/tests/Drupal/Tests/Core/Render/Element/TextfieldTest.php
 core/tests/Drupal/Tests/Core/Render/Element/TextareaTest.php
 core/tests/Drupal/Tests/Core/Render/ElementTest.php
+core/tests/Drupal/Tests/Core/Render/Plugin/DisplayVariant/SimplePageVariantTest.php
 core/tests/Drupal/Tests/Core/Render/RendererDebugTest.php
 core/tests/Drupal/Tests/Core/Render/ElementInfoManagerTest.php
 core/tests/Drupal/Tests/Core/Render/MetadataBubblingUrlGeneratorTest.php

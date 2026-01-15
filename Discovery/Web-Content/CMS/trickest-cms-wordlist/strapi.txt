@@ -334,6 +334,7 @@ tests/api/core/admin/admin-user.test.api.js
 tests/api/core/admin/admin-cookie-security.test.api.ts
 tests/api/core/admin/admin-homepage.test.api.ts
 tests/api/core/admin/admin-api-token-crud.test.api.ts
+tests/api/core/admin/admin-password-change-revokes-sessions.test.api.ts
 tests/api/core/admin/admin-auth.test.api.js
 tests/api/core/admin/admin-role.test.api.js
 tests/api/core/admin/admin-project-settings.test.api.js
@@ -471,6 +472,7 @@ tests/api/plugins/i18n/content-api/content-types.test.api.js
 tests/api/plugins/i18n/graphql.test.api.js
 tests/api/plugins/i18n/locales.test.api.js
 tests/api/plugins/users-permissions/users-graphql.test.api.js
+tests/api/plugins/users-permissions/content-api/auth-password-update-revokes-sessions.test.api.ts
 tests/api/plugins/users-permissions/content-api/auth-refresh.test.api.js
 tests/api/plugins/users-permissions/content-api/auth-cookie-security.test.api.js
 tests/api/plugins/users-permissions/content-api/users-api.test.api.js
@@ -609,6 +611,7 @@ docs/docs/docs/01-core/content-manager/01-documents.md
 docs/docs/docs/01-core/content-manager/03-content-releases.mdx
 docs/docs/docs/01-core/content-manager/features/review-workflows.mdx
 docs/docs/docs/01-core/content-manager/features/_category_.json
+docs/docs/docs/01-core/content-manager/06-preview.md
 docs/docs/docs/01-core/content-manager/02-layouts.md
 docs/docs/docs/01-core/content-manager/_category_.json
 docs/docs/docs/01-core/content-manager/00-intro.md
@@ -1567,10 +1570,7 @@ packages/core/content-manager/admin/src/pages/EditView/components/FormInputs/Blo
 packages/core/content-manager/admin/src/pages/EditView/components/FormInputs/BlocksInput/utils/constants.ts
 packages/core/content-manager/admin/src/pages/EditView/components/FormInputs/BlocksInput/utils/enterKey.ts
 packages/core/content-manager/admin/src/pages/EditView/components/FormInputs/BlocksInput/utils/types.ts
-packages/core/content-manager/admin/src/pages/EditView/components/FormInputs/BlocksInput/utils/links.ts
-packages/core/content-manager/admin/src/pages/EditView/components/FormInputs/BlocksInput/plugins/withImages.ts
 packages/core/content-manager/admin/src/pages/EditView/components/FormInputs/BlocksInput/plugins/withStrapiSchema.ts
-packages/core/content-manager/admin/src/pages/EditView/components/FormInputs/BlocksInput/plugins/withLinks.ts
 packages/core/content-manager/admin/src/pages/EditView/components/FormInputs/tests/UID.test.tsx
 packages/core/content-manager/admin/src/pages/EditView/components/FormInputs/tests/NotAllowed.test.tsx
 packages/core/content-manager/admin/src/pages/EditView/components/FormInputs/UID.tsx
