@@ -166,6 +166,7 @@ SECURITY.asc
 .stylelintrc.json
 Procfile.dev
 Gemfile
+logo.svg
 .markdownlint.yml
 script/websocket-server.rb
 script/ci/daemonize.rb
@@ -1574,6 +1575,7 @@ db/migrate/20210910112200_issue_3732_add_core_workflow_permission.rb
 db/migrate/20210812000001_jira_config.rb
 db/migrate/20170113000001_object_manager_attribute_create_middle.rb
 db/migrate/20210128131507_init_core_workflow.rb
+db/migrate/20260113200231_add_form_allowed_params_setting.rb
 db/migrate/20220322233000_issue_3763_default_date_datetime_diff_clear.rb
 db/migrate/20211115135421_issue3851.rb
 db/migrate/20211220145252_create_ticket_shared_drafts.rb
@@ -5005,6 +5007,7 @@ spec/controllers/can_paginate/pagination_spec.rb
 spec/controllers/application_controller/has_download/download_file_spec.rb
 spec/controllers/integration/exchange_spec.rb
 spec/views/eco_spec.rb
+publiccode.yml
 CHANGELOG.md
 .graphql_code_generator.js
 doc/developer_manual/assets/ldap/zammad.ldif
@@ -7494,11 +7497,12 @@ app/frontend/apps/desktop/router/index.ts
 app/frontend/apps/desktop/router/guards/before/__tests__/systemSetupInfo.spec.ts
 app/frontend/apps/desktop/router/guards/before/systemSetupInfo.ts
 app/frontend/apps/desktop/router/guards/before/activeTaskbarTab.ts
+app/frontend/apps/desktop/stores/__tests__/appUsage-running.spec.ts
 app/frontend/apps/desktop/stores/__tests__/theme.spec.ts
+app/frontend/apps/desktop/stores/__tests__/appUsage-stopped.spec.ts
 app/frontend/apps/desktop/stores/theme.ts
+app/frontend/apps/desktop/stores/appUsage.ts
 app/frontend/apps/desktop/AppDesktop.vue
-app/frontend/apps/desktop/composables/__tests__/useBetaDisclaimer.spec.ts
-app/frontend/apps/desktop/composables/__tests__/useNewBetaUi.spec.ts
 app/frontend/apps/desktop/composables/__tests__/useReactivate.spec.ts
 app/frontend/apps/desktop/composables/__tests__/useOverlayContainer.spec.ts
 app/frontend/apps/desktop/composables/__tests__/useElementScroll.spec.ts
@@ -7508,12 +7512,10 @@ app/frontend/apps/desktop/composables/__tests__/usePrintMode.spec.ts
 app/frontend/apps/desktop/composables/useTransitionCollapse.ts
 app/frontend/apps/desktop/composables/usePage.ts
 app/frontend/apps/desktop/composables/useElementScroll.ts
-app/frontend/apps/desktop/composables/useNewBetaUi.ts
 app/frontend/apps/desktop/composables/useOverlayContainer.ts
 app/frontend/apps/desktop/composables/authentication/useSignupForm.ts
 app/frontend/apps/desktop/composables/useResizeGridColumns.ts
 app/frontend/apps/desktop/composables/usePrintMode.ts
-app/frontend/apps/desktop/composables/useBetaDisclaimer.ts
 app/frontend/apps/desktop/composables/useUserTaskbarTab.ts
 app/frontend/apps/desktop/composables/useConnection.ts
 app/frontend/apps/desktop/composables/useFilePreviewViewer.ts
@@ -7724,6 +7726,10 @@ app/frontend/apps/desktop/components/Form/fields/FieldOrganization/index.ts
 app/frontend/apps/desktop/components/Form/fields/FieldOrganization/FieldOrganizationOptionIcon.vue
 app/frontend/apps/desktop/components/Form/fields/FieldOrganization/useFieldOrganizationOption.ts
 app/frontend/apps/desktop/components/Form/fields/FieldOrganization/FieldOrganizationWrapper.vue
+app/frontend/apps/desktop/components/Form/fields/FieldRating/__tests__/FieldRating.spec.ts
+app/frontend/apps/desktop/components/Form/fields/FieldRating/index.ts
+app/frontend/apps/desktop/components/Form/fields/FieldRating/FieldRatingInput.vue
+app/frontend/apps/desktop/components/Form/fields/FieldRating/types.ts
 app/frontend/apps/desktop/components/Form/fields/FieldNotifications/__tests__/FieldNotifications.spec.ts
 app/frontend/apps/desktop/components/Form/fields/FieldNotifications/FieldNotificationsInput.vue
 app/frontend/apps/desktop/components/Form/fields/FieldNotifications/index.ts
@@ -7792,7 +7798,6 @@ app/frontend/apps/desktop/components/CommonTabGroup/types.ts
 app/frontend/apps/desktop/components/CommonPopover/CommonPopover.vue
 app/frontend/apps/desktop/components/CommonPopover/usePopoverInstances.ts
 app/frontend/apps/desktop/components/CommonPopover/CommonPopoverWithTrigger.vue
-app/frontend/apps/desktop/components/CommonPopover/__test__/CommonPopoverWithTrigger.spec.ts
 app/frontend/apps/desktop/components/CommonPopover/__test__/CommonPopover.spec.ts
 app/frontend/apps/desktop/components/CommonPopover/usePopover.ts
 app/frontend/apps/desktop/components/CommonPopover/types.ts
@@ -7908,6 +7913,17 @@ app/frontend/apps/desktop/components/CommonThirdPartyAuthenticationButton/__test
 app/frontend/apps/desktop/components/CommonThirdPartyAuthenticationButton/CommonThirdPartyAuthenticationButton.vue
 app/frontend/apps/desktop/components/CommonInlineEditButtons/__test__/CommonInlineEditButtons.spec.ts
 app/frontend/apps/desktop/components/CommonInlineEditButtons/CommonInlineEditButtons.vue
+app/frontend/apps/desktop/components/BetaUi/__tests__/BetaUiFeedbackConsentDialog.spec.ts
+app/frontend/apps/desktop/components/BetaUi/assets/beta-ui-illustration-light.svg
+app/frontend/apps/desktop/components/BetaUi/assets/beta-ui-illustration-dark.svg
+app/frontend/apps/desktop/components/BetaUi/BetaUiFeedbackConsentDialog.vue
+app/frontend/apps/desktop/components/BetaUi/composables/__tests__/useBetaUi.spec.ts
+app/frontend/apps/desktop/components/BetaUi/composables/__tests__/useBetaUiFeedbackConsent.spec.ts
+app/frontend/apps/desktop/components/BetaUi/composables/__tests__/useBetaUiDisclaimer.spec.ts
+app/frontend/apps/desktop/components/BetaUi/composables/useBetaUi.ts
+app/frontend/apps/desktop/components/BetaUi/composables/useBetaUiFeedbackConsent.ts
+app/frontend/apps/desktop/components/BetaUi/composables/useBetaUiDisclaimer.ts
+app/frontend/apps/desktop/components/BetaUi/composables/useBetaUiFeedbackConsentState.ts
 app/frontend/apps/desktop/components/CommonButton/__tests__/CommonButton.spec.ts
 app/frontend/apps/desktop/components/CommonButton/CommonButton.vue
 app/frontend/apps/desktop/components/CommonButton/types.ts
@@ -7974,7 +7990,6 @@ app/frontend/apps/desktop/components/CommonSkeleton/CommonSkeleton.vue
 app/frontend/apps/desktop/components/ThemeSwitch/__tests__/ThemeSwitch.spec.ts
 app/frontend/apps/desktop/components/ThemeSwitch/ThemeSwitch.vue
 app/frontend/apps/desktop/components/CommonFlyoutObjectForm/CommonFlyoutObjectForm.vue
-app/frontend/apps/desktop/components/CommonFlyoutObjectForm/__test__/CommonFlyoutObjectForm.spec.ts
 app/frontend/apps/desktop/components/CommonFlyoutObjectForm/__test__/useFlyoutObjectForm.spec.ts
 app/frontend/apps/desktop/components/CommonFlyoutObjectForm/useFlyoutObjectForm.ts
 app/frontend/apps/desktop/components/CommonFlyoutObjectForm/types.ts
@@ -8035,8 +8050,10 @@ app/frontend/apps/desktop/initializer/assets/user.svg
 app/frontend/apps/desktop/initializer/assets/sun.svg
 app/frontend/apps/desktop/initializer/assets/chat.svg
 app/frontend/apps/desktop/initializer/assets/type-underline.svg
+app/frontend/apps/desktop/initializer/assets/star-fill.svg
 app/frontend/apps/desktop/initializer/assets/gear.svg
 app/frontend/apps/desktop/initializer/assets/toggle-header-cell.svg
+app/frontend/apps/desktop/initializer/assets/star.svg
 app/frontend/apps/desktop/initializer/assets/info-circle.svg
 app/frontend/apps/desktop/initializer/assets/merge.svg
 app/frontend/apps/desktop/initializer/assets/highlighter.svg
@@ -8198,6 +8215,7 @@ app/frontend/apps/desktop/initializer/initializeGlobalDirectives.ts
 app/frontend/apps/desktop/initializer/desktopIconsAliasesMap.ts
 app/frontend/apps/desktop/initializer/3RD-PARTY-ICONS.md
 app/frontend/apps/desktop/initializer/initializeDesktopIcons.ts
+app/frontend/apps/desktop/types/appUsage.ts
 app/frontend/apps/desktop/types/actions.ts
 app/frontend/apps/desktop/entities/calendar/ics-file/graphql/queries/events.mocks.ts
 app/frontend/apps/desktop/entities/calendar/ics-file/graphql/queries/events.api.ts

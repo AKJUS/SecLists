@@ -2618,6 +2618,7 @@ src/Presentation/Nop.Web/Views/Shared/_OrderReviewData.cshtml
 src/Presentation/Nop.Web/Views/Shared/_AddressAttributes.cshtml
 src/Presentation/Nop.Web/Views/Shared/_Print.cshtml
 src/Presentation/Nop.Web/Views/Shared/_ColumnsTwo.cshtml
+src/Presentation/Nop.Web/Views/Shared/_RenameWishlistModal.cshtml
 src/Presentation/Nop.Web/Views/Shared/_JavaScriptDisabledWarning.cshtml
 src/Presentation/Nop.Web/Views/Shared/_Notifications.cshtml
 src/Presentation/Nop.Web/Views/Shared/_DiscountBox.cshtml
@@ -3842,6 +3843,7 @@ src/Libraries/Nop.Core/Domain/Customers/CustomerChangeMultiFactorAuthenticationP
 src/Libraries/Nop.Core/Domain/Customers/CustomerLoggedinEvent.cs
 src/Libraries/Nop.Core/Domain/Customers/Customer.cs
 src/Libraries/Nop.Core/Domain/Customers/CustomerActivatedEvent.cs
+src/Libraries/Nop.Core/Domain/Customers/RegisteredCustomersReportLine.cs
 src/Libraries/Nop.Core/Domain/Customers/CustomerAddressMapping.cs
 src/Libraries/Nop.Core/Domain/Customers/CustomerRole.cs
 src/Libraries/Nop.Core/Domain/Customers/CustomerExtensions.cs
@@ -3900,6 +3902,7 @@ src/Libraries/Nop.Core/Domain/Catalog/Manufacturer.cs
 src/Libraries/Nop.Core/Domain/Catalog/ReviewType.cs
 src/Libraries/Nop.Core/Domain/Catalog/SpecificationAttributeType.cs
 src/Libraries/Nop.Core/Domain/Catalog/ProductVideo.cs
+src/Libraries/Nop.Core/Domain/Catalog/LowStockProductReportLine.cs
 src/Libraries/Nop.Core/Domain/Catalog/ProductReviewReviewTypeMapping.cs
 src/Libraries/Nop.Core/Domain/Catalog/ProductAttributeCombinationPicture.cs
 src/Libraries/Nop.Core/Domain/Catalog/ProductTag.cs
@@ -4878,6 +4881,7 @@ src/Plugins/Nop.Plugin.Misc.RFQ/Controllers/RfqCustomerController.cs
 src/Plugins/Nop.Plugin.Misc.RFQ/Controllers/RfqAdminController.cs
 src/Plugins/Nop.Plugin.Misc.RFQ/Factories/AdminModelFactory.cs
 src/Plugins/Nop.Plugin.Misc.RFQ/Factories/CustomerModelFactory.cs
+src/Plugins/Nop.Plugin.Misc.RFQ/Data/Migrations/UpdateDateTimeLocales.cs
 src/Plugins/Nop.Plugin.Misc.RFQ/Data/Migrations/AddLocales.cs
 src/Plugins/Nop.Plugin.Misc.RFQ/Data/Migrations/SchemaMigration.cs
 src/Plugins/Nop.Plugin.Misc.RFQ/Data/Migrations/AddSettings.cs

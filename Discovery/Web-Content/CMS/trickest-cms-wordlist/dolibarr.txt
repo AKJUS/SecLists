@@ -673,6 +673,8 @@ dev/setup/fail2ban/filter.d/web-accesslog-limit404.conf
 dev/setup/fail2ban/filter.d/web-accesslog-limit403.conf
 dev/setup/fail2ban/filter.d/web-dolibarr-limitpublic.conf
 dev/setup/codesniffer/README
+dev/setup/codesniffer/Sniffs/Dolibarr/LanguageOfCommentsSniff.php
+dev/setup/codesniffer/Sniffs/Dolibarr/CheckIsModEnabledArgumentSniff.php
 dev/setup/codesniffer/ruleset.xml
 dev/setup/codesniffer/ruleset.dtd
 dev/setup/codesniffer/php.ini
@@ -1519,6 +1521,7 @@ htdocs/core/ajax/contacts.php
 htdocs/core/ajax/ajaxdirtree.php
 htdocs/core/ajax/ajaxfield.php
 htdocs/core/ajax/mailtemplate.php
+htdocs/core/ajax/ajaxuploadpage.php
 htdocs/core/ajax/fetchCategories.php
 htdocs/core/ajax/constantonoff.php
 htdocs/core/ajax/editinline.php
@@ -1571,7 +1574,6 @@ htdocs/core/js/lib_gravatar.js.php
 htdocs/core/actions_setnotes.inc.php
 htdocs/core/quickadd_page.php
 htdocs/core/actions_fetchobject.inc.php
-htdocs/core/upload_page2.php
 htdocs/core/search_page.php
 htdocs/workstation/workstation_card.php
 htdocs/workstation/workstation_document.php
@@ -6431,6 +6433,7 @@ htdocs/public/webportal/js/modal.js
 htdocs/public/webportal/js/lib_head.js.php
 htdocs/public/webportal/js/theme.js
 htdocs/public/webportal/img/icons/user.svg
+htdocs/public/webportal/img/icons/menu.svg
 htdocs/public/webportal/img/icons/cart.svg
 htdocs/public/webportal/img/icons/logout.svg
 htdocs/public/webportal/img/dolibarr_logo.svg
@@ -11501,7 +11504,6 @@ htdocs/langs/es_VE/projects.lang
 htdocs/langs/es_VE/salaries.lang
 htdocs/langs/es_VE/eventorganization.lang
 htdocs/langs/es_VE/stocks.lang
-htdocs/langs/es_VE/blockedlog.lang
 htdocs/langs/es_VE/sendings.lang
 htdocs/langs/es_VE/margins.lang
 htdocs/langs/es_VE/compta.lang

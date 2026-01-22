@@ -351,6 +351,7 @@ tests/unit/Espo/Tools/DynamicLogic/CheckerTest.php
 tests/unit/Espo/Tools/WorkingTime/ExtractorTest.php
 tests/unit/Espo/Tools/WorkingTime/CalendarUtilityTest.php
 tests/unit/Espo/Tools/UserSecurity/Password/CheckerTest.php
+tests/unit/Espo/Tools/UserSecurity/Password/UrlValidatorUtilTest.php
 tests/unit/Espo/Tools/UserSecurity/Password/GeneratorTest.php
 tests/unit/Espo/Tools/MassUpdate/ValueMapPreparatorTest.php
 tests/unit/Espo/Tools/MassUpdate/DataTest.php
@@ -1951,6 +1952,7 @@ client/src/views/search/filter.js
 client/src/views/import-error/fields/validation-failures.js
 client/src/views/import-error/fields/line-number.js
 client/src/views/edit.js
+client/src/views/currency/fields/currency-rates.js
 client/src/views/last-viewed/list.js
 client/src/views/last-viewed/record/list.js
 client/src/views/dashlets/records.js
@@ -6771,6 +6773,7 @@ application/Espo/Tools/UserSecurity/Service.php
 application/Espo/Tools/UserSecurity/ApiService.php
 application/Espo/Tools/UserSecurity/Password/Service.php
 application/Espo/Tools/UserSecurity/Password/Generator.php
+application/Espo/Tools/UserSecurity/Password/Recovery/UrlValidatorUtil.php
 application/Espo/Tools/UserSecurity/Password/Recovery/UrlValidator.php
 application/Espo/Tools/UserSecurity/Password/Jobs/RemoveRecoveryRequest.php
 application/Espo/Tools/UserSecurity/Password/Jobs/SendAccessInfo.php
