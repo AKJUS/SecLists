@@ -293,6 +293,7 @@ lib/github/credentials.rb
 lib/github/linked_issue.rb
 lib/github/http_client.rb
 lib/tasks/cache/clear.rake
+lib/tasks/cache/measure_io_performance.rake
 lib/tasks/zammad/package/uninstall.rb
 lib/tasks/zammad/package/migrate.rake
 lib/tasks/zammad/package/reinstall.rake
@@ -3608,6 +3609,7 @@ spec/db/migrate/issue_3810_custom_date_attribute_no_default_spec.rb
 spec/db/migrate/smime_meta_information_table_spec.rb
 spec/spec_helper.rb
 spec/services/service/calendar/ics_file/parse_spec.rb
+spec/services/service/check_feature_enabled_spec.rb
 spec/services/service/beta_ui/send_feedback_spec.rb
 spec/services/service/search_spec.rb
 spec/services/service/user/out_of_office_spec.rb
@@ -4493,7 +4495,6 @@ spec/policies/template_policy_spec.rb
 spec/policies/http_log_policy_spec.rb
 spec/policies/data_privacy_task_policy_spec.rb
 spec/policies/role_policy_spec.rb
-spec/policies/version_policy_spec.rb
 spec/policies/signature_policy_spec.rb
 spec/policies/controllers/links_controller_policy_spec.rb
 spec/policies/controllers/knowledge_base/feeds_controller_policy_spec.rb
@@ -5679,6 +5680,7 @@ app/frontend/shared/components/Form/fields/FieldSecurity/types.ts
 app/frontend/shared/components/Form/fields/FieldAutocomplete/types.ts
 app/frontend/shared/components/Form/fields/FieldTextarea/__tests__/FieldTextarea.spec.ts
 app/frontend/shared/components/Form/fields/FieldTextarea/index.ts
+app/frontend/shared/components/Form/fields/FieldEditor/extensions/TableKit.ts
 app/frontend/shared/components/Form/fields/FieldEditor/extensions/Styles.ts
 app/frontend/shared/components/Form/fields/FieldEditor/extensions/Indent.ts
 app/frontend/shared/components/Form/fields/FieldEditor/extensions/CharacterCount/PlainCharacterCount.ts
@@ -5691,6 +5693,7 @@ app/frontend/shared/components/Form/fields/FieldEditor/extensions/PasteHandler.t
 app/frontend/shared/components/Form/fields/FieldEditor/extensions/TextModuleSuggestion.ts
 app/frontend/shared/components/Form/fields/FieldEditor/extensions/AiAssistantTextTools.ts
 app/frontend/shared/components/Form/fields/FieldEditor/extensions/KnowledgeBaseSuggestion.ts
+app/frontend/shared/components/Form/fields/FieldEditor/extensions/TableKit/Table.ts
 app/frontend/shared/components/Form/fields/FieldEditor/extensions/UserMention.ts
 app/frontend/shared/components/Form/fields/FieldEditor/extensions/Signature.ts
 app/frontend/shared/components/Form/fields/FieldEditor/graphql/queries/mention/mentionSuggestions.mocks.ts
@@ -5714,7 +5717,9 @@ app/frontend/shared/components/Form/fields/FieldEditor/FieldEditorActionMenu/typ
 app/frontend/shared/components/Form/fields/FieldEditor/index.ts
 app/frontend/shared/components/Form/fields/FieldEditor/useInlineMode.ts
 app/frontend/shared/components/Form/fields/FieldEditor/utils.ts
-app/frontend/shared/components/Form/fields/FieldEditor/features/table/EditorTableMenu.vue
+app/frontend/shared/components/Form/fields/FieldEditor/features/table/TableMenuPopover.vue
+app/frontend/shared/components/Form/fields/FieldEditor/features/table/useTableMenu.ts
+app/frontend/shared/components/Form/fields/FieldEditor/features/table/TableMenuTrigger.vue
 app/frontend/shared/components/Form/fields/FieldEditor/features/ai-assistant-text-tools/AiAssistantLoadingBanner/initializeAiAssistantTextToolsLoadingBannerClasses.ts
 app/frontend/shared/components/Form/fields/FieldEditor/features/ai-assistant-text-tools/AiAssistantLoadingBanner/AiAssistantLoadingBanner.vue
 app/frontend/shared/components/Form/fields/FieldEditor/features/ai-assistant-text-tools/AiAssistantTextTools/initializeAiAssistantTextToolsClasses.ts
@@ -6704,6 +6709,7 @@ app/frontend/apps/mobile/initializer/assets/reply-alt.svg
 app/frontend/apps/mobile/initializer/assets/text-style-italic.svg
 app/frontend/apps/mobile/initializer/assets/macros.svg
 app/frontend/apps/mobile/initializer/assets/inactive-user.svg
+app/frontend/apps/mobile/initializer/assets/three-dots-vertical.svg
 app/frontend/apps/mobile/initializer/assets/insert-column-before.svg
 app/frontend/apps/mobile/initializer/assets/library.svg
 app/frontend/apps/mobile/initializer/assets/text-style-h.svg
@@ -6982,13 +6988,10 @@ app/frontend/apps/desktop/pages/ticket-overviews/__tests__/ticket-overviews-bulk
 app/frontend/apps/desktop/pages/ticket-overviews/__tests__/mocks/ticket-overviews-mocks.ts
 app/frontend/apps/desktop/pages/ticket-overviews/__tests__/ticket-overviews-empty-states.spec.ts
 app/frontend/apps/desktop/pages/ticket-overviews/composables/useTicketOverviews.ts
-app/frontend/apps/desktop/pages/ticket-overviews/components/__tests__/TicketOverviewsEmptyText.spec.ts
 app/frontend/apps/desktop/pages/ticket-overviews/components/__tests__/TicketOverviewsSidebar.spec.ts
 app/frontend/apps/desktop/pages/ticket-overviews/components/__tests__/TicketList.spec.ts
-app/frontend/apps/desktop/pages/ticket-overviews/components/assets/confetti.svg
 app/frontend/apps/desktop/pages/ticket-overviews/components/TicketOverviewsSidebar.vue
 app/frontend/apps/desktop/pages/ticket-overviews/components/TicketList.vue
-app/frontend/apps/desktop/pages/ticket-overviews/components/TicketOverviewsEmptyText.vue
 app/frontend/apps/desktop/pages/ticket-overviews/components/TicketOverviewsSidebar/TicketOverviewsList.vue
 app/frontend/apps/desktop/pages/ticket-overviews/routes.ts
 app/frontend/apps/desktop/pages/ticket-overviews/views/TicketOverviews.vue
@@ -7021,6 +7024,7 @@ app/frontend/apps/desktop/pages/personal-setting/__tests__/support/personal-sett
 app/frontend/apps/desktop/pages/personal-setting/__tests__/personal-setting-new-beta-ui-a11y.spec.ts
 app/frontend/apps/desktop/pages/personal-setting/__tests__/personal-setting-avatar-a11y.spec.ts
 app/frontend/apps/desktop/pages/personal-setting/__tests__/personal-setting-devices-a11y.spec.ts
+app/frontend/apps/desktop/pages/personal-setting/__tests__/personal-setting-new-beta-ui-feedback-programm-2.spec.ts
 app/frontend/apps/desktop/pages/personal-setting/__tests__/personal-setting-two-factor-auth/personal-setting-two-factor-auth-recovery-codes.spec.ts
 app/frontend/apps/desktop/pages/personal-setting/__tests__/personal-setting-two-factor-auth/personal-setting-two-factor-auth-authenticator-app.spec.ts
 app/frontend/apps/desktop/pages/personal-setting/__tests__/personal-setting-two-factor-auth/personal-setting-two-factor-auth-password-check.spec.ts
@@ -8021,6 +8025,9 @@ app/frontend/apps/desktop/components/CommonConfirmationDialog/CommonConfirmation
 app/frontend/apps/desktop/components/CommonConfirmationDialog/initializeConfirmationDialog.ts
 app/frontend/apps/desktop/components/CommonConfirmationDialog/types.ts
 app/frontend/apps/desktop/components/CommonPublicLinks/CommonPublicLinks.vue
+app/frontend/apps/desktop/components/CommonEmptyMessage/__test__/CommonEmptyMessage.spec.ts
+app/frontend/apps/desktop/components/CommonEmptyMessage/assets/confetti.svg
+app/frontend/apps/desktop/components/CommonEmptyMessage/CommonEmptyMessage.vue
 app/frontend/apps/desktop/components/CommonFlyout/__tests__/CommonFlyout.spec.ts
 app/frontend/apps/desktop/components/CommonFlyout/CommonFlyoutActionFooter.vue
 app/frontend/apps/desktop/components/CommonFlyout/useFlyout.ts
@@ -8690,9 +8697,8 @@ app/graphql/gql/resolvers/lookup_resolver.rb
 app/graphql/gql/concerns/has_nested_graphql_name.rb
 app/graphql/gql/concerns/handles_authorization.rb
 app/graphql/gql/concerns/handles_possible_objects.rb
-app/graphql/gql/concerns/ensures_checklist_feature_active.rb
+app/graphql/gql/concerns/handles_setting_check.rb
 app/graphql/gql/concerns/handles_overview_caching.rb
-app/graphql/gql/concerns/requires_ticket_agent_permission.rb
 app/graphql/gql/concerns/handles_throttling.rb
 app/graphql/gql/concerns/handles_password_revalidation_token.rb
 app/graphql/gql/types/link_type.rb
@@ -10375,7 +10381,6 @@ app/services/service/template/interpolation/interpolator/ai_agent.rb
 app/services/service/template/interpolation/interpolator/webhook.rb
 app/services/service/template/interpolation/interpolator.rb
 app/services/service/concerns/handles_core_workflow.rb
-app/services/service/concerns/handles_setting.rb
 app/services/service/base.rb
 app/services/service/ai/vectordb/item/create.rb
 app/services/service/ai/vectordb/item/upsert.rb
@@ -10454,7 +10459,6 @@ app/policies/ticket_policy/full_scope.rb
 app/policies/ticket_policy/read_scope.rb
 app/policies/ticket_policy/change_scope.rb
 app/policies/setting_policy.rb
-app/policies/version_policy.rb
 app/policies/ticket/time_accounting_policy.rb
 app/policies/ticket/shared_draft_zoom_policy.rb
 app/policies/ticket/shared_draft_start_policy/scope.rb
