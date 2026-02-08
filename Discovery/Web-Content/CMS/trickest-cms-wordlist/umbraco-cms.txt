@@ -558,6 +558,7 @@ tests/Umbraco.Tests.Integration/ManagementApi/RelationType/Item/ItemRelationType
 tests/Umbraco.Tests.Integration/ManagementApi/RelationType/ByKeyRelationTypeControllerTests.cs
 tests/Umbraco.Tests.Integration/ManagementApi/MediaType/UpdateMediaTypeControllerTests.cs
 tests/Umbraco.Tests.Integration/ManagementApi/MediaType/ByKeyMediaTypeControllerTests.cs
+tests/Umbraco.Tests.Integration/ManagementApi/MediaType/AllowedParentsMediaTypeControllerTests.cs
 tests/Umbraco.Tests.Integration/ManagementApi/MediaType/CreateMediaTypeControllerTests.cs
 tests/Umbraco.Tests.Integration/ManagementApi/MediaType/Folder/UpdateMediaTypeFolderControllerTests.cs
 tests/Umbraco.Tests.Integration/ManagementApi/MediaType/Folder/ByKeyMediaTypeFolderControllerTests.cs
@@ -678,6 +679,7 @@ tests/Umbraco.Tests.Integration/ManagementApi/DocumentType/ByKeyDocumentTypeCont
 tests/Umbraco.Tests.Integration/ManagementApi/DocumentType/Item/ItemDocumentTypeItemControllerTests.cs
 tests/Umbraco.Tests.Integration/ManagementApi/DocumentType/UpdateDocumentTypeControllerTests.cs
 tests/Umbraco.Tests.Integration/ManagementApi/DocumentType/CreateDocumentTypeControllerTests.cs
+tests/Umbraco.Tests.Integration/ManagementApi/DocumentType/AllowedParentsDocumentTypeControllerTests.cs
 tests/Umbraco.Tests.Integration/ManagementApi/DocumentType/DeleteDocumentTypeControllerTests.cs
 tests/Umbraco.Tests.Integration/ManagementApi/Services/UserStartNodeEntitiesServiceMediaTests.cs
 tests/Umbraco.Tests.Integration/ManagementApi/Services/UserStartNodeEntitiesServiceTests.SiblingUserAccessEntities.cs
@@ -740,6 +742,7 @@ tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/Persistence/Repositories/
 tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/Persistence/Repositories/PublicAccessRepositoryTest.cs
 tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/Persistence/Repositories/CacheInstructionRepositoryTest.cs
 tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/Persistence/Repositories/ContentTypeRepositoryTest.cs
+tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/Persistence/Repositories/DataTypeRepositoryTest.cs
 tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/Persistence/Repositories/ScriptRepositoryTest.cs
 tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/Persistence/Repositories/UserGroupRepositoryTest.cs
 tests/Umbraco.Tests.Integration/Umbraco.Infrastructure/Persistence/Repositories/DocumentRepositoryTest.cs
@@ -1148,6 +1151,21 @@ tests/Umbraco.Tests.UnitTests/Umbraco.Core/Composing/TypeLoaderExtensions.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Composing/ComposingTestBase.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Composing/LazyCollectionBuilderTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Composing/TypeHelperTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Media/EmbedProviders/YouTubeEmbedProviderTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Media/EmbedProviders/HuluEmbedProviderTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Media/EmbedProviders/SlideshareEmbedProviderTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Media/EmbedProviders/OEmbedProviderTestBase.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Media/EmbedProviders/GiphyEmbedProviderTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Media/EmbedProviders/KickstarterEmbedProviderTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Media/EmbedProviders/SoundCloudEmbedProviderTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Media/EmbedProviders/DailyMotionEmbedProviderTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Media/EmbedProviders/IssuuEmbedProviderTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Media/EmbedProviders/FlickrEmbedProviderTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Media/EmbedProviders/VimeoEmbedProviderTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Media/EmbedProviders/XEmbedProviderTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Media/EmbedProviders/LottieFilesEmbedProviderTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Media/EmbedProviders/GettyImagesEmbedProviderTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Media/EmbedProviders/TedEmbedProviderTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/BackOffice/IdentityExtensionsTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/BackOffice/UmbracoBackOfficeIdentityTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Packaging/PendingPackageMigrationsTests.cs
@@ -1172,6 +1190,7 @@ tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/PublishStatus/PublishedConte
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/DefaultContentVersionCleanupPolicyTest.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/IdKeyMapTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/AuditServiceTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/OEmbedServiceTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/DocumentUrlServiceTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/EntityServiceTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/LongRunningOperationServiceTests.cs
@@ -1555,9 +1574,11 @@ templates/UmbracoDockerCompose/docker-compose.yml
 templates/UmbracoDockerCompose/.env
 Directory.Packages.props
 Directory.Build.props
+.mcp.json
 nuget.config
 LICENSE.md
 umbraco.sln.DotSettings
+MCP.md
 .editorconfig
 .artifactignore
 tools/Umbraco.JsonSchema/Umbraco.JsonSchema.csproj
@@ -7916,9 +7937,11 @@ src/Umbraco.Web.UI.Client/src/packages/core/property-action/kinds/manifests.ts
 src/Umbraco.Web.UI.Client/src/packages/core/property-action/kinds/default/manifests.ts
 src/Umbraco.Web.UI.Client/src/packages/core/property-action/kinds/default/property-action.element.ts
 src/Umbraco.Web.UI.Client/src/packages/core/property-action/kinds/default/index.ts
+src/Umbraco.Web.UI.Client/src/packages/core/property-action/kinds/clear/manifests.ts
+src/Umbraco.Web.UI.Client/src/packages/core/property-action/kinds/clear/property-action-clear.controller.ts
+src/Umbraco.Web.UI.Client/src/packages/core/property-action/kinds/clear/index.ts
 src/Umbraco.Web.UI.Client/src/packages/core/property-action/index.ts
 src/Umbraco.Web.UI.Client/src/packages/core/property-action/property-action-base.ts
-src/Umbraco.Web.UI.Client/src/packages/core/property-action/common/clear/property-action-clear.controller.ts
 src/Umbraco.Web.UI.Client/src/packages/core/property-action/property-action.extension.ts
 src/Umbraco.Web.UI.Client/src/packages/core/property-action/components/property-action-menu/index.ts
 src/Umbraco.Web.UI.Client/src/packages/core/property-action/components/property-action-menu/property-action-menu.element.ts
@@ -9393,6 +9416,8 @@ src/Umbraco.Web.UI.Client/src/packages/block/block/property-value-cloner/block-p
 src/Umbraco.Web.UI.Client/src/packages/block/block/property-value-cloner/flat-layout-block-property-value-cloner.test.ts
 src/Umbraco.Web.UI.Client/src/packages/block/block/property-value-cloner/index.ts
 src/Umbraco.Web.UI.Client/src/packages/block/block/property-value-cloner/flat-layout-block-property-value-cloner.api.ts
+src/Umbraco.Web.UI.Client/src/packages/block/block/events/index.ts
+src/Umbraco.Web.UI.Client/src/packages/block/block/events/block-inserted.event.ts
 src/Umbraco.Web.UI.Client/src/packages/block/block/context/block-entry.context.ts
 src/Umbraco.Web.UI.Client/src/packages/block/block/context/index.ts
 src/Umbraco.Web.UI.Client/src/packages/block/block/context/block-entries.context.ts
@@ -12964,6 +12989,7 @@ src/Umbraco.Cms.Api.Management/Controllers/MediaType/Item/FolderMediaTypeItemCon
 src/Umbraco.Cms.Api.Management/Controllers/MediaType/Item/AllowedMediaTypeItemController.cs
 src/Umbraco.Cms.Api.Management/Controllers/MediaType/UpdateMediaTypeController.cs
 src/Umbraco.Cms.Api.Management/Controllers/MediaType/CopyMediaTypeController.cs
+src/Umbraco.Cms.Api.Management/Controllers/MediaType/AllowedParentsMediaTypeController.cs
 src/Umbraco.Cms.Api.Management/Controllers/MediaType/CreateMediaTypeController.cs
 src/Umbraco.Cms.Api.Management/Controllers/MediaType/CompositionReferenceMediaTypeController.cs
 src/Umbraco.Cms.Api.Management/Controllers/MediaType/AvailableCompositionMediaTypeController.cs
@@ -13225,6 +13251,7 @@ src/Umbraco.Cms.Api.Management/Controllers/DocumentType/Tree/SiblingsDocumentTyp
 src/Umbraco.Cms.Api.Management/Controllers/DocumentType/Tree/ChildrenDocumentTypeTreeController.cs
 src/Umbraco.Cms.Api.Management/Controllers/DocumentType/ByKeyDocumentTypeController.cs
 src/Umbraco.Cms.Api.Management/Controllers/DocumentType/CompositionReferenceDocumentTypeController.cs
+src/Umbraco.Cms.Api.Management/Controllers/DocumentType/AllowedParentsDocumentTypeController.cs
 src/Umbraco.Cms.Api.Management/Controllers/DocumentType/AvailableCompositionDocumentTypeController.cs
 src/Umbraco.Cms.Api.Management/Controllers/DocumentType/CreateDocumentTypeController.cs
 src/Umbraco.Cms.Api.Management/Controllers/DocumentType/ImportNewDocumentTypeController.cs
@@ -13568,6 +13595,7 @@ src/Umbraco.Cms.Api.Management/ViewModels/MediaType/CreateMediaTypeRequestModel.
 src/Umbraco.Cms.Api.Management/ViewModels/MediaType/MediaTypeComposition.cs
 src/Umbraco.Cms.Api.Management/ViewModels/MediaType/AllowedMediaType.cs
 src/Umbraco.Cms.Api.Management/ViewModels/MediaType/MoveMediaTypeRequestModel.cs
+src/Umbraco.Cms.Api.Management/ViewModels/MediaType/MediaTypeAllowedParentsResponseModel.cs
 src/Umbraco.Cms.Api.Management/ViewModels/MediaType/MediaTypePropertyTypeResponseModel.cs
 src/Umbraco.Cms.Api.Management/ViewModels/MediaType/CopyMediaTypeRequestModel.cs
 src/Umbraco.Cms.Api.Management/ViewModels/MediaType/UpdateMediaTypePropertyTypeRequestModel.cs
@@ -13757,6 +13785,7 @@ src/Umbraco.Cms.Api.Management/ViewModels/DocumentType/CopyDocumentTypeRequestMo
 src/Umbraco.Cms.Api.Management/ViewModels/DocumentType/UpdateDocumentTypePropertyTypeContainerRequestModel.cs
 src/Umbraco.Cms.Api.Management/ViewModels/DocumentType/DocumentTypeConfigurationResponseModel.cs
 src/Umbraco.Cms.Api.Management/ViewModels/DocumentType/DocumentTypeComposition.cs
+src/Umbraco.Cms.Api.Management/ViewModels/DocumentType/DocumentTypeAllowedParentsResponseModel.cs
 src/Umbraco.Cms.Api.Management/ViewModels/DocumentType/UpdateDocumentTypeRequestModel.cs
 src/Umbraco.Cms.Api.Management/ViewModels/DocumentType/DocumentTypePropertyTypeContainerResponseModel.cs
 src/Umbraco.Cms.Api.Management/ViewModels/DocumentType/AvailableDocumentTypeCompositionResponseModel.cs
@@ -15429,4 +15458,6 @@ build/nightly-E2E-build-template.yml
 build/nightly-E2E-run-tests-template.yml
 build/nightly-E2E-test-pipelines.yml
 build/azure-pipelines.yml
+.claude/settings.json
 umbraco.sln
+.env.example

@@ -2740,6 +2740,7 @@ src/Presentation/Nop.Web.Framework/Mvc/Filters/SaveLastVisitedPageAttribute.cs
 src/Presentation/Nop.Web.Framework/Mvc/Filters/CheckDiscountCouponAttribute.cs
 src/Presentation/Nop.Web.Framework/Mvc/Filters/ParameterBasedOnFormNameAndValueAttribute.cs
 src/Presentation/Nop.Web.Framework/Mvc/Filters/SaveIpAddressAttribute.cs
+src/Presentation/Nop.Web.Framework/Mvc/Filters/SaveLastContinueShoppingPageAttribute.cs
 src/Presentation/Nop.Web.Framework/Mvc/Filters/PublishModelEventsAttribute.cs
 src/Presentation/Nop.Web.Framework/Mvc/Filters/CheckLanguageSeoCodeAttribute.cs
 src/Presentation/Nop.Web.Framework/Mvc/Filters/ValidatePasswordAttribute.cs
@@ -3112,6 +3113,8 @@ src/Libraries/Nop.Services/Helpers/IDateTimeHelper.cs
 src/Libraries/Nop.Services/Helpers/DateTimeHelper.cs
 src/Libraries/Nop.Services/Helpers/SyncCodeHelper.cs
 src/Libraries/Nop.Services/Helpers/UserAgentHelper.cs
+src/Libraries/Nop.Services/Helpers/WebHelper.cs
+src/Libraries/Nop.Services/Helpers/IWebHelper.cs
 src/Libraries/Nop.Services/Helpers/DateTimeSettings.cs
 src/Libraries/Nop.Services/Catalog/RecentlyViewedProductsService.cs
 src/Libraries/Nop.Services/Catalog/BackInStockSubscriptionService.cs
@@ -3681,7 +3684,6 @@ src/Libraries/Nop.Core/Infrastructure/INopStartup.cs
 src/Libraries/Nop.Core/Infrastructure/IEngine.cs
 src/Libraries/Nop.Core/Infrastructure/INopFileProvider.cs
 src/Libraries/Nop.Core/Infrastructure/IConcurrentCollection.cs
-src/Libraries/Nop.Core/Infrastructure/SingletonDictionary.cs
 src/Libraries/Nop.Core/Infrastructure/NopEngine.cs
 src/Libraries/Nop.Core/Infrastructure/WebAppTypeFinder.cs
 src/Libraries/Nop.Core/Infrastructure/Singleton.cs
@@ -3689,7 +3691,6 @@ src/Libraries/Nop.Core/Infrastructure/NopFileProvider.cs
 src/Libraries/Nop.Core/Infrastructure/IStartupTask.cs
 src/Libraries/Nop.Core/Infrastructure/EngineContext.cs
 src/Libraries/Nop.Core/Infrastructure/ConcurrentTrie.cs
-src/Libraries/Nop.Core/Infrastructure/SingletonList.cs
 src/Libraries/Nop.Core/Infrastructure/ITypeFinder.cs
 src/Libraries/Nop.Core/Security/NopDataProtectionDefaults.cs
 src/Libraries/Nop.Core/Security/CookieSettings.cs
@@ -3707,7 +3708,6 @@ src/Libraries/Nop.Core/IStoreContext.cs
 src/Libraries/Nop.Core/NopException.cs
 src/Libraries/Nop.Core/NopVersion.cs
 src/Libraries/Nop.Core/TypeConverterRegistrationStartUpTask.cs
-src/Libraries/Nop.Core/WebHelper.cs
 src/Libraries/Nop.Core/Domain/FilterLevels/FilterLevelValue.cs
 src/Libraries/Nop.Core/Domain/FilterLevels/FilterLevelValueProductMapping.cs
 src/Libraries/Nop.Core/Domain/FilterLevels/FilterLevelSettings.cs
@@ -3993,7 +3993,6 @@ src/Libraries/Nop.Core/Domain/Common/Address.cs
 src/Libraries/Nop.Core/Domain/Common/SearchTerm.cs
 src/Libraries/Nop.Core/Domain/Common/AddressAttribute.cs
 src/Libraries/Nop.Core/Domain/Common/PdfSettings.cs
-src/Libraries/Nop.Core/IWebHelper.cs
 src/Libraries/Nop.Core/ComponentModel/ReaderWriteLockDisposable.cs
 src/Libraries/Nop.Core/ComponentModel/ReaderWriteLockType.cs
 src/Libraries/Nop.Core/ComponentModel/GenericListTypeConverter.cs
@@ -4013,7 +4012,6 @@ src/Libraries/Nop.Core/Caching/DistributedCacheLocker.cs
 src/Libraries/Nop.Core/Caching/IStaticCacheManager.cs
 src/Libraries/Nop.Core/Caching/ILocker.cs
 src/Libraries/Nop.Core/Caching/CacheKeyManager.cs
-src/Libraries/Nop.Core/Caching/CachingExtensions.cs
 src/Libraries/Nop.Core/Caching/ISynchronizedMemoryCache.cs
 src/Libraries/Nop.Core/Caching/ICacheKeyManager.cs
 src/Libraries/Nop.Core/Caching/MemoryCacheManager.cs

@@ -1535,7 +1535,6 @@ erpnext/public/desktop_icons/support.svg
 erpnext/public/desktop_icons/selling.svg
 erpnext/public/desktop_icons/accounting.svg
 erpnext/public/desktop_icons/crm.svg
-erpnext/public/icons/desktop_icons/subtle/account_setup.svg
 erpnext/public/icons/desktop_icons/subtle/banking.svg
 erpnext/public/icons/desktop_icons/subtle/projects.svg
 erpnext/public/icons/desktop_icons/subtle/assets.svg
@@ -1547,6 +1546,7 @@ erpnext/public/icons/desktop_icons/subtle/financial_reports.svg
 erpnext/public/icons/desktop_icons/subtle/manufacturing.svg
 erpnext/public/icons/desktop_icons/subtle/budget.svg
 erpnext/public/icons/desktop_icons/subtle/stock.svg
+erpnext/public/icons/desktop_icons/subtle/accounts_setup.svg
 erpnext/public/icons/desktop_icons/subtle/subcontracting.svg
 erpnext/public/icons/desktop_icons/subtle/buying.svg
 erpnext/public/icons/desktop_icons/subtle/erpnext_settings.svg
@@ -1556,7 +1556,6 @@ erpnext/public/icons/desktop_icons/subtle/selling.svg
 erpnext/public/icons/desktop_icons/subtle/accounting.svg
 erpnext/public/icons/desktop_icons/subtle/payments.svg
 erpnext/public/icons/desktop_icons/subtle/crm.svg
-erpnext/public/icons/desktop_icons/solid/account_setup.svg
 erpnext/public/icons/desktop_icons/solid/banking.svg
 erpnext/public/icons/desktop_icons/solid/projects.svg
 erpnext/public/icons/desktop_icons/solid/assets.svg
@@ -1568,6 +1567,7 @@ erpnext/public/icons/desktop_icons/solid/financial_reports.svg
 erpnext/public/icons/desktop_icons/solid/manufacturing.svg
 erpnext/public/icons/desktop_icons/solid/budget.svg
 erpnext/public/icons/desktop_icons/solid/stock.svg
+erpnext/public/icons/desktop_icons/solid/accounts_setup.svg
 erpnext/public/icons/desktop_icons/solid/subcontracting.svg
 erpnext/public/icons/desktop_icons/solid/buying.svg
 erpnext/public/icons/desktop_icons/solid/erpnext_settings.svg
@@ -4127,6 +4127,7 @@ erpnext/patches/v16_0/update_account_categories_for_existing_accounts.py
 erpnext/patches/v16_0/make_workstation_operating_components.py
 erpnext/patches/v16_0/create_company_custom_fields.py
 erpnext/patches/v16_0/update_serial_batch_entries.py
+erpnext/patches/v16_0/migrate_asset_type_checkboxes_to_select.py
 erpnext/patches/v16_0/migrate_transaction_deletion_task_flags_to_status.py
 erpnext/patches/v16_0/add_new_stock_entry_types.py
 erpnext/patches/v16_0/set_valuation_method_on_companies.py
@@ -4138,6 +4139,8 @@ erpnext/patches/v16_0/fix_barcode_typo.py
 erpnext/patches/v16_0/migrate_tax_withholding_data.py
 erpnext/patches/v16_0/rename_subcontracted_quantity.py
 erpnext/patches/v16_0/set_ordered_qty_in_quotation_item.py
+erpnext/patches/v16_0/add_accounting_dimensions_to_journal_template_accounts.py
+erpnext/patches/v16_0/update_company_custom_field_in_bin.py
 erpnext/patches/v16_0/set_post_change_gl_entries_on_pos_settings.py
 erpnext/patches/v16_0/migrate_budget_records_to_new_structure.py
 erpnext/patches/v16_0/update_corrected_cancelled_status.py
@@ -4226,6 +4229,7 @@ erpnext/patches/v15_0/correct_asset_value_if_je_with_workflow.py
 erpnext/patches/v15_0/enable_all_leads.py
 erpnext/patches/v15_0/enable_old_serial_batch_fields.py
 erpnext/patches/v15_0/set_grand_total_to_default_mop.py
+erpnext/patches/v15_0/replace_http_with_https_in_sales_partner.py
 erpnext/patches/v15_0/update_pegged_currencies.py
 erpnext/patches/v15_0/repost_gl_entries_with_no_account_subcontracting.py
 erpnext/patches/v11_0/set_user_permissions_for_department.py
