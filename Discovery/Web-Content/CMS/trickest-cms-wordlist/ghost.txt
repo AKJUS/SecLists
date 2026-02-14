@@ -278,6 +278,7 @@ ghost/core/core/frontend/services/theme-engine/active.js
 ghost/core/core/frontend/services/theme-engine/handlebars/template.js
 ghost/core/core/frontend/services/theme-engine/handlebars/utils.js
 ghost/core/core/frontend/services/theme-engine/preview.js
+ghost/core/core/frontend/services/asset-hash/index.js
 ghost/core/core/frontend/services/handlebars.js
 ghost/core/core/frontend/services/apps/loader.js
 ghost/core/core/frontend/services/apps/index.js
@@ -506,6 +507,7 @@ ghost/core/core/server/data/migrations/utils/schema.js
 ghost/core/core/server/data/migrations/versions/5.25/2022-11-29-08-30-add-error-recipient-failures-table.js
 ghost/core/core/server/data/migrations/versions/5.25/2022-11-24-10-37-add-email-spam-complaint-events-table.js
 ghost/core/core/server/data/migrations/versions/5.25/2022-11-24-10-36-add-suppressions-table.js
+ghost/core/core/server/data/migrations/versions/6.18/2026-02-04-10-42-20-offers-nullable-product-id.js
 ghost/core/core/server/data/migrations/versions/5.56/2023-07-15-10-11-12-update-members-email-disabled-field.js
 ghost/core/core/server/data/migrations/versions/5.56/2023-07-14-10-11-12-add-email-disabled-field-to-members.js
 ghost/core/core/server/data/migrations/versions/6.13/2026-01-14-12-56-03-add-redemption-type-to-offers.js
@@ -642,6 +644,7 @@ ghost/core/core/server/data/migrations/versions/4.47/2022-05-03-15-30-final-v4.j
 ghost/core/core/server/data/migrations/versions/1.25/02-noop.js
 ghost/core/core/server/data/migrations/versions/1.25/01-final-v1.js
 ghost/core/core/server/data/migrations/versions/6.2/2025-09-30-14-28-09-add-utm-fields.js
+ghost/core/core/server/data/migrations/versions/6.19/2026-02-10-12-00-00-add-transistor-portal-settings.js
 ghost/core/core/server/data/migrations/versions/5.27/2022-12-13-16-15-add-usage-colums-to-tokens.js
 ghost/core/core/server/data/migrations/versions/5.27/2023-01-04-04-12-drop-suppressions-table.js
 ghost/core/core/server/data/migrations/versions/5.27/2023-01-04-04-13-add-suppressions-table.js
@@ -737,6 +740,7 @@ ghost/core/core/server/data/migrations/versions/5.0/2022-04-28-03-26-remove-auth
 ghost/core/core/server/data/migrations/versions/5.0/2022-04-27-11-26-backfill-mrr-for-canceled-subscriptions.js
 ghost/core/core/server/data/migrations/versions/5.0/2022-05-06-13-22-add-frontend-integration.js
 ghost/core/core/server/data/migrations/versions/5.0/2022-05-04-15-24-map-existing-emails-to-default-newsletter.js
+ghost/core/core/server/data/migrations/versions/6.17/2026-02-04-10-42-20-offers-nullable-product-id.js
 ghost/core/core/server/data/migrations/versions/6.16/2026-01-27-12-55-51-add-discount-start-end-to-subscriptions.js
 ghost/core/core/server/data/migrations/versions/5.79/2024-01-30-19-36-44-fix-discrepancy-in-free-tier-visibility.js
 ghost/core/core/server/data/migrations/versions/5.115/2025-03-24-07-19-27-add-identity-read-permission-to-administrators.js
@@ -756,6 +760,7 @@ ghost/core/core/server/data/tinybird/tests/api_top_utm_terms_v2.yaml
 ghost/core/core/server/data/tinybird/tests/api_post_visitor_counts_v2.yaml
 ghost/core/core/server/data/tinybird/tests/api_top_locations.yaml
 ghost/core/core/server/data/tinybird/tests/api_kpis_v2.yaml
+ghost/core/core/server/data/tinybird/tests/api_top_pages_router.yaml
 ghost/core/core/server/data/tinybird/tests/api_active_visitors_v2.yaml
 ghost/core/core/server/data/tinybird/tests/api_monitoring_ingestion_aggregated.yaml
 ghost/core/core/server/data/tinybird/tests/api_top_utm_mediums.yaml
@@ -775,9 +780,11 @@ ghost/core/core/server/data/tinybird/tests/api_kpis.yaml
 ghost/core/core/server/data/tinybird/tests/api_top_pages_v2.yaml
 ghost/core/core/server/data/tinybird/tests/api_top_utm_contents.yaml
 ghost/core/core/server/data/tinybird/tests/api_top_sources_v2.yaml
+ghost/core/core/server/data/tinybird/tests/api_top_pages_v3.yaml
 ghost/core/core/server/data/tinybird/tests/api_active_visitors.yaml
 ghost/core/core/server/data/tinybird/tests/api_top_sources.yaml
 ghost/core/core/server/data/tinybird/pipes/mv_session_data_v2.pipe
+ghost/core/core/server/data/tinybird/pipes/mv_daily_pages.pipe
 ghost/core/core/server/data/tinybird/pipes/mv_session_data.pipe
 ghost/core/core/server/data/tinybird/pipes/mv_hits.pipe
 ghost/core/core/server/data/tinybird/pipes/filtered_sessions_v2.pipe
@@ -785,6 +792,7 @@ ghost/core/core/server/data/tinybird/pipes/filtered_sessions.pipe
 ghost/core/core/server/data/tinybird/fixtures/analytics_events.ndjson
 ghost/core/core/server/data/tinybird/endpoints/api_top_utm_contents_v2.pipe
 ghost/core/core/server/data/tinybird/endpoints/api_active_visitors.pipe
+ghost/core/core/server/data/tinybird/endpoints/api_top_pages_router.pipe
 ghost/core/core/server/data/tinybird/endpoints/api_kpis.pipe
 ghost/core/core/server/data/tinybird/endpoints/api_top_utm_mediums.pipe
 ghost/core/core/server/data/tinybird/endpoints/api_top_locations.pipe
@@ -804,6 +812,7 @@ ghost/core/core/server/data/tinybird/endpoints/api_monitoring_ingestion.pipe
 ghost/core/core/server/data/tinybird/endpoints/api_monitoring_ingestion_aggregated.pipe
 ghost/core/core/server/data/tinybird/endpoints/api_top_utm_terms.pipe
 ghost/core/core/server/data/tinybird/endpoints/api_active_visitors_v2.pipe
+ghost/core/core/server/data/tinybird/endpoints/api_top_pages_v3.pipe
 ghost/core/core/server/data/tinybird/endpoints/api_top_utm_terms_v2.pipe
 ghost/core/core/server/data/tinybird/endpoints/api_top_utm_mediums_v2.pipe
 ghost/core/core/server/data/tinybird/endpoints/api_top_utm_sources_v2.pipe
@@ -816,8 +825,11 @@ ghost/core/core/server/data/tinybird/datasources/_mv_hits.datasource
 ghost/core/core/server/data/tinybird/datasources/_mv_session_data_v2.datasource
 ghost/core/core/server/data/tinybird/datasources/analytics_events.datasource
 ghost/core/core/server/data/tinybird/datasources/analytics_events_test.datasource
+ghost/core/core/server/data/tinybird/datasources/_mv_daily_pages.datasource
 ghost/core/core/server/data/tinybird/scripts/README.md
 ghost/core/core/server/data/tinybird/scripts/configure-ghost.sh
+ghost/core/core/server/data/tinybird/scripts/benchmark-top-pages.sh
+ghost/core/core/server/data/tinybird/scripts/compare-top-pages.sh
 ghost/core/core/server/data/tinybird/scripts/docker-database-utils.js
 ghost/core/core/server/data/tinybird/scripts/docker-analytics-manager.js
 ghost/core/core/server/data/schema/fixtures/index.js
@@ -863,9 +875,9 @@ ghost/core/core/server/services/koenig/render-utils/build-clean-basic-html-for-e
 ghost/core/core/server/services/koenig/render-utils/visibility.js
 ghost/core/core/server/services/koenig/render-utils/escape-html.js
 ghost/core/core/server/services/koenig/render-utils/slugify.js
+ghost/core/core/server/services/koenig/render-utils/is-content-image.js
 ghost/core/core/server/services/koenig/render-utils/render-empty-container.js
 ghost/core/core/server/services/koenig/render-utils/clean-dom.js
-ghost/core/core/server/services/koenig/render-utils/is-local-content-image.js
 ghost/core/core/server/services/koenig/render-utils/srcset-attribute.js
 ghost/core/core/server/services/koenig/render-utils/replacement-strings.js
 ghost/core/core/server/services/koenig/render-utils/size-byte-converter.js
@@ -919,6 +931,7 @@ ghost/core/core/server/services/lib/mailgun-client.js
 ghost/core/core/server/services/lib/link-replacer.js
 ghost/core/core/server/services/lib/magic-link/magic-link.js
 ghost/core/core/server/services/lib/in-memory-repository.ts
+ghost/core/core/server/services/lib/member-signup-contexts.ts
 ghost/core/core/server/services/mentions-email-report/index.js
 ghost/core/core/server/services/mentions-email-report/service.js
 ghost/core/core/server/services/mentions-email-report/job.js
@@ -1037,6 +1050,7 @@ ghost/core/core/server/services/members/members-api/services/geolocation-service
 ghost/core/core/server/services/members/members-api/services/next-payment-calculator.js
 ghost/core/core/server/services/members/members-api/services/member-bread-service.js
 ghost/core/core/server/services/members/members-api/utils/normalize-email.js
+ghost/core/core/server/services/members/members-api/utils/add-calendar-months.js
 ghost/core/core/server/services/members/members-api/repositories/member-repository.js
 ghost/core/core/server/services/members/members-api/repositories/product-repository.js
 ghost/core/core/server/services/members/members-api/repositories/event-repository.js
@@ -1754,6 +1768,7 @@ ghost/core/test/e2e-frontend/site-id-middleware.test.js
 ghost/core/test/unit/frontend/services/data/entry-lookup.test.js
 ghost/core/test/unit/frontend/services/data/checks.test.js
 ghost/core/test/unit/frontend/services/data/fetch-data.test.js
+ghost/core/test/unit/frontend/services/asset-hash.test.js
 ghost/core/test/unit/frontend/services/assets-minification/minifier.test.js
 ghost/core/test/unit/frontend/services/assets-minification/fixtures/basic-cards/js/gallery.js
 ghost/core/test/unit/frontend/services/assets-minification/fixtures/basic-cards/js/empty.js
@@ -1924,6 +1939,7 @@ ghost/core/test/unit/server/services/outbox/index.test.js
 ghost/core/test/unit/server/services/koenig/node-renderers.test.js
 ghost/core/test/unit/server/services/koenig/render-utils/stylex.test.js
 ghost/core/test/unit/server/services/koenig/render-utils/tagged-template-fns.test.js
+ghost/core/test/unit/server/services/koenig/render-utils/is-content-image.test.js
 ghost/core/test/unit/server/services/koenig/test-utils/visibility.js
 ghost/core/test/unit/server/services/koenig/test-utils/assert-prettified-includes.test.js
 ghost/core/test/unit/server/services/koenig/test-utils/assert-prettifies-to.js
@@ -1944,6 +1960,7 @@ ghost/core/test/unit/server/services/koenig/node-renderers/signup-renderer.test.
 ghost/core/test/unit/server/services/koenig/node-renderers/horizontalrule-renderer.test.js
 ghost/core/test/unit/server/services/koenig/node-renderers/toggle-renderer.test.js
 ghost/core/test/unit/server/services/koenig/node-renderers/gallery-renderer.test.js
+ghost/core/test/unit/server/services/koenig/node-renderers/transistor-renderer.test.js
 ghost/core/test/unit/server/services/koenig/node-renderers/email-renderer.test.js
 ghost/core/test/unit/server/services/koenig/node-renderers/email-cta-renderer.test.js
 ghost/core/test/unit/server/services/koenig/node-renderers/html-renderer.test.js
@@ -2030,6 +2047,7 @@ ghost/core/test/unit/server/services/members/members-api/services/geolocation-se
 ghost/core/test/unit/server/services/members/members-api/services/payments-service.test.js
 ghost/core/test/unit/server/services/members/members-api/services/members-bread-service.test.js
 ghost/core/test/unit/server/services/members/members-api/utils/normalize-email.test.js
+ghost/core/test/unit/server/services/members/members-api/utils/add-calendar-months.test.js
 ghost/core/test/unit/server/services/members/members-api/repositories/product-repository.test.js
 ghost/core/test/unit/server/services/members/members-api/repositories/member-repository.test.js
 ghost/core/test/unit/server/services/members/members-api/repositories/event-repository.test.js
@@ -2340,6 +2358,7 @@ ghost/core/test/e2e-browser/portal/invites.spec.js
 ghost/core/test/e2e-browser/portal/donations.spec.js
 ghost/core/test/e2e-browser/portal/upgrade.spec.js
 ghost/core/test/e2e-browser/utils/index.js
+ghost/core/test/e2e-browser/utils/stripe-cli.js
 ghost/core/test/e2e-browser/utils/e2e-browser-utils.js
 ghost/core/test/e2e-browser/utils/helpers.js
 ghost/core/test/e2e-browser/admin/portal-settings.spec.js
@@ -2349,6 +2368,7 @@ ghost/core/test/e2e-browser/admin/tiers.spec.js
 ghost/core/test/e2e-browser/admin/announcement-bar-settings.spec.js
 ghost/core/test/e2e-browser/admin/publishing.spec.js
 ghost/core/test/e2e-browser/admin/membership-settings.spec.js
+ghost/core/test/e2e-browser/global-setup.js
 ghost/core/test/utils/browser-test-utils.js
 ghost/core/test/utils/stripe-mocker.js
 ghost/core/test/utils/fixture-utils.js
@@ -3917,7 +3937,6 @@ ghost/admin/app/components/gh-textarea.js
 ghost/admin/app/components/gh-unsplash-photo.hbs
 ghost/admin/app/components/gh-members-import-table.hbs
 ghost/admin/app/components/react-component.hbs
-ghost/admin/app/components/alerts-wormhole.js
 ghost/admin/app/components/gh-alert.js
 ghost/admin/app/components/modal-impersonate-member.js
 ghost/admin/app/components/gh-member-settings-form.js
@@ -4159,6 +4178,7 @@ ghost/admin/app/components/gh-loading-list.hbs
 ghost/admin/app/components/gh-psm-authors-input.js
 ghost/admin/app/components/epm-modal-container.hbs
 ghost/admin/app/components/gh-editor-post-status.hbs
+ghost/admin/app/components/render-in-wormhole.hbs
 ghost/admin/app/components/posts-list/content-filter.hbs
 ghost/admin/app/components/posts-list/list.js
 ghost/admin/app/components/posts-list/list-item.hbs
@@ -4190,7 +4210,6 @@ ghost/admin/app/components/modals/new-custom-integration.hbs
 ghost/admin/app/components/modals/settings/about.js
 ghost/admin/app/components/modals/settings/about.hbs
 ghost/admin/app/components/modals/email-preview.js
-ghost/admin/app/components/modals/design/theme-errors.hbs
 ghost/admin/app/components/modals/delete-post.js
 ghost/admin/app/components/modals/search.js
 ghost/admin/app/components/modals/restore-revision.js
@@ -4268,6 +4287,7 @@ ghost/admin/app/components/gh-editor-feature-image.hbs
 ghost/admin/app/components/gh-task-button.hbs
 ghost/admin/app/components/gh-post-settings-menu.hbs
 ghost/admin/app/components/koenig-lexical-editor-input.js
+ghost/admin/app/components/render-in-wormhole.js
 ghost/admin/app/components/gh-error-message.hbs
 ghost/admin/app/components/offers/segment-select.js
 ghost/admin/app/components/offers/segment-select.hbs
@@ -4292,7 +4312,6 @@ ghost/admin/app/components/liquid-container.js
 ghost/admin/app/components/gh-post-bookmark.hbs
 ghost/admin/app/components/gh-unsplash.js
 ghost/admin/app/components/gh-member-avatar.hbs
-ghost/admin/app/components/alerts-wormhole.hbs
 ghost/admin/app/components/aspect-ratio-box.js
 ghost/admin/app/components/gh-member-single-label-input.hbs
 ghost/admin/app/components/gh-psm-template-select.hbs
@@ -4473,6 +4492,7 @@ ghost/admin/package.json
 .claude/skills/create-database-migration/SKILL.md
 .claude/skills/create-database-migration/rules.md
 .claude/skills/create-database-migration/examples.md
+.claude/skills/format-number/SKILL.md
 .claude/skills/add-admin-api-endpoint/validation.md
 .claude/skills/add-admin-api-endpoint/SKILL.md
 .claude/skills/add-admin-api-endpoint/permissions.md
@@ -4724,7 +4744,10 @@ apps/admin-x-settings/src/components/settings/growth/offers.tsx
 apps/admin-x-settings/src/components/settings/growth/offers/edit-offer-modal.tsx
 apps/admin-x-settings/src/components/settings/growth/offers/add-offer-modal.tsx
 apps/admin-x-settings/src/components/settings/growth/offers/offers-index.tsx
+apps/admin-x-settings/src/components/settings/growth/offers/edit-retention-offer-modal.tsx
 apps/admin-x-settings/src/components/settings/growth/offers/offer-success.tsx
+apps/admin-x-settings/src/components/settings/growth/offers/offers-index-retention.tsx
+apps/admin-x-settings/src/components/settings/growth/offers/offers-retention.tsx
 apps/admin-x-settings/src/components/settings/growth/offers/offers-container-modal.tsx
 apps/admin-x-settings/src/components/settings/growth/embed-signup/embed-signup-preview.tsx
 apps/admin-x-settings/src/components/settings/growth/embed-signup/embed-signup-form-modal.tsx
@@ -4808,6 +4831,7 @@ apps/admin-x-settings/src/components/settings/membership/portal/portal-modal.tsx
 apps/admin-x-settings/src/components/settings/membership/portal/signup-options.tsx
 apps/admin-x-settings/src/components/settings/membership/portal/portal-preview.tsx
 apps/admin-x-settings/src/components/settings/membership/portal/account-page.tsx
+apps/admin-x-settings/src/components/settings/membership/portal/transistor-settings.tsx
 apps/admin-x-settings/src/components/settings/membership/portal/look-and-feel.tsx
 apps/admin-x-settings/src/components/settings/membership/portal/portal-frame.tsx
 apps/admin-x-settings/src/components/settings/membership/member-emails/test-email-dropdown.tsx

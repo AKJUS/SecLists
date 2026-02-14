@@ -1,4 +1,6 @@
 .changeset/config.json
+.changeset/fix-graphql-groupby-collision.md
+.changeset/perky-lies-search.md
 .vscode/settings.json
 .vscode/extensions.json
 .stylelintrc.json
@@ -756,7 +758,9 @@ api/src/operations/json-web-token/index.ts
 api/src/mailer.ts
 api/src/deployment/index.ts
 api/src/deployment/deployment.ts
+api/src/deployment/drivers/netlify.test.ts
 api/src/deployment/drivers/vercel.ts
+api/src/deployment/drivers/netlify.ts
 api/src/deployment/drivers/vercel.test.ts
 api/src/deployment/drivers/index.ts
 api/src/utils/get-cache-key.test.ts
@@ -1009,6 +1013,7 @@ api/src/database/helpers/fn/dialects/mssql.ts
 api/src/database/helpers/fn/dialects/postgres.ts
 api/src/database/helpers/fn/dialects/mysql.ts
 api/src/database/helpers/fn/dialects/sqlite.ts
+api/src/database/helpers/fn/types.test.ts
 api/src/database/helpers/fn/index.ts
 api/src/database/helpers/fn/types.ts
 api/src/database/helpers/index.ts
@@ -1875,6 +1880,7 @@ app/src/utils/parse-filter.test.ts
 app/src/utils/translate-literal.ts
 app/src/utils/get-related-collection.test.ts
 app/src/utils/localized-format.ts
+app/src/utils/format-date-picker-model-value.ts
 app/src/utils/get-stringified-value.test.ts
 app/src/utils/format-field-function.test.ts
 app/src/utils/format-validation-structure.test.ts
@@ -1895,9 +1901,9 @@ app/src/utils/generate-favicon.ts
 app/src/utils/readable-mime-type/extensions.json
 app/src/utils/readable-mime-type/types.json
 app/src/utils/readable-mime-type/index.ts
-app/src/utils/get-flatpickr-locale.ts
 app/src/utils/get-related-collection.ts
 app/src/utils/point-on-line.test.ts
+app/src/utils/format-date-picker-model-value.test.ts
 app/src/utils/format-date.ts
 app/src/utils/format-validation-structure.ts
 app/src/utils/query-to-gql-string.ts
@@ -2107,6 +2113,7 @@ app/src/interfaces/input-block-editor/bus.ts
 app/src/interfaces/input-block-editor/use-file-handler.ts
 app/src/interfaces/input-block-editor/alignment.ts
 app/src/interfaces/input-block-editor/sanitize.test.ts
+app/src/interfaces/input-block-editor/input-block-editor.test.ts
 app/src/interfaces/select-color/select-color.test.ts
 app/src/interfaces/select-color/select-color.vue
 app/src/interfaces/select-color/index.ts
@@ -2307,6 +2314,7 @@ app/src/components/v-icon/custom-icons/logout.vue
 app/src/components/v-icon/custom-icons/box.vue
 app/src/components/v-icon/custom-icons/grid_3.vue
 app/src/components/v-icon/custom-icons/grid_2.vue
+app/src/components/v-icon/custom-icons/netlify.vue
 app/src/components/v-icon/custom-icons/grid_6.vue
 app/src/components/v-icon/custom-icons/directus.vue
 app/src/components/v-icon/custom-icons/folder_lock.vue
@@ -2324,7 +2332,6 @@ app/src/components/v-info.story.vue
 app/src/components/v-card-actions.test.ts
 app/src/components/v-checkbox.test.ts
 app/src/components/v-drawer-header.vue
-app/src/components/v-date-picker.vue
 app/src/components/v-workspace-tile.test.ts
 app/src/components/v-upload.vue
 app/src/components/v-hover.story.vue
@@ -2368,9 +2375,13 @@ app/src/components/v-text-overflow.story.vue
 app/src/components/v-workspace.test.ts
 app/src/components/v-chip.vue
 app/src/components/v-chip.test.ts
+app/src/components/v-date-picker/v-date-picker.test.ts
+app/src/components/v-date-picker/v-date-picker.vue
+app/src/components/v-date-picker/types.ts
 app/src/components/v-button.test.ts
 app/src/components/v-radio.test.ts
 app/src/components/v-form/v-form.vue
+app/src/components/v-form/v-form.test.ts
 app/src/components/v-form/composables/use-ai-tools.ts
 app/src/components/v-form/composables/use-input-schema.test.ts
 app/src/components/v-form/composables/use-input-schema.ts
@@ -2488,7 +2499,6 @@ app/src/routes/setup/form.vue
 app/src/extensions.ts
 app/src/styles/_base.scss
 app/src/styles/lib/_frappe-charts.scss
-app/src/styles/lib/_flatpickr.scss
 app/src/styles/lib/_mapbox.scss
 app/src/styles/lib/_highlight.scss
 app/src/styles/lib/_codemirror.scss

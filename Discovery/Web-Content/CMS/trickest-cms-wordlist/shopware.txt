@@ -5908,6 +5908,9 @@ tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/data/NoDalAutoload/not-in-c
 tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/data/NoDalAutoload/in-test-namespace.php
 tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/data/NoDalAutoload/not-in-namespace.php
 tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/data/NoDalAutoload/no-entity-name.php
+tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/data/NoUnserializeUsageRule/HasUnserialize.php
+tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/data/AddColumnRule/Migration1769435681ProblematicPattern.php
+tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/data/AddColumnRule/Migration1769435682ValidPattern.php
 tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/data/NamespaceStyle/GlobalException.php
 tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/data/NamespaceStyle/GlobalCommand.php
 tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/data/NamespaceStyle/NoShopware.php
@@ -5949,12 +5952,14 @@ tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/Symplify/NoReturnSetterMeth
 tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/PublicServiceDecoratorRuleTest.php
 tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/NoRouteOverrideInDecoratorsRuleTest.php
 tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/AttributeFinalRuleTest.php
+tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/NoUnserializeUsageRuleTest.php
 tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/RouteScopeRuleTest.php
 tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/ShopwareNamespaceStyleRuleTest.php
 tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/NoStaticRuntimeExceptionReturnRuleTest.php
 tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/NameConstantEntityDefinitionTest.php
 tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/PropertyNativeTypeRuleTest.php
 tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/UseCLIContextRuleTest.php
+tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/Migration/AddColumnRuleTest.php
 tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/Migration/NoDropStatementInUpdateRuleTest.php
 tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/AclValidPermissionsHelperTest.php
 tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/NoDALAutoloadTest.php
@@ -6481,6 +6486,7 @@ tests/unit/Core/Checkout/Cart/Address/Error/ShippingAddressCountryRegionMissingE
 tests/unit/Core/Checkout/Cart/Address/Error/AddressValidationErrorTest.php
 tests/unit/Core/Checkout/Cart/Address/Error/SalutationMissingErrorTest.php
 tests/unit/Core/Checkout/Cart/Address/Error/CountryRegionMissingErrorTest.php
+tests/unit/Core/Checkout/Cart/CartBehaviorTest.php
 tests/unit/Core/Checkout/Cart/Order/RecalculationServiceTest.php
 tests/unit/Core/Checkout/Cart/Order/CartPersisterTest.php
 tests/unit/Core/Checkout/Cart/Order/CartTest.php
@@ -6600,6 +6606,7 @@ tests/unit/Core/Checkout/Cart/Promotion/Aggregate/PromotionSetGroup/PromotionSet
 tests/unit/Core/Checkout/Cart/Promotion/Validator/PromotionValidatorTest.php
 tests/unit/Core/Checkout/Cart/RuleLoaderTest.php
 tests/unit/Core/Checkout/Cart/Tax/CalculatedTaxCollectionTest.php
+tests/unit/Core/Checkout/Cart/Tax/TaxDetectorTest.php
 tests/unit/Core/Checkout/Cart/Tax/TaxRuleCollectionTest.php
 tests/unit/Core/Checkout/Cart/Tax/TaxCalculatorTest.php
 tests/unit/Core/Checkout/Cart/Tax/CalculatedTaxTest.php
@@ -6767,6 +6774,7 @@ tests/unit/Core/Checkout/Customer/Subscriber/ProductReviewSubscriberTest.php
 tests/unit/Core/Checkout/Customer/Subscriber/CustomerFlowEventsSubscriberTest.php
 tests/unit/Core/Checkout/Customer/Subscriber/CustomerAddressSubscriberTest.php
 tests/unit/Core/Checkout/Customer/Subscriber/CustomerBeforeDeleteSubscriberTest.php
+tests/unit/Core/Checkout/Customer/Subscriber/CustomerLanguageSalesChannelSubscriberTest.php
 tests/unit/Core/Checkout/Customer/Rule/AffiliateCodeRuleTest.php
 tests/unit/Core/Checkout/Customer/Rule/DaysSinceLastLoginRuleTest.php
 tests/unit/Core/Checkout/Customer/Rule/DaysSinceFirstLoginRuleTest.php
@@ -7158,6 +7166,7 @@ tests/unit/Core/Framework/Struct/Fixture/AssignTestCollection.php
 tests/unit/Core/Framework/Struct/AssignArrayTraitTest.php
 tests/unit/Core/Framework/Script/AppContextCreatorTest.php
 tests/unit/Core/Framework/Script/ScriptExceptionTest.php
+tests/unit/Core/Framework/Script/Execution/ScriptEnvironmentFactoryTest.php
 tests/unit/Core/Framework/Script/Execution/ScriptExecutorTest.php
 tests/unit/Core/Framework/Script/Service/ArrayFacadeTest.php
 tests/unit/Core/Framework/Script/Api/AclFacadeHookFactoryTest.php
@@ -7212,6 +7221,7 @@ tests/unit/Core/Framework/Demodata/Generator/ProductGeneratorTest.php
 tests/unit/Core/Framework/Demodata/Event/DemodataRequestCreatedEventTest.php
 tests/unit/Core/Framework/Demodata/Command/DemodataCommandTest.php
 tests/unit/Core/Framework/FeatureTest.php
+tests/unit/Core/Framework/Migration/AddColumnTraitTest.php
 tests/unit/Core/Framework/Migration/MigrationExceptionTest.php
 tests/unit/Core/Framework/Migration/MigrationStepTest.php
 tests/unit/Core/Framework/Migration/MakeVersionableMigrationHelperTest.php
@@ -7431,6 +7441,7 @@ tests/unit/Core/Framework/App/Command/_fixtures/create-app-project/.gitkeep
 tests/unit/Core/Framework/App/Command/AppListCommandTest.php
 tests/unit/Core/Framework/App/ActiveAppsLoaderTest.php
 tests/unit/Core/Framework/Uuid/UuidTest.php
+tests/unit/Core/Framework/DataAbstractionLayer/DefinitionValidatorTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/EntityCollectionTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/EntityRepositoryTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/FilteredBulkEntityExtensionTest.php
@@ -7452,6 +7463,7 @@ tests/unit/Core/Framework/DataAbstractionLayer/FieldSerializer/UpdatedByFieldSer
 tests/unit/Core/Framework/DataAbstractionLayer/FieldSerializer/VariantListingConfigFieldSerializerTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/FieldSerializer/PasswordFieldSerializerTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/FieldSerializer/PriceFieldSerializerTest.php
+tests/unit/Core/Framework/DataAbstractionLayer/FieldSerializer/CalculatedPriceFieldSerializerTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/FieldSerializer/CreatedByFieldSerializerTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/FieldSerializer/IdFieldSerializerTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/FieldSerializer/ManyToManyAssociationFieldSerializerTest.php
@@ -7479,6 +7491,8 @@ tests/unit/Core/Framework/DataAbstractionLayer/Dbal/Common/IteratorFactoryTest.p
 tests/unit/Core/Framework/DataAbstractionLayer/VersionManagerTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/Event/EntityWriteEventTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/Event/EntityDeleteEventTest.php
+tests/unit/Core/Framework/DataAbstractionLayer/Validation/Fixtures/DefinitionStub.php
+tests/unit/Core/Framework/DataAbstractionLayer/Validation/Fixtures/DefinitionWithNonStorageAwarePrimaryKeyStub.php
 tests/unit/Core/Framework/DataAbstractionLayer/Validation/EntityNotExistsTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/Field/CronIntervalFieldTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/Field/PasswordFieldTest.php
@@ -7548,6 +7562,7 @@ tests/unit/Core/Framework/Log/Monolog/ExcludeExceptionHandlerTest.php
 tests/unit/Core/Framework/Log/LoggingServiceTest.php
 tests/unit/Core/Framework/Log/PackageTest.php
 tests/unit/Core/Framework/Log/ExceptionLoggerTest.php
+tests/unit/Core/Framework/Sso/Controller/SsoControllerTest.php
 tests/unit/Core/Framework/Sso/LoginResponseServiceTest.php
 tests/unit/Core/Framework/Sso/TokenService/PublicKeyLoaderTest.php
 tests/unit/Core/Framework/Sso/TokenService/ExternalTokenServiceTest.php
@@ -7662,6 +7677,7 @@ tests/unit/Core/Framework/Adapter/Cache/CacheClearerTest.php
 tests/unit/Core/Framework/Adapter/AdapterExceptionTest.php
 tests/unit/Core/Framework/Adapter/Kernel/KernelFactoryTest.php
 tests/unit/Core/Framework/Adapter/Kernel/HttpKernelTest.php
+tests/unit/Core/Framework/Adapter/Kernel/EnvIntOrNullProcessorTest.php
 tests/unit/Core/Framework/Adapter/Kernel/EsiDecorationTest.php
 tests/unit/Core/Framework/Adapter/Filesystem/FilesystemFactoryTest.php
 tests/unit/Core/Framework/Adapter/Filesystem/Plugin/CopyBatchTest.php
@@ -8120,6 +8136,7 @@ tests/unit/Storefront/Theme/Twig/ThemeInheritanceBuilderTest.php
 tests/unit/Storefront/Theme/CompilerConfigurationTest.php
 tests/unit/Storefront/Theme/ThemeFileResolverTest.php
 tests/unit/Storefront/Theme/MockedCacheInvalidator.php
+tests/unit/Storefront/Theme/ThemeConfigValueAccessorTest.php
 tests/unit/Storefront/Theme/StorefrontPluginConfiguration/StorefrontPluginConfigurationTest.php
 tests/unit/Storefront/Theme/StorefrontPluginConfiguration/FileCollectionTest.php
 tests/unit/Storefront/Theme/ThemeFilesystemResolverTest.php
@@ -8306,6 +8323,7 @@ tests/migration/Core/V6_6/Migration1727768690UpdateDefaultEnglishPlainMailFooter
 tests/migration/Core/MigrationExecuteQueryTest.php
 tests/migration/Core/MigrationNameAndTimestampTest.php
 tests/migration/Core/V6_8/Migration1743256470RemoveElasticsearchAppConfigFlagTest.php
+tests/migration/Core/V6_8/Migration1769676545RemoveOrderAddressVatIdColumnTest.php
 tests/migration/Core/V6_8/Migration1755497870RemoveLabelTranslationOfImportExportProfileTest.php
 tests/migration/Core/V6_8/Migration1763125903RemoveOrderLineItemStatesColumnTest.php
 tests/migration/Core/V6_8/Migration1743256470RemoveDebitPaymentTest.php
@@ -12437,6 +12455,7 @@ src/Administration/Resources/app/administration/src/module/sw-settings-custom-fi
 src/Administration/Resources/app/administration/src/module/sw-settings-custom-field/component/sw-custom-field-type-date/sw-custom-field-type-date.html.twig
 src/Administration/Resources/app/administration/src/module/sw-settings-custom-field/component/sw-custom-field-type-base/sw-custom-field-type-base.html.twig
 src/Administration/Resources/app/administration/src/module/sw-settings-custom-field/component/sw-custom-field-type-base/index.js
+src/Administration/Resources/app/administration/src/module/sw-settings-custom-field/component/sw-custom-field-type-number/sw-custom-field-type-number.spec.js
 src/Administration/Resources/app/administration/src/module/sw-settings-custom-field/component/sw-custom-field-type-number/index.js
 src/Administration/Resources/app/administration/src/module/sw-settings-custom-field/component/sw-custom-field-type-number/sw-custom-field-type-number.html.twig
 src/Administration/Resources/app/administration/src/module/sw-settings-custom-field/acl/index.js
@@ -13534,6 +13553,7 @@ src/Administration/Resources/app/administration/src/module/sw-media/component/sw
 src/Administration/Resources/app/administration/src/module/sw-media/component/sw-media-breadcrumbs/index.js
 src/Administration/Resources/app/administration/src/module/sw-media/component/sw-media-breadcrumbs/sw-media-breadcrumbs.scss
 src/Administration/Resources/app/administration/src/module/sw-media/component/sw-media-grid/sw-media-grid.scss
+src/Administration/Resources/app/administration/src/module/sw-media/component/sw-media-grid/sw-media-grid.spec.js
 src/Administration/Resources/app/administration/src/module/sw-media/component/sw-media-grid/sw-media-grid.html.twig
 src/Administration/Resources/app/administration/src/module/sw-media/component/sw-media-grid/index.js
 src/Administration/Resources/app/administration/src/module/sw-media/component/sw-media-display-options/index.js
@@ -14094,6 +14114,7 @@ src/Administration/Resources/app/administration/src/app/component/utils/sw-overl
 src/Administration/Resources/app/administration/src/app/component/utils/sw-overlay/sw-overlay.scss
 src/Administration/Resources/app/administration/src/app/component/utils/sw-notifications/index.js
 src/Administration/Resources/app/administration/src/app/component/utils/sw-notifications/sw-notifications.scss
+src/Administration/Resources/app/administration/src/app/component/utils/sw-notifications/sw-notifications.spec.js
 src/Administration/Resources/app/administration/src/app/component/utils/sw-notifications/sw-notifications.html.twig
 src/Administration/Resources/app/administration/src/app/component/utils/sw-skeleton-bar-deprecated/sw-skeleton-bar-deprecated.html.twig
 src/Administration/Resources/app/administration/src/app/component/utils/sw-skeleton-bar-deprecated/index.ts
@@ -16420,6 +16441,7 @@ src/Core/DevOps/StaticAnalyze/PHPStan/Rules/Tests/NoAssertsOnObjectsRule.php
 src/Core/DevOps/StaticAnalyze/PHPStan/Rules/Tests/PHPUnitClassAttributesOverAnnotationsRule.php
 src/Core/DevOps/StaticAnalyze/PHPStan/Rules/Tests/MockingSimpleObjectsNotAllowedRule.php
 src/Core/DevOps/StaticAnalyze/PHPStan/Rules/Tests/CoversAttributeRule.php
+src/Core/DevOps/StaticAnalyze/PHPStan/Rules/NoUnserializeUsageRule.php
 src/Core/DevOps/StaticAnalyze/PHPStan/Rules/InTestClassTrait.php
 src/Core/DevOps/StaticAnalyze/PHPStan/Rules/PackageAnnotationRule.php
 src/Core/DevOps/StaticAnalyze/PHPStan/Rules/AttributeFinalRule.php
@@ -17134,6 +17156,7 @@ src/Core/Checkout/Customer/Subscriber/CustomerMetaFieldSubscriber.php
 src/Core/Checkout/Customer/Subscriber/AddressHashSubscriber.php
 src/Core/Checkout/Customer/Subscriber/CustomerTokenSubscriber.php
 src/Core/Checkout/Customer/Subscriber/CustomerRemoteAddressSubscriber.php
+src/Core/Checkout/Customer/Subscriber/CustomerLanguageSalesChannelSubscriber.php
 src/Core/Checkout/Customer/Subscriber/CustomerSalutationSubscriber.php
 src/Core/Checkout/Customer/Subscriber/CustomerChangePasswordSubscriber.php
 src/Core/Checkout/Customer/Subscriber/CustomerBeforeDeleteSubscriber.php
@@ -19380,6 +19403,7 @@ src/Core/Framework/Adapter/Cache/CacheValueCompressor.php
 src/Core/Framework/Adapter/Cache/StoreApiRouteCacheTagsEvent.php
 src/Core/Framework/Adapter/Cache/CacheCompressor.php
 src/Core/Framework/Adapter/Kernel/KernelFactory.php
+src/Core/Framework/Adapter/Kernel/EnvIntOrNullProcessor.php
 src/Core/Framework/Adapter/Kernel/EsiDecoration.php
 src/Core/Framework/Adapter/Kernel/HttpKernel.php
 src/Core/Framework/Adapter/Kernel/HttpCacheKernel.php
@@ -20020,7 +20044,6 @@ src/Core/Framework/Util/Database/Table.php
 src/Core/Framework/Util/Database/TableHelperException.php
 src/Core/Framework/Util/Database/TableHelper.php
 src/Core/Framework/Util/Database/Column.php
-src/Core/Framework/Util/Database/TableHelperResetter.php
 src/Core/Framework/Util/UtilException.php
 src/Core/Framework/Util/MemorySizeCalculator.php
 src/Core/Framework/Util/IOStreamHelper.php
@@ -21011,6 +21034,7 @@ src/Core/Migration/V6_6/Migration1663402950SetDoubleOptinCustomerActive.php
 src/Core/Migration/Test/NullConnection.php
 src/Core/Migration/V6_8/Migration1755497870RemoveLabelTranslationOfImportExportProfile.php
 src/Core/Migration/V6_8/Migration1763125892RemoveProductStatesColumn.php
+src/Core/Migration/V6_8/Migration1769676545RemoveOrderAddressVatIdColumn.php
 src/Core/Migration/V6_8/Migration1743256470RemoveElasticsearchAppConfigFlag.php
 src/Core/Migration/V6_8/Migration1763125903RemoveOrderLineItemStatesColumn.php
 src/Core/Migration/V6_8/Migration1743256470RemoveDebitPayment.php
@@ -21727,6 +21751,7 @@ src/Storefront/Resources/app/storefront/test/plugin/add-to-cart/add-to-cart.plug
 src/Storefront/Resources/app/storefront/test/plugin/ajax-modal/ajax-modal.plugin.test.js
 src/Storefront/Resources/app/storefront/test/plugin/quantity-selector/quantity-selector.plugin.test.js
 src/Storefront/Resources/app/storefront/test/plugin/buy-box/buy-box.plugin.test.js
+src/Storefront/Resources/app/storefront/test/plugin/alert-aria/alert-aria.plugin.test.js
 src/Storefront/Resources/app/storefront/test/plugin/zoom-modal/zoom-modal.plugin.test.js
 src/Storefront/Resources/app/storefront/test/plugin/offcanvas-tabs/offcanvas-tabs.plugin.test.js
 src/Storefront/Resources/app/storefront/test/plugin/cms-video/cms-video.plugin.test.js
@@ -22376,6 +22401,7 @@ src/Storefront/Resources/app/storefront/src/plugin/add-to-cart/add-to-cart.plugi
 src/Storefront/Resources/app/storefront/src/plugin/ajax-modal/ajax-modal.plugin.js
 src/Storefront/Resources/app/storefront/src/plugin/quantity-selector/quantity-selector.plugin.js
 src/Storefront/Resources/app/storefront/src/plugin/buy-box/buy-box.plugin.js
+src/Storefront/Resources/app/storefront/src/plugin/alert-aria/alert-aria.plugin.js
 src/Storefront/Resources/app/storefront/src/plugin/zoom-modal/zoom-modal.plugin.js
 src/Storefront/Resources/app/storefront/src/plugin/offcanvas-tabs/offcanvas-tabs.plugin.js
 src/Storefront/Resources/app/storefront/src/plugin/cms-video/cms-video.plugin.js

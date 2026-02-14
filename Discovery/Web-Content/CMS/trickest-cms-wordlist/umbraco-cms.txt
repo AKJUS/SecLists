@@ -17,8 +17,11 @@ tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/ReadOnlyGuardRules.sp
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/CollectionView.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/CustomDashboard.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/PropertyAction.spec.ts
+tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/PropertyPresetValue.spec.ts
+tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/PropertyPresetValueWithSegmentAndCulture.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/BlockCustomView.spec.ts
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/CustomPropertyEditor.spec.ts
+tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/Segments/MySegmentService.cs
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/workspace-view/workspace-view.js
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/workspace-view/umbraco-package.json
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/workspace-view/workspace-view.js.map
@@ -30,6 +33,13 @@ tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_P
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/custom-property-editor/umbraco-package.json
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/custom-property-editor/dist/customtexteditor.js
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/custom-property-editor/dist/customtexteditor.js.map
+tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/property-preset-value/preset-value-schema-alias.js
+tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/property-preset-value/umbraco-package.json
+tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/property-preset-value/property-preset-value.js.map
+tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/property-preset-value/property-preset-value.js
+tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/property-preset-value/preset-value-schema-alias.js.map
+tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/property-preset-value/preset-value-no-property.js
+tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/property-preset-value/preset-value-no-property.js.map
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/retrieve-action/retrieve-action.manifests.js
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/retrieve-action/retrieve-action.api.js
 tests/Umbraco.Tests.AcceptanceTest/tests/ExtensionRegistry/AdditionalSetup/App_Plugins/retrieve-action/umbraco-package.json
@@ -1009,6 +1019,7 @@ tests/Umbraco.Tests.UnitTests/Umbraco.Core/Models/RangeTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Models/TemplateTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Models/CultureImpactTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Models/DictionaryTranslationTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Models/Mapping/CommonMapperTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Models/RelationTypeTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Models/PropertyTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Models/UserGroupTests.cs
@@ -1211,8 +1222,11 @@ tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/ServerEvents/FakeAuthor
 tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/ServerEvents/ServerEventAuthorizerTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/ServerEvents/ServerEventUserManagerTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/ServerEvents/ServerEventSenderTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/Controllers/Manifest/ManifestControllerBaseTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/Factories/MediaUrlFactoryTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/Factories/ReziseImageUrlFactoryTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/Factories/IndexPresentationFactoryTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/Factories/DocumentCollectionPresentationFactoryTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/Mapping/Content/DocumentVariantStateHelperTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/Services/BackOfficeExternalLoginServiceTests.ExternalLoginStatusForUserAsync.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/Services/BackOfficeExternalLoginServiceTests.UnLinkLoginAsync.cs
@@ -8410,7 +8424,9 @@ src/Umbraco.Web.UI.Client/src/packages/property-editors/number/integer-property-
 src/Umbraco.Web.UI.Client/src/packages/property-editors/number/Umbraco.Decimal.ts
 src/Umbraco.Web.UI.Client/src/packages/property-editors/number/types.ts
 src/Umbraco.Web.UI.Client/src/packages/property-editors/utils/property-editor-test-utils.ts
+src/Umbraco.Web.UI.Client/src/packages/property-editors/utils/character-count.test.ts
 src/Umbraco.Web.UI.Client/src/packages/property-editors/utils/property-editor-ui-state-manager.ts
+src/Umbraco.Web.UI.Client/src/packages/property-editors/utils/character-count.ts
 src/Umbraco.Web.UI.Client/src/packages/property-editors/dropdown/manifests.ts
 src/Umbraco.Web.UI.Client/src/packages/property-editors/dropdown/property-editor-ui-dropdown.test.ts
 src/Umbraco.Web.UI.Client/src/packages/property-editors/dropdown/property-editor-ui-dropdown.stories.ts
@@ -9850,6 +9866,7 @@ src/Umbraco.Web.UI.Client/src/packages/tiptap/property-editors/extensions-config
 src/Umbraco.Web.UI.Client/src/packages/tiptap/property-editors/tiptap-rte/manifests.ts
 src/Umbraco.Web.UI.Client/src/packages/tiptap/property-editors/tiptap-rte/property-editor-ui-tiptap.stories.ts
 src/Umbraco.Web.UI.Client/src/packages/tiptap/property-editors/tiptap-rte/property-editor-ui-tiptap.element.ts
+src/Umbraco.Web.UI.Client/src/packages/tiptap/property-editors/tiptap-rte/constants.ts
 src/Umbraco.Web.UI.Client/src/packages/tiptap/property-editors/tiptap-rte/property-editor-ui-tiptap.test.ts
 src/Umbraco.Web.UI.Client/src/packages/tiptap/property-editors/statusbar-configuration/manifests.ts
 src/Umbraco.Web.UI.Client/src/packages/tiptap/property-editors/statusbar-configuration/tiptap-statusbar-configuration.context-token.ts
@@ -9859,6 +9876,11 @@ src/Umbraco.Web.UI.Client/src/packages/tiptap/property-editors/constants.ts
 src/Umbraco.Web.UI.Client/src/packages/tiptap/property-editors/types.ts
 src/Umbraco.Web.UI.Client/src/packages/tiptap/index.ts
 src/Umbraco.Web.UI.Client/src/packages/tiptap/externals.ts
+src/Umbraco.Web.UI.Client/src/packages/tiptap/clipboard/manifests.ts
+src/Umbraco.Web.UI.Client/src/packages/tiptap/clipboard/block/copy/block-rte-to-block-copy-translator.ts
+src/Umbraco.Web.UI.Client/src/packages/tiptap/clipboard/block/copy/manifest.ts
+src/Umbraco.Web.UI.Client/src/packages/tiptap/clipboard/block/paste/manifest.ts
+src/Umbraco.Web.UI.Client/src/packages/tiptap/clipboard/block/paste/block-to-block-rte-paste-translator.ts
 src/Umbraco.Web.UI.Client/src/packages/tiptap/constants.ts
 src/Umbraco.Web.UI.Client/src/packages/tiptap/components/index.ts
 src/Umbraco.Web.UI.Client/src/packages/tiptap/components/statusbar/tiptap-statusbar.element.ts
@@ -11675,6 +11697,7 @@ src/Umbraco.Web.UI.Client/src/packages/media/imaging/manifests.ts
 src/Umbraco.Web.UI.Client/src/packages/media/imaging/imaging.repository.ts
 src/Umbraco.Web.UI.Client/src/packages/media/imaging/index.ts
 src/Umbraco.Web.UI.Client/src/packages/media/imaging/imaging.store.ts
+src/Umbraco.Web.UI.Client/src/packages/media/imaging/imaging.store.test.ts
 src/Umbraco.Web.UI.Client/src/packages/media/imaging/constants.ts
 src/Umbraco.Web.UI.Client/src/packages/media/imaging/imaging.store.token.ts
 src/Umbraco.Web.UI.Client/src/packages/media/imaging/components/imaging-thumbnail.element.ts
@@ -12668,6 +12691,7 @@ src/Umbraco.Cms.Api.Management/OpenApi/ResponseHeaderOperationFilter.cs
 src/Umbraco.Cms.Api.Management/OpenApi/RequireNonNullablePropertiesSchemaFilter.cs
 src/Umbraco.Cms.Api.Management/OpenApi/BackOfficeSecurityRequirementsOperationFilter.cs
 src/Umbraco.Cms.Api.Management/OpenApi/BackOfficeSecurityRequirementsOperationFilterBase.cs
+src/Umbraco.Cms.Api.Management/CompatibilitySuppressions.xml
 src/Umbraco.Cms.Api.Management/Umbraco.Cms.Api.Management.csproj
 src/Umbraco.Cms.Api.Management/ManagementApiComposer.cs
 src/Umbraco.Cms.Api.Management/Middleware/BackOfficeAuthorizationInitializationMiddleware.cs
@@ -13356,6 +13380,7 @@ src/Umbraco.Cms.Api.Management/Factories/UserPresentationFactory.cs
 src/Umbraco.Cms.Api.Management/Factories/IDocumentVersionPresentationFactory.cs
 src/Umbraco.Cms.Api.Management/Factories/MemberEditingPresentationFactory.cs
 src/Umbraco.Cms.Api.Management/Factories/IDocumentUrlFactory.cs
+src/Umbraco.Cms.Api.Management/Factories/ImageResizeOptions.cs
 src/Umbraco.Cms.Api.Management/Factories/IUserPresentationFactory.cs
 src/Umbraco.Cms.Api.Management/ViewModels/Content/ContentResponseModelBase.cs
 src/Umbraco.Cms.Api.Management/ViewModels/Content/VariantItemResponseModelBase.cs
@@ -14691,6 +14716,7 @@ src/Umbraco.Infrastructure/Migrations/Upgrade/V_15_4_0/AddRelationTypeForMembers
 src/Umbraco.Infrastructure/Migrations/Upgrade/V_15_4_0/UpdateDocumentUrlToPersistMultipleSegmentsPerDocument.cs
 src/Umbraco.Infrastructure/Migrations/Upgrade/V_17_2_0/AddDocumentUrlAlias.cs
 src/Umbraco.Infrastructure/Migrations/Upgrade/V_17_2_0/AddDescriptionToUserGroup.cs
+src/Umbraco.Infrastructure/Migrations/Upgrade/V_17_3_0/IncreaseSizeOfLongRunningOperationTypeColumn.cs
 src/Umbraco.Infrastructure/Migrations/Upgrade/V_15_3_0/AddNameAndDescriptionToWebhooks.cs
 src/Umbraco.Infrastructure/Migrations/Upgrade/V_15_0_0/AddUserClientId.cs
 src/Umbraco.Infrastructure/Migrations/Upgrade/V_15_0_0/ConvertLocalLinks.cs
