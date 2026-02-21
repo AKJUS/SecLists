@@ -971,14 +971,15 @@ git-tools/hooks/prepare-commit-msg
 git-tools/hooks/pre-commit
 git-tools/merge.php
 git-tools/commit-msg-hook-range.sh
-Vagrantfile
 README.md
 SECURITY.md
 .stylelintrc
 .editorconfig
 vagrant/after.sh
+vagrant/Vagrantfile
 vagrant/bootstrap.yaml
 vagrant/phpbb-install-config.yml
+vagrant/composer.json
 eslint.config.mjs
 phpBB/config/development/config.yml
 phpBB/config/development/container/parameters.yml
@@ -1559,7 +1560,6 @@ phpBB/develop/create_variable_overview.php
 phpBB/develop/fill.php
 phpBB/develop/adjust_bbcodes.php
 phpBB/develop/unicode_testing.php
-phpBB/develop/imageset_to_css.php
 phpBB/develop/adjust_smilies.php
 phpBB/develop/adjust_uids.php
 phpBB/develop/generate_utf_tables.php
@@ -2828,10 +2828,6 @@ build/psalm/stubs/ldap.php
 build/psalm/stubs/memcached.php
 build/package.php
 build/compare.sh
-build/webpi/parameters.xml
-build/webpi/install/mysql.sql
-build/webpi/install/mssql.sql
-build/webpi/manifest.xml
 build/generate_signature.php
 build/generate_package_json.php
 package-lock.json

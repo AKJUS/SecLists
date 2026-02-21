@@ -27,6 +27,7 @@ config/smartyadmin.config.inc.php
 config/bootstrap.php
 modules/.htaccess
 modules/index.php
+.header-stamp-config.yml
 admin-api/.htaccess
 admin-api/index.php
 download/.htaccess
@@ -110,6 +111,7 @@ install-dev/fixtures/fashion/data/index.php
 install-dev/fixtures/fashion/data/pack.xml
 install-dev/fixtures/fashion/data/orders.xml
 install-dev/fixtures/fashion/data/feature_product.xml
+install-dev/fixtures/fashion/data/module_country.xml
 install-dev/fixtures/fashion/data/address.xml
 install-dev/fixtures/fashion/data/feature.xml
 install-dev/fixtures/fashion/data/order_history.xml
@@ -2378,6 +2380,7 @@ tests/UI/campaigns/functional/FO/classic/12_orderConfirmation/02_displayOfProduc
 tests/UI/campaigns/functional/FO/classic/12_orderConfirmation/01_listOfOrderedProducts.ts
 tests/UI/campaigns/functional/FO/classic/12_orderConfirmation/04_popularProduct.ts
 tests/UI/campaigns/functional/FO/classic/12_orderConfirmation/03_recapPaymentMethod.ts
+tests/UI/campaigns/functional/FO/classic/12_orderConfirmation/06_multicarrier.ts
 tests/UI/campaigns/functional/FO/classic/08_menuAndNavigation/02_sortAndFilter/03_clearOneFilter.ts
 tests/UI/campaigns/functional/FO/classic/08_menuAndNavigation/02_sortAndFilter/02_filterProducts.ts
 tests/UI/campaigns/functional/FO/classic/08_menuAndNavigation/02_sortAndFilter/01_sortProducts.ts
@@ -2474,6 +2477,7 @@ tests/UI/campaigns/functional/FO/hummingbird/12_orderConfirmation/02_displayOfPr
 tests/UI/campaigns/functional/FO/hummingbird/12_orderConfirmation/01_listOfOrderedProducts.ts
 tests/UI/campaigns/functional/FO/hummingbird/12_orderConfirmation/04_popularProduct.ts
 tests/UI/campaigns/functional/FO/hummingbird/12_orderConfirmation/03_recapPaymentMethod.ts
+tests/UI/campaigns/functional/FO/hummingbird/12_orderConfirmation/06_multicarrier.ts
 tests/UI/campaigns/functional/FO/hummingbird/08_menuAndNavigation/02_sortAndFilter/02_filterProducts.ts
 tests/UI/campaigns/functional/FO/hummingbird/08_menuAndNavigation/02_sortAndFilter/01_sortProducts.ts
 tests/UI/campaigns/functional/FO/hummingbird/08_menuAndNavigation/02_sortAndFilter/03_clearFilters.ts
@@ -4654,6 +4658,7 @@ docs/csv_import/addresses_import.csv
 docs/csv_import/customers_import.csv
 error500.html
 init.php
+.header-stamp-osl3-license.txt
 phpstan.neon.dist
 tools/assets/build.sh
 tools/assets/wait-build.sh
@@ -7222,6 +7227,7 @@ src/Core/Domain/Module/Command/UpdateModuleStatusCommand.php
 src/Core/Domain/Shipment/QueryHandler/GetShipmentForEditingHandlerInterface.php
 src/Core/Domain/Shipment/QueryHandler/ListAvailableShipmentsHandlerInterface.php
 src/Core/Domain/Shipment/QueryHandler/GetShipmentProductsHandlerInterface.php
+src/Core/Domain/Shipment/QueryHandler/ListAvailableShipmentsForProductHandlerInterface.php
 src/Core/Domain/Shipment/QueryHandler/GetOrderShipmentsHandlerInterface.php
 src/Core/Domain/Shipment/QueryHandler/GetShipmentForViewingHandlerInterface.php
 src/Core/Domain/Shipment/ValueObject/OrderDetailQuantity.php
@@ -7232,16 +7238,19 @@ src/Core/Domain/Shipment/Query/GetShipmentForEditing.php
 src/Core/Domain/Shipment/Query/GetOrderShipments.php
 src/Core/Domain/Shipment/Query/GetShipmentProducts.php
 src/Core/Domain/Shipment/Query/ListAvailableShipments.php
+src/Core/Domain/Shipment/Query/ListAvailableShipmentsForProduct.php
 src/Core/Domain/Shipment/Query/GetShipmentForViewing.php
 src/Core/Domain/Shipment/CommandHandler/DeleteProductFromShipmentHandlerInterface.php
 src/Core/Domain/Shipment/CommandHandler/MergeProductsToShipmentHandlerInterface.php
 src/Core/Domain/Shipment/CommandHandler/SwitchShipmentCarrierHandlerInterface.php
 src/Core/Domain/Shipment/CommandHandler/EditShipmentHandlerInterface.php
 src/Core/Domain/Shipment/CommandHandler/SplitShipmentHandlerInterface.php
+src/Core/Domain/Shipment/CommandHandler/AddProductToShipmentHandlerInterface.php
 src/Core/Domain/Shipment/QueryResult/OrderShipmentProduct.php
 src/Core/Domain/Shipment/QueryResult/OrderShipment.php
 src/Core/Domain/Shipment/QueryResult/ShipmentForViewing.php
 src/Core/Domain/Shipment/QueryResult/ShipmentForEditing.php
+src/Core/Domain/Shipment/QueryResult/ShipmentsForProduct.php
 src/Core/Domain/Shipment/QueryResult/ShipmentsForMerge.php
 src/Core/Domain/Shipment/Service/ShipmentMergerInterface.php
 src/Core/Domain/Shipment/Service/ShipmentSplitterInterface.php
@@ -7252,6 +7261,7 @@ src/Core/Domain/Shipment/Exception/ShipmentException.php
 src/Core/Domain/Shipment/Exception/ShipmentNotFoundException.php
 src/Core/Domain/Shipment/Exception/CannotSaveShipmentException.php
 src/Core/Domain/Shipment/Command/EditShipment.php
+src/Core/Domain/Shipment/Command/AddProductToShipment.php
 src/Core/Domain/Shipment/Command/DeleteProductFromShipment.php
 src/Core/Domain/Shipment/Command/SplitShipment.php
 src/Core/Domain/Shipment/Command/SwitchShipmentCarrierCommand.php
@@ -8508,6 +8518,8 @@ src/Adapter/Presenter/Order/OrderLazyArray.php
 src/Adapter/Presenter/Order/OrderSubtotalLazyArray.php
 src/Adapter/Presenter/Cart/CartLazyArray.php
 src/Adapter/Presenter/Cart/CartPresenter.php
+src/Adapter/Presenter/Cart/CartProductLazyArray.php
+src/Adapter/Presenter/Cart/CartProductPresenter.php
 src/Adapter/Presenter/Product/ProductPresenter.php
 src/Adapter/Presenter/Product/ProductListingLazyArray.php
 src/Adapter/Presenter/Product/ProductListingPresenter.php
@@ -8946,12 +8958,14 @@ src/Adapter/Routing/AdminLinkBuilder.php
 src/Adapter/Shipment/QueryHandler/GetShipmentForEditingHandler.php
 src/Adapter/Shipment/QueryHandler/GetShipmentForViewingHandler.php
 src/Adapter/Shipment/QueryHandler/GetOrderShipmentsHandler.php
+src/Adapter/Shipment/QueryHandler/ListAvailableShipmentsForProductHandler.php
 src/Adapter/Shipment/QueryHandler/GetShipmentProductsHandler.php
 src/Adapter/Shipment/QueryHandler/ListAvailableShipmentsHandler.php
 src/Adapter/Shipment/ShipmentMerger.php
 src/Adapter/Shipment/OrderShipmentCreator.php
 src/Adapter/Shipment/ShipmentSplitter.php
 src/Adapter/Shipment/DeliveryOptionsInterface.php
+src/Adapter/Shipment/OrderShipmentService.php
 src/Adapter/Shipment/DeliveryOptionsProvider.php
 src/Adapter/Shipment/ShipmentTotalsCalculator.php
 src/Adapter/Shipment/ShipmentTotalsCalculatorInterface.php
@@ -8959,6 +8973,7 @@ src/Adapter/Shipment/CommandHandler/SwitchShipmentCarrierHandler.php
 src/Adapter/Shipment/CommandHandler/EditShipmentHandler.php
 src/Adapter/Shipment/CommandHandler/SplitShipmentHandler.php
 src/Adapter/Shipment/CommandHandler/MergeProductsToShipmentHandler.php
+src/Adapter/Shipment/CommandHandler/AddProductToShipmentHandler.php
 src/Adapter/Shipment/CommandHandler/DeleteProductFromShipmentHandler.php
 src/Adapter/Admin/UrlGenerator.php
 src/Adapter/Admin/ImageConfiguration.php
@@ -9459,6 +9474,7 @@ src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/messages
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/msg_list_item.html.twig
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/details.html.twig
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/sources.html.twig
+src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/add_product_form.html.twig
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/Modal/edit_shipping_modal.html.twig
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/Modal/view_product_pack_modal.html.twig
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/Modal/split_shipment_modal.html.twig
@@ -9468,6 +9484,7 @@ src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/Modal/up
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/Modal/add_product_modal.html.twig
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/Modal/Skeletons/split_shipment_skeleton.html.twig
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/Modal/Skeletons/merge_shipment_skeleton.html.twig
+src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/Modal/Skeletons/add_product_skeleton.html.twig
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/Modal/Skeletons/edit_shipment_skeleton.html.twig
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/Modal/view_all_messages_modal.html.twig
 src/PrestaShopBundle/Resources/views/Admin/Sell/Order/Order/Blocks/View/Modal/update_product_modal.html.twig
@@ -10957,7 +10974,6 @@ src/PrestaShopBundle/Command/AboutCommand.php
 src/PrestaShopBundle/Command/GenerateMailTemplatesCommand.php
 src/PrestaShopBundle/Command/ExportThemeCommand.php
 src/PrestaShopBundle/Command/FeatureFlagCommand.php
-src/PrestaShopBundle/Command/UpdateLicensesCommand.php
 src/PrestaShopBundle/Command/RegenerateThumbnailsCommand.php
 src/PrestaShopBundle/Command/SecurityAttributeLinterCommand.php
 src/PrestaShopBundle/Command/ExportModuleTranslationsCommand.php

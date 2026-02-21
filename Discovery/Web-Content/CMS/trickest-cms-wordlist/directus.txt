@@ -1,6 +1,9 @@
+.changeset/geometry-performance-fix.md
+.changeset/silly-readers-fetch.md
+.changeset/mighty-garlics-rush.md
 .changeset/config.json
-.changeset/fix-graphql-groupby-collision.md
-.changeset/perky-lies-search.md
+.changeset/tough-comics-nail.md
+.changeset/pretty-tools-design.md
 .vscode/settings.json
 .vscode/extensions.json
 .stylelintrc.json
@@ -1796,6 +1799,7 @@ app/src/composables/use-permissions/collection/use-collection-permissions.ts
 app/src/composables/use-permissions/utils/is-field-allowed.ts
 app/src/composables/use-permissions/utils/is-field-allowed.test.ts
 app/src/composables/use-permissions/types/index.ts
+app/src/composables/use-mime-type-filter.ts
 app/src/composables/use-flows.test.ts
 app/src/composables/use-focusin.ts
 app/src/composables/use-clipboard.test.ts
@@ -1818,6 +1822,7 @@ app/src/composables/use-comparison-diff.test.ts
 app/src/composables/use-clipboard.ts
 app/src/composables/use-relation-permissions.ts
 app/src/composables/use-focus-trap-manager.ts
+app/src/composables/use-mime-type-filter.test.ts
 app/src/composables/use-fake-version-field.ts
 app/src/composables/use-auto-fit-text.ts
 app/src/composables/use-versions.ts
@@ -2388,7 +2393,9 @@ app/src/components/v-form/composables/use-input-schema.ts
 app/src/components/v-form/utils/get-form-fields.ts
 app/src/components/v-form/utils/update-system-divider.test.ts
 app/src/components/v-form/utils/update-field-widths.ts
+app/src/components/v-form/utils/selective-clone.test.ts
 app/src/components/v-form/utils/update-system-divider.ts
+app/src/components/v-form/utils/selective-clone.ts
 app/src/components/v-form/utils/get-form-fields.test.ts
 app/src/components/v-form/utils/update-field-widths.test.ts
 app/src/components/v-form/components/validation-errors.test.ts
@@ -2566,6 +2573,7 @@ app/src/displays/icon/index.ts
 app/src/displays/icon/icon.test.ts
 app/src/displays/icon/__snapshots__/icon.test.ts.snap
 app/src/displays/icon/icon.vue
+app/src/displays/formatted-value/formatted-value.test.ts
 app/src/displays/formatted-value/index.ts
 app/src/displays/formatted-value/formatted-value.vue
 app/src/layouts/calendar/calendar.vue
@@ -2626,7 +2634,6 @@ app/src/views/private/private-view/components/private-view-header-bar.vue
 app/src/views/private/private-view/components/private-view-header-bar-actions.vue
 app/src/views/private/private-view/components/private-view.vue
 app/src/views/private/private-view/components/private-view-drawer.vue
-app/src/views/private/components/CollabAvatars.vue
 app/src/views/private/components/notification-item.vue
 app/src/views/private/components/FolderPickerListItem.vue
 app/src/views/private/components/layout-sidebar-detail.vue
@@ -2635,6 +2642,10 @@ app/src/views/private/components/archive-sidebar-detail.vue
 app/src/views/private/components/flow-sidebar-detail.vue
 app/src/views/private/components/search-input.vue
 app/src/views/private/components/basic-import-sidebar-detail.vue
+app/src/views/private/components/collab/utils.test.ts
+app/src/views/private/components/collab/utils.ts
+app/src/views/private/components/collab/CollabIndicatorHeader.vue
+app/src/views/private/components/collab/CollabIndicatorField.vue
 app/src/views/private/components/save-options.vue
 app/src/views/private/components/drawer-files.vue
 app/src/views/private/components/user-popover.vue
@@ -2664,6 +2675,7 @@ app/src/views/private/components/module-bar.vue
 app/src/views/private/components/bookmark-add.vue
 app/src/views/private/components/module-bar-logo.vue
 app/src/views/private/components/folder-picker.vue
+app/src/views/private/components/drawer-batch.test.ts
 app/src/views/private/components/render-template.vue
 app/src/views/private/components/notifications-group.vue
 app/src/views/private/components/shares-sidebar-detail.vue

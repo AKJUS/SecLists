@@ -125,6 +125,7 @@ test/phpunit/CoreTest.php
 test/phpunit/UtilsTest.php
 test/phpunit/TicketTest.php
 test/phpunit/InventoryTest.php
+test/other/certification.txt
 test/other/test_serialize.php
 test/other/test_dol_escape_htmltag.php
 test/other/test_uncrypt.php
@@ -181,6 +182,7 @@ test/acceptance/stepDefinitions/logoutContext.js
 test/acceptance/stepDefinitions/listUsersContext.js
 test/acceptance/setup.js
 test/acceptance/package.json
+test/manual/plan.md
 test/bootstrap.php
 .mailmap
 README.md
@@ -250,6 +252,7 @@ dev/initdemo/removeconfdemo.sh
 dev/initdemo/savedemo.sh
 dev/initdemo/README.md
 dev/initdemo/updatedemo.php
+dev/initdemo/mysqldump_dolibarr_24.0.0.sql
 dev/initdemo/initdemo.sh
 dev/initdemo/documents_demo/medias/README.txt
 dev/initdemo/documents_demo/societe/19/SEPA Mandate 19-Morgan Bank-RUM1301-0008-0.pdf
@@ -260,6 +263,7 @@ dev/initdemo/documents_demo/commande/CO1107-0003/CO1107-0003.pdf
 dev/initdemo/documents_demo/commande/CO1108-0001/CO1108-0001.pdf
 dev/initdemo/documents_demo/commande/CO1107-0002/CO1107-0002.pdf
 dev/initdemo/documents_demo/.htaccess
+dev/initdemo/documents_demo/blockedlog/archives/unalterable-log-archive-dolibarr_test-202501-20250205115450UTC-DONOTMODIFY.csv
 dev/initdemo/documents_demo/expedition/sending/SH1302-0001/SH1302-0001.pdf
 dev/initdemo/documents_demo/supplier_proposal/RQ1607-0001/RQ1607-0001.pdf
 dev/initdemo/documents_demo/expensereport/ADMIN-ER00001-150101/ADMIN-ER00001-150101.pdf
@@ -296,7 +300,6 @@ dev/initdemo/documents_demo/fournisseur/facture/6/1/16/16.pdf
 dev/initdemo/documents_demo/fournisseur/facture/7/1/17/17.pdf
 dev/initdemo/sftpget_and_loaddump.php
 dev/initdemo/mysqldump_dolibarr_3.5.0.sql
-dev/initdemo/mysqldump_dolibarr_23.0.0.sql
 dev/tools/fixduplicatelangkey.sh
 dev/tools/fixduplicatelanglines.sh
 dev/tools/dolibarr-postgres2mysql.php
@@ -7527,7 +7530,6 @@ htdocs/admin/tools/export.php
 htdocs/admin/tools/update.php
 htdocs/admin/tools/index.php
 htdocs/admin/tools/ui/class/documentation.class.php
-htdocs/admin/tools/ui/experimental/experiments/input-feedback/index.php
 htdocs/admin/tools/ui/experimental/experiments/dolibarr-context/assets/dolibarr-context.umd.js
 htdocs/admin/tools/ui/experimental/experiments/dolibarr-context/assets/dolibarr-tool.seteventmessage.js
 htdocs/admin/tools/ui/experimental/experiments/dolibarr-context/assets/dolibarr-context.mock.js
@@ -7541,6 +7543,7 @@ htdocs/admin/tools/ui/resources/index.php
 htdocs/admin/tools/ui/content/intuitive-table-row-select.php
 htdocs/admin/tools/ui/content/tables.php
 htdocs/admin/tools/ui/content/titles.php
+htdocs/admin/tools/ui/content/input-feedback.php
 htdocs/admin/tools/ui/content/index.php
 htdocs/admin/tools/ui/content/freeze-tooltip.php
 htdocs/admin/tools/ui/index.php
