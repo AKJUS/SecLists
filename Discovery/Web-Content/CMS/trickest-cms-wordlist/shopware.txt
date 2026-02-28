@@ -7839,7 +7839,6 @@ tests/unit/Core/Framework/Store/InAppPurchases/Services/InAppPurchaseUpdaterTest
 tests/unit/Core/Framework/Store/Authentication/LocaleProviderTest.php
 tests/unit/Core/Framework/Store/Authentication/FrwRequestOptionsProviderTest.php
 tests/unit/Core/Framework/Store/Authentication/StoreRequestOptionsProviderTest.php
-tests/unit/Core/Framework/Store/Session/StorefrontSessionStorageFactoryTest.php
 tests/unit/Core/Framework/Store/Struct/PermissionCollectionTest.php
 tests/unit/Core/Framework/Store/Struct/ReviewStructTest.php
 tests/unit/Core/Framework/Store/Struct/ExtensionStructTest.php
@@ -8212,6 +8211,7 @@ tests/unit/Elasticsearch/Framework/Indexing/ElasticsearchIndexerTest.php
 tests/unit/Elasticsearch/Framework/Indexing/CreateAliasTaskTest.php
 tests/unit/Elasticsearch/Framework/Indexing/ElasticsearchIndexingMessageTest.php
 tests/unit/Elasticsearch/Framework/Indexing/IndexMappingProviderTest.php
+tests/unit/Elasticsearch/Framework/Subscriber/InvalidateExpiredCacheSubscriberTest.php
 tests/unit/Elasticsearch/Framework/ElasticsearchOutdatedIndexDetectorTest.php
 tests/unit/Elasticsearch/Framework/Command/ElasticsearchIndexingCommandTest.php
 tests/unit/Elasticsearch/Framework/Command/ElasticsearchUpdateMappingCommandTest.php
@@ -8219,6 +8219,7 @@ tests/unit/Elasticsearch/Framework/Command/ElasticsearchAdminUpdateMappingComman
 tests/unit/Elasticsearch/Framework/Command/ElasticsearchAdminIndexingCommandTest.php
 tests/unit/Elasticsearch/Framework/Command/ElasticsearchAdminResetCommandTest.php
 tests/unit/Elasticsearch/Product/ProductCriteriaParserTest.php
+tests/unit/Elasticsearch/Product/ProductCustomFieldsUsedUpdaterTest.php
 tests/unit/Elasticsearch/Product/ProductUpdaterTest.php
 tests/unit/Elasticsearch/Product/LanguageSubscriberTest.php
 tests/unit/Elasticsearch/Product/CustomFieldUpdaterTest.php
@@ -8228,6 +8229,7 @@ tests/unit/Elasticsearch/Product/SearchFieldConfigTest.php
 tests/unit/Elasticsearch/Product/ElasticsearchProductExceptionTest.php
 tests/unit/Elasticsearch/Product/ProductSearchQueryBuilderTest.php
 tests/unit/Elasticsearch/Product/ElasticsearchOptimizeSwitchTest.php
+tests/unit/Elasticsearch/Product/ElasticsearchCustomFieldsMappingHelperTest.php
 tests/unit/Elasticsearch/ElasticsearchTest.php
 tests/unit/Elasticsearch/Admin/AdminSearchRegistryTest.php
 tests/unit/Elasticsearch/Admin/ElasticsearchAdminExceptionTest.php
@@ -9925,6 +9927,8 @@ tests/integration/Storefront/Theme/ThemeLifecycleHandlerTest.php
 tests/integration/Elasticsearch/Framework/Indexing/ElasticsearchIndexerTest.php
 tests/integration/Elasticsearch/Framework/Command/ElasticsearchResetCommandTest.php
 tests/integration/Elasticsearch/Framework/Command/ElasticsearchAdminResetCommandTest.php
+tests/integration/Elasticsearch/Product/ProductCustomFieldsUsedUpdaterTest.php
+tests/integration/Elasticsearch/Product/ProductSortingStreamSearchTest.php
 tests/integration/Elasticsearch/Product/CustomFieldSetGatewayTest.php
 tests/integration/Elasticsearch/Product/CustomFieldUpdaterTest.php
 tests/integration/Elasticsearch/Product/StopwordTokenFilterTest.php
@@ -10062,6 +10066,7 @@ tests/acceptance/helpers/locale-helpers.ts
 tests/acceptance/helpers/recaptcha-helpers.ts
 tests/acceptance/tsconfig.json
 tests/acceptance/scripts/runNpmAudit.ts
+tests/acceptance/scripts/tsconfig.json
 tests/acceptance/package-lock.json
 tests/acceptance/.prettierrc
 tests/acceptance/package.json
@@ -10328,6 +10333,7 @@ src/Administration/Resources/app/administration/technical-docs/01-overview/02-he
 src/Administration/Resources/app/administration/technical-docs/01-overview/01-what-is-the-administration.md
 src/Administration/Resources/app/administration/technical-docs/04-data-layer/02-repository-pattern.md
 src/Administration/Resources/app/administration/technical-docs/04-data-layer/04-criteria.md
+src/Administration/Resources/app/administration/technical-docs/04-data-layer/08-inheritance-system.md
 src/Administration/Resources/app/administration/technical-docs/04-data-layer/07-notifications.md
 src/Administration/Resources/app/administration/technical-docs/04-data-layer/03-api-services.md
 src/Administration/Resources/app/administration/technical-docs/04-data-layer/01-overview.md
@@ -12022,6 +12028,9 @@ src/Administration/Resources/app/administration/src/module/sw-settings-usage-dat
 src/Administration/Resources/app/administration/src/module/sw-settings-usage-data/snippet/en.json
 src/Administration/Resources/app/administration/src/module/sw-settings-usage-data/snippet/de.json
 src/Administration/Resources/app/administration/src/module/sw-settings-usage-data/index.ts
+src/Administration/Resources/app/administration/src/module/sw-settings-usage-data/component/sw-settings-usage-data-consent-modal-data-provider/index.ts
+src/Administration/Resources/app/administration/src/module/sw-settings-usage-data/component/sw-settings-usage-data-consent-modal-data-provider/sw-settings-usage-data-consent-modal-data-provider.html.twig
+src/Administration/Resources/app/administration/src/module/sw-settings-usage-data/component/sw-settings-usage-data-consent-modal-data-provider/sw-settings-usage-data-consent-modal-data-provider.spec.js
 src/Administration/Resources/app/administration/src/module/sw-settings-usage-data/component/sw-usage-data-consent-banner/sw-usage-data-consent-banner.scss
 src/Administration/Resources/app/administration/src/module/sw-settings-usage-data/component/sw-usage-data-consent-banner/assets/data-consent-background.webp
 src/Administration/Resources/app/administration/src/module/sw-settings-usage-data/component/sw-usage-data-consent-banner/index.ts
@@ -15090,6 +15099,7 @@ src/Administration/Resources/app/administration/scripts/generate-position-identi
 src/Administration/Resources/app/administration/scripts/codemods/twig-feature-flag-removal/index.ts
 src/Administration/Resources/app/administration/scripts/codemods/twig-block-removal/index.ts
 src/Administration/Resources/app/administration/scripts/codemods/js-vue3-feature-flag-removal/index.ts
+src/Administration/Resources/app/administration/scripts/tsconfig.json
 src/Administration/Resources/app/administration/scripts/generate-data-set-list/index.ts
 src/Administration/Resources/app/administration/scripts/generate-block-list/generate-blocks-list.spec.ts
 src/Administration/Resources/app/administration/scripts/generate-block-list/index.ts
@@ -15233,6 +15243,7 @@ src/Core/Content/Newsletter/Aggregate/NewsletterRecipient/NewsletterRecipientDef
 src/Core/Content/Newsletter/Subscriber/NewsletterRecipientSalutationSubscriber.php
 src/Core/Content/Newsletter/SalesChannel/AbstractNewsletterConfirmRoute.php
 src/Core/Content/Newsletter/SalesChannel/AbstractNewsletterSubscribeRoute.php
+src/Core/Content/Newsletter/SalesChannel/NewsletterSubscribeRouteResponse.php
 src/Core/Content/Newsletter/SalesChannel/NewsletterUnsubscribeRoute.php
 src/Core/Content/Newsletter/SalesChannel/AbstractNewsletterUnsubscribeRoute.php
 src/Core/Content/Newsletter/SalesChannel/SalesChannelNewsletterRecipientDefinition.php
@@ -18565,7 +18576,6 @@ src/Core/Framework/App/Manifest/Xml/Tax/Tax.php
 src/Core/Framework/App/Manifest/Xml/AllowedHost/AllowedHosts.php
 src/Core/Framework/App/Manifest/ManifestFactory.php
 src/Core/Framework/App/Manifest/Exception/UnallowedHostException.php
-src/Core/Framework/App/Manifest/Exception/ManifestNotFoundException.php
 src/Core/Framework/App/ShopId/Fingerprint.php
 src/Core/Framework/App/ShopId/ShopIdChangedEvent.php
 src/Core/Framework/App/ShopId/FingerprintMatch.php
@@ -19171,6 +19181,7 @@ src/Core/Framework/DataAbstractionLayer/Exception/InvalidAggregationQueryExcepti
 src/Core/Framework/DataAbstractionLayer/Exception/InconsistentCriteriaIdsException.php
 src/Core/Framework/DataAbstractionLayer/Exception/InvalidPageQueryException.php
 src/Core/Framework/DataAbstractionLayer/Exception/MissingReverseAssociation.php
+src/Core/Framework/DataAbstractionLayer/Exception/UnableToLoadPathException.php
 src/Core/Framework/DataAbstractionLayer/Exception/InvalidFilterQueryException.php
 src/Core/Framework/DataAbstractionLayer/Exception/ImpossibleWriteOrderException.php
 src/Core/Framework/DataAbstractionLayer/Exception/InvalidSortQueryException.php
@@ -19979,6 +19990,7 @@ src/Core/Framework/Api/ApiDefinition/ApiTypeNotFoundException.php
 src/Core/Framework/Api/ApiDefinition/ApiDefinitionGeneratorNotFoundException.php
 src/Core/Framework/Api/ApiDefinition/DefinitionService.php
 src/Core/Framework/Api/ApiDefinition/ApiDefinitionGeneratorInterface.php
+src/Core/Framework/Api/Event/InvalidateExpiredCacheRequestEvent.php
 src/Core/Framework/Api/Response/JsonApiResponse.php
 src/Core/Framework/Api/Response/ResponseFactoryRegistry.php
 src/Core/Framework/Api/Response/Type/Api/JsonType.php
@@ -20108,7 +20120,6 @@ src/Core/Framework/Store/Authentication/StoreRequestOptionsProvider.php
 src/Core/Framework/Store/Authentication/LocaleProvider.php
 src/Core/Framework/Store/Helper/PermissionCategorization.php
 src/Core/Framework/Store/InAppPurchase.php
-src/Core/Framework/Store/Session/StorefrontSessionStorageFactory.php
 src/Core/Framework/Store/Struct/PluginCategoryCollection.php
 src/Core/Framework/Store/Struct/AccessTokenStruct.php
 src/Core/Framework/Store/Struct/LicenseStruct.php
@@ -23018,6 +23029,7 @@ src/Elasticsearch/Framework/Indexing/IndexMappingProvider.php
 src/Elasticsearch/Framework/Indexing/IndexerOffset.php
 src/Elasticsearch/Framework/Indexing/CreateAliasTask.php
 src/Elasticsearch/Framework/Indexing/IndexMappingUpdater.php
+src/Elasticsearch/Framework/Indexing/IndexManager.php
 src/Elasticsearch/Framework/Indexing/IndexingDto.php
 src/Elasticsearch/Framework/Indexing/Scripts/cheapest_price_percentage_filter.groovy
 src/Elasticsearch/Framework/Indexing/Scripts/cheapest_price_filter.groovy
@@ -23025,6 +23037,7 @@ src/Elasticsearch/Framework/Indexing/Scripts/numeric_translated_field_sorting.gr
 src/Elasticsearch/Framework/Indexing/Scripts/cheapest_price.groovy
 src/Elasticsearch/Framework/Indexing/Scripts/cheapest_price_percentage.groovy
 src/Elasticsearch/Framework/Indexing/Scripts/translated_field_sorting.groovy
+src/Elasticsearch/Framework/Subscriber/InvalidateExpiredCacheSubscriber.php
 src/Elasticsearch/Framework/ClientFactory.php
 src/Elasticsearch/Framework/ElasticsearchOutdatedIndexDetector.php
 src/Elasticsearch/Framework/ElasticsearchFieldBuilder.php
@@ -23051,10 +23064,12 @@ src/Elasticsearch/Product/ElasticsearchProductDefinition.php
 src/Elasticsearch/Product/AbstractProductSearchQueryBuilder.php
 src/Elasticsearch/Product/ProductSearchQueryBuilder.php
 src/Elasticsearch/Product/SearchKeywordReplacement.php
+src/Elasticsearch/Product/ProductCustomFieldsUsedUpdater.php
 src/Elasticsearch/Product/SearchFieldConfig.php
 src/Elasticsearch/Product/CustomFieldUpdater.php
 src/Elasticsearch/Product/ElasticsearchProductException.php
 src/Elasticsearch/Product/StopwordTokenFilter.php
+src/Elasticsearch/Product/ElasticsearchCustomFieldsMappingHelper.php
 src/Elasticsearch/Product/ProductUpdater.php
 src/Elasticsearch/Migration/Traits/ElasticsearchTriggerTrait.php
 src/Elasticsearch/Migration/V6_5/Migration1689083660ElasticsearchIndexTask.php

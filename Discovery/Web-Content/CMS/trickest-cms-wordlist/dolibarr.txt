@@ -6007,6 +6007,10 @@ htdocs/cron/card.php
 htdocs/cron/admin/cron.php
 htdocs/cron/info.php
 htdocs/security.txt
+htdocs/public/includes/dolibarr-js-context/dolibarr-context.umd.js
+htdocs/public/includes/dolibarr-js-context/dolibarr-tool.seteventmessage.js
+htdocs/public/includes/dolibarr-js-context/dolibarr-context.mock.js
+htdocs/public/includes/dolibarr-js-context/dolibarr-tool.langs.js
 htdocs/public/includes/ckeditor/UPGRADE.md
 htdocs/public/includes/ckeditor/ckeditor/skins/moono-lisa/readme.md
 htdocs/public/includes/ckeditor/ckeditor/LICENSE.md
@@ -6429,6 +6433,7 @@ htdocs/public/ticket/list.php
 htdocs/public/ticket/view.php
 htdocs/public/ticket/ajax/ajax.php
 htdocs/public/ticket/index.php
+htdocs/public/langs/langs-tool-interface.php
 htdocs/public/clicktodial/cidlookup.php
 htdocs/public/bookcal/bookcalAjax.php
 htdocs/public/bookcal/index.php
@@ -6825,10 +6830,12 @@ htdocs/accountancy/journal/variousjournal.php
 htdocs/accountancy/journal/bankjournal.php
 htdocs/accountancy/journal/purchasesjournal.php
 htdocs/accountancy/journal/sellsjournal.php
+htdocs/accountancy/class/bookkeepingtemplateline.class.php
 htdocs/accountancy/class/accountancycategory.class.php
 htdocs/accountancy/class/accountancyexport.class.php
 htdocs/accountancy/class/accountingjournal.class.php
 htdocs/accountancy/class/accountancyimport.class.php
+htdocs/accountancy/class/bookkeepingtemplate.class.php
 htdocs/accountancy/class/accountancysystem.class.php
 htdocs/accountancy/class/api_accountancy.class.php
 htdocs/accountancy/class/accountancyreport.class.php
@@ -6856,6 +6863,8 @@ htdocs/accountancy/admin/card.php
 htdocs/accountancy/admin/defaultaccounts.php
 htdocs/accountancy/admin/accountmodel.php
 htdocs/accountancy/admin/index.php
+htdocs/accountancy/admin/template/list.php
+htdocs/accountancy/admin/template/card.php
 htdocs/accountancy/admin/fiscalyear.php
 htdocs/accountancy/admin/categories_list.php
 htdocs/accountancy/admin/fiscalyear_info.php
@@ -7533,13 +7542,6 @@ htdocs/admin/tools/export.php
 htdocs/admin/tools/update.php
 htdocs/admin/tools/index.php
 htdocs/admin/tools/ui/class/documentation.class.php
-htdocs/admin/tools/ui/experimental/experiments/dolibarr-context/assets/dolibarr-context.umd.js
-htdocs/admin/tools/ui/experimental/experiments/dolibarr-context/assets/dolibarr-tool.seteventmessage.js
-htdocs/admin/tools/ui/experimental/experiments/dolibarr-context/assets/dolibarr-context.mock.js
-htdocs/admin/tools/ui/experimental/experiments/dolibarr-context/assets/dolibarr-tool.langs.js
-htdocs/admin/tools/ui/experimental/experiments/dolibarr-context/langs-tool.php
-htdocs/admin/tools/ui/experimental/experiments/dolibarr-context/index.php
-htdocs/admin/tools/ui/experimental/experiments/dolibarr-context/langs-tool-interface.php
 htdocs/admin/tools/ui/experimental/index.php
 htdocs/admin/tools/ui/resources/contributing.php
 htdocs/admin/tools/ui/resources/index.php
@@ -7561,6 +7563,8 @@ htdocs/admin/tools/ui/components/test_buttons.php
 htdocs/admin/tools/ui/components/badges.php
 htdocs/admin/tools/ui/components/inputs.php
 htdocs/admin/tools/ui/template/documentation_page.php
+htdocs/admin/tools/ui/dolibarr-context/langs-tool.php
+htdocs/admin/tools/ui/dolibarr-context/index.php
 htdocs/admin/tools/ui/js/documentation.js
 htdocs/admin/supplierorderdet_extrafields.php
 htdocs/admin/fckeditor.php
