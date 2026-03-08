@@ -1,3 +1,4 @@
+compose.dev.mailgun.yaml
 .vscode/settings.json
 .vscode/launch.json
 .cursor/rules/yarn.mdc
@@ -1053,6 +1054,7 @@ ghost/core/core/server/services/members/members-api/services/payments-service.js
 ghost/core/core/server/services/members/members-api/services/geolocation-service.js
 ghost/core/core/server/services/members/members-api/services/next-payment-calculator.js
 ghost/core/core/server/services/members/members-api/services/member-bread-service.js
+ghost/core/core/server/services/members/members-api/utils/get-discount-window.js
 ghost/core/core/server/services/members/members-api/utils/normalize-email.js
 ghost/core/core/server/services/members/members-api/utils/has-active-offer.js
 ghost/core/core/server/services/members/members-api/repositories/member-repository.js
@@ -1276,6 +1278,7 @@ ghost/core/core/server/services/comments/comments-stats-service.js
 ghost/core/core/server/services/member-welcome-emails/constants.js
 ghost/core/core/server/services/member-welcome-emails/member-welcome-email-renderer.js
 ghost/core/core/server/services/member-welcome-emails/index.js
+ghost/core/core/server/services/member-welcome-emails/email-templates/partials/card-styles.hbs
 ghost/core/core/server/services/member-welcome-emails/email-templates/wrapper.hbs
 ghost/core/core/server/services/member-welcome-emails/service.js
 ghost/core/core/server/services/tinybird/index.js
@@ -1585,6 +1588,7 @@ ghost/core/core/server/api/endpoints/utils/validators/input/password_reset.js
 ghost/core/core/server/api/endpoints/utils/validators/input/automated_emails.js
 ghost/core/core/server/api/endpoints/utils/validators/input/settings.js
 ghost/core/core/server/api/endpoints/utils/validators/utils/json-schema.js
+ghost/core/core/server/api/endpoints/utils/public-endpoint-utils.ts
 ghost/core/core/server/api/endpoints/utils/index.js
 ghost/core/core/server/api/endpoints/utils/permissions.js
 ghost/core/core/server/api/endpoints/utils/serializers/output/posts.js
@@ -2053,6 +2057,7 @@ ghost/core/test/unit/server/services/members/members-api/services/payments-servi
 ghost/core/test/unit/server/services/members/members-api/services/members-bread-service.test.js
 ghost/core/test/unit/server/services/members/members-api/utils/has-active-offer.test.js
 ghost/core/test/unit/server/services/members/members-api/utils/normalize-email.test.js
+ghost/core/test/unit/server/services/members/members-api/utils/get-discount-window.test.js
 ghost/core/test/unit/server/services/members/members-api/repositories/product-repository.test.js
 ghost/core/test/unit/server/services/members/members-api/repositories/member-repository.test.js
 ghost/core/test/unit/server/services/members/members-api/repositories/event-repository.test.js
@@ -2423,6 +2428,7 @@ ghost/core/test/utils/fixtures/export/broken.json
 ghost/core/test/utils/fixtures/export/products_export.json
 ghost/core/test/utils/fixtures/export/v5_export.json
 ghost/core/test/utils/fixtures/export/v3_export.json
+ghost/core/test/utils/fixtures/files/test.pdf
 ghost/core/test/utils/fixtures/filter-param/index.js
 ghost/core/test/utils/fixtures/default-settings-browser.json
 ghost/core/test/utils/fixtures/media/sample.m4a
@@ -2588,6 +2594,7 @@ ghost/core/test/utils/agents/index.js
 ghost/core/test/utils/agents/test-agent.js
 ghost/core/test/utils/admin-utils.js
 ghost/core/test/utils/e2e-framework.js
+ghost/core/test/utils/i18n-test-utils.js
 ghost/core/test/utils/overrides.js
 ghost/core/test/integration/url-service.test.js
 ghost/core/test/integration/jobs/process-outbox.test.js
@@ -3174,6 +3181,7 @@ ghost/admin/tests/unit/mixins/validation-engine-test.js
 ghost/admin/tests/unit/utils/member-event-types-test.js
 ghost/admin/tests/unit/utils/merge-stats-by-date-test.js
 ghost/admin/tests/unit/utils/subscription-data-test.js
+ghost/admin/tests/unit/utils/asset-base-test.js
 ghost/admin/tests/unit/utils/sentry-test.js
 ghost/admin/tests/unit/utils/ghost-paths-test.js
 ghost/admin/tests/unit/transforms/navigation-settings-test.js
@@ -3210,6 +3218,7 @@ ghost/admin/tests/integration/services/config-test.js
 ghost/admin/tests/integration/services/search-test.js
 ghost/admin/tests/integration/services/store-test.js
 ghost/admin/tests/integration/services/slug-generator-test.js
+ghost/admin/tests/integration/services/labels-manager-test.js
 ghost/admin/tests/integration/services/feature-test.js
 ghost/admin/tests/integration/services/ajax-test.js
 ghost/admin/tests/integration/services/local-revisions-test.js
@@ -3236,6 +3245,7 @@ ghost/admin/tests/integration/components/gh-notifications-test.js
 ghost/admin/tests/integration/components/gh-cm-editor-test.js
 ghost/admin/tests/integration/components/gh-psm-template-select-test.js
 ghost/admin/tests/integration/components/gh-form-group-test.js
+ghost/admin/tests/integration/components/gh-members-segment-select-test.js
 ghost/admin/tests/integration/components/gh-task-button-test.js
 ghost/admin/tests/integration/components/gh-date-time-picker-test.js
 ghost/admin/tests/integration/components/gh-psm-tags-input-test.js
@@ -3246,6 +3256,7 @@ ghost/admin/tests/integration/components/gh-image-uploader-with-preview-test.js
 ghost/admin/tests/integration/components/gh-member-avatar-test.js
 ghost/admin/tests/integration/components/gh-unsplash-test.js
 ghost/admin/tests/integration/components/gh-trim-focus-input-test.js
+ghost/admin/tests/integration/components/gh-members-recipient-select-test.js
 ghost/admin/tests/integration/helpers/activity-feed-fetcher-test.js
 ghost/admin/tests/integration/helpers/gh-url-preview-test.js
 ghost/admin/tests/integration/helpers/background-image-style-test.js
@@ -3734,6 +3745,7 @@ ghost/admin/app/services/search.js
 ghost/admin/app/services/state-bridge.js
 ghost/admin/app/services/email-size-warning.js
 ghost/admin/app/services/billing.js
+ghost/admin/app/services/labels-manager.js
 ghost/admin/app/services/custom-views.js
 ghost/admin/app/services/member-import-validator.js
 ghost/admin/app/services/ajax.js
@@ -3850,6 +3862,7 @@ ghost/admin/app/mixins/shortcuts-route.js
 ghost/admin/app/mixins/validation-state.js
 ghost/admin/app/utils/analytics.js
 ghost/admin/app/utils/route.js
+ghost/admin/app/utils/asset-base.js
 ghost/admin/app/utils/window-proxy.js
 ghost/admin/app/utils/publish-options.js
 ghost/admin/app/utils/merge-stats-by-date.js
@@ -3996,15 +4009,18 @@ ghost/admin/app/components/modal-import-members/csv-file-mapping.hbs
 ghost/admin/app/components/modal-import-members/csv-file-mapping.js
 ghost/admin/app/components/gh-infinity-loader.js
 ghost/admin/app/components/gh-member-label-input.js
+ghost/admin/app/components/power-select-options-with-scroll.hbs
 ghost/admin/app/components/modal-post-history.hbs
 ghost/admin/app/components/tags/delete-tag-modal.js
 ghost/admin/app/components/tags/tag-form.js
 ghost/admin/app/components/tags/tag-form.hbs
 ghost/admin/app/components/tags/list-item.hbs
 ghost/admin/app/components/tags/delete-tag-modal.hbs
+ghost/admin/app/components/gh-segment-token-input.js
 ghost/admin/app/components/modal-post-success.js
 ghost/admin/app/components/gh-member-details.hbs
 ghost/admin/app/components/gh-view-title.js
+ghost/admin/app/components/power-select-options-with-scroll.js
 ghost/admin/app/components/gh-text-input.hbs
 ghost/admin/app/components/gh-token-input.js
 ghost/admin/app/components/gh-members-import-mapping-input.hbs
@@ -4255,6 +4271,7 @@ ghost/admin/app/components/gh-editor-feature-image.hbs
 ghost/admin/app/components/gh-task-button.hbs
 ghost/admin/app/components/gh-post-settings-menu.hbs
 ghost/admin/app/components/koenig-lexical-editor-input.js
+ghost/admin/app/components/gh-segment-token-input.hbs
 ghost/admin/app/components/render-in-wormhole.js
 ghost/admin/app/components/gh-error-message.hbs
 ghost/admin/app/components/offers/segment-select.js
@@ -4451,6 +4468,7 @@ ghost/admin/package.json
 .claude/skills/create-database-migration/rules.md
 .claude/skills/create-database-migration/examples.md
 .claude/skills/format-number/SKILL.md
+.claude/skills/add-private-feature-flag/SKILL.md
 .claude/skills/add-admin-api-endpoint/validation.md
 .claude/skills/add-admin-api-endpoint/SKILL.md
 .claude/skills/add-admin-api-endpoint/permissions.md
@@ -4625,6 +4643,7 @@ apps/admin-x-settings/src/hooks/use-welcome-email-sender-details.ts
 apps/admin-x-settings/src/hooks/use-feature-flag.tsx
 apps/admin-x-settings/src/hooks/use-save-button.ts
 apps/admin-x-settings/src/hooks/use-setting-group.tsx
+apps/admin-x-settings/src/hooks/use-welcome-email-link-suggestions.ts
 apps/admin-x-settings/src/hooks/use-limiter.tsx
 apps/admin-x-settings/src/hooks/use-pintura-editor.ts
 apps/admin-x-settings/src/index.tsx
@@ -4833,6 +4852,7 @@ apps/posts/.eslintrc.cjs
 apps/posts/vite.config.mjs
 apps/posts/src/providers/posts-app-context.tsx
 apps/posts/src/providers/post-analytics-context.tsx
+apps/posts/src/hooks/use-label-picker.ts
 apps/posts/src/hooks/use-feature-flag.tsx
 apps/posts/src/hooks/with-feature-flag.tsx
 apps/posts/src/hooks/use-post-referrers.ts
@@ -4852,6 +4872,9 @@ apps/posts/src/utils/kpi-helpers.ts
 apps/posts/src/utils/constants.ts
 apps/posts/src/utils/chart-helpers.ts
 apps/posts/src/utils/get-site-timezone.ts
+apps/posts/src/components/label-picker/label-filter-renderer.tsx
+apps/posts/src/components/label-picker/label-picker.tsx
+apps/posts/src/components/label-picker/index.ts
 apps/posts/src/components/member-avatar.tsx
 apps/posts/src/components/layout/main-layout.tsx
 apps/posts/src/components/errors/posts-error-boundary.tsx
@@ -4964,6 +4987,7 @@ apps/activitypub/test/utils/responses/ghost/users.json
 apps/activitypub/test/utils/responses/ghost/identities.json
 apps/activitypub/test/utils/initial-api-requests.ts
 apps/activitypub/test/acceptance/inbox.test.ts
+apps/activitypub/test/acceptance/dom-validation.test.ts
 apps/activitypub/test/acceptance/my-profile.test.ts
 apps/activitypub/test/acceptance/feed.test.ts
 apps/activitypub/tailwind.config.cjs
@@ -5095,6 +5119,8 @@ apps/portal/test/unit/components/pages/signin-page.test.js
 apps/portal/test/unit/components/pages/signup-page.test.js
 apps/portal/test/unit/components/pages/account-profile-page.test.js
 apps/portal/test/unit/components/pages/AccountHomePage/account-actions.test.js
+apps/portal/test/unit/components/pages/AccountHomePage/continue-subscription-button.test.js
+apps/portal/test/unit/components/pages/AccountHomePage/account-welcome.test.js
 apps/portal/test/unit/components/pages/AccountHomePage/account-home-page.test.js
 apps/portal/test/unit/components/pages/AccountHomePage/paid-account-actions.test.js
 apps/portal/test/unit/components/pages/AccountHomePage/transistor-podcasts-action.test.js
@@ -5235,12 +5261,15 @@ apps/portal/jsconfig.json
 apps/portal/package.json
 apps/portal/.env
 apps/admin-x-framework/test/setup.ts
+apps/admin-x-framework/test/unit/hooks/use-pintura-config.test.ts
 apps/admin-x-framework/test/unit/hooks/use-form.test.ts
+apps/admin-x-framework/test/unit/hooks/use-koenig-fetch-embed.test.ts
 apps/admin-x-framework/test/unit/hooks/use-tinybird-token.test.tsx
 apps/admin-x-framework/test/unit/hooks/use-handle-error.test.tsx
 apps/admin-x-framework/test/unit/hooks/use-active-visitors.test.ts
 apps/admin-x-framework/test/unit/hooks/use-tinybird-query.test.ts
 apps/admin-x-framework/test/unit/hooks/use-filterable-api.test.ts
+apps/admin-x-framework/test/unit/hooks/use-koenig-link-suggestions.test.ts
 apps/admin-x-framework/test/unit/hooks/use-permissions.test.ts
 apps/admin-x-framework/test/unit/hooks/use-koenig-file-upload.test.ts
 apps/admin-x-framework/test/unit/utils/helpers.test.ts
@@ -5267,8 +5296,11 @@ apps/admin-x-framework/src/providers/app-provider.tsx
 apps/admin-x-framework/src/providers/navigation-stack-provider.tsx
 apps/admin-x-framework/src/providers/routing-provider.tsx
 apps/admin-x-framework/src/hooks/use-active-visitors.ts
+apps/admin-x-framework/src/hooks/use-pintura-config.ts
+apps/admin-x-framework/src/hooks/use-koenig-link-suggestions.ts
 apps/admin-x-framework/src/hooks/use-handle-error.ts
 apps/admin-x-framework/src/hooks/use-tinybird-query.ts
+apps/admin-x-framework/src/hooks/use-koenig-fetch-embed.ts
 apps/admin-x-framework/src/hooks/use-koenig-file-upload.ts
 apps/admin-x-framework/src/hooks/use-filterable-api.ts
 apps/admin-x-framework/src/hooks/use-permissions.ts
@@ -5320,6 +5352,7 @@ apps/admin-x-framework/src/utils/api/handle-response.ts
 apps/admin-x-framework/src/utils/api/fetch-api.ts
 apps/admin-x-framework/src/utils/api/hooks.ts
 apps/admin-x-framework/src/utils/api/update-queries.ts
+apps/admin-x-framework/src/utils/focus-koenig-editor-on-bottom-click.ts
 apps/admin-x-framework/src/utils/helpers.ts
 apps/admin-x-framework/src/routing.ts
 apps/admin-x-framework/src/vite.ts

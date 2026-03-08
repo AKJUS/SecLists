@@ -1039,7 +1039,6 @@ htdocs/core/modules/facture/mod_facture_terre.php
 htdocs/core/modules/facture/mod_facture_mercure.php
 htdocs/core/modules/facture/doc/doc_generic_invoice_odt.modules.php
 htdocs/core/modules/facture/doc/pdf_octopus.modules.php
-htdocs/core/modules/facture/doc/pdf_crabe.modules.php
 htdocs/core/modules/facture/doc/pdf_sponge.modules.php
 htdocs/core/modules/facture/mod_facture_mars.php
 htdocs/core/modules/modDav.class.php
@@ -1572,6 +1571,7 @@ htdocs/core/js/lib_notification.js.php
 htdocs/core/js/lib_head.js.php
 htdocs/core/js/dst.js
 htdocs/core/js/editinplace.js
+htdocs/core/js/lib_initTooltips.js
 htdocs/core/js/listview.js
 htdocs/core/js/lib_foot.js.php
 htdocs/core/js/lib_gravatar.js.php
@@ -5541,6 +5541,7 @@ htdocs/install/mysql/tables/llx_budget_lines-budget.sql
 htdocs/install/mysql/tables/llx_opensurvey_comments-opensurvey.sql
 htdocs/install/mysql/tables/llx_categorie_fournisseur.key.sql
 htdocs/install/mysql/tables/llx_hrm_evaluation_extrafields-hrm.sql
+htdocs/install/mysql/tables/llx_accounting_balance_snapshot-accounting.key.sql
 htdocs/install/mysql/tables/llx_overwrite_trans.key.sql
 htdocs/install/mysql/tables/llx_c_transport_mode.sql
 htdocs/install/mysql/tables/llx_supplier_proposaldet_extrafields.key.sql
@@ -5623,6 +5624,7 @@ htdocs/install/mysql/tables/llx_stocktransfer_stocktransfer_extrafields-stocktra
 htdocs/install/mysql/tables/llx_c_ticket_severity-ticket.key.sql
 htdocs/install/mysql/tables/llx_accounting_bookkeeping-accounting.sql
 htdocs/install/mysql/tables/llx_categorie_societe.key.sql
+htdocs/install/mysql/tables/llx_accounting_balance_snapshot-accounting.sql
 htdocs/install/mysql/tables/llx_categorie_warehouse-stock.key.sql
 htdocs/install/mysql/tables/llx_commande.sql
 htdocs/install/mysql/tables/llx_holiday_users.key.sql

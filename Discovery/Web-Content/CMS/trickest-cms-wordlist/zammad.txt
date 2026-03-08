@@ -275,6 +275,7 @@ lib/zammad/application/initializer/db_preflight_check.rb
 lib/zammad/application/initializer/session_store.rb
 lib/zammad/trusted_proxies.rb
 lib/zammad/logging.rb
+lib/sensitive_params_helper.rb
 lib/excel_sheet/ticket.rb
 lib/excel_sheet/ai/analytics/errors.rb
 lib/excel_sheet/ai/analytics/with_usage.rb
@@ -1581,6 +1582,8 @@ db/migrate/20250811113849_ai_text_tools.rb
 db/migrate/20170116000001_add_ticket_time_accounting_373.rb
 db/migrate/20230726082734_smime_meta_information_table.rb
 db/migrate/20230808070608_issue_4530_notes_sans_images.rb
+db/migrate/20250917111129_auth_provider_form_secrets.rb
+db/migrate/20260305090437_issue5667_reserved_word.rb
 db/migrate/20201210075534_maintenance_missing_kb_unique_indexes.rb
 db/migrate/20200205000001_chat_add_allow_website.rb
 db/migrate/20230510102126_two_factor_authentication_setup.rb
@@ -2760,6 +2763,7 @@ spec/jobs/ticket_ai_assistance_summarize_job_spec.rb
 spec/jobs/ticket_user_ticket_counter_job_spec.rb
 spec/jobs/ticket_article_communicate_email_job_spec.rb
 spec/jobs/reset_notifications_preferences_job_spec.rb
+spec/jobs/ticket_bulk_update_job_spec.rb
 spec/jobs/trigger_webhook_job_spec.rb
 spec/jobs/taskbar_cleanup_job_spec.rb
 spec/jobs/avatar_create_job_spec.rb
@@ -2777,6 +2781,7 @@ spec/rails_helper.rb
 spec/requests/template_spec.rb
 spec/requests/text_module_spec.rb
 spec/requests/ai_assistance_spec.rb
+spec/requests/import_otrs_spec.rb
 spec/requests/upload_cache_spec.rb
 spec/requests/import_freshdesk_spec.rb
 spec/requests/knowledge_base/permissions_spec.rb
@@ -2825,6 +2830,7 @@ spec/requests/calendar_subscriptions_spec.rb
 spec/requests/cors_preflight_check_spec.rb
 spec/requests/ssl_certificate_spec.rb
 spec/requests/system_assets_spec.rb
+spec/requests/import_zendesk_spec.rb
 spec/requests/public_links_spec.rb
 spec/requests/o_auth_spec.rb
 spec/requests/ai_agent_spec.rb
@@ -2841,6 +2847,7 @@ spec/requests/ai_text_tool_spec.rb
 spec/requests/admin/knowledge_base/public_menu_spec.rb
 spec/requests/selector_spec.rb
 spec/requests/proxy_spec.rb
+spec/requests/ticket/group_restriction_spec.rb
 spec/requests/ticket/article_attachments_spec.rb
 spec/requests/ticket/time_accounting_spec.rb
 spec/requests/ticket/article_spec.rb
@@ -2883,6 +2890,7 @@ spec/requests/overview_spec.rb
 spec/requests/organization_spec.rb
 spec/requests/user_spec.rb
 spec/requests/mention_spec.rb
+spec/requests/ldap_sources_controller_spec.rb
 spec/requests/long_polling_spec.rb
 spec/requests/ai/analytics/downloads_spec.rb
 spec/requests/ai/analytics/usages_spec.rb
@@ -2968,6 +2976,7 @@ spec/graphql/gql/subscriptions/user/current/taskbar_item/list_updates_spec.rb
 spec/graphql/gql/subscriptions/user/current/taskbar_item_state_updates_spec.rb
 spec/graphql/gql/subscriptions/user/current/devices_updates_spec.rb
 spec/graphql/gql/subscriptions/user/current/recent_close/updates_spec.rb
+spec/graphql/gql/subscriptions/user/current/ticket/bulk_update_status_updates_spec.rb
 spec/graphql/gql/subscriptions/user/current/ticket/overview_updates_spec.rb
 spec/graphql/gql/subscriptions/user/current/two_factor_updates_spec.rb
 spec/graphql/gql/subscriptions/user/current/avatar_updates_spec.rb
@@ -3060,6 +3069,7 @@ spec/graphql/gql/mutations/ai_analytics/usage_spec.rb
 spec/graphql/gql/mutations/form/upload_cache/add_spec.rb
 spec/graphql/gql/mutations/form/upload_cache/remove_spec.rb
 spec/graphql/gql/mutations/ticket/update_spec.rb
+spec/graphql/gql/mutations/ticket/customer_group_restriction_spec.rb
 spec/graphql/gql/mutations/ticket/external_references/issue_tracker_item_remove_spec.rb
 spec/graphql/gql/mutations/ticket/external_references/idoit_object_remove_spec.rb
 spec/graphql/gql/mutations/ticket/external_references/idoit_object_add_spec.rb
@@ -3135,6 +3145,7 @@ spec/lib/pseudonymisation_spec.rb
 spec/lib/external_data_source_spec.rb
 spec/lib/upload_cache_spec.rb
 spec/lib/search_knowledge_base_backend_spec.rb
+spec/lib/migration_helper_spec.rb
 spec/lib/application_handle_info_spec.rb
 spec/lib/knowledge_base/category/permission_spec.rb
 spec/lib/knowledge_base/effective_permission_spec.rb
@@ -3416,6 +3427,7 @@ spec/lib/password_policy/min_length_spec.rb
 spec/lib/password_policy/upper_and_lower_case_characters_spec.rb
 spec/lib/password_policy/error_examples.rb
 spec/lib/password_policy/special_character_spec.rb
+spec/lib/sensitive_params_helper_spec.rb
 spec/lib/auto_wizard_spec.rb
 spec/lib/import/exchange/folder_spec.rb
 spec/lib/import/otrs_spec.rb
@@ -3483,6 +3495,7 @@ spec/lib/external_credential/microsoft365_spec.rb
 spec/lib/external_credential/microsoft_graph_spec.rb
 spec/lib/signature_detection_spec.rb
 spec/lib/search_index_backend/version_handling_spec.rb
+spec/db/migrate/auth_provider_form_secrets_spec.rb
 spec/db/migrate/issue_1219_zhtw_locale_typo_spec.rb
 spec/db/migrate/set_user_source_ldap_from_external_sync_spec.rb
 spec/db/migrate/channel_concurrency_changes_spec.rb
@@ -3544,6 +3557,7 @@ spec/db/migrate/change_token_expiration_handling_spec.rb
 spec/db/migrate/permission_switch_to_label_description_spec.rb
 spec/db/migrate/issue_2333_object_country_already_exists_spec.rb
 spec/db/migrate/issue_5666_external_data_field_spec.rb
+spec/db/migrate/issue_5667_rename_reserved_word_spec.rb
 spec/db/migrate/issue_2671_pending_till_can_be_changed_by_customer_spec.rb
 spec/db/migrate/issue_4089_fix_draft_attribute_spec.rb
 spec/db/migrate/update_user_attributes_spec.rb
@@ -3679,6 +3693,10 @@ spec/services/service/ticket/external_references/issue_tracker/fetch_metadata_sp
 spec/services/service/ticket/external_references/issue_tracker/ticket_list_spec.rb
 spec/services/service/ticket/forced_update_spec.rb
 spec/services/service/ticket/create_spec.rb
+spec/services/service/ticket/bulk/update_inline_spec.rb
+spec/services/service/ticket/bulk/single_item_update_spec.rb
+spec/services/service/ticket/bulk/selector_spec.rb
+spec/services/service/ticket/bulk/dispatch_update_spec.rb
 spec/services/service/ticket/update/validator/time_accounting_spec.rb
 spec/services/service/ticket/update/validator/checklist_completed_spec.rb
 spec/services/service/ticket/update/validator_spec.rb
@@ -3708,6 +3726,7 @@ spec/services/service/ai/agent/run/context/entity/object_attributes/relation_spe
 spec/services/service/ai/agent/run/context/entity/object_attributes/options_spec.rb
 spec/services/service/ai/agent/run/context/instruction_spec.rb
 spec/services/service/ai/agent/run/context/instruction/object_attributes/relation_spec.rb
+spec/services/service/ai/agent/run/context/instruction/object_attributes/options_spec.rb
 spec/services/service/ai/agent/run/context_spec.rb
 spec/services/service/ai/agent/run_spec.rb
 spec/services/service/ai/analytics/upsert_usage_spec.rb
@@ -5115,6 +5134,12 @@ eslint.config.ts
 .devcontainer/default/devcontainer.json
 .devcontainer/default/compose.yaml
 .devcontainer/post_create.sh
+.devcontainer/with-mailserver/devcontainer.json
+.devcontainer/with-mailserver/compose.yaml
+.devcontainer/with-mailserver/auto_wizard_mailserver.json
+.devcontainer/with-mailserver/certs/.gitkeep
+.devcontainer/with-mailserver/scripts/init-mailserver.sh
+.devcontainer/with-mailserver/scripts/post_create.sh
 .gitlab/configure_environment.rb
 .gitlab/supabase/translation_stats.rb
 .gitlab/supabase/supabase.rb
@@ -5542,7 +5567,7 @@ app/frontend/shared/form/features/__tests__/formUpdaterTrigger.spec.ts
 app/frontend/shared/form/features/__tests__/hideField.spec.ts
 app/frontend/shared/form/features/formUpdaterTrigger.ts
 app/frontend/shared/form/features/formLocaleDir.ts
-app/frontend/shared/form/features/addMissingEntityObjectOption.ts
+app/frontend/shared/form/features/addOrRemoveMissingEntityObjectOption.ts
 app/frontend/shared/form/features/addSubmitEvent.ts
 app/frontend/shared/form/features/defaultEmptyValueString.ts
 app/frontend/shared/form/features/translateWrapperProps.ts
@@ -5611,6 +5636,9 @@ app/frontend/shared/server/connection.ts
 app/frontend/shared/server/action_cable/consumer.ts
 app/frontend/shared/server/action_cable/types.ts
 app/frontend/shared/i18n.ts
+app/frontend/shared/components/CommonProgressBar/__tests__/CommonProgressBar.spec.ts
+app/frontend/shared/components/CommonProgressBar/initializeProgressBarClasses.ts
+app/frontend/shared/components/CommonProgressBar/CommonProgressBar.vue
 app/frontend/shared/components/CommonFilePreview/__tests__/CommonFilePreview.spec.ts
 app/frontend/shared/components/CommonFilePreview/CommonFilePreview.vue
 app/frontend/shared/components/CommonFilePreview/types.ts
@@ -5650,6 +5678,8 @@ app/frontend/shared/components/Form/fields/FieldSearch/FieldSearchInput.vue
 app/frontend/shared/components/Form/fields/FieldButton/__tests__/FieldButton.spec.ts
 app/frontend/shared/components/Form/fields/FieldButton/index.ts
 app/frontend/shared/components/Form/fields/FieldButton/types.ts
+app/frontend/shared/components/Form/fields/FieldTreeSelect/composables/__tests__/useFlatSelectOptions.spec.ts
+app/frontend/shared/components/Form/fields/FieldTreeSelect/composables/useFlatSelectOptions.ts
 app/frontend/shared/components/Form/fields/FieldTreeSelect/types.ts
 app/frontend/shared/components/Form/fields/FieldDate/useDateTime.ts
 app/frontend/shared/components/Form/fields/FieldDate/useDateFnsLocale.ts
@@ -5829,6 +5859,7 @@ app/frontend/shared/components/CommonTranslateRenderer/types.ts
 app/frontend/shared/components/CommonNotifications/__tests__/CommonNotifications.spec.ts
 app/frontend/shared/components/CommonNotifications/useNotifications.ts
 app/frontend/shared/components/CommonNotifications/index.ts
+app/frontend/shared/components/CommonNotifications/CommonNotificationsItem.vue
 app/frontend/shared/components/CommonNotifications/CommonNotifications.vue
 app/frontend/shared/components/CommonNotifications/types.ts
 app/frontend/shared/components/CommonIcon/CommonIcon.vue
@@ -6772,6 +6803,7 @@ app/frontend/apps/mobile/initializer/assets/insert-hr.svg
 app/frontend/apps/mobile/initializer/assets/gitlab.svg
 app/frontend/apps/mobile/initializer/assets/send.svg
 app/frontend/apps/mobile/initializer/assets/audio.svg
+app/frontend/apps/mobile/initializer/assets/x-lg.svg
 app/frontend/apps/mobile/initializer/assets/mobile-code.svg
 app/frontend/apps/mobile/initializer/assets/add-square.svg
 app/frontend/apps/mobile/initializer/assets/text-style-underline.svg
@@ -7606,8 +7638,6 @@ app/frontend/apps/desktop/server/apollo/cache/initializer/organizationRedirect.t
 app/frontend/apps/desktop/server/apollo/index.ts
 app/frontend/apps/desktop/components/CommonTicketLabel/__tests__/CommonTicketLabel.spec.ts
 app/frontend/apps/desktop/components/CommonTicketLabel/CommonTicketLabel.vue
-app/frontend/apps/desktop/components/CommonProgressBar/__tests__/CommonProgressBar.spec.ts
-app/frontend/apps/desktop/components/CommonProgressBar/CommonProgressBar.vue
 app/frontend/apps/desktop/components/TwoFactor/TwoFactorConfigurationWizard/TwoFactorConfigurationWizardFooterActions.vue
 app/frontend/apps/desktop/components/TwoFactor/TwoFactorConfiguration/TwoFactorConfigurationAuthenticatorApp.vue
 app/frontend/apps/desktop/components/TwoFactor/TwoFactorConfiguration/TwoFactorConfigurationMethodList.vue
@@ -7751,7 +7781,6 @@ app/frontend/apps/desktop/components/Form/fields/FieldSelect/__tests__/FieldSele
 app/frontend/apps/desktop/components/Form/fields/FieldSelect/index.ts
 app/frontend/apps/desktop/components/Form/fields/FieldSelect/FieldSelectInput.vue
 app/frontend/apps/desktop/components/Form/fields/FieldTreeSelect/__tests__/FieldTreeSelect.spec.ts
-app/frontend/apps/desktop/components/Form/fields/FieldTreeSelect/useFlatSelectOptions.ts
 app/frontend/apps/desktop/components/Form/fields/FieldTreeSelect/index.ts
 app/frontend/apps/desktop/components/Form/fields/FieldTreeSelect/FieldTreeSelectInputDropdownItem.vue
 app/frontend/apps/desktop/components/Form/fields/FieldTreeSelect/FieldTreeSelectInputDropdown.vue
@@ -7931,13 +7960,14 @@ app/frontend/apps/desktop/components/layout/LayoutSidebar/LeftSidebar/AvatarMenu
 app/frontend/apps/desktop/components/layout/LayoutSidebar/LeftSidebar/AvatarMenu/AvatarMenu.vue
 app/frontend/apps/desktop/components/layout/LayoutSidebar/LeftSidebar/AvatarMenu/AvatarMenuAppearanceItem.vue
 app/frontend/apps/desktop/components/layout/LayoutSidebar/LeftSidebar/types.ts
-app/frontend/apps/desktop/components/CommonTable/__tests__/CellCheckbox.spec.ts
+app/frontend/apps/desktop/components/CommonTable/__tests__/TableHeader.spec.ts
 app/frontend/apps/desktop/components/CommonTable/__tests__/CommonSimpleTable.spec.ts.snapshot.txt
 app/frontend/apps/desktop/components/CommonTable/__tests__/CommonSimpleTable.spec.ts
 app/frontend/apps/desktop/components/CommonTable/__tests__/CommonAdvancedTable.spec.ts
 app/frontend/apps/desktop/components/CommonTable/__tests__/CommonAdvancedTable.spec.ts.snapshot.txt
 app/frontend/apps/desktop/components/CommonTable/CommonAdvancedTable.vue
 app/frontend/apps/desktop/components/CommonTable/CommonSimpleTable.vue
+app/frontend/apps/desktop/components/CommonTable/TableHeader.vue
 app/frontend/apps/desktop/components/CommonTable/TableRow.vue
 app/frontend/apps/desktop/components/CommonTable/TableRowGroupBy.vue
 app/frontend/apps/desktop/components/CommonTable/Skeleton/CommonTableSkeleton.vue
@@ -7949,7 +7979,10 @@ app/frontend/apps/desktop/components/CommonTable/composables/useSkeletonLoadingC
 app/frontend/apps/desktop/components/CommonTable/composables/useTableCheckboxes.ts
 app/frontend/apps/desktop/components/CommonTable/TableCaption.vue
 app/frontend/apps/desktop/components/CommonTable/CellContent/TimestampAbsolute.vue
+app/frontend/apps/desktop/components/CommonTable/CellContent/__tests__/BulkCheckbox.spec.ts
+app/frontend/apps/desktop/components/CommonTable/CellContent/__tests__/CellCheckbox.spec.ts
 app/frontend/apps/desktop/components/CommonTable/CellContent/CellCheckbox.vue
+app/frontend/apps/desktop/components/CommonTable/CellContent/BulkCheckbox.vue
 app/frontend/apps/desktop/components/CommonTable/CellContent/Default.vue
 app/frontend/apps/desktop/components/CommonTable/CellContent/Timestamp.vue
 app/frontend/apps/desktop/components/CommonTable/types.ts
@@ -8120,6 +8153,7 @@ app/frontend/apps/desktop/initializer/assets/merge.svg
 app/frontend/apps/desktop/initializer/assets/highlighter.svg
 app/frontend/apps/desktop/initializer/assets/calendar.svg
 app/frontend/apps/desktop/initializer/assets/input-cursor-text.svg
+app/frontend/apps/desktop/initializer/assets/dash-square.svg
 app/frontend/apps/desktop/initializer/assets/user-settings.svg
 app/frontend/apps/desktop/initializer/assets/radio-yes.svg
 app/frontend/apps/desktop/initializer/assets/delete-row.svg
@@ -8366,6 +8400,7 @@ app/frontend/apps/desktop/entities/user/current/graphql/mutations/userCurrentPas
 app/frontend/apps/desktop/entities/user/current/graphql/mutations/userCurrentPasswordCheck.mocks.ts
 app/frontend/apps/desktop/entities/user/current/graphql/mutations/userCurrentTaskbarItemAdd.mocks.ts
 app/frontend/apps/desktop/entities/user/current/stores/taskbarTabs.ts
+app/frontend/apps/desktop/entities/user/current/stores/ticketBulkUpdate.ts
 app/frontend/apps/desktop/entities/user/current/composables/useLifetimeCustomerTicketsCount.ts
 app/frontend/apps/desktop/entities/user/current/composables/useTaskbarTabStateUpdates.ts
 app/frontend/apps/desktop/entities/user/current/composables/useTaskbarTab.ts
@@ -8410,14 +8445,17 @@ app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/userCurrentTicke
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/userCurrentTicketOverviewFullAttributesUpdates.mocks.ts
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/ticketByOrganizationUpdates.mocks.ts
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/useCurrentOverviewOrderingFullAttributesUpdates.graphql
+app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/ticketBulkUpdateStatusUpdates.api.ts
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/userCurrentTicketOverviewUpdates.api.ts
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/ticketByCustomerUpdates.graphql
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/userCurrentTicketOverviewUpdates.mocks.ts
+app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/ticketBulkUpdateStatusUpdates.graphql
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/userCurrentOverviewOrderingUpdates.api.ts
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/ticketByCustomerUpdates.mocks.ts
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/useCurrentOverviewOrderingFullAttributesUpdates.api.ts
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/ticketByCustomerUpdates.api.ts
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/ticketByOrganizationUpdates.graphql
+app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/ticketBulkUpdateStatusUpdates.mocks.ts
 app/frontend/apps/desktop/entities/ticket/graphql/subscriptions/userCurrentTicketOverviewUpdates.graphql
 app/frontend/apps/desktop/entities/ticket/graphql/mutations/updateBulk.api.ts
 app/frontend/apps/desktop/entities/ticket/graphql/mutations/userCurrentOverviewUpdateLastUsed.api.ts
@@ -8469,6 +8507,7 @@ app/jobs/application_job/has_queuing_priority.rb
 app/jobs/application_job/has_delayed_job_monitoring_compatibilty.rb
 app/jobs/async_import_job.rb
 app/jobs/imap_authentication_migration_cleanup_job.rb
+app/jobs/ticket_bulk_update_job.rb
 app/jobs/ticket_ai_assistance_summarize_job.rb
 app/jobs/checks_kb_client_notification_job.rb
 app/jobs/taskbar_update_trigger_subscriptions_job.rb
@@ -8589,6 +8628,7 @@ app/graphql/gql/subscriptions/user/current/access_token_updates.rb
 app/graphql/gql/subscriptions/user/current/recent_close/updates.rb
 app/graphql/gql/subscriptions/user/current/two_factor_updates.rb
 app/graphql/gql/subscriptions/user/current/ticket/overview_updates.rb
+app/graphql/gql/subscriptions/user/current/ticket/bulk_update_status_updates.rb
 app/graphql/gql/subscriptions/user/current/devices_updates.rb
 app/graphql/gql/subscriptions/organization_updates.rb
 app/graphql/gql/subscriptions/public_link_updates.rb
@@ -8837,6 +8877,8 @@ app/graphql/gql/types/input/ticket/checklist/item_input_type.rb
 app/graphql/gql/types/input/ticket/customer_input_type.rb
 app/graphql/gql/types/input/ticket/base_input_type.rb
 app/graphql/gql/types/input/ticket/customer_update_input_type.rb
+app/graphql/gql/types/input/ticket/bulk/perform_input_type.rb
+app/graphql/gql/types/input/ticket/bulk/selector_input_type.rb
 app/graphql/gql/types/input/ticket/create_input_type.rb
 app/graphql/gql/types/input/ticket/security_input_type.rb
 app/graphql/gql/types/input/ticket/article_input_type.rb
@@ -8891,6 +8933,7 @@ app/graphql/gql/types/enum/ticket/external_references/issue_tracker_type_type.rb
 app/graphql/gql/types/enum/ticket_article_sender_name_type.rb
 app/graphql/gql/types/enum/form_updater_id_type.rb
 app/graphql/gql/types/enum/appearance_theme_type.rb
+app/graphql/gql/types/enum/bulk_update_status_status_type.rb
 app/graphql/gql/types/enum/system_setup_info_status_type.rb
 app/graphql/gql/types/enum/system_setup_info_type_type.rb
 app/graphql/gql/types/history_group_type.rb
@@ -8928,6 +8971,7 @@ app/graphql/gql/types/ticket/ai_assistance/summary_type.rb
 app/graphql/gql/types/ticket/shared_draft_zoom_type.rb
 app/graphql/gql/types/ticket/priority_type.rb
 app/graphql/gql/types/ticket/time_accounting/type_type.rb
+app/graphql/gql/types/ticket/bulk_update_status_type.rb
 app/graphql/gql/types/ticket/stats_monthly_type.rb
 app/graphql/gql/types/ticket/update/bulk_user_error_type.rb
 app/graphql/gql/types/ticket/article/type_type.rb
@@ -10376,6 +10420,10 @@ app/services/service/ticket/ai_assistance/summarize.rb
 app/services/service/ticket/create.rb
 app/services/service/ticket/forced_update.rb
 app/services/service/ticket/update.rb
+app/services/service/ticket/bulk/single_item_update.rb
+app/services/service/ticket/bulk/dispatch_update.rb
+app/services/service/ticket/bulk/selector.rb
+app/services/service/ticket/bulk/update_inline.rb
 app/services/service/ticket/merge.rb
 app/services/service/ticket/update/validator/time_accounting.rb
 app/services/service/ticket/update/validator/base_error.rb
@@ -10827,7 +10875,6 @@ app/models/channel/filter/identify_group.rb
 app/models/channel/filter/trusted.rb
 app/models/channel/filter/bounce_delivery_permanent_failed.rb
 app/models/channel/area/whatsapp.rb
-app/models/channel/assets.rb
 app/models/channel/email_parser/headers_parser.rb
 app/models/channel/email_parser/attachment_parser.rb
 app/models/channel/email_parser/encoding.rb
@@ -11015,6 +11062,7 @@ app/models/concerns/can_selector/advanced_sorting/base_sort.rb
 app/models/concerns/can_selector/advanced_sorting/base_select_field_sort.rb
 app/models/concerns/can_selector/advanced_sorting/default_sort.rb
 app/models/concerns/can_selector/advanced_sorting.rb
+app/models/concerns/can_sensitive_assets.rb
 app/models/concerns/has_default_model_user_relations.rb
 app/models/concerns/has_search_index_backend.rb
 app/models/concerns/can_be_imported.rb
@@ -11171,6 +11219,7 @@ app/models/link/object.rb
 app/models/link/triggers_subscriptions.rb
 app/models/link/type.rb
 app/models/stats_store.rb
+app/models/external_credential/sensitive_attributes.rb
 app/models/application_model/has_cache.rb
 app/models/application_model/has_attachments.rb
 app/models/application_model/can_creates_and_updates.rb
@@ -11270,6 +11319,7 @@ app/controllers/application_controller/has_user.rb
 app/controllers/application_controller/has_download/download_file.rb
 app/controllers/application_controller/handles_errors.rb
 app/controllers/application_controller/handles_devices.rb
+app/controllers/application_controller/handles_sensitive_params.rb
 app/controllers/application_controller/has_response_extentions.rb
 app/controllers/application_controller/klass.rb
 app/controllers/application_controller/authenticates.rb

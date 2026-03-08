@@ -356,7 +356,10 @@ tests/api/core/upload/content-api/private-file-signing.test.api.js
 tests/api/core/upload/content-api/upload-automatic-folder.test.api.js
 tests/api/core/upload/content-api/upload.test.api.js
 tests/api/core/upload/utils/strapi.svg
+tests/api/core/upload/utils/rec.txt
+tests/api/core/upload/utils/rec.bin
 tests/api/core/upload/utils/strapi.tiff
+tests/api/core/upload/utils/rec.docx
 tests/api/core/upload/utils/rec.pdf
 tests/api/core/upload/utils/strapi.webp
 tests/api/core/upload/admin/settings.test.api.js
@@ -371,6 +374,7 @@ tests/api/core/upload/admin/configure-view.test.api.js
 tests/api/core/upload/admin/file-image.test.api.js
 tests/api/core/upload/admin/folder-file.test.api.js
 tests/api/core/upload/admin/folder-structure.test.api.js
+tests/api/core/upload/scripts/generate-rec-docx.js
 tests/api/core/strapi/document-service/uniqueness.test.api.ts
 tests/api/core/strapi/document-service/find-first.test.api.ts
 tests/api/core/strapi/document-service/events.test.api.ts
@@ -514,6 +518,7 @@ tests/setup/jest-api.setup.js
 .yarnrc.yml
 CODE_OF_CONDUCT.md
 lerna.json
+sonar-project.properties
 docker-compose.dev.yml
 templates/website/data/lead-form-submissions.json
 templates/website/data/uploads/undraw-design-page.svg
@@ -684,6 +689,7 @@ docs/docs/docs/01-core/database/_category_.json
 docs/docs/docs/01-core/database/00-intro.md
 docs/docs/docs/01-core/_category_.json
 docs/docs/docs/01-core/upload/01-backend/00-providers.md
+docs/docs/docs/01-core/upload/01-backend/01-mime-validation.md
 docs/docs/docs/01-core/upload/01-backend/_category_.json
 docs/docs/docs/01-core/upload/_category_.json
 docs/docs/docs/01-core/upload/00-intro.md
@@ -2327,6 +2333,7 @@ packages/core/content-releases/admin/src/pluginId.ts
 packages/core/content-releases/admin/src/translations/tests/plural.test.ts
 packages/core/content-releases/admin/src/translations/en.json
 packages/core/content-releases/admin/src/translations/uk.json
+packages/core/content-releases/admin/src/translations/es.json
 packages/core/content-releases/admin/src/utils/tests/prefixPluginTranslations.test.ts
 packages/core/content-releases/admin/src/utils/tests/time.test.ts
 packages/core/content-releases/admin/src/utils/time.ts
@@ -2561,6 +2568,7 @@ packages/core/review-workflows/admin/src/index.ts
 packages/core/review-workflows/admin/src/router.tsx
 packages/core/review-workflows/admin/src/translations/en.json
 packages/core/review-workflows/admin/src/translations/uk.json
+packages/core/review-workflows/admin/src/translations/es.json
 packages/core/review-workflows/admin/src/utils/tests/colors.test.ts
 packages/core/review-workflows/admin/src/utils/translations.ts
 packages/core/review-workflows/admin/src/utils/cm-hooks.ts
@@ -3887,6 +3895,7 @@ packages/core/upload/server/src/register.ts
 packages/core/upload/server/src/bootstrap.ts
 packages/core/upload/server/src/utils/cron.ts
 packages/core/upload/server/src/utils/__tests__/mime-validation.test.ts
+packages/core/upload/server/src/utils/__tests__/mime-validation-matrix.test.ts
 packages/core/upload/server/src/utils/__tests__/cron.test.ts
 packages/core/upload/server/src/utils/images.ts
 packages/core/upload/server/src/utils/index.ts
@@ -3998,8 +4007,10 @@ packages/core/strapi/src/cli/commands/build.ts
 packages/core/strapi/src/cli/types.ts
 packages/core/strapi/src/index.ts
 packages/core/strapi/src/admin-test.ts
+packages/core/strapi/src/node/core/linked-packages.ts
 packages/core/strapi/src/node/core/errors.ts
 packages/core/strapi/src/node/core/env.ts
+packages/core/strapi/src/node/core/resolve-module.ts
 packages/core/strapi/src/node/core/managers.ts
 packages/core/strapi/src/node/core/timer.ts
 packages/core/strapi/src/node/core/plugins.ts
@@ -4980,6 +4991,7 @@ packages/plugins/color-picker/admin/src/translations/zh.json
 packages/plugins/color-picker/admin/src/translations/sv.json
 packages/plugins/color-picker/admin/src/translations/en.json
 packages/plugins/color-picker/admin/src/translations/uk.json
+packages/plugins/color-picker/admin/src/translations/es.json
 packages/plugins/color-picker/admin/src/translations/ru.json
 packages/plugins/color-picker/admin/src/utils/getTrad.ts
 packages/plugins/color-picker/admin/src/utils/prefixPluginTranslations.ts
