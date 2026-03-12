@@ -1,6 +1,7 @@
 config/services_test.xml
 config/routes/test/core_framework.xml
 config/packages/test/usage_data.xml
+config/packages/test/media.xml
 config/bundles.php
 changelog/release-6-5-7-1/2023-11-20-remove-tests-classes-from-services-xml.md
 changelog/release-6-5-1-1/2023-05-30-fix-webpack-cleanup-config.md
@@ -6317,12 +6318,16 @@ tests/unit/Core/Content/Media/Event/UnusedMediaSearchEventTest.php
 tests/unit/Core/Content/Media/Event/MediaUploadedEventTest.php
 tests/unit/Core/Content/Media/MediaUrlPlaceholderHandlerTest.php
 tests/unit/Core/Content/Media/MediaType/SpatialObjectTypeTest.php
+tests/unit/Core/Content/Media/Subscriber/MediaDeletionSubscriberTest.php
 tests/unit/Core/Content/Media/Subscriber/MediaVisibilityRestrictionSubscriberTest.php
 tests/unit/Core/Content/Media/Subscriber/CustomFieldsUnusedMediaSubscriberTest.php
 tests/unit/Core/Content/Media/Subscriber/MediaCreationSubscriberTest.php
 tests/unit/Core/Content/Media/Subscriber/VideoCoverLoadedSubscriberTest.php
+tests/unit/Core/Content/Media/Thumbnail/ExternalThumbnailsParametersTest.php
 tests/unit/Core/Content/Media/Thumbnail/ThumbnailServiceTest.php
+tests/unit/Core/Content/Media/Thumbnail/ExternalThumbnailDataNormalizerTest.php
 tests/unit/Core/Content/Media/Thumbnail/ThumbnailSizeCalculatorTest.php
+tests/unit/Core/Content/Media/Thumbnail/ExternalThumbnailCollectionNormalizerTest.php
 tests/unit/Core/Content/Media/Service/VideoCoverServiceTest.php
 tests/unit/Core/Content/Media/Api/MediaUploadControllerTest.php
 tests/unit/Core/Content/Media/Api/MediaUploadV2ControllerTest.php
@@ -6330,6 +6335,7 @@ tests/unit/Core/Content/Media/MediaEntityTest.php
 tests/unit/Core/Content/Media/SalesChannel/MediaRouteResponseTest.php
 tests/unit/Core/Content/Media/SalesChannel/MediaRouteTest.php
 tests/unit/Core/Content/Media/Upload/MediaUploadParametersTest.php
+tests/unit/Core/Content/Media/Upload/ExternalThumbnailDataTest.php
 tests/unit/Core/Content/Media/Upload/PresignedUploadUrlGeneratorTest.php
 tests/unit/Core/Content/Media/Upload/MediaUploadServiceTest.php
 tests/unit/Core/Content/Flow/Controller/TriggerFlowControllerTest.php
@@ -7340,6 +7346,7 @@ tests/unit/Core/Framework/App/Source/NoDatabaseSourceResolverTest.php
 tests/unit/Core/Framework/App/Source/SourceResolverTest.php
 tests/unit/Core/Framework/App/Telemetry/AppTelemetrySubscriberTest.php
 tests/unit/Core/Framework/App/Payload/AppPayloadServiceHelperTest.php
+tests/unit/Core/Framework/App/ScheduledTask/SystemCheckTaskHandlerTest.php
 tests/unit/Core/Framework/App/ScheduledTask/UpdateAppsTaskTest.php
 tests/unit/Core/Framework/App/ShopIdChangeResolver/ResolverTest.php
 tests/unit/Core/Framework/App/Cookie/AppCookieCollectListenerTest.php
@@ -7451,6 +7458,7 @@ tests/unit/Core/Framework/App/Event/AppFlowActionEventTest.php
 tests/unit/Core/Framework/App/Event/AppPermissionsUpdatedTest.php
 tests/unit/Core/Framework/App/Event/AppInstalledEventTest.php
 tests/unit/Core/Framework/App/Event/AppDeletedEventTest.php
+tests/unit/Core/Framework/App/Event/SystemHeartbeatEventTest.php
 tests/unit/Core/Framework/App/Checkout/Payload/AppCheckoutGatewayPayloadTest.php
 tests/unit/Core/Framework/App/Checkout/Payload/AppCheckoutGatewayPayloadServiceTest.php
 tests/unit/Core/Framework/App/Checkout/Gateway/AppCheckoutGatewayTest.php
@@ -7868,6 +7876,7 @@ tests/unit/Core/Framework/FrameworkTest.php
 tests/unit/Core/Framework/Webhook/Hookable/HookableEntityWrittenEventTest.php
 tests/unit/Core/Framework/Webhook/Hookable/HookableEventCollectorTest.php
 tests/unit/Core/Framework/Webhook/Hookable/HookableEventFactoryTest.php
+tests/unit/Core/Framework/Webhook/Hookable/HookableBusinessEventTest.php
 tests/unit/Core/Framework/Webhook/ScheduledTask/CleanupWebhookEventLogTaskHandlerTest.php
 tests/unit/Core/Framework/Webhook/WebhookExceptionTest.php
 tests/unit/Core/Framework/Webhook/WebhookDispatcherTest.php
@@ -8781,6 +8790,7 @@ tests/integration/Core/Content/Media/Thumbnail/ThumbnailServiceTest.php
 tests/integration/Core/Content/Media/MediaFolderServiceTest.php
 tests/integration/Core/Content/Media/Api/MediaVideoCoverControllerTest.php
 tests/integration/Core/Content/Media/Api/MediaUploadControllerTest.php
+tests/integration/Core/Content/Media/Api/MediaUploadV2ControllerTest.php
 tests/integration/Core/Content/Media/Api/MediaFolderControllerTest.php
 tests/integration/Core/Content/Media/MediaEntityTest.php
 tests/integration/Core/Content/Media/Command/GenerateThumbnailsCommandTest.php
@@ -8942,10 +8952,12 @@ tests/integration/Core/Checkout/Document/Service/DocumentConfigLoaderTest.php
 tests/integration/Core/Checkout/Document/Renderer/DeliveryNoteRendererTest.php
 tests/integration/Core/Checkout/Document/Renderer/StornoRendererTest.php
 tests/integration/Core/Checkout/Document/Renderer/CreditNoteRendererTest.php
-tests/integration/Core/Checkout/Document/Renderer/_snapshots/credit_note_renderer_default.html
-tests/integration/Core/Checkout/Document/Renderer/_snapshots/invoice_renderer_default.html
-tests/integration/Core/Checkout/Document/Renderer/_snapshots/storno_renderer_default.html
-tests/integration/Core/Checkout/Document/Renderer/_snapshots/delivery_note_renderer_default.html
+tests/integration/Core/Checkout/Document/Renderer/ZugferdRendererTest.php
+tests/integration/Core/Checkout/Document/Renderer/_snapshots/storno_renderer_default/snapshot.html
+tests/integration/Core/Checkout/Document/Renderer/_snapshots/invoice_renderer_default/snapshot.html
+tests/integration/Core/Checkout/Document/Renderer/_snapshots/credit_note_renderer_default/snapshot.html
+tests/integration/Core/Checkout/Document/Renderer/_snapshots/zugferd_document_default/snapshot.xml
+tests/integration/Core/Checkout/Document/Renderer/_snapshots/delivery_note_renderer_default/snapshot.html
 tests/integration/Core/Checkout/Document/Renderer/InvoiceRendererTest.php
 tests/integration/Core/Checkout/Document/DocumentGeneratorControllerTest.php
 tests/integration/Core/Checkout/Document/SalesChannel/DocumentRouteTest.php
@@ -9534,7 +9546,7 @@ tests/integration/Core/Framework/DataAbstractionLayer/Search/FkFieldPrimarySearc
 tests/integration/Core/Framework/DataAbstractionLayer/Search/NaturalSortingTest.php
 tests/integration/Core/Framework/DataAbstractionLayer/Search/EntitySearcherTest.php
 tests/integration/Core/Framework/DataAbstractionLayer/EntityExtensionReadTest.php
-tests/integration/Core/Framework/_snapshots/routes_without_schema.json
+tests/integration/Core/Framework/_snapshots/routes_without_schema/snapshot.json
 tests/integration/Core/Framework/_snapshots/redis_test.yaml
 tests/integration/Core/Framework/Log/ScheduledTask/LogCleanupTaskHandlerTest.php
 tests/integration/Core/Framework/Sso/Helper/ValidUserServiceCreator.php
@@ -9738,7 +9750,6 @@ tests/integration/Core/Framework/ApiRoutesHaveASchemaTest.php
 tests/integration/Core/Framework/Webhook/WebhookApiTest.php
 tests/integration/Core/Framework/Webhook/Hookable/HookableEventCollectorTest.php
 tests/integration/Core/Framework/Webhook/Hookable/HookableEventFactoryTest.php
-tests/integration/Core/Framework/Webhook/Hookable/HookableBusinessEventTest.php
 tests/integration/Core/Framework/Webhook/Handler/WebhookEventMessageHandlerTest.php
 tests/integration/Core/Framework/Webhook/Subscriber/RetryWebhookMessageFailedSubscriberTest.php
 tests/integration/Core/Framework/Webhook/BusinessEventEncoderTest.php
@@ -9812,7 +9823,6 @@ tests/integration/Core/Framework/Translation/Fixtures/theme/manifest.xml
 tests/integration/Core/Framework/Translation/Fixtures/UnitTest_SnippetFile.php
 tests/integration/Core/Framework/Translation/Fixtures/storefront.unitTest.json
 tests/integration/Core/Service/Api/PermissionControllerTest.php
-tests/integration/Core/Service/PermissionsServiceTest.php
 tests/integration/Core/Maintenance/System/Service/SetupDatabaseAdapterTest.php
 tests/integration/Core/Maintenance/System/Service/ShopConfiguratorTest.php
 tests/integration/Core/Maintenance/SalesChannel/Service/SalesChannelCreatorTest.php
@@ -10102,6 +10112,7 @@ tests/acceptance/tests/Visual/Administration/RuleBuilderDetail.spec.ts
 tests/acceptance/tests/Visual/Administration/SalesChannels.spec.ts
 tests/acceptance/tests/Visual/Administration/ProductListLayout.spec.ts
 tests/acceptance/tests/Visual/Administration/YourProfile.spec.ts
+tests/acceptance/tests/Visual/Administration/Documents.spec.ts
 tests/acceptance/tests/Visual/Administration/FlowBuilder.spec.ts
 tests/acceptance/tests/Visual/Storefront/SearchResult.spec.ts
 tests/acceptance/tests/Visual/Storefront/ProductDetail.spec.ts
@@ -10126,7 +10137,7 @@ tests/acceptance/compose.yaml
 tests/acceptance/fixtures/AcceptanceTest.ts
 tests/acceptance/fixtures/HomeProducts.ts
 tests/acceptance/README.md
-tests/acceptance/tasks/ShopAdmin/Orders/CreateInvoiceViaAPI.ts
+tests/acceptance/tasks/ShopAdmin/Orders/CreateDocumentViaAPI.ts
 tests/acceptance/tasks/ShopAdmin/Orders/AddCreditItemViaAPI.ts
 tests/acceptance/tasks/ShopAdmin/CustomField/CreateCustomField.ts
 tests/acceptance/tasks/ShopAdmin/Customers/CustomerGroupActivation.ts
@@ -10149,6 +10160,7 @@ tests/acceptance/.eslintrc.cjs
 tests/acceptance/playwright.config.ts
 tests/acceptance/.prettierignore
 tests/acceptance/helpers/locale-helpers.ts
+tests/acceptance/helpers/document-helpers.ts
 tests/acceptance/helpers/recaptcha-helpers.ts
 tests/acceptance/tsconfig.json
 tests/acceptance/scripts/runNpmAudit.ts
@@ -10696,12 +10708,10 @@ src/Administration/Resources/app/administration/src/core/factory/router.factory.
 src/Administration/Resources/app/administration/src/core/consent/events.ts
 src/Administration/Resources/app/administration/src/core/consent/broadcast-changes.spec.js
 src/Administration/Resources/app/administration/src/core/consent/consent.api.service.spec.js
-src/Administration/Resources/app/administration/src/core/consent/tracking.ts
 src/Administration/Resources/app/administration/src/core/consent/broadcast-changes.ts
 src/Administration/Resources/app/administration/src/core/consent/consent.api.service.ts
 src/Administration/Resources/app/administration/src/core/consent/consent.store.ts
 src/Administration/Resources/app/administration/src/core/consent/events.spec.js
-src/Administration/Resources/app/administration/src/core/consent/tracking.spec.js
 src/Administration/Resources/app/administration/src/core/consent/handlers.spec.js
 src/Administration/Resources/app/administration/src/core/consent/consent.store.spec.js
 src/Administration/Resources/app/administration/src/core/consent/handlers.ts
@@ -10718,7 +10728,6 @@ src/Administration/Resources/app/administration/src/core/helper/device.helper.js
 src/Administration/Resources/app/administration/src/core/helper/sanitizer.helper.js
 src/Administration/Resources/app/administration/src/core/helper/sanitizer.helper.spec.js
 src/Administration/Resources/app/administration/src/core/helper/retry.helper.spec.js
-src/Administration/Resources/app/administration/src/core/helper/refresh-token.helper.js
 src/Administration/Resources/app/administration/src/core/helper/middleware.helper.js
 src/Administration/Resources/app/administration/src/core/service/jsonapi-parser.service.ts
 src/Administration/Resources/app/administration/src/core/service/util.service.spec.js
@@ -14555,6 +14564,7 @@ src/Administration/Resources/app/administration/src/app/component/base/sw-radio-
 src/Administration/Resources/app/administration/src/app/component/base/sw-inheritance-switch/sw-inheritance-switch.html.twig
 src/Administration/Resources/app/administration/src/app/component/base/sw-inheritance-switch/index.js
 src/Administration/Resources/app/administration/src/app/component/base/sw-inheritance-switch/sw-inheritance-switch.scss
+src/Administration/Resources/app/administration/src/app/component/base/sw-highlight-text/sw-highlight-text.spec.js
 src/Administration/Resources/app/administration/src/app/component/base/sw-highlight-text/index.js
 src/Administration/Resources/app/administration/src/app/component/base/sw-highlight-text/sw-highlight-text.scss
 src/Administration/Resources/app/administration/src/app/component/base/sw-card-filter/index.js
@@ -16312,7 +16322,12 @@ src/Core/Content/Media/Subscriber/VideoCoverCleanupSubscriber.php
 src/Core/Content/Media/Subscriber/VideoCoverLoadedSubscriber.php
 src/Core/Content/Media/Subscriber/MediaLoadedSubscriber.php
 src/Core/Content/Media/Subscriber/MediaFolderConfigLoadedSubscriber.php
+src/Core/Content/Media/Thumbnail/ExternalThumbnailCollectionNormalizer.php
+src/Core/Content/Media/Thumbnail/ExternalThumbnailCollection.php
+src/Core/Content/Media/Thumbnail/ExternalThumbnailsParameters.php
 src/Core/Content/Media/Thumbnail/ThumbnailSizeCalculator.php
+src/Core/Content/Media/Thumbnail/ExternalThumbnailData.php
+src/Core/Content/Media/Thumbnail/ExternalThumbnailDataNormalizer.php
 src/Core/Content/Media/Thumbnail/ThumbnailService.php
 src/Core/Content/Media/Service/VideoCoverService.php
 src/Core/Content/Media/MediaEntity.php
@@ -18628,6 +18643,8 @@ src/Core/Framework/App/Payload/Source.php
 src/Core/Framework/App/ScheduledTask/DeleteCascadeAppsHandler.php
 src/Core/Framework/App/ScheduledTask/UpdateAppsTask.php
 src/Core/Framework/App/ScheduledTask/DeleteCascadeAppsTask.php
+src/Core/Framework/App/ScheduledTask/SystemHeartbeatTask.php
+src/Core/Framework/App/ScheduledTask/SystemHeartbeatHandler.php
 src/Core/Framework/App/ScheduledTask/UpdateAppsHandler.php
 src/Core/Framework/App/ShopIdChangeResolver/MoveShopPermanentlyStrategy.php
 src/Core/Framework/App/ShopIdChangeResolver/AbstractShopIdChangeStrategy.php
@@ -18705,6 +18722,7 @@ src/Core/Framework/App/AppEntity.php
 src/Core/Framework/App/Event/AppScriptConditionEvents.php
 src/Core/Framework/App/Event/ManifestChangedEvent.php
 src/Core/Framework/App/Event/AppDeletedEvent.php
+src/Core/Framework/App/Event/SystemHeartbeatEvent.php
 src/Core/Framework/App/Event/PostAppDeletedEvent.php
 src/Core/Framework/App/Event/AppFlowActionEvent.php
 src/Core/Framework/App/Event/Hooks/AppLifecycleHook.php
@@ -20078,6 +20096,7 @@ src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/paths/message-sta
 src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/paths/version.json
 src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/paths/openapi3.json.json
 src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/paths/order_delivery.json
+src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/paths/system-config.json
 src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/paths/order_transaction_capture_refund.json
 src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/paths/message-queue.json
 src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/paths/index-products.json
@@ -20089,6 +20108,7 @@ src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/components/schema
 src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/components/schemas/businessEventsResponse.json
 src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/components/schemas/Criteria.json
 src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/components/schemas/SalesChannelAnalytics.json
+src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/components/schemas/Media.json
 src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/components/schemas/OAuthScopes.json
 src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/components/schemas/infoConfigResponse.json
 src/Core/Framework/Api/ApiDefinition/Generator/OpenApi/OpenApiSchemaBuilder.php
