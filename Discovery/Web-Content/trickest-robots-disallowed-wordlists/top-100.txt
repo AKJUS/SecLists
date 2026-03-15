@@ -989,6 +989,7 @@ conversation
 conversations
 convert-business
 convert-personal
+cookie-policy
 copilot
 copilot/c
 copilotsearch?q=
@@ -1117,6 +1118,8 @@ discussion/search/comments
 discussion/user-report-abuse
 discussion/your-comments
 discussion/your-profile
+discussions/2021/09/13/cookie-policy
+discussions/2021/09/13/cookie-policy-eea
 doc-
 docs/forms/social
 docs/product
@@ -1591,9 +1594,9 @@ hp/video
 hpc/*/supported-applications.aspx?
 hpm
 hpmob
-http://amazon.co.uk/robots.txt
-http://blog.google/robots.txt
-http://discord.gg/robots.txt
+http://archive.org/robots.txt
+http://bbc.com/robots.txt
+http://instagram.com/robots.txt
 http://s3.amazonaws.com/robots.txt
 hub?category=
 hz/contact-us/ajax/initiate-trusted-contact
@@ -2169,6 +2172,7 @@ prettyearth/assets
 preview
 previewtemplate
 print
+privacy-policy
 private
 proFile/history?
 product-catalogs
