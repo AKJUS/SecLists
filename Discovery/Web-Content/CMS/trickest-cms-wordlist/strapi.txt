@@ -1713,6 +1713,7 @@ packages/core/content-manager/admin/src/pages/NoPermissionsPage.tsx
 packages/core/content-manager/admin/src/pages/ListView/ListViewPage.tsx
 packages/core/content-manager/admin/src/pages/ListView/components/tests/AutoCloneFailureModal.test.tsx
 packages/core/content-manager/admin/src/pages/ListView/components/tests/ViewSettingsMenu.test.tsx
+packages/core/content-manager/admin/src/pages/ListView/components/BulkActions/tests/formatErrorMessages.test.ts
 packages/core/content-manager/admin/src/pages/ListView/components/BulkActions/tests/ConfirmBulkActionDialog.test.tsx
 packages/core/content-manager/admin/src/pages/ListView/components/BulkActions/PublishAction.tsx
 packages/core/content-manager/admin/src/pages/ListView/components/BulkActions/ConfirmBulkActionDialog.tsx
@@ -4663,6 +4664,7 @@ packages/utils/api-tests/generators.js
 packages/utils/api-tests/agent.js
 packages/utils/api-tests/models.js
 packages/utils/api-tests/auth.js
+packages/utils/api-tests/mock-fetch.js
 packages/utils/api-tests/strapi.js
 packages/utils/api-tests/builder/index.js
 packages/utils/api-tests/builder/action-registry.js

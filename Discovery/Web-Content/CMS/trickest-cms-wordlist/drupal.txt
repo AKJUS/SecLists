@@ -4195,6 +4195,7 @@ core/modules/content_translation/src/Plugin/Derivative/ContentTranslationLocalTa
 core/modules/content_translation/src/Plugin/Derivative/ContentTranslationContextualLinks.php
 core/modules/content_translation/src/Plugin/views/field/TranslationLink.php
 core/modules/content_translation/src/FieldSyncWidget.php
+core/modules/content_translation/src/ContentTranslationEnableTranslationPerBundle.php
 core/modules/content_translation/src/ContentTranslationPermissions.php
 core/modules/content_translation/src/Form/ContentTranslationDeleteForm.php
 core/modules/content_translation/src/ContentTranslationManager.php
@@ -6596,6 +6597,7 @@ core/modules/locale/tests/src/Functional/LocaleUpdateInterfaceTest.php
 core/modules/locale/tests/src/Functional/LocaleNonInteractiveDevInstallTest.php
 core/modules/locale/tests/src/Functional/LocalePathTest.php
 core/modules/locale/tests/src/Functional/LocaleLocaleLookupTest.php
+core/modules/locale/tests/src/Functional/LocaleFileHashTest.php
 core/modules/locale/tests/src/Functional/LocaleExportTest.php
 core/modules/locale/tests/src/Functional/LocalePluralFormatTest.php
 core/modules/locale/tests/src/Functional/LocaleFileSystemFormTest.php
@@ -9513,7 +9515,7 @@ core/tests/fixtures/default_content/user/94503467-be7f-406c-9795-fc25baa22203.ym
 core/tests/fixtures/default_content/workspace/test_workspace.yml
 core/tests/fixtures/default_content/workspace/inner_test.yml
 core/tests/fixtures/default_content/block_content/d9b72b2f-a5ea-4a3f-b10c-28deb7b3b7bf.yml
-core/tests/fixtures/default_content/media/344b943c-b231-4d73-9669-0b0a2be12aa5.yml
+core/tests/fixtures/default_content/media/344b943c-b231-4d73-9669-0b0a2be12aa5.json
 core/tests/fixtures/default_content/node/e1714f23-70c0-4493-8e92-af1901771921.yml
 core/tests/fixtures/default_content/node/7f1dd75a-0be2-4d3b-be5d-9d1a868b9267.yml
 core/tests/fixtures/default_content/node/48475954-e878-439c-9d3d-226724a44269.yml
@@ -11434,6 +11436,7 @@ core/tests/Drupal/Tests/EntityViewTrait.php
 core/tests/Drupal/Tests/PhpCs/SortTest.php
 core/tests/Drupal/Tests/ApiRequestTrait.php
 core/tests/Drupal/Tests/UnitTestCase.php
+core/tests/Drupal/Tests/TestTools/ErrorHandler/DrupalDebugClassLoaderTest.php
 core/tests/Drupal/Tests/XdebugRequestTrait.php
 core/tests/Drupal/TestTools/Extension/Dump/TestRunnerFinishedSubscriber.php
 core/tests/Drupal/TestTools/Extension/Dump/DebugDump.php
@@ -11452,6 +11455,7 @@ core/tests/Drupal/TestTools/PhpUnitCompatibility/PhpUnit11/TestCompatibilityTrai
 core/tests/Drupal/TestTools/PhpUnitCompatibility/RunnerVersion.php
 core/tests/Drupal/TestTools/Comparator/MarkupInterfaceComparator.php
 core/tests/Drupal/TestTools/ErrorHandler/BootstrapErrorHandler.php
+core/tests/Drupal/TestTools/ErrorHandler/DrupalDebugClassLoader.php
 core/tests/bootstrap.php
 core/lib/Drupal.php
 core/lib/README.txt
@@ -17138,6 +17142,7 @@ core/themes/claro/claro.info.yml
 core/themes/claro/claro.libraries.yml
 core/themes/claro/src/ClaroPreRender.php
 core/themes/claro/src/Hook/ClaroFormHooks.php
+core/themes/claro/src/Hook/ClaroHooks.php
 core/themes/claro/js/details.js
 core/themes/claro/js/checkbox.js
 core/themes/claro/js/messages.js
@@ -17859,6 +17864,7 @@ core/themes/olivero/olivero.info.yml
 core/themes/olivero/README.md
 core/themes/olivero/components/teaser/teaser.component.yml
 core/themes/olivero/components/teaser/teaser.twig
+core/themes/olivero/src/Hook/OliveroHooks.php
 core/themes/olivero/src/Hook/OliveroPagePreprocessHooks.php
 core/themes/olivero/src/OliveroPreRender.php
 core/themes/olivero/js/second-level-navigation.js
