@@ -788,6 +788,7 @@ test/org/apache/tomcat/util/net/localhost-crl-rsa-key.pem
 test/org/apache/tomcat/util/net/localhost-crl-rsa.jks
 test/org/apache/tomcat/util/net/user1.jks
 test/org/apache/tomcat/util/net/user2-crl.jks
+test/org/apache/tomcat/util/net/TestAlpnFallback.java
 test/org/apache/tomcat/util/net/localhost-rsa.jks
 test/org/apache/tomcat/util/net/openssl/TestOpenSSLConf.java
 test/org/apache/tomcat/util/net/openssl/ciphers/TesterOpenSSL.java
@@ -798,6 +799,7 @@ test/org/apache/tomcat/util/net/localhost-ec-cert.pem
 test/org/apache/tomcat/util/net/TestXxxEndpoint.java
 test/org/apache/tomcat/util/net/localhost-rsa-copy1.jks
 test/org/apache/tomcat/util/net/TestClientCertTls13.java
+test/org/apache/tomcat/util/net/TestSslHandshakeFailure.java
 test/org/apache/tomcat/util/net/key-password
 test/org/apache/tomcat/util/net/localhost-ec.jks
 test/org/apache/tomcat/util/net/localhost-crl-rsa-cert.pem
