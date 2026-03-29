@@ -152,20 +152,15 @@ $rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService
 /events/atom
 /events/rss
 /events/xml
-/favorites_list
 /feedarticle
 /followers
-/followers$
 /following
-/following$
 /format:thumbnail
 /forum-attachment
 /gcrnsts
 /home/contact*
 /isv/*?
 /layout/
-/leads/*/jsplayer_show_lead_form.html
-/leads/*/show_form.html
 /likes
 /login
 /lookup?
@@ -527,7 +522,6 @@ _vti_txt
 a
 a/bz?
 aaut
-ab_tests
 about
 about$
 about/careers/applications-a/jobs/results
@@ -817,16 +811,9 @@ books?*zoom=5
 boutique/sitemaps
 bricks/image
 business
-business/adshare
-business/adshare/faqs
 business/blahblah
-business/feedback
-business/leads/jsplayer_show_lead_form.html
-business/leads/show_form.html
 business/learning/blog
 business/pos-system/shop
-business/premium/is_payment_pending
-business/promotion
 business/sales/blog
 buyside-e2e-monitor
 cai
@@ -900,7 +887,6 @@ communities/blogs/PortalResults.mspx?
 communities/eventdetails.mspx?
 communities/rss.aspx*
 communities/sitemap
-community
 community-guidelines
 companyDir
 compare
@@ -1201,7 +1187,6 @@ eusurvey/publication
 eusurvey/resources
 eusurvey/webservice
 evaluation
-event
 events
 events/atom
 events/rss
@@ -1224,7 +1209,6 @@ external/overture
 external_hosted
 f/healthcheck
 faves-i_love_u_get_away_from_me
-favorite
 fb
 fbml/ajax/dialog
 fd/
@@ -1310,8 +1294,6 @@ france/mnp_utility.mspx?
 friends
 from_id=
 frommers
-frontend-track
-fullscreen/ReportLinker
 fun/api/
 fun/g/
 fundraiser/charity
@@ -1448,7 +1430,6 @@ gp/yourstore
 gpay/social
 gql
 graphql?
-group
 groupAnswers
 groupSharingMsg
 groups
@@ -1500,10 +1481,10 @@ hp/video
 hpc/*/supported-applications.aspx?
 hpm
 hpmob
-http://amazon.co.uk/robots.txt
+http://amazon.de/robots.txt
 http://archive.org/robots.txt
-http://npr.org/robots.txt
-http://open.spotify.com/robots.txt
+http://instagram.com/robots.txt
+http://s3.amazonaws.com/robots.txt
 hub?category=
 hz/contact-us/ajax/initiate-trusted-contact
 hz/help/contact/*/message/$
@@ -1511,7 +1492,6 @@ hz/leaderboard/hall-of-fame
 hz/leaderboard/top-reviewers
 i/api
 i/u
-ia
 icdp
 icons
 id-id.www.cloudflare.com
@@ -1546,7 +1526,6 @@ inbox
 inboxcommerce
 includes
 incontext
-index.html
 index.html?
 index.php/admin/
 index.php/comment/reply/
@@ -1657,7 +1636,6 @@ land-browse-bff
 landing/cmsnext-root
 landing/now/ontap
 landing/signout.html
-language?
 languages/404_en.htm
 leaf
 learning*&auth=true
@@ -1739,7 +1717,6 @@ mactopia/help.mspx?
 mail/$
 mail/u/0/$
 mailman
-main
 manage/videos
 manage_playlist
 map_tile.php
@@ -1883,7 +1860,6 @@ newsroom/dae
 newsround
 newssearch
 newsstand
-nextjs
 niosh/archive/
 nl-nl.www.cloudflare.com
 nl-nl/feedback
@@ -1905,6 +1881,7 @@ oauth2/v2
 offers/proxy/dealsserver/api/log
 offers/proxy/dealsserver/buy
 og
+ohttp_gateway
 okxbet.com
 omim/?term=
 onebox/media/sports/logos
@@ -1972,7 +1949,6 @@ photos/i_love_u_get_away_from_me
 photos/tags/*/page
 photos/youpy
 ping
-pingback
 pl-pl.www.cloudflare.com
 pl-pl/feedback
 pl-pl/lp
@@ -2030,7 +2006,6 @@ preview
 previewtemplate
 print
 privacy-policy
-private
 proFile/history?
 product-reviews/B0069IY63Y
 product/reviews?
@@ -2533,8 +2508,6 @@ sites/workday
 sites/xerox
 sites/zenithwatches
 sites/zurich
-slideshow/*/lead-form
-slideshow/embed_code
 slink
 slp/*/b$
 slp/s$
@@ -2835,7 +2808,6 @@ ui
 unsub
 until=
 upload
-uploads
 urchin_test
 url
 user
@@ -3522,7 +3494,6 @@ zh-tw/feedback
 zh-tw/lp
 zh-tw/searchresults
 zh_CN
-~
 429.html
 2013/03/21/174840895
 2015/07/04/419570939/chasing-memories-in-their-refugee-camp-40-years-after-they-fled-vietnam

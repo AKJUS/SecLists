@@ -1518,6 +1518,7 @@ htdocs/core/ajax/flowjs-server.php
 htdocs/core/ajax/security.php
 htdocs/core/ajax/selectobject.php
 htdocs/core/ajax/row.php
+htdocs/core/ajax/auxaccount.php
 htdocs/core/ajax/ajaxtooltip.php
 htdocs/core/ajax/check_notifications.php
 htdocs/core/ajax/selectsearchbox.php
@@ -1548,7 +1549,6 @@ htdocs/core/frames.php
 htdocs/core/triggers/interface_95_modWebhook_WebhookTriggers.class.php
 htdocs/core/triggers/interface_50_modMailmanspip_Mailmanspipsynchro.class.php
 htdocs/core/triggers/interface_50_modBlockedlog_ActionsBlockedLog.class.php
-htdocs/core/triggers/README-FR
 htdocs/core/triggers/dolibarrtriggers.class.php
 htdocs/core/triggers/interface_50_modLdap_Ldapsynchro.class.php
 htdocs/core/triggers/README
@@ -6444,6 +6444,7 @@ htdocs/public/ticket/list.php
 htdocs/public/ticket/view.php
 htdocs/public/ticket/ajax/ajax.php
 htdocs/public/ticket/index.php
+htdocs/public/ticket/document.php
 htdocs/public/langs/langs-tool-interface.php
 htdocs/public/clicktodial/cidlookup.php
 htdocs/public/bookcal/bookcalAjax.php
