@@ -3497,9 +3497,11 @@ application/Espo/Classes/Cleanup/Reminders.php
 application/Espo/Classes/Cleanup/PasswordChangeRequests.php
 application/Espo/Classes/Cleanup/AppLog.php
 application/Espo/Classes/Cleanup/TwoFactorCodes.php
+application/Espo/Classes/AppInfo/CoreVersion.php
 application/Espo/Classes/AppInfo/Jobs.php
 application/Espo/Classes/AppInfo/Container.php
 application/Espo/Classes/AppInfo/Binding.php
+application/Espo/Classes/AppInfo/Version.php
 application/Espo/Classes/ConsoleCommands/PopulateNumbers.php
 application/Espo/Classes/ConsoleCommands/CheckFilePermissions.php
 application/Espo/Classes/ConsoleCommands/SetConfigParam.php
@@ -6700,6 +6702,7 @@ application/Espo/Tools/OpenApi/FieldSchemaBuilders/CurrencyType.php
 application/Espo/Tools/OpenApi/FieldSchemaBuilders/TextType.php
 application/Espo/Tools/OpenApi/FieldSchemaBuilders/AutoincrementType.php
 application/Espo/Tools/Installer/DatabaseConfigDataProvider.php
+application/Espo/Tools/ConsoleAppInfo/InfoProvider.php
 application/Espo/Tools/PopupNotification/Service.php
 application/Espo/Tools/PopupNotification/Item.php
 application/Espo/Tools/PopupNotification/Provider.php
@@ -6813,6 +6816,7 @@ application/Espo/Tools/Export/ProcessorParamsHandler.php
 application/Espo/Tools/Export/Params.php
 application/Espo/Tools/Export/Export.php
 application/Espo/Tools/Export/Processor/Params.php
+application/Espo/Tools/Export/Processor/Util.php
 application/Espo/Tools/Export/AdditionalFieldsLoaderFactory.php
 application/Espo/Tools/Export/ProcessorFactory.php
 application/Espo/Tools/Export/AdditionalFieldsLoader.php
@@ -7605,7 +7609,9 @@ clear_cache.php
 bin/command
 tests/integration/Core/DataLoader.php
 tests/integration/Core/Utils.php
+tests/integration/Core/Registry.php
 tests/integration/Core/Tester.php
+tests/integration/Core/NoTransaction.php
 tests/integration/Core/BaseTestCase.php
 tests/integration/Core/ApiClient.php
 tests/integration/testClasses/Job/Job.php
@@ -7622,7 +7628,6 @@ tests/integration/testData/Core/FulltextIndex/customFiles/custom/Espo/Custom/Res
 tests/integration/testData/Core/FulltextIndex/customFiles/custom/Espo/Custom/Resources/metadata/entityDefs/Email.json
 tests/integration/testData/Core/FulltextIndex/customFiles/custom/Espo/Custom/Resources/metadata/entityDefs/Contact.json
 tests/integration/testData/Account/ChangeFields.php
-tests/integration/testData/User/Login.php
 tests/integration/testData/InitData.php
 tests/integration/testData/Extension/General.zip
 tests/integration/testData/Upgrade/General.zip
@@ -8867,6 +8872,8 @@ client/src/views/site-portal/navbar.js
 client/src/views/site-portal/header.js
 client/src/views/list-related.ts
 client/src/views/header.js
+client/src/views/last-viewed/fields/created-at.ts
+client/src/views/last-viewed/fields/target-type.ts
 client/src/views/last-viewed/record/list.js
 client/src/views/last-viewed/list.js
 client/src/views/extension/record/row-actions.js
