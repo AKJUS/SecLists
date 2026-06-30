@@ -773,6 +773,7 @@ core/config/install/core.menu.static_menu_link_overrides.yml
 core/.cspell.json
 core/.deprecation-ignore.txt
 core/COPYRIGHT.txt
+core/CLAUDE.md
 core/phpstan-partial.neon
 core/phpstan.neon.dist
 core/INSTALL.sqlite.txt
@@ -3472,6 +3473,7 @@ core/.yarnrc.yml
 core/.prettierignore
 core/INSTALL.mysql.txt
 core/phpcs.xml.dist
+core/AGENTS.md
 core/.phpstan-baseline.php
 core/misc/logo/LICENSE.txt
 core/misc/logo/drupal-logo.svg
@@ -4881,9 +4883,11 @@ core/modules/locale/src/LocaleServiceProvider.php
 core/modules/locale/src/LocaleTranslationSource.php
 core/modules/locale/src/LocaleProjectStorage.php
 core/modules/locale/src/StringStorageInterface.php
+core/modules/locale/src/Hook/LocaleFormHooks.php
 core/modules/locale/src/Hook/LocaleThemeHooks.php
 core/modules/locale/src/Hook/LocaleCronHooks.php
 core/modules/locale/src/Hook/LocaleRequirements.php
+core/modules/locale/src/Hook/LocaleExtensionHooks.php
 core/modules/locale/src/Hook/LocaleHooks.php
 core/modules/locale/src/LocaleDefaultOptions.php
 core/modules/locale/src/LocaleProjectRepository.php
