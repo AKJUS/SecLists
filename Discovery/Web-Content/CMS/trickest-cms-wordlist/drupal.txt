@@ -7040,6 +7040,7 @@ core/modules/file/tests/src/Functional/FileFieldPathTest.php
 core/modules/file/tests/src/Functional/DummyStreamWrapperFileTest.php
 core/modules/file/tests/src/Functional/FileFieldRSSContentTest.php
 core/modules/file/tests/src/Functional/FileManagedTestBase.php
+core/modules/file/tests/src/Functional/ManagedFileFidValidationTest.php
 core/modules/file/tests/src/Functional/FilePrivateTest.php
 core/modules/file/tests/src/Functional/DownloadTest.php
 core/modules/file/tests/src/Functional/FileUploadJsonCookieTest.php
@@ -9035,6 +9036,7 @@ core/modules/package_manager/tests/src/Kernel/StageOwnershipTest.php
 core/modules/package_manager/tests/src/Kernel/ComposerPluginsValidatorSimpleValidTest.php
 core/modules/package_manager/tests/src/Kernel/PhpTufValidatorInvalidConfigTest.php
 core/modules/package_manager/tests/src/Kernel/ComposerPluginsValidatorTestBase.php
+core/modules/package_manager/tests/src/Kernel/ComposerPatchesValidatorPreCreateTest.php
 core/modules/package_manager/tests/src/Kernel/PhpTufValidatorTest.php
 core/modules/package_manager/tests/src/Kernel/BaseRequirementsFulfilledValidatorTest.php
 core/modules/package_manager/tests/src/Kernel/SymlinkValidatorTest.php
@@ -12171,6 +12173,7 @@ core/tests/Drupal/KernelTests/Core/TypedData/TypedDataDefinitionTest.php
 core/tests/Drupal/KernelTests/Core/TypedData/TypedDataTest.php
 core/tests/Drupal/KernelTests/Core/TypedData/TypedDataDefinitionEntityBundleTest.php
 core/tests/Drupal/KernelTests/Core/TypedData/AllowedValuesConstraintValidatorTest.php
+core/tests/Drupal/KernelTests/Core/Routing/TitleClosureTest.php
 core/tests/Drupal/KernelTests/Core/Routing/ContentNegotiationRoutingTest.php
 core/tests/Drupal/KernelTests/Core/Routing/UrlIntegrationTest.php
 core/tests/Drupal/KernelTests/Core/Routing/MatcherDumperTest.php
@@ -13219,10 +13222,7 @@ core/profiles/demo_umami/themes/umami/fonts/source-sans-pro-v21-latin-italic.wof
 core/profiles/demo_umami/themes/umami/fonts/source-sans-pro-v21-latin-regular.woff2
 core/profiles/demo_umami/themes/umami/src/Hook/UmamiHooks.php
 core/profiles/demo_umami/demo_umami.install
-core/profiles/demo_umami/tests/src/FunctionalJavascript/AssetAggregationAcrossPagesTest.php
-core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryAuthenticatedPerformanceTest.php
-core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryNodePagePerformanceTest.php
-core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryFrontPagePerformanceTest.php
+core/profiles/demo_umami/tests/src/FunctionalJavascript/OpenTelemetryPerformanceTest.php
 core/profiles/demo_umami/tests/src/Functional/UmamiMultilingualInstallTest.php
 core/profiles/demo_umami/tests/src/Functional/DemoUmamiProfileTest.php
 core/profiles/demo_umami/demo_umami.info.yml
@@ -13872,6 +13872,7 @@ core/lib/Drupal/Core/Routing/Enhancer/FormRouteEnhancer.php
 core/lib/Drupal/Core/Routing/Enhancer/ParamConversionEnhancer.php
 core/lib/Drupal/Core/Routing/RoutingEvents.php
 core/lib/Drupal/Core/Routing/Exception/CacheableResourceNotFoundException.php
+core/lib/Drupal/Core/Routing/Attribute/Route.php
 core/lib/Drupal/Core/Routing/Router.php
 core/lib/Drupal/Core/Routing/LocalRedirectResponse.php
 core/lib/Drupal/Core/Routing/UnsupportedRouteAttributePropertyException.php
