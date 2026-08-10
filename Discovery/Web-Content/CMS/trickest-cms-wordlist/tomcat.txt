@@ -220,7 +220,6 @@ test/org/apache/coyote/ajp/TesterAjpMessage.java
 test/org/apache/coyote/ajp/TestAbstractAjpProcessor.java
 test/org/apache/coyote/TestResponse.java
 test/org/apache/coyote/TestAbstractProtocol.java
-test/org/apache/coyote/TestCompressionConfigUserAgents.java
 test/org/apache/coyote/http2/TestHttp2AccessLogs.java
 test/org/apache/coyote/http2/TestHpack.java
 test/org/apache/coyote/http2/TestAsyncTimeout.java
@@ -781,6 +780,7 @@ test/org/apache/catalina/ant/TestDeployTask.java
 test/org/apache/catalina/ant/jmx/TestJMXAccessorTask.java
 test/org/apache/catalina/ha/context/TestReplicatedContext.java
 test/org/apache/catalina/ha/session/TestDeltaRequest.java
+test/org/apache/catalina/ha/session/TestDeltaSession.java
 test/org/apache/catalina/mbeans/TestRegistration.java
 test/org/apache/catalina/valves/rewrite/TestRewriteValve.java
 test/org/apache/catalina/valves/rewrite/TestResolverSSLComponents.java

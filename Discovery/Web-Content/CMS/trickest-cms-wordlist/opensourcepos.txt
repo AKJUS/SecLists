@@ -55,6 +55,7 @@ tests/Models/Item_test.php
 tests/Models/Reports/Summary_taxes_test.php
 tests/Models/Reports/Summary_discounts_test.php
 tests/Config/AppTest.php
+tests/Config/Validation/OSPOSRulesTest.php
 tests/README.md
 tests/helpers/UrlHelperTest.php
 tests/helpers/LocaleHelperTest.php
@@ -66,6 +67,7 @@ tests/Controllers/ConfigTest.php
 tests/Controllers/CustomersCsvImportTest.php
 tests/Controllers/ReportsControllerTest.php
 tests/Controllers/HomeTest.php
+tests/Controllers/SalesControllerTest.php
 phpunit.xml.dist
 package-lock.json
 docker-compose.phpmyadmin.yml

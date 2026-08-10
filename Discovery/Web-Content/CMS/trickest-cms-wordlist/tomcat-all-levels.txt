@@ -1646,11 +1646,6 @@ org/apache/coyote/TestAbstractProtocol.java
 apache/coyote/TestAbstractProtocol.java
 coyote/TestAbstractProtocol.java
 TestAbstractProtocol.java
-test/org/apache/coyote/TestCompressionConfigUserAgents.java
-org/apache/coyote/TestCompressionConfigUserAgents.java
-apache/coyote/TestCompressionConfigUserAgents.java
-coyote/TestCompressionConfigUserAgents.java
-TestCompressionConfigUserAgents.java
 test/org/apache/coyote/http2/TestHttp2AccessLogs.java
 org/apache/coyote/http2/TestHttp2AccessLogs.java
 apache/coyote/http2/TestHttp2AccessLogs.java
@@ -5242,6 +5237,13 @@ catalina/ha/session/TestDeltaRequest.java
 ha/session/TestDeltaRequest.java
 session/TestDeltaRequest.java
 TestDeltaRequest.java
+test/org/apache/catalina/ha/session/TestDeltaSession.java
+org/apache/catalina/ha/session/TestDeltaSession.java
+apache/catalina/ha/session/TestDeltaSession.java
+catalina/ha/session/TestDeltaSession.java
+ha/session/TestDeltaSession.java
+session/TestDeltaSession.java
+TestDeltaSession.java
 test/org/apache/catalina/mbeans/TestRegistration.java
 org/apache/catalina/mbeans/TestRegistration.java
 apache/catalina/mbeans/TestRegistration.java
