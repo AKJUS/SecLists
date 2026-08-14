@@ -168,6 +168,9 @@ DAVLibTest.php
 test/phpunit/AbstractRestAPITest.php
 phpunit/AbstractRestAPITest.php
 AbstractRestAPITest.php
+test/phpunit/TtcRoundingTest.php
+phpunit/TtcRoundingTest.php
+TtcRoundingTest.php
 test/phpunit/EvalMathTest.php
 phpunit/EvalMathTest.php
 EvalMathTest.php
@@ -68969,6 +68972,7 @@ DCO
 ChangeLog
 pyproject.toml
 robots.txt
+.agentsignore
 .phan/config.php
 config.php
 .tx/config
