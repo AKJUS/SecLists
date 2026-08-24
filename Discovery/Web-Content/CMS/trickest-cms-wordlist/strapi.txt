@@ -328,6 +328,7 @@ tests/api/core/content-manager/api/basic-dp-dz.test.api.js
 tests/api/core/content-manager/api/self-referential-relations.test.api.ts
 tests/api/core/content-manager/api/basic-relations.test.api.js
 tests/api/core/content-manager/api/status-sort-relation-filter.test.api.ts
+tests/api/core/content-manager/api/list-status-filter-i18n.test.api.ts
 tests/api/core/content-manager/api/basic.test.api.js
 tests/api/core/content-manager/api/hidden-content-type-read.test.api.js
 tests/api/core/content-manager/api/basic-dz.test.api.js
@@ -577,6 +578,7 @@ tests/api/plugins/graphql/dp-relations.test.api.js
 tests/api/plugins/graphql/crud.test.api.js
 tests/api/plugins/graphql/has-published-version.test.api.js
 tests/api/plugins/graphql/components.test.api.js
+tests/api/plugins/graphql/nested-relation-public-permissions.test.api.js
 tests/api/plugins/content-releases/releases.test.api.ts
 tests/api/plugins/content-releases/homepage.test.api.ts
 tests/api/plugins/users-permissions/users-graphql.test.api.js
@@ -3700,6 +3702,7 @@ packages/core/core/src/services/utils/conditional-fields.ts
 packages/core/core/src/services/utils/__tests__/conditional-fields.test.ts
 packages/core/core/src/services/content-source-maps.ts
 packages/core/core/src/services/content-api/index.ts
+packages/core/core/src/services/content-api/__tests__/index.test.ts
 packages/core/core/src/services/content-api/permissions/providers/condition.ts
 packages/core/core/src/services/content-api/permissions/providers/index.ts
 packages/core/core/src/services/content-api/permissions/providers/action.ts
@@ -4341,6 +4344,9 @@ packages/core/admin/admin/src/pages/Auth/components/tests/ResetPassword.test.tsx
 packages/core/admin/admin/src/pages/Auth/components/ResetPassword.tsx
 packages/core/admin/admin/src/pages/Auth/components/Login.tsx
 packages/core/admin/admin/src/pages/Auth/components/ForgotPasswordSuccess.tsx
+packages/core/admin/admin/src/pages/Auth/tests/utils.test.ts
+packages/core/admin/admin/src/pages/Auth/tests/AuthPage.test.tsx
+packages/core/admin/admin/src/pages/Auth/utils.ts
 packages/core/admin/admin/src/pages/Auth/AuthPage.tsx
 packages/core/admin/admin/src/pages/SessionsPage.tsx
 packages/core/admin/admin/src/pages/tests/UseCasePage.test.tsx
@@ -4514,6 +4520,7 @@ packages/core/admin/ee/server/src/audit-logs/services/lifecycles.ts
 packages/core/admin/ee/server/src/audit-logs/services/audit-logs.ts
 packages/core/admin/ee/server/src/audit-logs/services/__tests__/find-many-users.test.ts
 packages/core/admin/ee/server/src/audit-logs/services/__tests__/audit-logs.test.ts
+packages/core/admin/ee/server/src/audit-logs/services/__tests__/find-many.test.ts
 packages/core/admin/ee/admin/tsconfig.json
 packages/core/admin/ee/admin/.eslintrc.cjs
 packages/core/admin/ee/admin/src/constants.ts
@@ -5199,6 +5206,7 @@ packages/core/upload/admin/src/future/components/TruncatedText.tsx
 packages/core/upload/admin/src/future/utils/itemSource.ts
 packages/core/upload/admin/src/future/utils/getFolderLabel.ts
 packages/core/upload/admin/src/future/utils/buildBulkMovePayload.ts
+packages/core/upload/admin/src/future/utils/getApiErrorMessage.ts
 packages/core/upload/admin/src/future/utils/getRelationId.ts
 packages/core/upload/admin/src/future/utils/isEventFromWithin.ts
 packages/core/upload/admin/src/future/utils/canDropItemOnFolder.ts
@@ -5209,17 +5217,16 @@ packages/core/upload/admin/src/future/utils/translations.ts
 packages/core/upload/admin/src/future/utils/tests/canDropItemOnFolder.test.ts
 packages/core/upload/admin/src/future/utils/tests/buildBulkMovePayload.test.ts
 packages/core/upload/admin/src/future/utils/tests/itemSource.test.ts
-packages/core/upload/admin/src/future/utils/tests/getBulkMoveErrorMessage.test.ts
 packages/core/upload/admin/src/future/utils/tests/getRelationId.test.ts
 packages/core/upload/admin/src/future/utils/tests/isEventFromWithin.test.ts
 packages/core/upload/admin/src/future/utils/tests/flattenFolderStructure.test.ts
+packages/core/upload/admin/src/future/utils/tests/getApiErrorMessage.test.ts
 packages/core/upload/admin/src/future/utils/tests/createRafBatcher.test.ts
 packages/core/upload/admin/src/future/utils/tests/buildDragSetFromSelection.test.ts
 packages/core/upload/admin/src/future/utils/tests/itemLocations.test.ts
 packages/core/upload/admin/src/future/utils/tests/formatMoveSuccessMessage.test.ts
 packages/core/upload/admin/src/future/utils/tests/getFolderLabel.test.ts
 packages/core/upload/admin/src/future/utils/tests/searchQueryParam.test.ts
-packages/core/upload/admin/src/future/utils/getBulkMoveErrorMessage.ts
 packages/core/upload/admin/src/future/utils/formatMoveSuccessMessage.ts
 packages/core/upload/admin/src/future/utils/flattenFolderStructure.ts
 packages/core/upload/admin/src/future/utils/downloadFile.ts
@@ -5244,6 +5251,7 @@ packages/core/upload/admin/src/future/pages/Assets/components/FilterBadges.tsx
 packages/core/upload/admin/src/future/pages/Assets/components/AssetsSearchInput.tsx
 packages/core/upload/admin/src/future/pages/Assets/components/tests/AssetActionsMenu.test.tsx
 packages/core/upload/admin/src/future/pages/Assets/components/tests/FolderActionsMenu.test.tsx
+packages/core/upload/admin/src/future/pages/Assets/components/tests/BulkActionsBar.test.tsx
 packages/core/upload/admin/src/future/pages/Assets/components/tests/FolderFormDialog.test.tsx
 packages/core/upload/admin/src/future/pages/Assets/components/tests/AssetsSearchInput.test.tsx
 packages/core/upload/admin/src/future/pages/Assets/components/tests/BulkMoveDialog.test.tsx
@@ -5301,6 +5309,7 @@ packages/core/upload/admin/src/future/pages/Assets/tests/FilterBadges.test.tsx
 packages/core/upload/admin/src/future/pages/Assets/tests/AssetsPage.test.tsx
 packages/core/upload/admin/src/future/pages/Assets/hooks/useAssetSearch.ts
 packages/core/upload/admin/src/future/pages/Assets/hooks/useBusyAssets.ts
+packages/core/upload/admin/src/future/pages/Assets/hooks/useIsAssetDetailsOpen.ts
 packages/core/upload/admin/src/future/pages/Assets/hooks/useAssetSelection.ts
 packages/core/upload/admin/src/future/pages/Assets/hooks/useInfiniteAssets.ts
 packages/core/upload/admin/src/future/pages/Assets/hooks/useListSort.ts
@@ -5321,6 +5330,7 @@ packages/core/upload/admin/src/future/services/api.ts
 packages/core/upload/admin/src/future/services/tests/folders.test.ts
 packages/core/upload/admin/src/future/services/tests/assets.test.ts
 packages/core/upload/admin/src/future/services/tests/uploadFileViaXHR.test.ts
+packages/core/upload/admin/src/future/services/tests/uploadFileSilently.test.ts
 packages/core/upload/admin/src/future/services/tests/uploadMetadata.test.ts
 packages/core/upload/admin/src/future/services/tests/uploadPool.test.ts
 packages/core/upload/admin/src/future/services/assets.ts
@@ -5329,6 +5339,8 @@ packages/core/upload/admin/src/future/services/folders.ts
 packages/core/upload/admin/src/future/hooks/useTracking.ts
 packages/core/upload/admin/src/future/hooks/useAIMetadataEnabled.ts
 packages/core/upload/admin/src/future/hooks/tests/useTracking.test.ts
+packages/core/upload/admin/src/future/hooks/tests/useApiErrorMessage.test.tsx
+packages/core/upload/admin/src/future/hooks/useApiErrorMessage.ts
 packages/core/upload/admin/src/future/hooks/useMediaLibraryPermissions.ts
 packages/core/upload/admin/custom.d.ts
 packages/core/upload/jest.config.front.js
@@ -5695,6 +5707,7 @@ packages/plugins/graphql/server/src/config/index.ts
 packages/plugins/graphql/server/src/config/default-config.ts
 packages/plugins/graphql/server/src/format-graphql-error.ts
 packages/plugins/graphql/server/src/index.ts
+packages/plugins/graphql/server/src/__tests__/bootstrap.test.ts
 packages/plugins/graphql/server/src/bootstrap.ts
 packages/plugins/graphql/server/src/services/types.ts
 packages/plugins/graphql/server/src/services/constants.ts

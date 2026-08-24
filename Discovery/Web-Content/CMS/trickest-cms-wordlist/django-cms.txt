@@ -609,6 +609,7 @@ cms/tests/test_menu.py
 cms/tests/test_helpers.py
 cms/tests/test_views.py
 cms/tests/test_apphook_reload_language_variants.py
+cms/tests/test_csp.py
 cms/tests/test_nested_plugins.py
 cms/tests/test_permmod.py
 cms/tests/test_management.py
@@ -739,6 +740,7 @@ cms/tests/frontend/unit/index.js
 cms/tests/frontend/unit/cms.structureboard.test.js
 cms/tests/test_page_user_admin.py
 cms/tests/test_plugin_renderers.py
+cms/tests/test_permission_signals.py
 cms/tests/test_menu_utils.py
 cms/tests/test_cache.py
 cms/tests/test_site.py
@@ -1499,6 +1501,7 @@ docs/how_to/01-placeholders.rst
 docs/how_to/07-sitemaps.rst
 docs/how_to/11-apphooks.rst
 docs/how_to/09-custom_plugins.rst
+docs/how_to/25-content_security_policy.rst
 docs/how_to/02-languages.rst
 docs/how_to/13-toolbar.rst
 docs/how_to/06-frontend_models.rst

@@ -3035,6 +3035,7 @@ core/modules/media/tests/src/Traits/MediaTypeCreationTrait.php
 core/modules/media/tests/src/Traits/OEmbedTestTrait.php
 core/modules/media/tests/src/Kernel/Views/RevisionUserTest.php
 core/modules/media/tests/src/Kernel/MediaSourceValidationTest.php
+core/modules/media/tests/src/Kernel/MediaAccessControlHandlerCreateTest.php
 core/modules/media/tests/src/Kernel/MediaEmbedFilterTranslationTest.php
 core/modules/media/tests/src/Kernel/MediaEmbedFilterTest.php
 core/modules/media/tests/src/Kernel/MediaLinkRelationsTest.php
@@ -3975,6 +3976,10 @@ core/modules/system/tests/modules/js_message_test/js_message_test.routing.yml
 core/modules/system/tests/modules/js_message_test/js/js_message_test.js
 core/modules/system/tests/modules/js_message_test/js_message_test.libraries.yml
 core/modules/system/tests/modules/js_message_test/src/Controller/JSMessageTestController.php
+core/modules/system/tests/modules/header_assets_test/header_assets_test.info.yml
+core/modules/system/tests/modules/header_assets_test/js/header.js
+core/modules/system/tests/modules/header_assets_test/header_assets_test.libraries.yml
+core/modules/system/tests/modules/header_assets_test/src/Hook/HeaderAssetsTestHooks.php
 core/modules/system/tests/modules/module_install_class_loader_test1/module_install_class_loader_test1.services.yml
 core/modules/system/tests/modules/module_install_class_loader_test1/src/EventSubscriber.php
 core/modules/system/tests/modules/module_install_class_loader_test1/module_install_class_loader_test1.info.yml
@@ -5409,9 +5414,7 @@ core/modules/user/config/install/core.entity_view_mode.user.full.yml
 core/modules/user/config/install/system.action.user_unblock_user_action.yml
 core/modules/user/config/schema/user.schema.yml
 core/modules/user/config/schema/user.views.schema.yml
-core/modules/user/config/optional/views.view.who_s_new.yml
 core/modules/user/config/optional/views.view.user_admin_people.yml
-core/modules/user/config/optional/views.view.who_s_online.yml
 core/modules/user/templates/username.html.twig
 core/modules/user/templates/user.html.twig
 core/modules/user/user.links.menu.yml
@@ -5568,7 +5571,6 @@ core/modules/user/tests/src/Kernel/UserAnonymousActivateTest.php
 core/modules/user/tests/src/Kernel/UserRoleEntityTest.php
 core/modules/user/tests/src/Kernel/ModulePermissionsLinkHelperTest.php
 core/modules/user/tests/src/Kernel/UserAdminSettingsFormTest.php
-core/modules/user/tests/src/Kernel/WhoIsOnlineBlockTest.php
 core/modules/user/tests/src/Kernel/UserActionConfigSchemaTest.php
 core/modules/user/tests/src/Kernel/UserFieldValueTest.php
 core/modules/user/tests/src/Kernel/Controller/UserControllerTest.php
@@ -7654,12 +7656,14 @@ core/modules/pgsql/pgsql.install
 core/modules/pgsql/pgsql.services.yml
 core/modules/pgsql/tests/src/Functional/GenericTest.php
 core/modules/pgsql/tests/src/Unit/SchemaTest.php
+core/modules/pgsql/tests/src/Unit/ConnectionTest.php
 core/modules/pgsql/tests/src/Unit/EntityQuery/ConditionTest.php
 core/modules/pgsql/tests/src/Kernel/pgsql/SchemaUniquePrefixedKeysIndexTest.php
 core/modules/pgsql/tests/src/Kernel/pgsql/ConnectionUnitTest.php
 core/modules/pgsql/tests/src/Kernel/pgsql/DatabaseExceptionWrapperTest.php
 core/modules/pgsql/tests/src/Kernel/pgsql/TruncateTest.php
 core/modules/pgsql/tests/src/Kernel/pgsql/SchemaTest.php
+core/modules/pgsql/tests/src/Kernel/pgsql/ConnectionTest.php
 core/modules/pgsql/tests/src/Kernel/pgsql/KernelTestBaseTest.php
 core/modules/pgsql/tests/src/Kernel/pgsql/TransactionTest.php
 core/modules/pgsql/tests/src/Kernel/pgsql/SyntaxTest.php
@@ -7925,6 +7929,7 @@ core/modules/block/tests/modules/block_test/src/ContextProvider/MultipleStaticCo
 core/modules/block/tests/modules/block_test/src/Hook/BlockTestHooks.php
 core/modules/block/tests/modules/block_test/src/Plugin/Block/TestCacheBlock.php
 core/modules/block/tests/modules/block_test/src/Plugin/Block/TestAccessBlock.php
+core/modules/block/tests/modules/block_test/src/Plugin/Block/TestXssBlock.php
 core/modules/block/tests/modules/block_test/src/Plugin/Block/TestContextAwareUnsatisfiedBlock.php
 core/modules/block/tests/modules/block_test/src/Plugin/Block/TestEmptyBlock.php
 core/modules/block/tests/modules/block_test/src/Plugin/Block/TestBlockInstantiation.php
@@ -9464,6 +9469,7 @@ core/modules/search/modules/search_help/config/schema/search_help.schema.yml
 core/modules/search/modules/search_help/config/optional/block.block.claro_help_search.yml
 core/modules/search/modules/search_help/config/optional/search.page.help_search.yml
 core/modules/search/modules/search_help/tests/src/Functional/HelpTopicSearchTest.php
+core/modules/search/modules/search_help/tests/src/Functional/SearchHelpHelpPageTest.php
 core/modules/search/modules/search_help/tests/src/Kernel/HelpSearchPluginTest.php
 core/modules/search/modules/search_help/src/Hook/SearchHelpHooks.php
 core/modules/search/modules/search_help/src/Plugin/Search/SearchHelpSearch.php
@@ -10824,7 +10830,6 @@ core/tests/fixtures/config_install/multilingual/system.logging.yml
 core/tests/fixtures/config_install/multilingual/core.date_format.html_datetime.yml
 core/tests/fixtures/config_install/multilingual/system.image.gd.yml
 core/tests/fixtures/config_install/multilingual/system.cron.yml
-core/tests/fixtures/config_install/multilingual/views.view.who_s_new.yml
 core/tests/fixtures/config_install/multilingual/system.action.node_publish_action.yml
 core/tests/fixtures/config_install/multilingual/block.block.stark_admin.yml
 core/tests/fixtures/config_install/multilingual/user.flood.yml
@@ -10852,7 +10857,6 @@ core/tests/fixtures/config_install/multilingual/language/es/system.action.user_c
 core/tests/fixtures/config_install/multilingual/language/es/core.date_format.html_date.yml
 core/tests/fixtures/config_install/multilingual/language/es/system.action.user_block_user_action.yml
 core/tests/fixtures/config_install/multilingual/language/es/views.view.glossary.yml
-core/tests/fixtures/config_install/multilingual/language/es/views.view.who_s_new.yml
 core/tests/fixtures/config_install/multilingual/language/es/system.action.node_publish_action.yml
 core/tests/fixtures/config_install/multilingual/language/es/block.block.stark_admin.yml
 core/tests/fixtures/config_install/multilingual/language/es/system.menu.account.yml
@@ -10892,7 +10896,6 @@ core/tests/fixtures/config_install/multilingual/language/es/system.menu.admin.ym
 core/tests/fixtures/config_install/multilingual/language/es/system.site.yml
 core/tests/fixtures/config_install/multilingual/language/es/system.action.node_delete_action.yml
 core/tests/fixtures/config_install/multilingual/language/es/views.view.content.yml
-core/tests/fixtures/config_install/multilingual/language/es/views.view.who_s_online.yml
 core/tests/fixtures/config_install/multilingual/language/es/system.action.node_make_unsticky_action.yml
 core/tests/fixtures/config_install/multilingual/system.diff.yml
 core/tests/fixtures/config_install/multilingual/core.date_format.fallback.yml
@@ -10946,7 +10949,6 @@ core/tests/fixtures/config_install/multilingual/system.site.yml
 core/tests/fixtures/config_install/multilingual/system.action.node_delete_action.yml
 core/tests/fixtures/config_install/multilingual/language.negotiation.yml
 core/tests/fixtures/config_install/multilingual/views.view.content.yml
-core/tests/fixtures/config_install/multilingual/views.view.who_s_online.yml
 core/tests/fixtures/config_install/multilingual/system.action.node_make_unsticky_action.yml
 core/tests/fixtures/config_install/testing_config_install_no_config/.gitkeep
 core/tests/fixtures/default_content_broken/no-uuid.yml
@@ -12606,6 +12608,7 @@ core/tests/Drupal/KernelTests/Core/Asset/AttachedAssetsTest.php
 core/tests/Drupal/KernelTests/Core/Asset/LibraryDiscoveryIntegrationTest.php
 core/tests/Drupal/KernelTests/Core/Asset/DeprecatedAssetsTest.php
 core/tests/Drupal/KernelTests/Core/Asset/ResolvedLibraryDefinitionsFilesMatchTest.php
+core/tests/Drupal/KernelTests/Core/Asset/AssetControllerTest.php
 core/tests/Drupal/KernelTests/Core/Layout/IconBuilderTest.php
 core/tests/Drupal/KernelTests/Core/Layout/LayoutPluginManagerTest.php
 core/tests/Drupal/KernelTests/Core/Installer/InstallerRedirectTraitMockableClass.php

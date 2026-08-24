@@ -683,12 +683,16 @@ tests/_support/UnitTester.php
 tests/_support/FunctionalTester.php
 tests/_support/AcceptanceTester.php
 tests/unit/data/blueprints/strict.yaml
+tests/unit/data/assets/timestamp-a.js
 tests/unit/_bootstrap.php
 tests/unit/Grav/Common/Twig/Sandbox/SandboxConfigTest.php
 tests/unit/Grav/Common/Twig/Compatibility/Twig3CompatibilityTransformerTest.php
+tests/unit/Grav/Common/Twig/TwigConditionalBlockTest.php
 tests/unit/Grav/Common/Twig/DeferredExtensionTest.php
 tests/unit/Grav/Common/Twig/Extensions/GravExtensionTest.php
 tests/unit/Grav/Common/Twig/TwigAutoescapeCompatTest.php
+tests/unit/Grav/Common/Twig/TwigSetEscaperCompatTest.php
+tests/unit/Grav/Common/Twig/TwigForkPatchesTest.php
 tests/unit/Grav/Common/InflectorTest.php
 tests/unit/Grav/Common/UriTest.php
 tests/unit/Grav/Common/Markdown/ElementBuilderTest.php
@@ -732,8 +736,10 @@ tests/unit/Grav/Common/Helpers/FileReaderTest.php
 tests/unit/Grav/Common/Helpers/ExcerptsTest.php
 tests/unit/Grav/Common/Page/PagesTest.php
 tests/unit/Grav/Common/Page/Medium/ImageMediumUrlTest.php
+tests/unit/Grav/Common/Page/Medium/MediaPlayerAttributesTest.php
 tests/unit/Grav/Common/Page/Medium/MediaMetadataQueryTest.php
 tests/unit/Grav/Common/Page/PageOrderingTest.php
+tests/unit/Grav/Common/Page/PageUrlCanonicalTest.php
 tests/unit/Grav/Common/UtilsTest.php
 tests/unit/Grav/Common/GPM/UpgraderFamilyTest.php
 tests/unit/Grav/Common/GPM/GPMTest.php
