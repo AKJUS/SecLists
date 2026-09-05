@@ -581,6 +581,7 @@ tests/api/plugins/graphql/components.test.api.js
 tests/api/plugins/graphql/nested-relation-public-permissions.test.api.js
 tests/api/plugins/content-releases/releases.test.api.ts
 tests/api/plugins/content-releases/homepage.test.api.ts
+tests/api/plugins/content-releases/releases-audit-logs.test.api.ts
 tests/api/plugins/users-permissions/users-graphql.test.api.js
 tests/api/plugins/users-permissions/graphql.test.api.js
 tests/api/plugins/users-permissions/content-api/auth-refresh.test.api.js
@@ -2051,6 +2052,7 @@ packages/core/content-releases/server/.eslintrc.cjs
 packages/core/content-releases/server/tsconfig.build.json
 packages/core/content-releases/server/src/register.ts
 packages/core/content-releases/server/src/constants.ts
+packages/core/content-releases/server/src/audit-logs.ts
 packages/core/content-releases/server/src/utils/index.ts
 packages/core/content-releases/server/src/utils/__tests__/is-entry-valid.test.ts
 packages/core/content-releases/server/src/content-types/index.ts
@@ -2074,6 +2076,7 @@ packages/core/content-releases/server/src/controllers/__tests__/release.test.ts
 packages/core/content-releases/server/src/controllers/__tests__/release-action.test.ts
 packages/core/content-releases/server/src/controllers/release-action.ts
 packages/core/content-releases/server/src/controllers/settings.ts
+packages/core/content-releases/server/src/__tests__/audit-logs.test.ts
 packages/core/content-releases/server/src/__tests__/index.test.ts
 packages/core/content-releases/server/src/destroy.ts
 packages/core/content-releases/server/src/middlewares/documents.ts
@@ -2715,6 +2718,7 @@ packages/core/utils/src/__tests__/env-helper.test.ts
 packages/core/utils/src/__tests__/parse-type.test.ts
 packages/core/utils/src/__tests__/validate-input.test.ts
 packages/core/utils/src/__tests__/yup-formatter.test.ts
+packages/core/utils/src/__tests__/zod.test.ts
 packages/core/utils/src/__tests__/hooks.test.ts
 packages/core/utils/src/__tests__/morph.test.ts
 packages/core/utils/src/__tests__/has-published-version-param.test.ts
@@ -3176,6 +3180,7 @@ packages/core/content-type-builder/admin/src/components/FormModal/attributes/adv
 packages/core/content-type-builder/admin/src/components/FormModal/attributes/validation/common.ts
 packages/core/content-type-builder/admin/src/components/FormModal/attributes/tests/ConditionForm.test.tsx
 packages/core/content-type-builder/admin/src/components/FormModal/attributes/tests/types.test.ts
+packages/core/content-type-builder/admin/src/components/FormModal/attributes/tests/attributeOptions.test.ts
 packages/core/content-type-builder/admin/src/components/FormModal/attributes/commonBaseForm.ts
 packages/core/content-type-builder/admin/src/components/FormModal/attributes/baseForm.ts
 packages/core/content-type-builder/admin/src/components/FormModal/FormModal.tsx
@@ -3291,6 +3296,7 @@ packages/core/content-type-builder/admin/src/utils/getTrad.ts
 packages/core/content-type-builder/admin/src/utils/conditions.ts
 packages/core/content-type-builder/admin/src/utils/startsWithANumber.ts
 packages/core/content-type-builder/admin/src/utils/findAttribute.ts
+packages/core/content-type-builder/admin/src/utils/applyPrivateSearchDefault.ts
 packages/core/content-type-builder/admin/src/utils/getYupInnerErrors.ts
 packages/core/content-type-builder/admin/src/utils/parseNumberInputValue.ts
 packages/core/content-type-builder/admin/src/utils/index.ts
@@ -3395,6 +3401,7 @@ packages/core/review-workflows/server/src/services/stages.ts
 packages/core/review-workflows/server/src/services/workflows.ts
 packages/core/review-workflows/server/src/services/index.ts
 packages/core/review-workflows/server/src/services/workflow-content-types.ts
+packages/core/review-workflows/server/src/services/__tests__/workflows.test.ts
 packages/core/review-workflows/server/src/services/metrics/index.ts
 packages/core/review-workflows/server/src/services/metrics/weekly-metrics.ts
 packages/core/review-workflows/server/src/migrations/multiple-workflows.ts
@@ -3562,8 +3569,10 @@ packages/core/core/src/utils/load-files.ts
 packages/core/core/src/utils/index.ts
 packages/core/core/src/utils/convert-custom-field-type.ts
 packages/core/core/src/utils/load-config-file.ts
+packages/core/core/src/utils/zod.ts
 packages/core/core/src/utils/startup-logger.ts
 packages/core/core/src/utils/__tests__/convert-custom-field-type.vitest.test.ts
+packages/core/core/src/utils/__tests__/zod.test.ts
 packages/core/core/src/utils/__tests__/filepath-to-prop-path.vitest.test.ts
 packages/core/core/src/utils/__tests__/transform-content-types-to-models.vitest.test.ts
 packages/core/core/src/utils/filepath-to-prop-path.ts
@@ -3578,11 +3587,15 @@ packages/core/core/src/core-api/controller/collection-type.ts
 packages/core/core/src/core-api/controller/__tests__/transform.test.ts
 packages/core/core/src/core-api/controller/transform.ts
 packages/core/core/src/core-api/controller/single-type.ts
+packages/core/core/src/core-api/routes/validation/schema-registry.ts
 packages/core/core/src/core-api/routes/validation/component.ts
 packages/core/core/src/core-api/routes/validation/constants.ts
 packages/core/core/src/core-api/routes/validation/attributes.ts
 packages/core/core/src/core-api/routes/validation/common.ts
 packages/core/core/src/core-api/routes/validation/index.ts
+packages/core/core/src/core-api/routes/validation/__tests__/utils.test.ts
+packages/core/core/src/core-api/routes/validation/__tests__/schema-registry.test.ts
+packages/core/core/src/core-api/routes/validation/__tests__/content-type.test.ts
 packages/core/core/src/core-api/routes/validation/mappers.ts
 packages/core/core/src/core-api/routes/validation/utils.ts
 packages/core/core/src/core-api/routes/validation/content-type.ts
@@ -3808,6 +3821,8 @@ packages/core/core/src/migrations/__tests__/5.0.0-discard-drafts.test.ts
 packages/core/core/src/migrations/__tests__/i18n.test.ts
 packages/core/core/src/migrations/first-published-at.ts
 packages/core/core/src/migrations/draft-publish.ts
+packages/core/core/src/migrations/database/serialize-json-columns.ts
+packages/core/core/src/migrations/database/__tests__/serialize-json-columns.test.ts
 packages/core/core/src/migrations/database/5.0.0-discard-drafts.ts
 packages/core/core/src/factories.ts
 packages/core/core/vitest.config.ts
@@ -4516,6 +4531,7 @@ packages/core/admin/ee/server/src/audit-logs/routes/audit-logs.ts
 packages/core/admin/ee/server/src/audit-logs/routes/__tests__/audit-logs.test.ts
 packages/core/admin/ee/server/src/audit-logs/controllers/audit-logs.ts
 packages/core/admin/ee/server/src/audit-logs/controllers/__tests__/audit-logs.test.ts
+packages/core/admin/ee/server/src/audit-logs/utils.ts
 packages/core/admin/ee/server/src/audit-logs/services/lifecycles.ts
 packages/core/admin/ee/server/src/audit-logs/services/audit-logs.ts
 packages/core/admin/ee/server/src/audit-logs/services/__tests__/find-many-users.test.ts
@@ -4710,6 +4726,7 @@ packages/core/types/src/core/config/server.ts
 packages/core/types/src/core/middleware.ts
 packages/core/types/src/core/service.ts
 packages/core/types/src/core/api.ts
+packages/core/types/src/core/content-api-schema-registry.ts
 packages/core/types/src/core/index.ts
 packages/core/types/src/core/core-api/router.ts
 packages/core/types/src/core/core-api/service.ts
@@ -4853,6 +4870,7 @@ packages/core/upload/server/src/controllers/validation/admin/upload.ts
 packages/core/upload/server/src/controllers/validation/admin/settings.ts
 packages/core/upload/server/src/controllers/validation/admin/configureView.ts
 packages/core/upload/server/src/controllers/validation/admin/ai-metadata.ts
+packages/core/upload/server/src/controllers/validation/__tests__/upload-focal-point.test.ts
 packages/core/upload/server/src/controllers/index.ts
 packages/core/upload/server/src/controllers/view-configuration.ts
 packages/core/upload/server/src/controllers/__tests__/admin-settings.test.ts
@@ -5046,6 +5064,7 @@ packages/core/upload/admin/src/utils/icons.ts
 packages/core/upload/admin/src/utils/formatBytes.ts
 packages/core/upload/admin/src/utils/getFolderURL.ts
 packages/core/upload/admin/src/utils/getTrad.ts
+packages/core/upload/admin/src/utils/resolveFileMime.ts
 packages/core/upload/admin/src/utils/moveElement.ts
 packages/core/upload/admin/src/utils/appendSearchParamsToUrl.ts
 packages/core/upload/admin/src/utils/displayedFilters.ts
@@ -5055,7 +5074,9 @@ packages/core/upload/admin/src/utils/urlsToAssets.ts
 packages/core/upload/admin/src/utils/tests/prefixPluginTranslations.test.ts
 packages/core/upload/admin/src/utils/tests/normalizeAPIError.test.ts
 packages/core/upload/admin/src/utils/tests/getAPIInnerErrors.test.ts
+packages/core/upload/admin/src/utils/tests/rawFileToAsset.test.ts
 packages/core/upload/admin/src/utils/tests/getFolderParents.test.ts
+packages/core/upload/admin/src/utils/tests/resolveFileMime.test.ts
 packages/core/upload/admin/src/utils/tests/getBreadcrumbDataML.test.ts
 packages/core/upload/admin/src/utils/tests/formatDuration.test.ts
 packages/core/upload/admin/src/utils/tests/containsAssetFilter.test.ts
@@ -5092,6 +5113,7 @@ packages/core/upload/admin/src/pages/App/components/BulkActions.tsx
 packages/core/upload/admin/src/pages/App/components/EmptyOrNoPermissions.tsx
 packages/core/upload/admin/src/pages/App/components/tests/EmptyOrNoPermissions.test.tsx
 packages/core/upload/admin/src/pages/App/components/tests/BulkActions.test.tsx
+packages/core/upload/admin/src/pages/App/components/tests/Filters.test.tsx
 packages/core/upload/admin/src/pages/App/components/tests/__snapshots__/BulkActions.test.tsx.snap
 packages/core/upload/admin/src/pages/App/components/tests/__snapshots__/Header.test.tsx.snap
 packages/core/upload/admin/src/pages/App/components/tests/__snapshots__/BulkMoveButton.test.tsx.snap
@@ -5251,6 +5273,7 @@ packages/core/upload/admin/src/future/pages/Assets/components/FilterBadges.tsx
 packages/core/upload/admin/src/future/pages/Assets/components/AssetsSearchInput.tsx
 packages/core/upload/admin/src/future/pages/Assets/components/tests/AssetActionsMenu.test.tsx
 packages/core/upload/admin/src/future/pages/Assets/components/tests/FolderActionsMenu.test.tsx
+packages/core/upload/admin/src/future/pages/Assets/components/tests/MainAreaContextMenu.test.tsx
 packages/core/upload/admin/src/future/pages/Assets/components/tests/BulkActionsBar.test.tsx
 packages/core/upload/admin/src/future/pages/Assets/components/tests/FolderFormDialog.test.tsx
 packages/core/upload/admin/src/future/pages/Assets/components/tests/AssetsSearchInput.test.tsx
@@ -5290,10 +5313,15 @@ packages/core/upload/admin/src/future/pages/Assets/components/FolderTree/tests/F
 packages/core/upload/admin/src/future/pages/Assets/components/FolderTree/useSpringLoadedExpand.ts
 packages/core/upload/admin/src/future/pages/Assets/components/FolderFormDialog.tsx
 packages/core/upload/admin/src/future/pages/Assets/components/EmptyState.tsx
+packages/core/upload/admin/src/future/pages/Assets/components/MainAreaContextMenu.tsx
 packages/core/upload/admin/src/future/pages/Assets/utils/buildAssetFilters.ts
+packages/core/upload/admin/src/future/pages/Assets/utils/mergeUploadedAssets.ts
+packages/core/upload/admin/src/future/pages/Assets/utils/renderedKeys.ts
+packages/core/upload/admin/src/future/pages/Assets/utils/tests/mergeUploadedAssets.test.ts
 packages/core/upload/admin/src/future/pages/Assets/utils/tests/listQueryKey.test.ts
 packages/core/upload/admin/src/future/pages/Assets/utils/tests/mergeMixedList.test.ts
 packages/core/upload/admin/src/future/pages/Assets/utils/tests/buildAssetFilters.test.ts
+packages/core/upload/admin/src/future/pages/Assets/utils/tests/renderedKeys.test.ts
 packages/core/upload/admin/src/future/pages/Assets/utils/tests/selection.test.ts
 packages/core/upload/admin/src/future/pages/Assets/utils/selection.ts
 packages/core/upload/admin/src/future/pages/Assets/utils/listQueryKey.ts
@@ -5309,6 +5337,7 @@ packages/core/upload/admin/src/future/pages/Assets/tests/FilterBadges.test.tsx
 packages/core/upload/admin/src/future/pages/Assets/tests/AssetsPage.test.tsx
 packages/core/upload/admin/src/future/pages/Assets/hooks/useAssetSearch.ts
 packages/core/upload/admin/src/future/pages/Assets/hooks/useBusyAssets.ts
+packages/core/upload/admin/src/future/pages/Assets/hooks/useListScrollRestoration.ts
 packages/core/upload/admin/src/future/pages/Assets/hooks/useIsAssetDetailsOpen.ts
 packages/core/upload/admin/src/future/pages/Assets/hooks/useAssetSelection.ts
 packages/core/upload/admin/src/future/pages/Assets/hooks/useInfiniteAssets.ts
@@ -5319,6 +5348,7 @@ packages/core/upload/admin/src/future/pages/Assets/hooks/tests/useInfiniteAssets
 packages/core/upload/admin/src/future/pages/Assets/hooks/tests/useInfiniteScrollSentinel.test.ts
 packages/core/upload/admin/src/future/pages/Assets/hooks/tests/useListSort.test.ts
 packages/core/upload/admin/src/future/pages/Assets/hooks/tests/useInfiniteAssets.test.ts
+packages/core/upload/admin/src/future/pages/Assets/hooks/tests/useListScrollRestoration.test.ts
 packages/core/upload/admin/src/future/pages/Assets/hooks/tests/useListFilters.test.ts
 packages/core/upload/admin/src/future/pages/Assets/hooks/tests/useAssetSearch.test.ts
 packages/core/upload/admin/src/future/pages/Assets/hooks/tests/useFolderInfo.test.ts
@@ -5327,11 +5357,13 @@ packages/core/upload/admin/src/future/pages/Assets/hooks/useFolderNavigation.ts
 packages/core/upload/admin/src/future/pages/Assets/hooks/useFolderInfo.ts
 packages/core/upload/admin/src/future/services/uploadFileViaXHR.ts
 packages/core/upload/admin/src/future/services/api.ts
+packages/core/upload/admin/src/future/services/tests/uploadMergeGuard.test.ts
 packages/core/upload/admin/src/future/services/tests/folders.test.ts
 packages/core/upload/admin/src/future/services/tests/assets.test.ts
 packages/core/upload/admin/src/future/services/tests/uploadFileViaXHR.test.ts
 packages/core/upload/admin/src/future/services/tests/uploadFileSilently.test.ts
 packages/core/upload/admin/src/future/services/tests/uploadMetadata.test.ts
+packages/core/upload/admin/src/future/services/tests/uploadFolderScope.test.ts
 packages/core/upload/admin/src/future/services/tests/uploadPool.test.ts
 packages/core/upload/admin/src/future/services/assets.ts
 packages/core/upload/admin/src/future/services/settings.ts
@@ -5363,6 +5395,7 @@ packages/core/openapi/__tests__/routes/route-matcher.test.ts
 packages/core/openapi/__tests__/routes/plugins-route-provider.test.ts
 packages/core/openapi/__tests__/routes/collector.test.ts
 packages/core/openapi/__tests__/routes/api-routes-provider.test.ts
+packages/core/openapi/__tests__/helpers/content-api-schema-registry.ts
 packages/core/openapi/__tests__/mocks/routes-provider.mock.ts
 packages/core/openapi/__tests__/mocks/index.ts
 packages/core/openapi/__tests__/mocks/route-matcher.mock.ts
@@ -5566,10 +5599,12 @@ packages/core/database/src/migrations/__tests__/discover.test.ts
 packages/core/database/src/migrations/__tests__/providers.test.ts
 packages/core/database/src/migrations/__tests__/runner.test.ts
 packages/core/database/src/migrations/__tests__/common.test.ts
+packages/core/database/src/migrations/__tests__/heartbeat-logger.test.ts
 packages/core/database/src/migrations/__tests__/internal-upgrade-simulation.test.ts
 packages/core/database/src/migrations/__tests__/resolver.test.ts
 packages/core/database/src/migrations/__tests__/storage.test.ts
 packages/core/database/src/migrations/logger.ts
+packages/core/database/src/migrations/heartbeat.ts
 packages/core/database/src/migrations/internal.ts
 packages/core/database/src/transaction-context.ts
 packages/core/database/src/entity-manager/types.ts
